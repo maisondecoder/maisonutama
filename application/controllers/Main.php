@@ -20,6 +20,15 @@ class Main extends CI_Controller {
 	 */
 	public function index()
 	{
+		$this->load->view('revamp/header');
 		$this->load->view('revamp/index');
+		$this->load->view('revamp/footer');
+	}
+
+	public function brands()
+	{
+		$this->load->view('revamp/header');
+		$this->load->view('revamp/brand');
+		$this->load->view('revamp/footer');
 	}
 }
