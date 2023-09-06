@@ -3,32 +3,86 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Main extends CI_Controller {
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see https://codeigniter.com/userguide3/general/urls.html
-	 */
+	public function __construct()
+	{
+			parent::__construct();
+			// Your own constructor code
+	}
+
 	public function index()
 	{
-		$this->load->view('revamp/header');
+		//Global Data To Display *Mandatory
+		$this->load->model('brand_model');
+		$this->load->model('store_model');
+		$data['all_brands'] = $this->brand_model->get_all_brands();
+		$data['all_stores'] = $this->store_model->get_all_stores();
+		//** End */
+
+		$data['title_page'] = "Homepage";
+		$data['nav'] = "home";
+
+		$this->load->view('revamp/header', $data);
 		$this->load->view('revamp/index');
 		$this->load->view('revamp/footer');
 	}
 
 	public function brands()
 	{
-		$this->load->view('revamp/header');
+		//Global Data To Display *Mandatory
+		$this->load->model('brand_model');
+		$this->load->model('store_model');
+		$data['all_brands'] = $this->brand_model->get_all_brands();
+		$data['all_stores'] = $this->store_model->get_all_stores();
+		//** End */
+
+		$data['title_page'] = "Our Brands Partner";
+		$data['nav'] = "brand";
+
+		$this->load->view('revamp/header', $data);
 		$this->load->view('revamp/brand');
+		$this->load->view('revamp/footer');
+	}
+
+	public function brand_detail($brand_slug){
+
+		//Global Data To Display *Mandatory
+		$this->load->model('brand_model');
+		$this->load->model('store_model');
+		$data['all_stores'] = $this->store_model->get_all_stores();
+		//** End */
+
+		$brand_data = $this->brand_model->get_spesific_brand($brand_slug);
+
+		if(!$brand_data){
+			redirect('/?error');
+		}
+
+		$data['brand_data'] = $brand_data;
+		$data['all_brands'] = $this->brand_model->get_all_brands($brand_slug);
+		
+		$brand_title = $brand_data['brand_name'] . " Product Collections";
+		
+		$data['title_page'] = $brand_title;
+		$data['nav'] = "brand";
+
+		$this->load->view('revamp/header', $data);
+		$this->load->view('revamp/brand-detail');
+		$this->load->view('revamp/footer');
+	}
+
+	public function about_us(){
+		//Global Data To Display *Mandatory
+		$this->load->model('brand_model');
+		$this->load->model('store_model');
+		$data['all_brands'] = $this->brand_model->get_all_brands();
+		$data['all_stores'] = $this->store_model->get_all_stores();
+		//** End */
+
+		$data['title_page'] = "About Maison Living";
+		$data['nav'] = "about";
+
+		$this->load->view('revamp/header', $data);
+		$this->load->view('revamp/about');
 		$this->load->view('revamp/footer');
 	}
 }

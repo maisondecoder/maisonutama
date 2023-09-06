@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
+    <title>Maison Living - <?= $title_page; ?></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/07c871975a.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -33,7 +33,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="<?= base_url(); ?>">
                 <img src="<?= base_url('assets/logo-maison-navbar-putih.png') ?>" alt="Maison Living" height="40">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -42,37 +42,32 @@
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="<?= base_url('index.php/main/'); ?>">Homepage</a>
+                        <a class="nav-link <?php echo ($nav=='home') ? 'active':''; ?>" aria-current="page" href="<?= base_url(); ?>">Homepage</a>
                     </li>
+                    <?php if ($all_brands) { ?>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle <?php echo ($nav=='brand') ? 'active':''; ?>" href="<?= base_url('furniture-brand'); ?>" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Brands
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Papadatos</a></li>
-                            <li><a class="dropdown-item" href="#">Franco Ferri</a></li>
-                            <li><a class="dropdown-item" href="#">Acomodel</a></li>
-                            <li><a class="dropdown-item" href="#">Babakagu</a></li>
-                            <li><a class="dropdown-item" href="#">Pulpo</a></li>
-                            <li><a class="dropdown-item" href="#">Aromas</a></li>
-                            <li><a class="dropdown-item" href="#">Aromas</a></li>
+                            <?php foreach ($all_brands as $key => $brand) { ?>
+                                <li><a class="dropdown-item" href="<?= base_url().$brand['brand_slug']; ?>"><?= $brand['brand_name']; ?></a></li>
+                            <?php } ?>
                         </ul>
                     </li>
+                    <?php } ?>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Collections
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            <li><a class="dropdown-item" href="#">Living Room</a></li>
+                            <li><a class="dropdown-item" href="#">Dining Room</a></li>
+                            <li><a class="dropdown-item" href="#">Bed Room</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">About Us</a>
+                        <a class="nav-link <?php echo ($nav=='about') ? 'active':''; ?>" href="<?= base_url('about-us-maison-living'); ?>">About Us</a>
                     </li>
                 </ul>
             </div>
