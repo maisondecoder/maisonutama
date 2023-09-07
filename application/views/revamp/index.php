@@ -79,7 +79,7 @@
                 <?php foreach ($all_stores as $key => $store) { ?>
                     <div class="row mb-3">
                         <div class="col-sm-12 col-md-6 text-center">
-                            <img class="img-fluid mb-2" src="<?= base_url('assets/') . $store['store_img']; ?> ?>" style="max-height:300px" alt="<?= $store['store_name']; ?>">
+                            <img class="img-fluid mb-2" src="<?= base_url('assets/') . $store['store_img']; ?>" style="max-height:300px" alt="<?= $store['store_name']; ?>">
                         </div>
                         <div class="col-sm-12 col-md-6 my-3 my-sm-0">
                             <h3><?= $store['store_name']; ?></h3>
