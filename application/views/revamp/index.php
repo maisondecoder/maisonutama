@@ -60,7 +60,7 @@
                         <ul class="splide__list">
                             <?php foreach ($all_brands as $key => $brand) { ?>
                                 <li class="splide__slide p-2"><a href="<?= base_url() . $brand['brand_slug']; ?>">
-                                        <div class="rounded-lg rounded" style="max-width:500px; background:#4C4C4C"><img class="img-fluid" src="<?= base_url('assets/brands/') . $brand['brand_img']; ?> ?>" alt="$brand['brand_name']"></div>
+                                        <div class="rounded-lg rounded" style="max-width:500px; background:#4C4C4C"><img class="img-fluid" src="<?= base_url('assets/brands/') . $brand['brand_img']; ?>" alt="$brand['brand_name']"></div>
                                     </a></li>
                             <?php } ?>
                         </ul>
