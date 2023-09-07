@@ -1,12 +1,50 @@
 <!-- Intro Brand -->
-<div id="intro-brands" class="container p-4 pb-1 text-center mb-4">
-    <h2 class="mb-4 fw-bold">About <?= $brand_data['brand_name']; ?></h2>
-    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Non velit possimus cupiditate repellat nesciunt itaque minima nobis quaerat labore accusamus, laborum doloribus omnis iusto magni quia! Nisi dolore iure corrupti?</p>
+<div id="intro-brands" class="container p-4 pb-1 mb-4">
+    <h2 class="mb-4 fw-bold text-center">About <?= $brand_data['brand_name']; ?></h2>
+
+
+    <div class="row">
+        <div class="col-12 col-sm-4 mb-3">
+            <div class="rounded-lg rounded" style="max-width:500px; background:#4C4C4C"><img class="img-fluid text-end" src="<?= base_url('assets/brands/') . $brand_data['brand_img']; ?>" alt="<?= $brand_data['brand_name']; ?>"></div>
+        </div>
+        <div class="col-12 col-sm-8">
+            <p class="mb-3" id="brand-desc" style="max-height:120px; overflow-y:hidden"><?= $brand_data['brand_desc']; ?></p>
+            <span id="more-desc" class="btn fs-5 fw-bold text-primary"><em>Read More...</em></span>
+            
+        </div>
+
+    </div>
 </div>
 
 <!-- Brand Collections -->
-<div id="intro-brands" class="container p-4 pb-1 text-center mb-4">
-    <h2 class="mb-4 fw-bold"><?= $brand_data['brand_name']; ?> Collections</h2>
+<div id="brand-collections" class="container p-4 pb-1 text-center mb-4">
+
+    <h2 class="mb-3 fw-bold"><?= $brand_data['brand_name']; ?> Collections</h2>
+    <div class="mb-5">
+        <ul class="nav nav-underline justify-content-center">
+            <li class="nav-item" style="display: inline-block;">
+                <a class="nav-link active" aria-current="page" href="#">All</a>
+            </li>
+            <li class="nav-item" style="display: inline-block;float:none;">
+                <a class="nav-link" href="#">Armchair</a>
+            </li>
+            <li class="nav-item" style="display: inline-block;float:none;">
+                <a class="nav-link" href="#">Sofa</a>
+            </li>
+            <li class="nav-item" style="display: inline-block;float:none;">
+                <a class="nav-link" href="#">Bed</a>
+            </li>
+            <li class="nav-item" style="display: inline-block;float:none;">
+                <a class="nav-link" href="#">Table</a>
+            </li>
+            <li class="nav-item" style="display: inline-block;float:none;">
+                <a class="nav-link" href="#">Chair</a>
+            </li>
+            <li class="nav-item" style="display: inline-block;float:none;">
+                <a class="nav-link" href="#">Lamp</a>
+            </li>
+        </ul>
+    </div>
     <p>Oops! No collection item to display</p>
 </div>
 
@@ -28,3 +66,10 @@
         <?php } ?>
     </div>
 </div>
+
+<script>
+    $('#more-desc').click(function(){   
+        $('#brand-desc').css('max-height', '100%');
+        this.remove();
+    });
+</script>

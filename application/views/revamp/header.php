@@ -13,6 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
     <style>
         h1,
         h2,
@@ -26,6 +27,16 @@
         p {
             font-family: 'Karla', sans-serif;
             font-size: 16pt;
+        }
+
+        ul.nav {
+            white-space: nowrap;
+            overflow-x: auto;
+        }
+
+        ul.nav li {
+            display: inline-block;
+            float: none;
         }
     </style>
 </head>
@@ -42,32 +53,25 @@
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link <?php echo ($nav=='home') ? 'active':''; ?>" aria-current="page" href="<?= base_url(); ?>">Homepage</a>
+                        <a class="nav-link <?php echo ($nav == 'home') ? 'active' : ''; ?>" aria-current="page" href="<?= base_url(); ?>">Homepage</a>
                     </li>
                     <?php if ($all_brands) { ?>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle <?php echo ($nav=='brand') ? 'active':''; ?>" href="<?= base_url('furniture-brand'); ?>" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Brands
-                        </a>
-                        <ul class="dropdown-menu">
-                            <?php foreach ($all_brands as $key => $brand) { ?>
-                                <li><a class="dropdown-item" href="<?= base_url().$brand['brand_slug']; ?>"><?= $brand['brand_name']; ?></a></li>
-                            <?php } ?>
-                        </ul>
-                    </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle <?php echo ($nav == 'brand') ? 'active' : ''; ?>" href="<?= base_url('furniture-brand'); ?>" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Brands
+                            </a>
+                            <ul class="dropdown-menu">
+                                <?php foreach ($all_brands as $key => $brand) { ?>
+                                    <li><a class="dropdown-item" href="<?= base_url() . $brand['brand_slug']; ?>"><?= $brand['brand_name']; ?></a></li>
+                                <?php } ?>
+                            </ul>
+                        </li>
                     <?php } ?>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Collections
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Living Room</a></li>
-                            <li><a class="dropdown-item" href="#">Dining Room</a></li>
-                            <li><a class="dropdown-item" href="#">Bed Room</a></li>
-                        </ul>
+                    <li class="nav-item">
+                        <a class="nav-link <?php echo ($nav == 'collection') ? 'active' : ''; ?>" href="<?= base_url('collections'); ?>">Our Collections</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <?php echo ($nav=='about') ? 'active':''; ?>" href="<?= base_url('about-us-maison-living'); ?>">About Us</a>
+                        <a class="nav-link <?php echo ($nav == 'about') ? 'active' : ''; ?>" href="<?= base_url('about-us-maison-living'); ?>">About Us</a>
                     </li>
                 </ul>
             </div>
