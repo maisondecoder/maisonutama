@@ -1,8 +1,21 @@
 <!-- Room Collections -->
 <div id="room-collections" class="container p-4 pb-1 text-center mb-4">
 
-    <h2 class="mb-3 fw-bold">Our <?= $room_data['room_name']; ?> Collections</h2>
-    <p>Oops! No collection item to display</p>
+    <h2 class="mb-5 fw-bold">Our <?= $room_data['room_name']; ?> Collections</h2>
+    <div class="row mb-3 text-start">
+        <?php if ($products) {
+            foreach ($products as $key => $product) { ?>
+                <div class="col-6 col-sm-3 mb-3">
+                    <a class="text-decoration-none " href="<?= base_url("our-collections/") . $product['product_slug']; ?>">
+                        <img class="img-fluid mb-2 rounded" src="https://placehold.co/450" alt="">
+                        <h4 class="text-secondary"><?= $product['product_name']; ?></h4>
+                    </a>
+                </div>
+            <?php }
+        } else { ?>
+            <div class="text-center bg-secondary p-3"> <span class="text-white">Oops! No collection item to display</span></div>
+        <?php } ?>
+    </div>
 </div>
 
 
@@ -28,7 +41,7 @@
 <!-- Collections By Room -->
 
 <!-- Collections By Category -->
-<?php if ($all_rooms) { ?>
+<?php if ($all_cats) { ?>
     <div class="container p-4">
         <h2>Product By Category</h2>
         <section id="splide-category" class="splide" aria-label="Category Collection">

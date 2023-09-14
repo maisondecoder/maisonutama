@@ -43,4 +43,34 @@ class Collection_model extends CI_Model
 
         return $get_spesific_cat;
     }
+
+    public function get_products($brand_id = 0, $room_id = 0, $cat_id = 0){
+        $this->db->select('*');
+        $this->db->from('ml_products');
+        $this->db->where('product_status', 1);
+        if($brand_id){
+            $this->db->where('brand_id', $brand_id);
+        }
+        if($room_id){
+            $this->db->like('room_id', $room_id);
+        }
+        if($cat_id){
+            $this->db->where('cat_id', $cat_id);
+        }
+        $get_products = $this->db->get()->result_array();
+
+        return $get_products;
+    }
+
+    public function get_spesific_product($product_slug){
+        $this->db->select('*');
+        $this->db->from('ml_products');
+        $this->db->join('ml_brands', 'ml_brands.brand_id = ml_products.brand_id');
+        $this->db->join('ml_category', 'ml_category.cat_id = ml_products.cat_id');
+        $this->db->where('product_status', 1);
+        $this->db->where('product_slug', $product_slug);
+        $get_spesific_product = $this->db->get()->row_array();
+
+        return $get_spesific_product;
+    }
 }
