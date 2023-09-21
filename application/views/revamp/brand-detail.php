@@ -5,34 +5,25 @@
     <div class="mb-5">
         <ul class="nav nav-underline justify-content-center">
             <li class="nav-item" style="display: inline-block;">
-                <a class="nav-link active" aria-current="page" href="#">All</a>
+                <a class="nav-link <?php if (!$_GET['category']) {
+                                        echo 'active';
+                                    } ?>" aria-current="page" href="<?= base_url('' . $brand_data['brand_slug']); ?>">All</a>
             </li>
-            <li class="nav-item" style="display: inline-block;float:none;">
-                <a class="nav-link" href="#">Armchair</a>
-            </li>
-            <li class="nav-item" style="display: inline-block;float:none;">
-                <a class="nav-link" href="#">Sofa</a>
-            </li>
-            <li class="nav-item" style="display: inline-block;float:none;">
-                <a class="nav-link" href="#">Bed</a>
-            </li>
-            <li class="nav-item" style="display: inline-block;float:none;">
-                <a class="nav-link" href="#">Table</a>
-            </li>
-            <li class="nav-item" style="display: inline-block;float:none;">
-                <a class="nav-link" href="#">Chair</a>
-            </li>
-            <li class="nav-item" style="display: inline-block;float:none;">
-                <a class="nav-link" href="#">Lamp</a>
-            </li>
+            <?php foreach ($all_brand_cats as $key => $brand_cat) { ?>
+                <li class="nav-item" style="display: inline-block;float:none;">
+                    <a class="nav-link <?php if ($_GET['category'] && $_GET['category'] == $brand_cat['cat_slug']) {
+                                            echo 'active';
+                                        } ?>" href="?category=<?= $brand_cat['cat_slug']; ?>"><?= $brand_cat['cat_name'] ?></a>
+                </li>
+            <?php } ?>
         </ul>
     </div>
     <div class="row mb-3 text-start">
         <?php if ($products) {
             foreach ($products as $key => $product) { ?>
-                <div class="col-6 col-sm-3 mb-3">
+                <div class="col-12 col-sm-3 mb-4">
                     <a class="text-decoration-none " href="<?= base_url("our-collections/") . $product['product_slug']; ?>">
-                        <img class="img-fluid mb-2 rounded" src="https://placehold.co/450" alt="">
+                        <img class="img-fluid mb-2 rounded border" style="width: 100% !important; height: 90% !important; max-width:450px !important; height:350px !important; object-fit:cover !important;" src="<?= base_url('assets/products/thumbnail/') . $product['product_thumbnail']; ?>" alt="">
                         <h4 class="text-secondary"><?= $product['product_name']; ?></h4>
                     </a>
                 </div>

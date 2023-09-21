@@ -5,7 +5,7 @@
     <h2 class="fs-6 text-secondary"><?= $products['brand_name'] . ' / ' . $products['cat_name']; ?></h2>
     <div class="row mt-4">
         <div class="col-12 col-sm-6 mb-4">
-            <img class="img-fluid rounded" src="https://placehold.co/450">
+            <img class="img-fluid rounded" src="<?= base_url('assets/products/thumbnail/') . $products['product_thumbnail']; ?>">
         </div>
         <div class="col-12 col-sm-6 text-start">
             <div class="mb-3" id="brand-desc" style="max-height:310px; overflow-y:hidden">

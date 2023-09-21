@@ -33,6 +33,7 @@ class Main extends CI_Controller
 		$this->load->model('brand_model');
 		$this->load->model('store_model');
 		$data['all_brands'] = $this->brand_model->get_all_brands();
+
 		$data['all_stores'] = $this->store_model->get_all_stores();
 		//** End */
 
@@ -52,25 +53,51 @@ class Main extends CI_Controller
 		$this->load->model('store_model');
 		$data['all_stores'] = $this->store_model->get_all_stores();
 		//** End */
-
+		$whitelist_category = array();
+		$whitelist_catid = array();
 		$brand_data = $this->brand_model->get_spesific_brand($brand_slug);
+		$data['all_brand_cats'] = $this->brand_model->get_avail_brand_category($brand_data['brand_id']);
+
+		foreach ($data['all_brand_cats'] as $key => $cat) {
+			array_push($whitelist_category, $cat['cat_slug']);
+			array_push($whitelist_catid, $cat['cat_id']);
+		}
+		//print_r($data['all_brand_cats']);
+		//print_r($whitelist_category);
+
 
 		if (!$brand_data) {
 			redirect('/?error');
 		}
 
+		$this->load->model('collection_model');
+		$products = $this->collection_model->get_products($brand_data['brand_id']);
+
+		if (isset($_GET['category'])) {
+			if(in_array($_GET['category'], $whitelist_category)){
+				$index_cat = array_search($_GET['category'], $whitelist_category);
+				$products = $this->collection_model->get_products($brand_data['brand_id'],0, $whitelist_catid[$index_cat]);
+				//echo 'ada di whitelist';
+			}else{
+				redirect($brand_data['brand_slug']);
+			}
+		}else{
+			$_GET['category'] = null;
+		}
+
+		$data['products'] = $products;
 		$data['brand_data'] = $brand_data;
 		$data['all_brands'] = $this->brand_model->get_all_brands($brand_slug);
+
+
+		//print_r($data['all_brand_cats']);
 
 		$brand_title = $brand_data['brand_name'] . " Product Collections";
 
 		$data['title_page'] = $brand_title;
 		$data['nav'] = "brand";
 
-		$this->load->model('collection_model');
-		$products = $this->collection_model->get_products($brand_data['brand_id']);
-		$data['products'] = $products;
-
+		
 		$this->load->view('revamp/header', $data);
 		$this->load->view('revamp/brand-detail');
 		$this->load->view('revamp/footer');
@@ -104,10 +131,10 @@ class Main extends CI_Controller
 		$data['all_cats'] = $this->collection_model->get_all_cats();
 		//** End */
 
-		
+
 		$product_data = $this->collection_model->get_spesific_product($product_slug);
 		$data['products'] = $product_data;
-		$data['product_content'] = json_decode($product_data['product_content'],true);
+		$data['product_content'] = json_decode($product_data['product_content'], true);
 
 		$other_product_same_room = $this->collection_model->get_products(0, $product_data['room_id']);
 		$data['same_room'] = $other_product_same_room;
@@ -118,7 +145,7 @@ class Main extends CI_Controller
 			redirect('/?error');
 		}
 
-		$data['title_page'] = $product_data['product_name'] ." " . $product_data['cat_name'] . " by " . $product_data['brand_name'];
+		$data['title_page'] = $product_data['product_name'] . " " . $product_data['cat_name'] . " by " . $product_data['brand_name'];
 		$data['nav'] = "collection";
 
 		$this->load->view('revamp/header', $data);
@@ -150,9 +177,9 @@ class Main extends CI_Controller
 		$data['nav'] = "collection";
 
 		$this->load->model('collection_model');
-		$products = $this->collection_model->get_products(0,$room_data['room_id'] );
+		$products = $this->collection_model->get_products(0, $room_data['room_id']);
 		$data['products'] = $products;
-		
+
 		$this->load->view('revamp/header', $data);
 		$this->load->view('revamp/collection-room');
 		$this->load->view('revamp/footer');
@@ -182,7 +209,7 @@ class Main extends CI_Controller
 		$data['nav'] = "collection";
 
 		$this->load->model('collection_model');
-		$products = $this->collection_model->get_products(0,0,$category_data['cat_id'] );
+		$products = $this->collection_model->get_products(0, 0, $category_data['cat_id']);
 		$data['products'] = $products;
 
 		$this->load->view('revamp/header', $data);
