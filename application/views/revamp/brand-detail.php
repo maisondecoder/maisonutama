@@ -35,7 +35,7 @@
         <nav aria-label="Page navigation example">
             <ul class="pagination pagination-lg justify-content-center">
                 <?php for($xx=0; $xx < $jumlah_halaman; $xx++){ ?>
-                <li class="page-item <?php if($page && ($xx+1) === $page){ echo ' active'; } ?>"><a class="page-link" href="<?= base_url($brand_data['brand_slug']).'/'.$xx+1; if (isset($_GET['category'])) { echo '?category='.$_GET['category']; } ?>"><?= $xx+1; ?></a></li>
+                <li class="page-item <?php if($page && is_numeric(($xx+1)) === is_numeric($page)){ echo ' active'; } ?>"><a class="page-link" href="<?= base_url($brand_data['brand_slug']).'/'.$xx+1; if (isset($_GET['category'])) { echo '?category='.$_GET['category']; } ?>"><?= $xx+1; ?></a></li>
                 <?php } ?>
             </ul>
         </nav>
