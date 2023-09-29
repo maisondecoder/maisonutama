@@ -18,8 +18,9 @@
     </div>
     <nav aria-label="Page navigation example">
         <ul class="pagination pagination-lg justify-content-center">
-            <?php for ($xx = 0; $xx < $jumlah_halaman; $xx++) { ?>
-                <li class="page-item <?php if($page && ($xx+1) === $page){ echo ' active'; } ?>"><a class="page-link" href="<?= base_url('room/'.$room_data['room_slug']) . '/' . $xx + 1; ?>"><?= $xx + 1; ?></a></li>
+            <?php for ($xx = 0; $xx < $jumlah_halaman; $xx++) { 
+                $numpage = $xx+1;?>
+                <li class="page-item <?php if($page && $numpage == $page){ echo ' active'; } ?>"><a class="page-link" href="<?= base_url('room/'.$room_data['room_slug']) . '/' . $numpage; ?>"><?= $numpage; ?></a></li>
             <?php } ?>
         </ul>
     </nav>
