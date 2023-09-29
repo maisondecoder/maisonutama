@@ -5,7 +5,7 @@
     <div class="row mb-3 text-start">
         <?php if ($products) {
             foreach ($products as $key => $product) { ?>
-                <div class="col-6 col-sm-3 mb-3">
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3  mb-3">
                     <a class="text-decoration-none " href="<?= base_url("our-collections/") . $product['product_slug']; ?>">
                         <img class="img-fluid mb-2 rounded border" style="width: 100% !important; height: 90% !important; max-width:450px !important; height:350px !important; object-fit:cover !important;" src="<?= base_url('assets/products/thumbnail/') . $product['product_thumbnail']; ?>" alt="">
                         <h4 class="text-secondary"><?= $product['product_name']; ?></h4>
@@ -15,6 +15,15 @@
         } else { ?>
             <div class="text-center bg-secondary p-3"> <span class="text-white">Oops! No collection item to display</span></div>
         <?php } ?>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination pagination-lg justify-content-center">
+                <?php for ($xx = 0; $xx < $jumlah_halaman; $xx++) { ?>
+                    <li class="page-item <?php if ($page && ($xx + 1) == $page) {
+                                                echo ' active';
+                                            } ?>"><a class="page-link" href="<?= base_url('category/' . $category_data['cat_slug']) . '/' . $xx + 1; ?>"><?= $xx + 1; ?></a></li>
+                <?php } ?>
+            </ul>
+        </nav>
     </div>
 </div>
 

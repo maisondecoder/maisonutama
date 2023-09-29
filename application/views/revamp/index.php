@@ -2,7 +2,7 @@
     <div id="hero" class="container p-4 pb-1">
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-6 text-center">
-                <figure><img class="img-fluid" src="<?= base_url('assets/img-babakagu-homepage.png'); ?>" style="max-height:400px" alt=""></figure>
+                <figure><img class="img-fluid" src="<?= 'https://9v6e9irhcc.r.worldssl.net/assets/img-babakagu-homepage.png'; ?>" style="max-height:400px" alt=""></figure>
             </div>
             <div class="col-sm-12 col-md-12 col-lg-6 my-2 my-md-5">
                 <div class="text-warning fw-bold">#LuxYourHome</div>
@@ -22,7 +22,7 @@
 
     <!-- Brands Logo -->
     <div class="container text-center mt-3">
-        <img class="img-fluid" src="<?= base_url('assets/logo-brands-homepage-abu2.png') ?>" width="900px" alt="Brand Partner Logo">
+        <img class="img-fluid" src="<?= 'https://9v6e9irhcc.r.worldssl.net/assets/logo-brands-homepage-abu2.png'; ?>" width="900px" alt="Brand Partner Logo">
     </div>
     <!-- Brands Logo -->
 
@@ -60,7 +60,7 @@
                         <ul class="splide__list">
                             <?php foreach ($all_brands as $key => $brand) { ?>
                                 <li class="splide__slide p-2"><a href="<?= base_url() . $brand['brand_slug']; ?>">
-                                        <div class="rounded-lg rounded" style="max-width:500px; background:#4C4C4C"><img class="img-fluid" src="<?= base_url('assets/brands/') . $brand['brand_img']; ?>" alt="$brand['brand_name']"></div>
+                                        <div class="rounded-lg rounded" style="max-width:500px; background:#4C4C4C"><img class="img-fluid" src="<?= 'https://9v6e9irhcc.r.worldssl.net/assets/brands/' . $brand['brand_img']; ?>" alt="$brand['brand_name']"></div>
                                     </a></li>
                             <?php } ?>
                         </ul>
@@ -79,7 +79,7 @@
                 <?php foreach ($all_stores as $key => $store) { ?>
                     <div class="row mb-3">
                         <div class="col-sm-12 col-md-6 text-center">
-                            <img class="img-fluid mb-2" src="<?= base_url('assets/') . $store['store_img']; ?>" style="max-height:300px" alt="<?= $store['store_name']; ?>">
+                            <img class="img-fluid mb-2" src="<?= 'https://9v6e9irhcc.r.worldssl.net/assets/' . $store['store_img']; ?>" style="max-height:300px" alt="<?= $store['store_name']; ?>">
                         </div>
                         <div class="col-sm-12 col-md-6 my-3 my-sm-0">
                             <h3><?= $store['store_name']; ?></h3>

@@ -44,7 +44,7 @@ class Collection_model extends CI_Model
         return $get_spesific_cat;
     }
 
-    public function get_products($brand_id = 0, $room_id = 0, $cat_id = 0){
+    public function get_products($brand_id = 0, $room_id = 0, $cat_id = 0, $page=1){
         $this->db->select('*');
         $this->db->from('ml_products');
         $this->db->where('product_status', 1);
@@ -57,9 +57,30 @@ class Collection_model extends CI_Model
         if($cat_id){
             $this->db->where('cat_id', $cat_id);
         }
+        $this->db->limit(8, (8*($page-1)));
         $get_products = $this->db->get()->result_array();
+        
 
         return $get_products;
+    }
+
+    public function get_count_products($brand_id = 0, $room_id = 0, $cat_id = 0){
+        $this->db->select('product_id');
+        $this->db->from('ml_products');
+        $this->db->where('product_status', 1);
+        if($brand_id){
+            $this->db->where('brand_id', $brand_id);
+        }
+        if($room_id){
+            $this->db->like('room_id', $room_id);
+        }
+        if($cat_id){
+            $this->db->where('cat_id', $cat_id);
+        }
+        $get_count_products = $this->db->get()->result_array();
+        
+
+        return count($get_count_products);
     }
 
     public function get_spesific_product($product_slug){

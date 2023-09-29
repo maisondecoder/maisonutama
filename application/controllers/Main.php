@@ -45,8 +45,9 @@ class Main extends CI_Controller
 		$this->load->view('revamp/footer');
 	}
 
-	public function brand_detail($brand_slug)
+	public function brand_detail($brand_slug, $page = 1)
 	{
+
 
 		//Global Data To Display *Mandatory
 		$this->load->model('brand_model');
@@ -62,27 +63,38 @@ class Main extends CI_Controller
 			array_push($whitelist_category, $cat['cat_slug']);
 			array_push($whitelist_catid, $cat['cat_id']);
 		}
-		//print_r($data['all_brand_cats']);
-		//print_r($whitelist_category);
-
 
 		if (!$brand_data) {
 			redirect('/?error');
 		}
-
+		if(!$page){
+			redirect($brand_slug);
+		}
+		$data['page'] = $page;
 		$this->load->model('collection_model');
-		$products = $this->collection_model->get_products($brand_data['brand_id']);
+		$products = $this->collection_model->get_products($brand_data['brand_id'],0,0,$page);
+		
 
 		if (isset($_GET['category'])) {
-			if(in_array($_GET['category'], $whitelist_category)){
+			if (in_array($_GET['category'], $whitelist_category)) {
 				$index_cat = array_search($_GET['category'], $whitelist_category);
-				$products = $this->collection_model->get_products($brand_data['brand_id'],0, $whitelist_catid[$index_cat]);
+				$products = $this->collection_model->get_products($brand_data['brand_id'], 0, $whitelist_catid[$index_cat],$page);
+				$jumlah_total_produk = $this->collection_model->get_count_products($brand_data['brand_id'], 0, $whitelist_catid[$index_cat]);
 				//echo 'ada di whitelist';
-			}else{
+			} else {
 				redirect($brand_data['brand_slug']);
 			}
-		}else{
+		} else {
+			$jumlah_total_produk = $this->collection_model->get_count_products($brand_data['brand_id']);
 			$_GET['category'] = null;
+		}
+
+		//Pagination
+		$tampil_per_page = 8;
+		$jumlah_halaman = ceil($jumlah_total_produk / $tampil_per_page);
+		$data['jumlah_halaman'] = $jumlah_halaman;
+		if ($page > $jumlah_halaman) {
+			redirect($brand_slug);
 		}
 
 		$data['products'] = $products;
@@ -97,7 +109,7 @@ class Main extends CI_Controller
 		$data['title_page'] = $brand_title;
 		$data['nav'] = "brand";
 
-		
+
 		$this->load->view('revamp/header', $data);
 		$this->load->view('revamp/brand-detail');
 		$this->load->view('revamp/footer');
@@ -153,7 +165,7 @@ class Main extends CI_Controller
 		$this->load->view('revamp/footer');
 	}
 
-	public function room($room_slug)
+	public function room($room_slug, $page=1)
 	{
 		//Global Data To Display *Mandatory
 		$this->load->model('brand_model');
@@ -164,12 +176,28 @@ class Main extends CI_Controller
 		//** End */
 
 		$room_data = $this->collection_model->get_spesific_room($room_slug);
-
+		$data['room_data'] = $room_data;
 		if (!$room_data) {
 			redirect('/?error');
 		}
+		if(!$page){
+			redirect('room/'.$room_slug);
+		}
+		$data['page'] = $page;
 
-		$data['room_data'] = $room_data;
+		$products = $this->collection_model->get_products(0, $room_data['room_id'], 0, $page);
+		$data['products'] = $products;
+		
+		////Pagination START////
+		$jumlah_total_produk = $this->collection_model->get_count_products(0, $room_data['room_id']);
+		$tampil_per_page = 8;
+		$jumlah_halaman = ceil($jumlah_total_produk / $tampil_per_page);
+		$data['jumlah_halaman'] = $jumlah_halaman;
+		
+		if ($page > $jumlah_halaman) {
+			redirect('room/'.$room_slug);
+		}
+		////Pagination END////
 
 		$room_title = $room_data['room_name'] . " Product Collections";
 
@@ -177,15 +205,14 @@ class Main extends CI_Controller
 		$data['nav'] = "collection";
 
 		$this->load->model('collection_model');
-		$products = $this->collection_model->get_products(0, $room_data['room_id']);
-		$data['products'] = $products;
+		
 
 		$this->load->view('revamp/header', $data);
 		$this->load->view('revamp/collection-room');
 		$this->load->view('revamp/footer');
 	}
 
-	public function cat($cat_slug)
+	public function cat($cat_slug, $page=1)
 	{
 		//Global Data To Display *Mandatory
 		$this->load->model('brand_model');
@@ -200,6 +227,24 @@ class Main extends CI_Controller
 		if (!$category_data) {
 			redirect('/?error');
 		}
+		if(!$page){
+			redirect('category/'.$cat_slug);
+		}
+		$data['page'] = $page;
+
+		$products = $this->collection_model->get_products(0, 0, $category_data['cat_id'], $page);
+		$data['products'] = $products;
+		
+		////Pagination START////
+		$jumlah_total_produk = $this->collection_model->get_count_products(0, 0, $category_data['cat_id']);
+		$tampil_per_page = 8;
+		$jumlah_halaman = ceil($jumlah_total_produk / $tampil_per_page);
+		$data['jumlah_halaman'] = $jumlah_halaman;
+		
+		if ($page > $jumlah_halaman) {
+			redirect('category/'.$cat_slug);
+		}
+		////Pagination END////
 
 		$data['category_data'] = $category_data;
 
@@ -209,7 +254,7 @@ class Main extends CI_Controller
 		$data['nav'] = "collection";
 
 		$this->load->model('collection_model');
-		$products = $this->collection_model->get_products(0, 0, $category_data['cat_id']);
+		//$products = $this->collection_model->get_products(0, 0, $category_data['cat_id']);
 		$data['products'] = $products;
 
 		$this->load->view('revamp/header', $data);
