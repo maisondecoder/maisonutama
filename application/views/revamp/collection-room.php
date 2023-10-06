@@ -7,7 +7,7 @@
             foreach ($products as $key => $product) { ?>
                 <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3">
                     <a class="text-decoration-none " href="<?= base_url("our-collections/") . $product['product_slug']; ?>">
-                        <img class="img-fluid mb-2 rounded border" style="width: 100% !important; height: 90% !important; max-width:450px !important; height:350px !important; object-fit:cover !important;" src="<?= base_url('assets/products/thumbnail/') . $product['product_thumbnail']; ?>" alt="">
+                        <img class="img-fluid mb-2 rounded border" style="width: 100% !important; height: 90% !important; max-width:450px !important; height:350px !important; object-fit:cover !important;" src="<?= 'https://9v6e9irhcc.r.worldssl.net/assets/products/thumbnail/' . $product['product_thumbnail']; ?>" alt="">
                         <h4 class="text-secondary"><?= $product['product_name']; ?></h4>
                     </a>
                 </div>
