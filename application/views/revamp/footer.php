@@ -12,12 +12,12 @@
                     <p class="fs-6"><strong>Kemang Jakarta</strong><br>
                         Jl. Raya Kemang Selatan No.31<br>
                         Jakarta Selatan, 12730<br>
-                        <a href="#" class="">Open Google Maps <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        <a href="https://goo.gl/maps/YogV1V2a7HVtrFC97" target="_blank" class="text-reset">Open Google Maps <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                     </p>
                     <p class="fs-6 mb-4"><strong>BSD Alam Sutera</strong><br>
                         Jl. Raya Serpong Km 8 No. 7<br>
                         Tangerang Selatan, 15326<br>
-                        <a href="#">Open Google Maps <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        <a href="https://goo.gl/maps/6ZeBuiVJioZoCq7r5" target="_blank" class="text-reset">Open Google Maps <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                     </p>
                 </div>
                 <div class="col-sm-12 col-md-3">

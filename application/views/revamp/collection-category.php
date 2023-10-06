@@ -15,6 +15,8 @@
         } else { ?>
             <div class="text-center bg-secondary p-3"> <span class="text-white">Oops! No collection item to display</span></div>
         <?php } ?>
+
+        <?php if($jumlah_total_produk){ ?>
         <nav aria-label="Page navigation example">
             <ul class="pagination pagination-lg justify-content-center">
                 <?php for ($xx = 0; $xx < $jumlah_halaman; $xx++) { 
@@ -25,6 +27,7 @@
                 <?php } ?>
             </ul>
         </nav>
+        <?php } ?>
     </div>
 </div>
 

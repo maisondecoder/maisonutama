@@ -38,6 +38,19 @@
             display: inline-block;
             float: none;
         }
+        .nav-link{
+            color:gray;
+        }
+        .nav-link:hover{
+            color:black;
+        }
+        .page-link{
+            color:gray;
+        }
+        
+        .active>.page-link, .page-link.active{
+            background:black
+        }
     </style>
 </head>
 

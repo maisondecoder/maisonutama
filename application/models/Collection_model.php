@@ -57,6 +57,7 @@ class Collection_model extends CI_Model
         if($cat_id){
             $this->db->where('cat_id', $cat_id);
         }
+        $this->db->order_by('product_name', 'ASC');
         $this->db->limit(8, (8*($page-1)));
         $get_products = $this->db->get()->result_array();
         
@@ -77,6 +78,7 @@ class Collection_model extends CI_Model
         if($cat_id){
             $this->db->where('cat_id', $cat_id);
         }
+        
         $get_count_products = $this->db->get()->result_array();
         
 

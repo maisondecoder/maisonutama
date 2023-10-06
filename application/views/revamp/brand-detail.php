@@ -4,7 +4,7 @@
     <h2 class="mb-3 fw-bold"><?= $brand_data['brand_name']; ?> Collections</h2>
     <div class="mb-5">
         <ul class="nav nav-underline justify-content-center">
-            <li class="nav-item" style="display: inline-block;">
+            <li class="nav-item text-secondary" style="display: inline-block;">
                 <a class="nav-link <?php if (!$_GET['category']) {
                                         echo 'active';
                                     } ?>" aria-current="page" href="<?= base_url('' . $brand_data['brand_slug']); ?>">All</a>
@@ -32,6 +32,7 @@
             <div class="text-center bg-secondary p-3"> <span class="text-white">Oops! No collection item to display</span></div>
         <?php } ?>
 
+        <?php if($jumlah_total_produk){ ?>
         <nav aria-label="Page navigation example">
             <ul class="pagination pagination-lg justify-content-center">
                 <?php for($xx=0; $xx < $jumlah_halaman; $xx++){
@@ -40,6 +41,7 @@
                 <?php } ?>
             </ul>
         </nav>
+        <?php } ?>
     </div>
 </div>
 
@@ -54,7 +56,7 @@
         </div>
         <div class="col-12 col-sm-8">
             <p class="mb-3" id="brand-desc" style="max-height:120px; overflow-y:hidden"><?= $brand_data['brand_desc']; ?></p>
-            <span id="more-desc" class="btn fs-5 fw-bold text-primary"><em>Read More...</em></span>
+            <span id="more-desc" class="btn btn-outline-secondary fs-5"><em>Read Full Description</em></span>
 
         </div>
 

@@ -47,8 +47,6 @@ class Main extends CI_Controller
 
 	public function brand_detail($brand_slug, $page = 1)
 	{
-
-
 		//Global Data To Display *Mandatory
 		$this->load->model('brand_model');
 		$this->load->model('store_model');
@@ -92,11 +90,16 @@ class Main extends CI_Controller
 		//Pagination
 		$tampil_per_page = 8;
 		$jumlah_halaman = ceil($jumlah_total_produk / $tampil_per_page);
+		if(!$jumlah_total_produk){
+			$jumlah_halaman = 1;
+		}
 		$data['jumlah_halaman'] = $jumlah_halaman;
+		//echo $page;
+		//echo $jumlah_halaman;
 		if ($page > $jumlah_halaman) {
 			redirect($brand_slug);
 		}
-
+		$data['jumlah_total_produk'] = $jumlah_total_produk;
 		$data['products'] = $products;
 		$data['brand_data'] = $brand_data;
 		$data['all_brands'] = $this->brand_model->get_all_brands($brand_slug);
@@ -192,13 +195,16 @@ class Main extends CI_Controller
 		$jumlah_total_produk = $this->collection_model->get_count_products(0, $room_data['room_id']);
 		$tampil_per_page = 8;
 		$jumlah_halaman = ceil($jumlah_total_produk / $tampil_per_page);
+		if(!$jumlah_total_produk){
+			$jumlah_halaman = 1;
+		}
 		$data['jumlah_halaman'] = $jumlah_halaman;
-		
 		if ($page > $jumlah_halaman) {
 			redirect('room/'.$room_slug);
 		}
+		$data['jumlah_total_produk'] = $jumlah_total_produk;
 		////Pagination END////
-
+		
 		$room_title = $room_data['room_name'] . " Product Collections";
 
 		$data['title_page'] = $room_title;
@@ -239,11 +245,15 @@ class Main extends CI_Controller
 		$jumlah_total_produk = $this->collection_model->get_count_products(0, 0, $category_data['cat_id']);
 		$tampil_per_page = 8;
 		$jumlah_halaman = ceil($jumlah_total_produk / $tampil_per_page);
+		if(!$jumlah_total_produk){
+			$jumlah_halaman = 1;
+		}
 		$data['jumlah_halaman'] = $jumlah_halaman;
 		
 		if ($page > $jumlah_halaman) {
 			redirect('category/'.$cat_slug);
 		}
+		$data['jumlah_total_produk'] = $jumlah_total_produk;
 		////Pagination END////
 
 		$data['category_data'] = $category_data;
