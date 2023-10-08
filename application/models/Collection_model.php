@@ -96,4 +96,17 @@ class Collection_model extends CI_Model
 
         return $get_spesific_product;
     }
+
+    public function get_all_catalog($brand_id){
+        $this->db->select("GROUP_CONCAT(product_id ORDER BY product_name ASC) AS 'PID', GROUP_CONCAT(product_name ORDER BY product_name ASC) AS 'Name', GROUP_CONCAT(product_slug ORDER BY product_name ASC) AS 'Slug', GROUP_CONCAT(product_thumbnail ORDER BY product_name ASC) AS 'Thumbnail', GROUP_CONCAT(ml_category.cat_name ORDER BY product_name ASC) AS 'Category', GROUP_CONCAT(ml_brands.brand_name ORDER BY product_name ASC) AS 'Brand', GROUP_CONCAT(ml_rooms.room_name ORDER BY product_name ASC) AS 'Room', GROUP_CONCAT(product_status ORDER BY product_name ASC) AS 'Status'");
+        $this->db->from('ml_products');
+        $this->db->join('ml_brands', 'ml_brands.brand_id = ml_products.brand_id');
+        $this->db->join('ml_rooms', 'ml_rooms.room_id = ml_products.room_id');
+        $this->db->join('ml_category', 'ml_category.cat_id = ml_products.cat_id');
+        $this->db->group_by('ml_category.cat_name');
+        $this->db->where('ml_products.brand_id', $brand_id);
+        $get_all_catalog = $this->db->get()->result_array();
+
+        return $get_all_catalog;
+    }
 }

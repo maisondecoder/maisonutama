@@ -288,4 +288,16 @@ class Main extends CI_Controller
 		$this->load->view('revamp/about');
 		$this->load->view('revamp/footer');
 	}
+
+	public function all_catalog($brand_slug=0){
+		$this->load->model('brand_model');
+		$this->load->model('collection_model');
+		$brand = $this->brand_model->get_spesific_brand($brand_slug);
+		$all_catalog = $this->collection_model->get_all_catalog($brand['brand_id']);
+
+		$data['brand'] = $brand;
+		$data['all_catalog'] = $all_catalog;
+		//print_r($all_catalog);
+		$this->load->view('revamp/all_catalog', $data);
+	}
 }
