@@ -68,7 +68,7 @@
 <!-- Collections By Room -->
 <?php if ($all_rooms) { ?>
     <div class="container p-4">
-        <h2>Other Room Collections</h2>
+        <h2>See Other Rooms</h2>
         <section id="splide-room" class="splide" aria-label="Room Collection">
             <div class="splide__track">
                 <ul class="splide__list">
@@ -89,7 +89,7 @@
 <!-- Collections By Category -->
 <?php if ($all_cats) { ?>
     <div class="container p-4">
-        <h2>Product By Category</h2>
+        <h2>Product By Types</h2>
         <section id="splide-category" class="splide" aria-label="Category Collection">
             <div class="splide__track">
                 <ul class="splide__list">
@@ -106,6 +106,25 @@
     </div>
 <?php } ?>
 <!-- Collections By Category -->
+
+<!-- Collections By Brands -->
+<?php if ($all_cats) { ?>
+    <div class="container p-4">
+        <h2>Product By Brands</h2>
+        <section id="splide-brand" class="splide" aria-label="Splide Basic HTML Example">
+            <div class="splide__track">
+                <ul class="splide__list">
+                    <?php foreach ($all_brands as $key => $brand) { ?>
+                        <li class="splide__slide p-2"><a href="<?= base_url() . $brand['brand_slug']; ?>">
+                                <div class="rounded-lg rounded" style="max-width:500px; background:#4C4C4C"><img class="img-fluid" src="<?= 'https://9v6e9irhcc.r.worldssl.net/assets/brands/' . $brand['brand_img']; ?>" alt="$brand['brand_name']"></div>
+                            </a></li>
+                    <?php } ?>
+                </ul>
+            </div>
+        </section>
+    </div>
+<?php } ?>
+<!-- Collections By Brands -->
 
 
 <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
@@ -138,6 +157,23 @@
         breakpoints: {
             480: {
                 perPage: 2,
+            },
+            1024: {
+                perPage: 2,
+            },
+        }
+    }).mount();
+
+    new Splide('#splide-brand', {
+        type: 'loop',
+        perPage: 4,
+        perMove: 1,
+        padding: '2rem',
+        autoplay: true,
+        pagination: false,
+        breakpoints: {
+            480: {
+                perPage: 1,
             },
             1024: {
                 perPage: 2,

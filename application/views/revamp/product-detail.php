@@ -24,14 +24,48 @@
     </div>
 </div>
 
-<!-- same -->
+<!-- Same Type  -->
+<?php if ($same_cat) { ?>
+    <div class="container p-4">
+        <h2>Other <?= $products['cat_name']; ?> Products</h2>
+        <section id="splide-related-category" class="splide" aria-label="Room Collection">
+            <div class="splide__track">
+                <ul class="splide__list">
+                    <?php foreach ($same_cat as $key => $same_cat) { ?>
+                        <li class="splide__slide p-2"><a href="<?= base_url('our-collections/') . $same_cat['product_slug']; ?>">
+                        <img class="img-fluid mb-2 rounded border" style="width: 100% !important; height: 90% !important; max-width:450px !important; height:200px !important; object-fit:cover !important;" src="<?= 'https://9v6e9irhcc.r.worldssl.net/assets/products/thumbnail/' . $same_cat['product_thumbnail']; ?>" alt="<?= $same_cat['product_name'] ?>">
+                            </a></li>
+                    <?php } ?>
+                </ul>
+            </div>
+        </section>
+    </div>
+<?php } ?>
+<!-- Same Type -->
 
-<!-- Collections By Brand -->
+<!-- Same Room  -->
+<?php if ($same_room) { ?>
+    <div class="container p-4">
+        <h2>Other <?= $products['room_name']; ?> Products</h2>
+        <section id="splide-related-room" class="splide" aria-label="Room Collection">
+            <div class="splide__track">
+                <ul class="splide__list">
+                    <?php foreach ($same_room as $key => $same_room) { ?>
+                        <li class="splide__slide p-2"><a href="<?= base_url('our-collections/') . $same_room['product_slug']; ?>">
+                        <img class="img-fluid mb-2 rounded border" style="width: 100% !important; height: 90% !important; max-width:450px !important; height:200px !important; object-fit:cover !important;" src="<?= 'https://9v6e9irhcc.r.worldssl.net/assets/products/thumbnail/' . $same_room['product_thumbnail']; ?>" alt="<?= $same_room['product_name'] ?>">
+                            </a></li>
+                    <?php } ?>
+                </ul>
+            </div>
+        </section>
+    </div>
+<?php } ?>
+<!-- Same Room -->
 
 <!-- Room Type  -->
 <?php if ($all_rooms) { ?>
     <div class="container p-4">
-        <h2>Room Type</h2>
+        <h2>See Other Rooms</h2>
         <section id="splide-room" class="splide" aria-label="Room Collection">
             <div class="splide__track">
                 <ul class="splide__list">
@@ -52,7 +86,7 @@
 <!-- Product Type -->
 <?php if ($all_cats) { ?>
     <div class="container p-4">
-        <h2>Product Type</h2>
+        <h2>See Other Categories</h2>
         <section id="splide-category" class="splide" aria-label="Category Collection">
             <div class="splide__track">
                 <ul class="splide__list">
@@ -70,9 +104,62 @@
 <?php } ?>
 <!-- Product Type -->
 
+<!-- Collections By Brands -->
+<?php if ($all_cats) { ?>
+    <div class="container p-4">
+        <h2>See Other Brands</h2>
+        <section id="splide-brand" class="splide" aria-label="Splide Basic HTML Example">
+            <div class="splide__track">
+                <ul class="splide__list">
+                    <?php foreach ($all_brands as $key => $brand) { ?>
+                        <li class="splide__slide p-2"><a href="<?= base_url() . $brand['brand_slug']; ?>">
+                                <div class="rounded-lg rounded" style="max-width:500px; background:#4C4C4C"><img class="img-fluid" src="<?= 'https://9v6e9irhcc.r.worldssl.net/assets/brands/' . $brand['brand_img']; ?>" alt="$brand['brand_name']"></div>
+                            </a></li>
+                    <?php } ?>
+                </ul>
+            </div>
+        </section>
+    </div>
+<?php } ?>
+<!-- Collections By Brands -->
+
 <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
 <script>
+    new Splide('#splide-related-category', {
+        type: 'loop',
+        perPage: 4,
+        perMove: 1,
+        padding: '2rem',
+        autoplay: true,
+        pagination: false,
+        breakpoints: {
+            480: {
+                perPage: 2,
+            },
+            1024: {
+                perPage: 2,
+            },
+        }
+    }).mount();
+
+    new Splide('#splide-related-room', {
+        type: 'loop',
+        perPage: 4,
+        perMove: 1,
+        padding: '2rem',
+        autoplay: true,
+        pagination: false,
+        breakpoints: {
+            480: {
+                perPage: 2,
+            },
+            1024: {
+                perPage: 2,
+            },
+        }
+    }).mount();
+
     new Splide('#splide-room', {
         type: 'loop',
         perPage: 4,
@@ -100,6 +187,23 @@
         breakpoints: {
             480: {
                 perPage: 2,
+            },
+            1024: {
+                perPage: 2,
+            },
+        }
+    }).mount();
+
+    new Splide('#splide-brand', {
+        type: 'loop',
+        perPage: 4,
+        perMove: 1,
+        padding: '2rem',
+        autoplay: true,
+        pagination: false,
+        breakpoints: {
+            480: {
+                perPage: 1,
             },
             1024: {
                 perPage: 2,

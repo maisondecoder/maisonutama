@@ -141,9 +141,8 @@ class Main extends CI_Controller
 		//Global Data To Display *Mandatory
 		$this->load->model('brand_model');
 		$this->load->model('collection_model');
-		$data['all_brands'] = $this->brand_model->get_all_brands();
-		$data['all_rooms'] = $this->collection_model->get_all_rooms();
-		$data['all_cats'] = $this->collection_model->get_all_cats();
+		
+		
 		//** End */
 
 
@@ -155,13 +154,22 @@ class Main extends CI_Controller
 		$data['same_room'] = $other_product_same_room;
 		$other_product_same_category = $this->collection_model->get_products(0, $product_data['cat_id']);
 		$data['same_cat'] = $other_product_same_category;
-
+		
 		if (!$product_data) {
 			redirect('/?error');
 		}
 
 		$data['title_page'] = $product_data['product_name'] . " " . $product_data['cat_name'] . " by " . $product_data['brand_name'];
 		$data['nav'] = "collection";
+
+		$data['same_room'] = $this->collection_model->get_related_products(0, $product_data['room_id'], 0, $product_data['product_slug'], $product_data['cat_id']);
+		$data['same_cat'] = $this->collection_model->get_related_products(0, 0, $product_data['cat_id'], $product_data['product_slug']);
+
+		//print_r($data['same_cat']);
+
+		$data['all_brands'] = $this->brand_model->get_all_brands($product_data['brand_slug']);
+		$data['all_rooms'] = $this->collection_model->get_all_rooms($product_data['room_slug']);
+		$data['all_cats'] = $this->collection_model->get_all_cats($product_data['cat_slug']);
 
 		$this->load->view('revamp/header', $data);
 		$this->load->view('revamp/product-detail');
