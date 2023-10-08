@@ -10,7 +10,7 @@
 
 <body>
     <div class="container p-4">
-        <h1 class="mb-4"><?= $brand['brand_name'] ?>'s All Catalog</h1>
+        <h1 class=""><?= $brand['brand_name'] ?>'s All Catalog</h1>
         <?php
         if ($all_catalog) {
             foreach ($all_catalog as $key => $catalog) {
@@ -23,9 +23,10 @@
                 $e_pbrand = explode(',', $catalog['Brand']);
                 $e_pstatus = explode(',', $catalog['Status']);
         ?>
-                <h4><u><?= $e_category[$key] ?></u></h4>
-                <div class="table-responsive">
-                    <table class="mt-4 table table-bordered table-hover align-middle text-center">
+                <hr>
+                <h4 class="text-center"><?= $e_category[$key] ?></h4>
+                <div class="table-responsive mt-4">
+                    <table class="mb-4 table table-bordered table-hover align-middle text-center">
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
@@ -58,7 +59,7 @@
                 </div>
             <?php }
         } else { ?>
-            <table class="mt-4 table table-bordered table-hover align-middle text-center">
+            <table class="mb-5 table table-bordered table-hover align-middle text-center">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
