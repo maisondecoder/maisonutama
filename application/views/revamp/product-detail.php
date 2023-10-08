@@ -126,6 +126,7 @@
 <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
 <script>
+    <?php if ($same_cat) { ?>
     new Splide('#splide-related-category', {
         type: 'loop',
         perPage: 4,
@@ -142,7 +143,8 @@
             },
         }
     }).mount();
-
+    <?php } ?>
+    <?php if ($same_room) { ?>
     new Splide('#splide-related-room', {
         type: 'loop',
         perPage: 4,
@@ -159,6 +161,7 @@
             },
         }
     }).mount();
+    <?php } ?>
 
     new Splide('#splide-room', {
         type: 'loop',
