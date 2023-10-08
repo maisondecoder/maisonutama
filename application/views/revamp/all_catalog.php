@@ -24,6 +24,7 @@
                 $e_pstatus = explode(',', $catalog['Status']);
         ?>
                 <h4><u><?= $e_category[$key] ?></u></h4>
+                <div class="table-responsive">
                     <table class="mt-4 table table-bordered table-hover align-middle text-center">
                         <thead>
                             <tr>
@@ -44,30 +45,35 @@
                                     <td><?= $e_pname[$key] ?></td>
                                     <td><?= $e_pcat[$key] ?></td>
                                     <td><?= $e_proom[$key] ?></td>
-                                    <td><?php if($e_pstatus[$key]){echo '<span class="fw-bold text-success">ON</span>';}else{echo '<span class="fw-bold text-danger">OFF</span>';} ?></td>
+                                    <td><?php if ($e_pstatus[$key]) {
+                                            echo '<span class="fw-bold text-success">ON</span>';
+                                        } else {
+                                            echo '<span class="fw-bold text-danger">OFF</span>';
+                                        } ?></td>
                                     <td><a target="_blank" href="<?= base_url('our-collections/') . $e_pslug[$key]; ?>">Link to Product</a></td>
                                 </tr>
                             <?php } ?>
                         </tbody>
                     </table>
-                <?php }
+                </div>
+            <?php }
         } else { ?>
-                <table class="mt-4 table table-bordered table-hover align-middle text-center">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Thumbnail</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Category</th>
-                            <th scope="col">Room</th>
-                            <th scope="col">Status</th>
-                            <th scope="col">Product Page</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <td colspan="7"> No Product Data Available.</td>
-                    </tbody>
-                <?php } ?>
+            <table class="mt-4 table table-bordered table-hover align-middle text-center">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Thumbnail</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Room</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Product Page</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <td colspan="7"> No Product Data Available.</td>
+                </tbody>
+            <?php } ?>
     </div>
 
 
