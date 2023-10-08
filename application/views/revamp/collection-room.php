@@ -2,6 +2,28 @@
 <div id="room-collections" class="container p-4 pb-1 text-center mb-4">
 
     <h2 class="mb-5 fw-bold">Our <?= $room_data['room_name']; ?> Collections</h2>
+    <?php 
+        if($jumlah_total_produk){ 
+            $xx=0;
+            $max=4;
+        ?>
+        <nav class="mb-5" aria-label="Page navigation">
+            <ul class="pagination pagination-md justify-content-center">
+                <?php if($page>2){ ?>
+                <li class="page-item"><a class="page-link" href="<?= base_url('room/'.$room_data['room_slug']) . '/'.($page-1); if (isset($_GET['category'])) { echo '?category='.$_GET['category']; } ?>"><span aria-hidden="true">&laquo;</span></a></li>
+                <?php } ?>
+                <?php while($xx < $jumlah_halaman){
+                    $numpage = $xx+1; 
+                    if($numpage > ($page-2) && $numpage < ($page+3)){?>
+                <li class="page-item <?php if($page && $numpage == $page){ echo ' active'; } ?>"><a class="page-link" href="<?= base_url('room/'.$room_data['room_slug']) . '/'.$numpage; if (isset($_GET['category'])) { echo '?category='.$_GET['category']; } ?>"><?= $numpage; ?></a></li>
+                <?php } $xx++; } ?>
+                <?php if($page<($jumlah_halaman-2)){ ?>
+                <li class="page-item"><a class="page-link" href="<?= base_url('room/'.$room_data['room_slug']) . '/'.($page+1); if (isset($_GET['category'])) { echo '?category='.$_GET['category']; } ?>"><span aria-hidden="true">&raquo;</span></a></li>
+                <?php } ?>
+            </ul>
+            <div class="text-center fs-6">Page <?= $page; ?> of <?= $jumlah_halaman; ?></div>
+        </nav>
+        <?php } ?>
     <div class="row mb-3 text-start">
         <?php if ($products) {
             foreach ($products as $key => $product) { ?>
@@ -17,16 +39,28 @@
         <?php } ?>
     </div>
 
-    <?php if($jumlah_total_produk){ ?>
-    <nav aria-label="Page navigation example">
-        <ul class="pagination pagination-lg justify-content-center">
-            <?php for ($xx = 0; $xx < $jumlah_halaman; $xx++) { 
-                $numpage = $xx+1;?>
-                <li class="page-item <?php if($page && $numpage == $page){ echo ' active'; } ?>"><a class="page-link" href="<?= base_url('room/'.$room_data['room_slug']) . '/' . $numpage; ?>"><?= $numpage; ?></a></li>
-            <?php } ?>
-        </ul>
-    </nav>
-    <?php } ?>
+    <?php 
+        if($jumlah_total_produk){ 
+            $xx=0;
+            $max=4;
+        ?>
+        <nav class="" aria-label="Page navigation">
+            <ul class="pagination pagination-md justify-content-center">
+                <?php if($page>2){ ?>
+                <li class="page-item"><a class="page-link" href="<?= base_url('room/'.$room_data['room_slug']) . '/'.($page-1); if (isset($_GET['category'])) { echo '?category='.$_GET['category']; } ?>"><span aria-hidden="true">&laquo;</span></a></li>
+                <?php } ?>
+                <?php while($xx < $jumlah_halaman){
+                    $numpage = $xx+1; 
+                    if($numpage > ($page-2) && $numpage < ($page+3)){?>
+                <li class="page-item <?php if($page && $numpage == $page){ echo ' active'; } ?>"><a class="page-link" href="<?= base_url('room/'.$room_data['room_slug']) . '/'.$numpage; if (isset($_GET['category'])) { echo '?category='.$_GET['category']; } ?>"><?= $numpage; ?></a></li>
+                <?php } $xx++; } ?>
+                <?php if($page<($jumlah_halaman-2)){ ?>
+                <li class="page-item"><a class="page-link" href="<?= base_url('room/'.$room_data['room_slug']) . '/'.($page+1); if (isset($_GET['category'])) { echo '?category='.$_GET['category']; } ?>"><span aria-hidden="true">&raquo;</span></a></li>
+                <?php } ?>
+            </ul>
+            <div class="text-center fs-6">Page <?= $page; ?> of <?= $jumlah_halaman; ?></div>
+        </nav>
+        <?php } ?>
 
 </div>
 
