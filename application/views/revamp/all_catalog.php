@@ -10,8 +10,9 @@
 
 <body>
     <div class="container p-4">
-        <h1 class=""><?= $brand['brand_name'] ?>'s All Catalog</h1>
+        <h1 class=""><?= $brand['brand_name'] ?>'s All Catalog </h1>
         <?php
+        $total = 0;
         if ($all_catalog) {
             foreach ($all_catalog as $key => $catalog) {
                 $e_category = explode(',', $catalog['Category']);
@@ -22,9 +23,11 @@
                 $e_pslug = explode(',', $catalog['Slug']);
                 $e_pbrand = explode(',', $catalog['Brand']);
                 $e_pstatus = explode(',', $catalog['Status']);
+                $jmlh = count($e_pname);
+                $total = $total + $jmlh;
         ?>
                 <hr>
-                <h4 class="text-center"><?= $e_category[$key] ?></h4>
+                <h4 class="text-center"><?= $e_category[$key] . ' (' . $jmlh . ')'; ?></h4>
                 <div class="table-responsive mt-4">
                     <table class="mb-4 table table-bordered table-hover align-middle text-center">
                         <thead>
@@ -42,7 +45,7 @@
                             <?php foreach ($e_pname as $key => $product) { ?>
                                 <tr>
                                     <th scope="row"><?= $key + 1; ?></th>
-                                    <td><img src="<?= base_url('/assets/products/thumbnail/') . $e_pthumb[$key]; ?>" width="100px" height="100px" alt=""></td>
+                                    <td><img src="<?= $GLOBALS['domain_static'] . '/assets/products/thumbnail/' . $e_pthumb[$key]; ?>" width="100px" height="100px" alt=""></td>
                                     <td><?= $e_pname[$key] ?></td>
                                     <td><?= $e_pcat[$key] ?></td>
                                     <td><?= $e_proom[$key] ?></td>
@@ -57,8 +60,10 @@
                         </tbody>
                     </table>
                 </div>
-            <?php }
-        } else { ?>
+            <?php } ?>
+            <hr>
+            <h4 class=""> Total : <?= $total; ?></h4>
+        <?php } else { ?>
             <table class="mb-5 table table-bordered table-hover align-middle text-center">
                 <thead>
                     <tr>

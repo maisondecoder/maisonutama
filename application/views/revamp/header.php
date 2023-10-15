@@ -4,15 +4,17 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><?= $title_page; ?> - Maison Living</title>
+    <title><?= $title_page; ?></title>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <script src="https://kit.fontawesome.com/07c871975a.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
+    <link rel="icon" href="<?= $GLOBALS['domain_static'] . '/assets/icon/maison-favicon-32x32.jpg'; ?>" sizes="32x32" />
+    <link rel="icon" href="<?= $GLOBALS['domain_static'] . '/assets/icon/maison-favicon-192x192.jpg'; ?>" sizes="192x192" />
+    <link rel="apple-touch-icon" href="<?= $GLOBALS['domain_static'] . '/assets/icon/maison-favicon-180x180.jpg'; ?>" />
     <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
     <style>
         h1,
@@ -38,18 +40,33 @@
             display: inline-block;
             float: none;
         }
-        .nav-link{
-            color:gray;
+
+        .nav-link {
+            color: gray;
         }
-        .nav-link:hover{
-            color:black;
+
+        .nav-link:hover {
+            color: black;
         }
-        .page-link{
-            color:gray;
+
+        .page-link {
+            color: gray;
         }
-        
-        .active>.page-link, .page-link.active{
-            background:black
+
+        .active>.page-link,
+        .page-link.active {
+            background: black
+        }
+
+        .topacity {
+            opacity: 0.85;
+            /* Aturan opacity awal */
+            transition: opacity 0.3s ease-in-out;
+            /* Animasi transisi */
+        }
+
+        .topacity:hover {
+            opacity: 1.0;
         }
     </style>
 </head>
@@ -58,7 +75,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="<?= base_url(); ?>">
-                <img src="<?= base_url('assets/logo-maison-navbar-putih.png') ?>" alt="Maison Living" height="40">
+                <img src="<?= $GLOBALS['domain_static'] . '/assets/logo-maison-navbar-putih.png'; ?>" alt="Maison Living" height="40">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>

@@ -11,7 +11,7 @@
             <?php foreach ($all_brands as $key => $brand) { ?>
                 <div class="col-6 col-sm-6 col-md-4 mb-4">
                     <a href="<?= base_url() . $brand['brand_slug']; ?>">
-                        <div class="rounded-lg rounded" style="max-width:500px; background:#4C4C4C"><img class="img-fluid" src="<?= 'https://9v6e9irhcc.r.worldssl.net/assets/brands/' . $brand['brand_img']; ?>" alt="<?= $brand['brand_name']; ?>"></div>
+                        <div class="rounded-lg rounded topacity" style="max-width:500px; background:#4C4C4C"><img class="img-fluid" src="<?= $GLOBALS['domain_static'].'/assets/brands/' . $brand['brand_img']; ?>" alt="<?= $brand['brand_name']; ?>"></div>
                     </a>
                 </div>
             <?php }

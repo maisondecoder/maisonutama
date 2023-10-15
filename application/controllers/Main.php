@@ -7,6 +7,7 @@ class Main extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
+		$GLOBALS['domain_static'] = 'https://9v6e9irhcc.r.worldssl.net';
 		// Your own constructor code
 	}
 
@@ -19,7 +20,7 @@ class Main extends CI_Controller
 		$data['all_stores'] = $this->store_model->get_all_stores();
 		//** End */
 
-		$data['title_page'] = "Homepage";
+		$data['title_page'] = "Welcome to Maison Living";
 		$data['nav'] = "home";
 
 		$this->load->view('revamp/header', $data);
@@ -37,7 +38,7 @@ class Main extends CI_Controller
 		$data['all_stores'] = $this->store_model->get_all_stores();
 		//** End */
 
-		$data['title_page'] = "Our Brands Partner";
+		$data['title_page'] = "Maison Living Brand Partners";
 		$data['nav'] = "brand";
 
 		$this->load->view('revamp/header', $data);
@@ -107,7 +108,7 @@ class Main extends CI_Controller
 
 		//print_r($data['all_brand_cats']);
 
-		$brand_title = $brand_data['brand_name'] . " Product Collections";
+		$brand_title = $brand_data['brand_name'] . " Collections - Maison Living";
 
 		$data['title_page'] = $brand_title;
 		$data['nav'] = "brand";
@@ -128,7 +129,7 @@ class Main extends CI_Controller
 		$data['all_cats'] = $this->collection_model->get_all_cats();
 		//** End */
 
-		$data['title_page'] = "Our Product Collections";
+		$data['title_page'] = "Maison Living All Product Collections";
 		$data['nav'] = "collection";
 
 		$this->load->view('revamp/header', $data);
@@ -159,7 +160,7 @@ class Main extends CI_Controller
 			redirect('/?error');
 		}
 
-		$data['title_page'] = $product_data['product_name'] . " " . $product_data['cat_name'] . " by " . $product_data['brand_name'];
+		$data['title_page'] = $product_data['product_name'] . " " . $product_data['cat_name'] . " by " . $product_data['brand_name'] .' - Maison Living';
 		$data['nav'] = "collection";
 
 		$data['same_room'] = $this->collection_model->get_related_products(0, $product_data['room_id'], 0, $product_data['product_slug'], $product_data['cat_id']);
@@ -213,7 +214,7 @@ class Main extends CI_Controller
 		$data['jumlah_total_produk'] = $jumlah_total_produk;
 		////Pagination END////
 		
-		$room_title = $room_data['room_name'] . " Product Collections";
+		$room_title = $room_data['room_name'] . " Collections - Maison Living";
 
 		$data['title_page'] = $room_title;
 		$data['nav'] = "collection";
@@ -266,7 +267,7 @@ class Main extends CI_Controller
 
 		$data['category_data'] = $category_data;
 
-		$cat_title = $category_data['cat_name'] . " Product Collections";
+		$cat_title = $category_data['cat_name'] . " Collections - Maison Living";
 
 		$data['title_page'] = $cat_title;
 		$data['nav'] = "collection";

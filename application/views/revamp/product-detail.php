@@ -5,7 +5,7 @@
     <h2 class="fs-6 text-secondary"><?= $products['brand_name'] . ' / ' . $products['cat_name']; ?></h2>
     <div class="row mt-4">
         <div class="col-12  col-sm-12 col-md-12 col-lg-6  mb-4">
-            <img class="img-fluid rounded" src="<?= 'https://9v6e9irhcc.r.worldssl.net/assets/products/thumbnail/' . $products['product_thumbnail']; ?>">
+            <img class="img-fluid rounded" src="<?= $GLOBALS['domain_static'].'/assets/products/thumbnail/' . $products['product_thumbnail']; ?>">
         </div>
         <div class="col-12 col-sm-12 col-md-12 col-lg-6 text-start">
             <div class="mb-3" id="brand-desc" style="max-height:310px; overflow-y:hidden">
@@ -33,7 +33,7 @@
                 <ul class="splide__list">
                     <?php foreach ($same_cat as $key => $same_cat) { ?>
                         <li class="splide__slide p-2"><a href="<?= base_url('our-collections/') . $same_cat['product_slug']; ?>">
-                        <img class="img-fluid mb-2 rounded border" style="width: 100% !important; height: 90% !important; max-width:450px !important; height:200px !important; object-fit:cover !important;" src="<?= 'https://9v6e9irhcc.r.worldssl.net/assets/products/thumbnail/' . $same_cat['product_thumbnail']; ?>" alt="<?= $same_cat['product_name'] ?>">
+                        <img class="img-fluid mb-2 rounded border topacity" style="width: 100% !important; height: 90% !important; max-width:450px !important; height:200px !important; object-fit:cover !important;" src="<?= $GLOBALS['domain_static'].'/assets/products/thumbnail/' . $same_cat['product_thumbnail']; ?>" alt="<?= $same_cat['product_name'] ?>">
                             </a></li>
                     <?php } ?>
                 </ul>
@@ -52,7 +52,7 @@
                 <ul class="splide__list">
                     <?php foreach ($same_room as $key => $same_room) { ?>
                         <li class="splide__slide p-2"><a href="<?= base_url('our-collections/') . $same_room['product_slug']; ?>">
-                        <img class="img-fluid mb-2 rounded border" style="width: 100% !important; height: 90% !important; max-width:450px !important; height:200px !important; object-fit:cover !important;" src="<?= 'https://9v6e9irhcc.r.worldssl.net/assets/products/thumbnail/' . $same_room['product_thumbnail']; ?>" alt="<?= $same_room['product_name'] ?>">
+                        <img class="img-fluid mb-2 rounded border topacity" style="width: 100% !important; height: 90% !important; max-width:450px !important; height:200px !important; object-fit:cover !important;" src="<?= $GLOBALS['domain_static'].'/assets/products/thumbnail/' . $same_room['product_thumbnail']; ?>" alt="<?= $same_room['product_name'] ?>">
                             </a></li>
                     <?php } ?>
                 </ul>
@@ -71,7 +71,7 @@
                 <ul class="splide__list">
                     <?php foreach ($all_rooms as $key => $room) { ?>
                         <li class="splide__slide p-2"><a href="<?= base_url('room/') . $room['room_slug']; ?>">
-                                <div class="rounded-lg rounded text-center text-light text-decoration-none position-relative" style="height:200px; background:#4C4C4C">
+                                <div class="rounded-lg rounded text-center text-light text-decoration-none position-relative topacity" style="height:200px; background:#4C4C4C">
                                     <h5 class="position-absolute top-50 start-50 translate-middle"><?= $room['room_name']; ?></h5>
                                 </div>
                             </a></li>
@@ -92,7 +92,7 @@
                 <ul class="splide__list">
                     <?php foreach ($all_cats as $key => $cat) { ?>
                         <li class="splide__slide p-2"><a href="<?= base_url('category/') . $cat['cat_slug']; ?>">
-                                <div class="rounded-lg rounded text-center text-light text-decoration-none position-relative" style="height:200px; background:#4C4C4C">
+                                <div class="rounded-lg rounded text-center text-light text-decoration-none position-relative topacity" style="height:200px; background:#4C4C4C">
                                     <h5 class="position-absolute top-50 start-50 translate-middle"><?= $cat['cat_name']; ?></h5>
                                 </div>
                             </a></li>
@@ -113,7 +113,7 @@
                 <ul class="splide__list">
                     <?php foreach ($all_brands as $key => $brand) { ?>
                         <li class="splide__slide p-2"><a href="<?= base_url() . $brand['brand_slug']; ?>">
-                                <div class="rounded-lg rounded" style="max-width:500px; background:#4C4C4C"><img class="img-fluid" src="<?= 'https://9v6e9irhcc.r.worldssl.net/assets/brands/' . $brand['brand_img']; ?>" alt="$brand['brand_name']"></div>
+                                <div class="rounded-lg rounded topacity" style="max-width:500px; background:#4C4C4C"><img class="img-fluid" src="<?= $GLOBALS['domain_static'].'/assets/brands/' . $brand['brand_img']; ?>" alt="$brand['brand_name']"></div>
                             </a></li>
                     <?php } ?>
                 </ul>
