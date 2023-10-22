@@ -74,7 +74,7 @@
                 <ul class="splide__list">
                     <?php foreach ($all_rooms as $key => $room) { ?>
                         <li class="splide__slide p-2"><a href="<?= base_url('room/') . $room['room_slug']; ?>">
-                                <div class="rounded-lg rounded text-center text-light text-decoration-none position-relative topacity" style="height:200px; background:#4C4C4C">
+                                <div class="rounded-lg rounded text-center text-light text-decoration-none position-relative topacity" style="height:200px; background:#4C4C4C; background-position:center center; background-image:url('<?= base_url('assets/rooms/').$room['room_img']; ?>')">
                                     <h5 class="position-absolute top-50 start-50 translate-middle"><?= $room['room_name']; ?></h5>
                                 </div>
                             </a></li>
@@ -95,7 +95,7 @@
                 <ul class="splide__list">
                     <?php foreach ($all_cats as $key => $cat) { ?>
                         <li class="splide__slide p-2"><a href="<?= base_url('category/') . $cat['cat_slug']; ?>">
-                                <div class="rounded-lg rounded text-center text-light text-decoration-none position-relative topacity" style="height:200px; background:#4C4C4C">
+                                <div class="rounded-lg rounded text-center text-light text-decoration-none position-relative topacity" style="height:200px; background:#4C4C4C;background-position:center center; background-image:url('<?= base_url('assets/categories/').$cat['cat_img']; ?>')">
                                     <h5 class="position-absolute top-50 start-50 translate-middle"><?= $cat['cat_name']; ?></h5>
                                 </div>
                             </a></li>

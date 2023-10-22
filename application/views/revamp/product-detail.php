@@ -28,13 +28,14 @@
 <?php if ($same_cat) { ?>
     <div class="container p-4">
         <h2>Other <?= $products['cat_name']; ?> Products</h2>
-        <section id="splide-related-category" class="splide" aria-label="Room Collection">
+        <section id="splide-related-category" class="splide" aria-label="Other Products">
             <div class="splide__track">
                 <ul class="splide__list">
                     <?php foreach ($same_cat as $key => $same_cat) { ?>
                         <li class="splide__slide p-2"><a href="<?= base_url('our-collections/') . $same_cat['product_slug']; ?>">
                         <img class="img-fluid mb-2 rounded border topacity" style="width: 100% !important; height: 90% !important; max-width:450px !important; height:200px !important; object-fit:cover !important;" src="<?= $GLOBALS['domain_static'].'/assets/products/thumbnail/' . $same_cat['product_thumbnail']; ?>" alt="<?= $same_cat['product_name'] ?>">
-                            </a></li>
+                            </a>
+                            <h4 class="text-secondary"><?= $same_cat['product_name']; ?></h4></li>
                     <?php } ?>
                 </ul>
             </div>
@@ -47,13 +48,14 @@
 <?php if ($same_room) { ?>
     <div class="container p-4">
         <h2>Other <?= $products['room_name']; ?> Products</h2>
-        <section id="splide-related-room" class="splide" aria-label="Room Collection">
+        <section id="splide-related-room" class="splide" aria-label="Other Rooms Product">
             <div class="splide__track">
                 <ul class="splide__list">
                     <?php foreach ($same_room as $key => $same_room) { ?>
                         <li class="splide__slide p-2"><a href="<?= base_url('our-collections/') . $same_room['product_slug']; ?>">
                         <img class="img-fluid mb-2 rounded border topacity" style="width: 100% !important; height: 90% !important; max-width:450px !important; height:200px !important; object-fit:cover !important;" src="<?= $GLOBALS['domain_static'].'/assets/products/thumbnail/' . $same_room['product_thumbnail']; ?>" alt="<?= $same_room['product_name'] ?>">
-                            </a></li>
+                            </a>
+                            <h4 class="text-secondary"><?= $same_room['product_name']; ?></h4></li>
                     <?php } ?>
                 </ul>
             </div>
@@ -71,7 +73,7 @@
                 <ul class="splide__list">
                     <?php foreach ($all_rooms as $key => $room) { ?>
                         <li class="splide__slide p-2"><a href="<?= base_url('room/') . $room['room_slug']; ?>">
-                                <div class="rounded-lg rounded text-center text-light text-decoration-none position-relative topacity" style="height:200px; background:#4C4C4C">
+                                <div class="rounded-lg rounded text-center text-light text-decoration-none position-relative topacity" style="height:200px; background:#4C4C4C; background-position:center center; background-image:url('<?= base_url('assets/rooms/').$room['room_img']; ?>')">
                                     <h5 class="position-absolute top-50 start-50 translate-middle"><?= $room['room_name']; ?></h5>
                                 </div>
                             </a></li>
@@ -92,7 +94,7 @@
                 <ul class="splide__list">
                     <?php foreach ($all_cats as $key => $cat) { ?>
                         <li class="splide__slide p-2"><a href="<?= base_url('category/') . $cat['cat_slug']; ?>">
-                                <div class="rounded-lg rounded text-center text-light text-decoration-none position-relative topacity" style="height:200px; background:#4C4C4C">
+                                <div class="rounded-lg rounded text-center text-light text-decoration-none position-relative topacity" style="height:200px; background:#4C4C4C;background-position:center center; background-image:url('<?= base_url('assets/categories/').$cat['cat_img']; ?>')">
                                     <h5 class="position-absolute top-50 start-50 translate-middle"><?= $cat['cat_name']; ?></h5>
                                 </div>
                             </a></li>
@@ -108,7 +110,7 @@
 <?php if ($all_cats) { ?>
     <div class="container p-4">
         <h2>See Other Brands</h2>
-        <section id="splide-brand" class="splide" aria-label="Splide Basic HTML Example">
+        <section id="splide-brand" class="splide" aria-label="Other Brands">
             <div class="splide__track">
                 <ul class="splide__list">
                     <?php foreach ($all_brands as $key => $brand) { ?>
