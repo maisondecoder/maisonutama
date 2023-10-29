@@ -7,13 +7,13 @@
         <div class="col-sm-12 col-md-12 col-lg-6 my-2 my-md-5">
             <div class="text-warning fw-bold">#LuxYourHome</div>
             <div>
-                <h1>We Make Home Feel Comfy</h1>
+                <h1>We Make Your Home Feel Comfy</h1>
             </div>
             <div>
-                <p>Integrate elegance style, precise design, and high-quality materials for the ideal home investment.</p>
+                <p>Elevate Your Space with Timeless High-End Furniture and Expert Interior Design. Tailored for Your Unique Style and Comfort.</p>
             </div>
             <div>
-                <a class="btn btn-dark btn-lg" href="<?= base_url('collections'); ?>">Browse Our Collections</a>
+                <a class="btn btn-dark btn-lg" href="<?= base_url('collections'); ?>">Browse Our Masterpieces</a>
             </div>
         </div>
     </div>
@@ -25,30 +25,6 @@
     <img class="img-fluid" src="<?= $GLOBALS['domain_static'] . '/assets/logo-brands-homepage-abu2.png'; ?>" width="900px" alt="Brand Partner Logo">
 </div>
 <!-- Brands Logo -->
-
-<!-- What We Do -->
-<div class="container my-5 px-4">
-    <h2 class="text-center mb-5">What We Do</h2>
-    <div class="text-center mt-5">
-        <div class="row">
-            <div class="col-sm-12 col-md-4">
-                <i class="fa-solid fa-gem fs-1 mb-3"></i>
-                <p>World’s high-end furniture unrevealing experience from generations.</p>
-            </div>
-            <div class="col-sm-12 col-md-4">
-                <i class="fa-solid fa-palette fs-1 mb-3"></i>
-                <p>Fully customized furniture
-                    to enhance your living space.</p>
-            </div>
-            <div class="col-sm-12 col-md-4">
-                <i class="fa-solid fa-chair fs-1 mb-3"></i>
-                <p>Integrated with expert
-                    interior design services.</p>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- What We Do -->
 
 <!-- Brand Partners -->
 <?php if ($all_brands) { ?>

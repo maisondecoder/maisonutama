@@ -1,11 +1,11 @@
 <!-- Brand Collections -->
-<div id="brand-collections" class="container p-4 pb-1 text-center mb-4">
+<div id="brand-collections" class="container p-4 text-center">
 
     <h1 class="fs-1 mb-2 fw-bold"><?= $products['product_name']; ?></h1>
     <h2 class="fs-6 text-secondary"><?= $products['brand_name'] . ' / ' . $products['cat_name']; ?></h2>
     <div class="row mt-4">
         <div class="col-12  col-sm-12 col-md-12 col-lg-6  mb-4">
-            <img class="img-fluid rounded" src="<?= $GLOBALS['domain_static'].'/assets/products/thumbnail/' . $products['product_thumbnail']; ?>">
+            <img class="img-fluid rounded" src="<?= $GLOBALS['domain_static'].'/assets/products/thumbnail/' . $products['product_thumbnail']; ?>" style="max-height:380px">
         </div>
         <div class="col-12 col-sm-12 col-md-12 col-lg-6 text-start">
             <div class="mb-3" id="brand-desc" style="max-height:310px; overflow-y:hidden">

@@ -9,8 +9,9 @@
 <div id="intro-why" class="container p-4 pb-1 mb-4">
     <h2 class="mb-4 fw-bold text-center">Why Maison Living?</h2>
     <hr>
-    <p>“There is more in furniture design” Maison believes furniture is more than just a product, it’s an ‘Art’; we take products seriously as no issue is too small for us to refute. We do not compromise exquisite quality and we vouch to deliver an exceptional service, offering design solution from our specialist to help you realize your dream home.</p>
-    <p>With more than 30 years of experience, Maison has been working with an amazing world-class International Brands, committed to deliver nothing but the best refined products for your home. Our remarkable brand includes Papadatos, Babakagu, Acomodel, Aromas, and some of our own line Maison Living – in house ‘export quality’ products. Each brand distinguished their very own unique characters that projects beauty, richness, luxury & comfort, yet still offer a sensible price; an excellence choice to complete your home.</p>
+    <p>Maison's Unwavering Commitment to Quality and Service for Over 30 Years.</p>
+    <p>At Maison, we don't just see furniture as a product; it's a masterpiece. No detail is too small to overlook. We uphold an unwavering commitment to delivering top-notch quality and exceptional service. Our team of specialists is dedicated to turning your dream home into a reality.</p>
+    <p>With a legacy spanning over 30 years, Maison has partnered with world-class international brands such as Papadatos, Franco Ferri, Babakagu, Acomodel, Aromas, and our very own line, Maison Living. Each brand embodies its unique character, blending beauty, opulence, luxury, and comfort, all while remaining affordable. Choose excellence for your home with Maison.</p>
 </div>
 
 <!-- Our Stores -->
@@ -22,7 +23,7 @@
             <?php foreach ($all_stores as $key => $store) { ?>
                 <div class="row mb-3">
                     <div class="col-sm-12 col-md-6 text-center">
-                        <img class="img-fluid mb-2" src="<?= $GLOBALS['domain_static'].'/assets/' . $store['store_img']; ?>" style="max-height:300px" alt="<?= $store['store_name']; ?>">
+                        <img class="img-fluid mb-2" src="<?= $GLOBALS['domain_static'] . '/assets/' . $store['store_img']; ?>" style="max-height:300px" alt="<?= $store['store_name']; ?>">
                     </div>
                     <div class="col-sm-12 col-md-6 my-3 my-sm-0">
                         <h3><?= $store['store_name']; ?></h3>
