@@ -46,7 +46,7 @@
         <?php if ($products) {
             foreach ($products as $key => $product) { ?>
                 <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
-                    <a class="text-decoration-none " href="<?= base_url("our-collections/") . $product['product_slug']; ?>">
+                    <a class="text-decoration-none " href="<?= base_url("our-collections/") . $product['product_slug'].'?via=brand-details'; ?>">
                         <img class="img-fluid mb-2 rounded border topacity" style="width: 100% !important; height: 90% !important; max-width:450px !important; height:350px !important; object-fit:cover !important;" src="<?= $GLOBALS['domain_static'].'/assets/products/thumbnail/' . $product['product_thumbnail']; ?>" alt="">
                         <h4 class="text-secondary"><?= $product['product_name']; ?></h4>
                     </a>
@@ -105,7 +105,7 @@
         <?php if ($all_brands) { ?>
             <?php foreach ($all_brands as $key => $brand) { ?>
                 <div class="col-6 col-sm-6 col-md-4 mb-4">
-                    <a href="<?= base_url() . $brand['brand_slug']; ?>">
+                    <a href="<?= base_url() . $brand['brand_slug'].'?via=brand-details'; ?>">
                         <div class="rounded-lg rounded topacity" style="max-width:500px; background:#4C4C4C"><img class="img-fluid" src="<?= $GLOBALS['domain_static'].'/assets/brands/'. $brand['brand_img']; ?>" alt="<?= $brand['brand_name']; ?>"></div>
                     </a>
                 </div>
