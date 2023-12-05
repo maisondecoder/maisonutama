@@ -13,7 +13,7 @@
                 <p>Elevate Your Space with Timeless High-End Furniture and Expert Interior Design. Tailored for Your Unique Style and Comfort.</p>
             </div>
             <div>
-                <a class="btn btn-dark btn-lg" href="<?= base_url('collections?via=homepage-cta'); ?>">Browse Our Masterpieces</a>
+                <a class="btn btn-dark btn-lg" href="<?= base_url('collections'); ?>">Browse Our Masterpieces</a>
             </div>
         </div>
     </div>
@@ -35,7 +35,7 @@
                 <div class="splide__track">
                     <ul class="splide__list">
                         <?php foreach ($all_brands as $key => $brand) { ?>
-                            <li class="splide__slide p-2"><a href="<?= base_url() . $brand['brand_slug'].'?via=homepage-our-brand'; ?>">
+                            <li class="splide__slide p-2"><a href="<?= base_url() . $brand['brand_slug']; ?>">
                                     <div class="rounded-lg rounded topacity" style="max-width:500px; background:#4C4C4C"><img class="img-fluid" src="<?= $GLOBALS['domain_static'] . '/assets/brands/' . $brand['brand_img']; ?>" alt="$brand['brand_name']"></div>
                                 </a></li>
                         <?php } ?>
@@ -61,10 +61,11 @@
                         <h3><?= $store['store_name']; ?></h3>
                         <p>
                             <?= $store['store_addrs']; ?><br>
+                            <strong>Whatsapp:</strong> +<?= $store['store_wa']; ?><br>
+                            <strong>Phone:</strong> <?= $store['store_phone']; ?>
                         </p>
                         <div>
-                            <a target="_blank" class="btn btn-dark btn-lg" href="https://wa.me/<?= $store['store_wa']; ?>"><i class="fa-brands fa-whatsapp"></i> Whatsapp</a>
-                            <a target="_blank" class="btn btn-dark btn-lg" href="<?= $store['store_gmap']; ?>"><i class="fa-regular fa-map"></i> Google Map</a>
+                            <a target="_blank" class="btn btn-dark btn-lg" href="<?= $store['store_gmap']; ?>">Open Google Map <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                         </div>
                     </div>
                 </div>
