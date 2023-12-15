@@ -27,7 +27,7 @@
                 $total = $total + $jmlh;
         ?>
                 <hr>
-                <h4 class="text-center"><?= $e_category[$key] . ' (' . $jmlh . ')'; ?></h4>
+                <h4 class="text-center"><?= $e_category[0] . ' (' . $jmlh . ')'; ?></h4>
                 <div class="table-responsive mt-4">
                     <table class="mb-4 table table-bordered table-hover align-middle text-center">
                         <thead>
