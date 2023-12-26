@@ -33,7 +33,7 @@
                 <ul class="splide__list">
                     <?php foreach ($same_cat as $key => $same_cat) { ?>
                         <li class="splide__slide p-2"><a href="<?= base_url('our-collections/') . $same_cat['product_slug']; ?>">
-                        <img class="img-fluid mb-2 rounded border topacity" style="width: 100% !important; height: 90% !important; max-width:450px !important; height:200px !important; object-fit:cover !important;" src="<?= $GLOBALS['domain_static'].'/assets/products/thumbnail/' . $same_cat['product_thumbnail']; ?>" alt="<?= $same_cat['product_name'] ?>">
+                        <img class="img-fluid mb-2 rounded border topacity" style="width:200px !important; height:250px !important; object-fit:cover !important;" src="<?= $GLOBALS['domain_static'].'/assets/products/thumbnail/' . $same_cat['product_thumbnail']; ?>" alt="<?= $same_cat['product_name'] ?>">
                             </a>
                             <h4 class="text-secondary"><?= $same_cat['product_name']; ?></h4></li>
                     <?php } ?>
@@ -131,17 +131,20 @@
     <?php if ($same_cat) { ?>
     new Splide('#splide-related-category', {
         type: 'loop',
-        perPage: 4,
+        perPage: 5,
         perMove: 1,
         padding: '2rem',
         autoplay: true,
         pagination: false,
         breakpoints: {
-            480: {
+            400: {
                 perPage: 2,
             },
-            1024: {
-                perPage: 2,
+            600: {
+                perPage: 3,
+            },
+            900: {
+                perPage: 3,
             },
         }
     }).mount();
@@ -156,7 +159,7 @@
         pagination: false,
         breakpoints: {
             480: {
-                perPage: 2,
+                perPage: 1,
             },
             1024: {
                 perPage: 2,
