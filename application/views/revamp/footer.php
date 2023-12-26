@@ -23,12 +23,12 @@
                 <div class="col-sm-12 col-md-3">
                     <h4>Contact Us</h4>
                     <p class="fs-6"><strong>Kemang Jakarta</strong><br>
-                        Whatsapp : +62813-8818-0020<br>
+                        Whatsapp : 0813-8818-0020<br>
                         Phone : 021-2272-0220
                     </p>
                     <p class="fs-6"><strong>BSD Alam Sutera</strong><br>
-                        Whatsapp : +62813-8818-0020<br>
-                        Phone : 021-2272-0220
+                        Whatsapp : 0819-3000-2525<br>
+                        Phone : 021-5569-5924
                     </p>
                 </div>
             </div>
