@@ -106,9 +106,6 @@ class Main extends CI_Controller
 		$data['brand_data'] = $brand_data;
 		$data['all_brands'] = $this->brand_model->get_all_brands($brand_slug);
 
-
-		//print_r($data['all_brand_cats']);
-
 		$brand_title = $brand_data['brand_name'] . " Collections - Maison Living";
 
 		$data['title_page'] = $brand_title;
