@@ -29,6 +29,25 @@ class Main extends CI_Controller
 		$this->load->view('revamp/footer');
 	}
 
+	public function search()
+	{
+		//Global Data To Display *Mandatory
+		$this->load->model('brand_model');
+		$this->load->model('store_model');
+		$this->load->model('collection_model');
+		$data['all_brands'] = $this->brand_model->get_all_brands();
+		$data['all_rooms'] = $this->collection_model->get_all_rooms();
+		$data['all_cats'] = $this->collection_model->get_all_cats();
+		//** End */
+
+		$data['title_page'] = "Welcome to Maison Living";
+		$data['nav'] = "home";
+
+		$this->load->view('revamp/header', $data);
+		$this->load->view('revamp/search');
+		$this->load->view('revamp/footer');
+	}
+
 	public function brands()
 	{
 		//Global Data To Display *Mandatory
