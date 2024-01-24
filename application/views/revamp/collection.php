@@ -41,7 +41,7 @@
 <!-- Collections By Category -->
 
 <!-- Collections By Brands -->
-<?php if ($all_cats) { ?>
+<?php if ($all_brands) { ?>
     <div class="container p-4">
         <h2>Brand Collections</h2>
         <section id="splide-brand" class="splide" aria-label="Brand Collection">
@@ -49,7 +49,7 @@
                 <ul class="splide__list">
                     <?php foreach ($all_brands as $key => $brand) { ?>
                         <li class="splide__slide p-2"><a href="<?= base_url() . $brand['brand_slug'].'?via=our-collections'; ?>">
-                                <div class="rounded-lg rounded topacity" style="max-width:500px; background:#4C4C4C"><img class="img-fluid" src="<?= $GLOBALS['domain_static'].'/assets/brands/' . $brand['brand_img']; ?>" alt="$brand['brand_name']"></div>
+                                <div class="rounded-lg rounded topacity" style="max-width:500px; background:#4C4C4C"><img class="img-fluid" src="<?= $GLOBALS['domain_static'].'/assets/brands/' . $brand['brand_img']; ?>" alt="<?= $brand['brand_name'] ?>"></div>
                             </a></li>
                     <?php } ?>
                 </ul>

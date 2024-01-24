@@ -111,6 +111,19 @@
                 top:0px;
             }
         }
+
+        .transisi-search {
+            background: #212529;
+            animation: transisi 1s forwards;
+        }
+        @keyframes transisi{
+            0% {
+                background: #212529;
+            }
+            100% {
+                background: #fff;
+            }
+        }
     </style>
 </head>
 

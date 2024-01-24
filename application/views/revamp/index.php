@@ -1,8 +1,10 @@
 <!-- Hero CTA -->
 <div class="py-2 bg-searchbar" style="margin-top:-15px">
     <div class="d-none d-md-block" style="margin-top:5rem"></div>
-    <div class="px-3 mb-3">
-        <input type="text" class="form-control form-control-lg fs-2" id="searchbar" aria-describedby="searchBar" placeholder="" style="max-width:800px; margin:auto">
+    <div class="px-3 mb-3 mt-2">
+        <a href="<?= base_url('main/search'); ?>" class="">
+            <input type="text" class="form-control form-control-lg fs-2" id="searchbar" aria-describedby="searchBar" placeholder="" style="max-width:800px; margin:auto">
+        </a>
     </div>
     <!-- Brands Logo -->
 
@@ -10,11 +12,11 @@
         <img class="img-fluid" src="<?= $GLOBALS['domain_static'] . '/assets/logo-brands-homepage-putih.png'; ?>" width="600px" alt="Brand Partner Logo">
         <div class="mt-4 fs-5 text-white text-center nunjuk"><i class="fa-solid fa-angles-down"></i></div>
     </div>
-    
+
     <div class="d-none d-md-block" style="margin-bottom:5rem"></div>
     <!-- Brands Logo -->
 
-    
+
 </div>
 <div class="rounded-top-5 bg-white" style="margin-top:-30px;">
     <div id="hero" class="container p-4 pb-1 pt-sm-5 mb-5">
@@ -155,7 +157,7 @@
 
 <script>
     var i = 0;
-    var txt = "🧞 Type here to search...";
+    var txt = "🔎 Type here to search...";
     var speed = 40;
 
     function typeWriter() {
