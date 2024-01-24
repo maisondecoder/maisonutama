@@ -37,7 +37,10 @@
 </div>
 
 <script>
-    $(document).delay(800).ready(function() {
-        $("#searchbar").focus();
+    $(document).ready(function() {
+        $("#searchbar").trigger("blur");
+        $("#searchbar").blur();
+        $("#searchbar").delay(800).trigger("focus");
+        $("#searchbar").delay(800).focus();
     });
 </script>
