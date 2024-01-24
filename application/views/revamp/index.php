@@ -18,7 +18,28 @@
 
 
 </div>
-<div class="rounded-top-5 bg-white" style="margin-top:-30px;">
+<div class=" bg-white" style="margin-top:-30px;">
+    <!-- Brand Partners -->
+    <?php if ($all_brands) { ?>
+        <div class="">
+            <div class="container p-4">
+                <h2><a href="<?= base_url('furniture-brand'); ?>" class="text-decoration-none text-reset">Best Seller <i class="fa-solid fa-arrow-right-long"></i></a></h2>
+                <section class="bestseller splide" aria-label="Best Seller">
+                    <div class="splide__track">
+                        <ul class="splide__list">
+                            <?php foreach ($all_brands as $key => $brand) { ?>
+                                <li class="splide__slide p-2"><a href="<?= base_url() . $brand['brand_slug'] . '?via=homepage-our-brand'; ?>">
+                                        <div class="rounded-lg rounded topacity" style="max-width:500px; background:#4C4C4C"><img class="img-fluid" src="<?= $GLOBALS['domain_static'] . '/assets/brands/' . $brand['brand_img']; ?>" alt="$brand['brand_name']"></div>
+                                    </a></li>
+                            <?php } ?>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+        </div>
+    <?php } ?>
+    <!-- Brand Partners -->
+
     <div id="hero" class="container p-4 pb-1 pt-sm-5 mb-5">
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-6 text-center">
@@ -40,14 +61,12 @@
     </div>
     <!-- Hero CTA -->
 
-
-
     <!-- Brand Partners -->
     <?php if ($all_brands) { ?>
         <div class="bg-dark text-light">
             <div class="container p-4 mt-4">
                 <h2><a href="<?= base_url('furniture-brand'); ?>" class="text-decoration-none text-reset">Our Brands <i class="fa-solid fa-arrow-right-long"></i></a></h2>
-                <section class="splide" aria-label="Our Brands">
+                <section class="splide brands" aria-label="Our Brands">
                     <div class="splide__track">
                         <ul class="splide__list">
                             <?php foreach ($all_brands as $key => $brand) { ?>
@@ -126,7 +145,26 @@
 <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
 <script>
-    new Splide('.splide', {
+    new Splide('.brands', {
+        type: 'loop',
+        perPage: 3,
+        perMove: 1,
+        padding: '2rem',
+        autoplay: true,
+        pagination: false,
+        breakpoints: {
+            480: {
+                perPage: 1,
+            },
+            1024: {
+                perPage: 2,
+            },
+        }
+    }).mount();
+</script>
+
+<script>
+    new Splide('.bestseller', {
         type: 'loop',
         perPage: 3,
         perMove: 1,
