@@ -36,40 +36,8 @@
     </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
 <script>
-    new Splide('.splide', {
-        type: 'loop',
-        perPage: 3,
-        perMove: 1,
-        padding: '2rem',
-        autoplay: true,
-        pagination: false,
-        breakpoints: {
-            480: {
-                perPage: 1,
-            },
-            1024: {
-                perPage: 2,
-            },
-        }
-    }).mount();
-</script>
-
-<script>
-    new Splide('.slide-store', {
-        type: 'loop',
-        perPage: 1,
-        perMove: 1,
-        padding: '2rem',
-        autoplay: true,
-        pagination: true
-    }).mount();
-</script>
-
-<script>
-    $(document).load(function() {
+    $(document).delay(800).ready(function() {
         $("#searchbar").trigger("focus");
     });
 </script>
