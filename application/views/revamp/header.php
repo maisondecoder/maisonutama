@@ -90,8 +90,8 @@
         }
 
         .bg-searchbar {
-            background: rgb(142, 106, 78);
-            background: linear-gradient(180deg, #212529 1%, rgba(255, 255, 255, 1) 100%);
+            background: #212529;
+            /*background: linear-gradient(180deg, #212529 5%, rgba(255, 255, 255, 1) 100%);*/
         }
     </style>
 </head>
