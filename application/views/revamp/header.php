@@ -2,9 +2,12 @@
 <html lang="en">
 
 <head>
+
+    <!-- SEO Meta Tag -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?= $title_page; ?></title>
+    <meta name="robots" content="index, follow">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,8 +20,11 @@
     <link rel="apple-touch-icon" href="<?= $GLOBALS['domain_static'] . '/assets/icon/maison-favicon-180x180.jpg'; ?>" />
     <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
 
-    <!-- Google tag (gtag.js) -->
+
+
+    <!-- Google tag (gtag.js)
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-TELBVRXJ1G"></script>
+
     <script>
         window.dataLayer = window.dataLayer || [];
 
@@ -29,6 +35,7 @@
 
         gtag('config', 'G-TELBVRXJ1G');
     </script>
+    -->
     <style>
         h1,
         h2,
@@ -80,6 +87,11 @@
 
         .topacity:hover {
             opacity: 1.0;
+        }
+
+        .bg-searchbar {
+            background: rgb(142, 106, 78);
+            background: linear-gradient(180deg, #212529 1%, rgba(255, 255, 255, 1) 100%);
         }
     </style>
 </head>
