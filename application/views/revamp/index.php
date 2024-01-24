@@ -8,9 +8,13 @@
 
     <div class="container text-center mb-5">
         <img class="img-fluid" src="<?= $GLOBALS['domain_static'] . '/assets/logo-brands-homepage-putih.png'; ?>" width="600px" alt="Brand Partner Logo">
+        <div class="mt-4 fs-5 text-white text-center nunjuk"><i class="fa-solid fa-angles-down"></i></div>
     </div>
+    
     <div class="d-none d-md-block" style="margin-bottom:5rem"></div>
     <!-- Brands Logo -->
+
+    
 </div>
 <div class="rounded-top-5 bg-white" style="margin-top:-30px;">
     <div id="hero" class="container p-4 pb-1 pt-sm-5 mb-5">
@@ -151,8 +155,8 @@
 
 <script>
     var i = 0;
-    var txt = "🧞 Type your wishlist..";
-    var speed = 20;
+    var txt = "🧞 Type here to search...";
+    var speed = 40;
 
     function typeWriter() {
         if (i < txt.length) {

@@ -93,6 +93,24 @@
             background: #212529;
             /*background: linear-gradient(180deg, #212529 5%, rgba(255, 255, 255, 1) 100%);*/
         }
+
+        .nunjuk {
+            position: relative;
+            animation: nunjuk 2s linear infinite;
+            top:-15px;
+        }
+
+        @keyframes nunjuk {
+            0% {
+                top: 0px;
+            }
+            50% {
+                top:-15px;
+            }
+            100% {
+                top:0px;
+            }
+        }
     </style>
 </head>
 
