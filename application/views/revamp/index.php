@@ -2,8 +2,8 @@
 <div class="py-2 bg-searchbar" style="margin-top:-15px">
     <div class="d-none d-md-block" style="margin-top:5rem"></div>
     <div class="px-3 mb-3 mt-2">
-        <a href="<?= base_url('main/search'); ?>" class="">
-            <input type="text" class="form-control form-control-lg fs-2" id="searchbar" aria-describedby="searchBar" placeholder="" style="max-width:800px; margin:auto">
+        <a href="<?= base_url('main/search'); ?>" class="text-decoration-none">
+            <input type="text" class="form-control form-control-lg fs-2 " id="searchbar" aria-describedby="searchBar" placeholder="" style="max-width:800px; margin:auto">
         </a>
     </div>
     <!-- Brands Logo -->
