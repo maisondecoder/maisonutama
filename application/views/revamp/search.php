@@ -38,6 +38,6 @@
 
 <script>
     $(document).delay(800).ready(function() {
-        $("#searchbar").trigger("focus");
+        $("#searchbar").focus();
     });
 </script>
