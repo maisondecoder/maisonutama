@@ -69,7 +69,7 @@
 </script>
 
 <script>
-    $(document).ready(function() {
+    $(document).load(function() {
         $("#searchbar").trigger("focus");
     });
 </script>
