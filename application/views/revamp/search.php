@@ -38,9 +38,7 @@
 
 <script>
     $(document).ready(function() {
-        $("#searchbar").trigger("blur");
         $("#searchbar").blur();
-        $("#searchbar").delay(800).trigger("focus");
-        $("#searchbar").delay(800).focus();
+        $("#searchbar").delay(1000).focus();
     });
 </script>
