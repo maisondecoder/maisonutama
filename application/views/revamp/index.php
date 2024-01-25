@@ -1,5 +1,5 @@
 <!-- Hero CTA -->
-<div class="py-2 bg-searchbar" style="margin-top:-15px">
+<div class="py-2 bg-dark" style="margin-top:-15px">
     <div class="d-none d-md-block" style="margin-top:5rem"></div>
     <div class="px-3 mb-3 mt-2">
         <a href="<?= base_url('main/search'); ?>" class="text-decoration-none">
@@ -10,7 +10,7 @@
 
     <div class="container text-center mb-5">
         <img class="img-fluid" src="<?= $GLOBALS['domain_static'] . '/assets/logo-brands-homepage-putih.png'; ?>" width="600px" alt="Brand Partner Logo">
-        <div class="mt-4 fs-5 text-white text-center nunjuk"><i class="fa-solid fa-angles-down"></i></div>
+    
     </div>
 
     <div class="d-none d-md-block" style="margin-bottom:5rem"></div>

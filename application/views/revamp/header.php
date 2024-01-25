@@ -97,7 +97,7 @@
         .nunjuk {
             position: relative;
             animation: nunjuk 2s linear infinite;
-            top:-15px;
+            top:-10px;
         }
 
         @keyframes nunjuk {
@@ -105,7 +105,7 @@
                 top: 0px;
             }
             50% {
-                top:-15px;
+                top:-10px;
             }
             100% {
                 top:0px;
