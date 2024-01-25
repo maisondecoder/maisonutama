@@ -43,7 +43,7 @@
     <div id="hero" class="container p-4 pb-1 pt-sm-5 mb-5">
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-6 text-center">
-                <figure><img class="img-fluid" src="<?= $GLOBALS['domain_static'] . '/assets/img-babakagu-homepage.png'; ?>" style="max-height:400px" alt=""></figure>
+                <figure><img class="img-fluid rounded" src="<?= $GLOBALS['domain_static'] . '/assets/home-babakagu.webp'; ?>" style="max-height:400px" alt=""></figure>
             </div>
             <div class="col-sm-12 col-md-12 col-lg-6 my-2 my-md-5">
                 <div class="text-warning fw-bold">#LuxYourHome</div>
