@@ -10,7 +10,7 @@
 
     <div class="container text-center mb-5">
         <img class="img-fluid" src="<?= $GLOBALS['domain_static'] . '/assets/logo-brands-homepage-putih.png'; ?>" width="600px" alt="Brand Partner Logo">
-    
+
     </div>
 
     <div class="d-none d-md-block" style="margin-bottom:5rem"></div>
@@ -19,26 +19,7 @@
 
 </div>
 <div class=" bg-white" style="margin-top:-30px;">
-    <!-- Brand Partners -->
-    <?php if ($all_brands) { ?>
-        <div class="">
-            <div class="container p-4">
-                <h2><a href="<?= base_url('furniture-brand'); ?>" class="text-decoration-none text-reset">Best Seller <i class="fa-solid fa-arrow-right-long"></i></a></h2>
-                <section class="bestseller splide" aria-label="Best Seller">
-                    <div class="splide__track">
-                        <ul class="splide__list">
-                            <?php foreach ($all_brands as $key => $brand) { ?>
-                                <li class="splide__slide p-2"><a href="<?= base_url() . $brand['brand_slug'] . '?via=homepage-our-brand'; ?>">
-                                        <div class="rounded-lg rounded topacity" style="max-width:500px; background:#4C4C4C"><img class="img-fluid" src="<?= $GLOBALS['domain_static'] . '/assets/brands/' . $brand['brand_img']; ?>" alt="$brand['brand_name']"></div>
-                                    </a></li>
-                            <?php } ?>
-                        </ul>
-                    </div>
-                </section>
-            </div>
-        </div>
-    <?php } ?>
-    <!-- Brand Partners -->
+
 
     <div id="hero" class="container p-4 pb-1 pt-sm-5 mb-5">
         <div class="row">
@@ -60,6 +41,29 @@
         </div>
     </div>
     <!-- Hero CTA -->
+
+    <!-- Best Seller  -->
+    <?php if ($bs_products) { ?>
+        <div class="bg-light text-Dark border">
+            <div class="container p-4">
+                <h2>Best Seller</h2>
+                <section id="" class="bestseller splide" aria-label="Best Seller Products">
+                    <div class="splide__track">
+                        <ul class="splide__list">
+                            <?php foreach ($bs_products as $key => $bestseller) { ?>
+                                <li class="splide__slide p-2"><a href="<?= base_url('our-collections/') . $bestseller['product_slug']; ?>">
+                                        <img class="img-fluid mb-2 rounded border topacity" style="width:200px !important; height:250px !important; object-fit:cover !important;" src="<?= $GLOBALS['domain_static'] . '/assets/products/thumbnail/' . $bestseller['product_thumbnail']; ?>" alt="<?= $bestseller['product_name'] ?>">
+                                    </a>
+                                    <h4 class="text-secondary"><?= $bestseller['product_name']; ?></h4>
+                                </li>
+                            <?php } ?>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+        </div>
+    <?php } ?>
+    <!-- Best Seller -->
 
     <!-- Brand Partners -->
     <?php if ($all_brands) { ?>
@@ -166,17 +170,26 @@
 <script>
     new Splide('.bestseller', {
         type: 'loop',
-        perPage: 3,
+        perPage: 5,
         perMove: 1,
-        padding: '2rem',
+        padding: '3rem',
         autoplay: true,
         pagination: false,
         breakpoints: {
-            480: {
+            360: {
                 perPage: 1,
             },
-            1024: {
+            400: {
+                perPage: 1,
+            },
+            640: {
                 perPage: 2,
+            },
+            800: {
+                perPage: 2,
+            },
+            1024: {
+                perPage: 3,
             },
         }
     }).mount();

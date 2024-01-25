@@ -144,4 +144,27 @@ class Collection_model extends CI_Model
 
         return $get_all_catalog;
     }
+
+    public function group_catalog($group_id)
+    {
+        $this->db->select("*");
+        $this->db->from('ml_group');
+        $this->db->where('group_id', $group_id);
+        $group_catalog = $this->db->get()->row();
+
+        return $group_catalog;
+    }
+
+    public function product_in_group_catalog($group_items)
+    {
+        $group_items = explode(",",$group_items);
+        $array_items = $group_items;
+        $this->db->select("product_slug, product_name, product_thumbnail, product_status");
+        $this->db->from('ml_products');
+        $this->db->where_in('product_id ', $array_items);
+        $this->db->where("product_status", 1);
+        $product_in_group_catalog = $this->db->get()->result_array();
+
+        return $product_in_group_catalog;
+    }
 }
