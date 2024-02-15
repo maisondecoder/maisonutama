@@ -190,13 +190,13 @@
                 </div>
                 <div class="row">
                     <div class="col border rounded m-1 p-3 bg-light">
-                        <div class="fs-5 fw-bold">Kemang Jakarta</div>
-                        <div class="fs-6">Branch</div>
+                        <div class="fs-6 fw-bold">Kemang<br>Jakarta Selatan</div>
+                        <div class="fs-6 text-secondary">Branch</div>
                         <a target="_blank" class="btn btn-success mt-2" href="https://wa.me/6281388180020?text=Halo%20Maison%20Living%20Kemang%2C%20Saya%20ingin%20bertanya%20tentang%20produk..."><i class="fa-brands fa-whatsapp"></i> Whatsapp</a>
                     </div>
                     <div class="col border rounded m-1 p-3 bg-light">
-                        <div class="fs-5 fw-bold">BSD Alam Sutera</div>
-                        <div class="fs-6">Branch</div>
+                        <div class="fs-6 fw-bold">BSD<br>Alam Sutera</div>
+                        <div class="fs-6 text-secondary">Branch</div>
                         <a target="_blank" class="btn btn-success mt-2" href="https://wa.me/6281930002525?text=Halo%20Maison%20Living%20BSD%20Alam%20Sutera%2C%20Saya%20ingin%20bertanya%20tentang%20produk..."><i class="fa-brands fa-whatsapp"></i> Whatsapp</a>
                     </div>
                 </div>
