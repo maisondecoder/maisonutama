@@ -179,7 +179,7 @@
                 <div class="divider text-center mx-4">
                     <h5 class="">Contact Us</h5>
                 </div>
-                <div class="row">
+                <div class="row text-center">
                     <div class="col border rounded m-1 p-3 bg-light">
                         <div class="fs-6 fw-bold">Kemang<br>Jakarta Selatan</div>
                         <div class="fs-6 text-secondary">Branch</div>
