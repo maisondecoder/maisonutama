@@ -126,7 +126,7 @@
 <body>
     <nav class="navbar navbar-dark bg-dark">
         <div class="container-fluid p-1">
-            <img class="mx-auto" src="<?= base_url('/assets/') . 'logo-maison-navbar-putih.png'; ?>" alt="Maison Living" height="40">
+            <img class="mx-auto" src="<?= base_url('/assets/') . 'logo-maison-navbar-putih.webp'; ?>" alt="Maison Living" height="40">
         </div>
     </nav>
     <div class="mx-auto" style="max-width:800px;">
@@ -170,7 +170,7 @@
                 <h4>Elevate Your Space with Timeless High-End Furniture</h4>
             </div>
             <div>
-                <p>At Maison, we see furniture as a masterpiece. No Detail is too small to overlook; a commitment to deliver a top-notch quality and exceptional service. With a legacy spanning over 30 years, Maison has partnered with world-class international brands.</p>
+                <p>At Maison, we see furniture as a masterpiece. No detail is too small to overlook; a commitment to deliver a top-notch quality and exceptional service. With a legacy spanning over 30 years, Maison has partnered with world-class international brands.</p>
             </div>
         </div>  
 
@@ -208,12 +208,14 @@
         <div class="container p-4">
             <div class="row">
                 <div class="col-sm-12 col-md-9">
-                    <img class="mb-4" src="<?= base_url('/assets/') . 'logo-maison-navbar-putih.png' ?>" alt="Maison Living" height="40">
+                    <img class="mb-4" src="<?= base_url('/assets/') . 'logo-maison-navbar-putih.webp' ?>" alt="Maison Living" height="40">
                 </div>
                 <div class="col-sm-12 col-md-3">
                     <h4>Our Stores</h4>
                     <p class="fs-6 ">Monday-Sunday<br>
-                        10 AM - 8 PM</p>
+                        10 AM - 8 PM<br>
+                        <em>*Open everyday including public holiday</em>
+                    <br></p>
                     <p class="fs-6"><strong>Kemang Jakarta</strong><br>
                         Jl. Raya Kemang Selatan No.31<br>
                         Jakarta Selatan, 12730<br>
