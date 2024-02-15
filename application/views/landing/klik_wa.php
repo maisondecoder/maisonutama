@@ -165,7 +165,7 @@
             </button>
         </div>
         <div class="container">
-            <div class="text-warning fw-bold my-3">#LuxYourHome</div>
+            <div class="text-warning fw-bold my-2">#LuxYourHome</div>
             <div>
                 <h3>Elevate Your Space with Timeless High-End Furniture</h3>
             </div>
