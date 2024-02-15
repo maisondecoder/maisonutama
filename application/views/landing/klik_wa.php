@@ -47,7 +47,7 @@
 
         p {
             font-family: 'Karla', sans-serif;
-            font-size: 16pt;
+            font-size: 12pt;
         }
 
         ul.nav {
@@ -167,16 +167,16 @@
         <div class="container">
             <div class="text-warning fw-bold my-3">#LuxYourHome</div>
             <div>
-                <h1>Elevate Your Space with Timeless High-End Furniture</h1>
+                <h3>Elevate Your Space with Timeless High-End Furniture</h3>
             </div>
             <div>
-                <p>Elevate Your Space with Timeless High-End Furniture and Expert Interior Design. Tailored for Your Unique Style and Comfort.</p>
+                <p>At Maison, we see furniture as a masterpiece. No Detail is too small to overlook; a commitment to deliver a top-notch quality and exceptional service. With a legacy spanning over 30 years, Maison has partnered with world-class international brands.</p>
             </div>
         </div>
 
         <div class="container my-5">
             <div class="divider text-center mx-4">
-                <h2 class="">Our Brands</h3>
+                <h4 class="">Our Brands</h3>
             </div>
             <div class="row">
                 <div><img class="img-fluid" src="<?= base_url('/assets/landing/') . 'brands.webp'; ?>" alt=""></div>
@@ -186,7 +186,7 @@
         <div style="margin-bottom:100px">
             <div class="container my-4">
                 <div class="divider text-center mx-4">
-                    <h2 class="">Contact Us</h3>
+                    <h4 class="">Contact Us</h3>
                 </div>
                 <div class="row">
                     <div class="col border rounded m-1 p-3 bg-light">
