@@ -174,7 +174,7 @@
             </div>
         </div>  
 
-        <div style="margin-bottom:100px">
+        <div style="margin-bottom:30px">
             <div class="container my-4">
                 <div class="divider text-center mx-4">
                     <h5 class="">Contact Us</h5>
