@@ -172,16 +172,7 @@
             <div>
                 <p>At Maison, we see furniture as a masterpiece. No Detail is too small to overlook; a commitment to deliver a top-notch quality and exceptional service. With a legacy spanning over 30 years, Maison has partnered with world-class international brands.</p>
             </div>
-        </div>
-
-        <div class="container my-2">
-            <div class="divider text-center mx-4">
-                <h5 class="">Our Brands</h5>
-            </div>
-            <div class="row">
-                <div><img class="img-fluid" src="<?= base_url('/assets/landing/') . 'brands.webp'; ?>" alt=""></div>
-            </div>
-        </div>
+        </div>  
 
         <div style="margin-bottom:100px">
             <div class="container my-4">
@@ -201,6 +192,14 @@
                     </div>
                 </div>
             </div>
+            <div class="container my-2">
+            <div class="divider text-center mx-4">
+                <h5 class="">Our Brands</h5>
+            </div>
+            <div class="row">
+                <div><img class="img-fluid" src="<?= base_url('/assets/landing/') . 'brands.webp'; ?>" alt=""></div>
+            </div>
+        </div>
         </div>
     </div>
 
