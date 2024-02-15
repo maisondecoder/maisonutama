@@ -3,7 +3,7 @@
         <div class="container p-4">
             <div class="row">
                 <div class="col-sm-12 col-md-6">
-                    <img class="mb-4" src="<?= $GLOBALS['domain_static'].'/assets/logo-maison-navbar-putih.png' ?>" alt="Maison Living" height="40">
+                    <img class="mb-4" src="<?= $GLOBALS['domain_static'].'/assets/logo-maison-navbar-putih.webp' ?>" alt="Maison Living" height="40">
                 </div>
                 <div class="col-sm-12 col-md-3">
                     <h4>Our Stores</h4>

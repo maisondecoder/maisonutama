@@ -1,4 +1,4 @@
-<!-- Hero CTA -->
+<!-- Search
 <div class="py-2 bg-dark" style="margin-top:-15px">
     <div class="d-none d-md-block" style="margin-top:5rem"></div>
     <div class="px-3 mb-3 mt-2">
@@ -6,7 +6,6 @@
             <input type="text" class="form-control form-control-lg fs-2 " id="searchbar" aria-describedby="searchBar" placeholder="" style="max-width:800px; margin:auto">
         </a>
     </div>
-    <!-- Brands Logo -->
 
     <div class="container text-center mb-5">
         <img class="img-fluid" src="<?= $GLOBALS['domain_static'] . '/assets/logo-brands-homepage-putih.png'; ?>" width="600px" alt="Brand Partner Logo">
@@ -14,13 +13,10 @@
     </div>
 
     <div class="d-none d-md-block" style="margin-bottom:5rem"></div>
-    <!-- Brands Logo -->
-
-
 </div>
+-->
+<!-- Hero CTA -->
 <div class=" bg-white" style="margin-top:-30px;">
-
-
     <div id="hero" class="container p-4 pb-1 pt-sm-5 mb-5">
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-6 text-center">
