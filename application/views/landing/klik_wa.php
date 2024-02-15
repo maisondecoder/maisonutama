@@ -176,7 +176,7 @@
 
         <div class="container my-3">
             <div class="divider text-center mx-4">
-                <h5 class="">Our Brands</h5>
+                <h6 class="">Our Brands</h6>
             </div>
             <div class="row">
                 <div><img class="img-fluid" src="<?= base_url('/assets/landing/') . 'brands.webp'; ?>" alt=""></div>
@@ -186,7 +186,7 @@
         <div style="margin-bottom:100px">
             <div class="container my-4">
                 <div class="divider text-center mx-4">
-                    <h5 class="">Contact Us</h5>
+                    <h6 class="">Contact Us</h6>
                 </div>
                 <div class="row">
                     <div class="col border rounded m-1 p-3 bg-light">
