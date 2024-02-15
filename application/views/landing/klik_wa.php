@@ -174,7 +174,7 @@
             </div>
         </div>
 
-        <div class="container my-3">
+        <div class="container my-2">
             <div class="divider text-center mx-4">
                 <h6 class="">Our Brands</h6>
             </div>
