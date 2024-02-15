@@ -63,3 +63,6 @@ $route['(:any)'] = 'main/brand_detail/$1';
 $route['(:any)/(:num)'] = 'main/brand_detail/$1/$2';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+
+/* Landing Page */
+$route['p/contact-us'] = 'backend/testlanding';
