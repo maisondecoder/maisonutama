@@ -22,7 +22,7 @@
 
 
 
-    <!-- Google tag (gtag.js)
+    <!-- Google tag (gtag.js)-->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-TELBVRXJ1G"></script>
 
     <script>
@@ -35,7 +35,7 @@
 
         gtag('config', 'G-TELBVRXJ1G');
     </script>
-    -->
+    
     <style>
         h1,
         h2,
