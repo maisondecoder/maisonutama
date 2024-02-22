@@ -1,7 +1,7 @@
 <!-- Intro Brand -->
 <div id="intro-brands" class="container p-4 pb-1 text-center mb-4">
     <h2 class="mb-4 fw-bold">Intro Brand</h2>
-    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Non velit possimus cupiditate repellat nesciunt itaque minima nobis quaerat labore accusamus, laborum doloribus omnis iusto magni quia! Nisi dolore iure corrupti?</p>
+    <p>With a legacy spanning over 30 years, Maison has partnered with world-class international brands.</p>
 </div>
 
 <div id="brand-partners" class="container p-4 pb-1 text-center mb-4">

@@ -2,13 +2,28 @@
 
 class Backend_model extends CI_Model
 {
-    public function get_all_brands()
+    public function get_all_brands($brand_id = 0)
     {
         $this->db->select('*');
         $this->db->from('ml_brands');
+        if ($brand_id) {
+            $this->db->where('brand_id', $brand_id);
+        }
         $get_all_brands = $this->db->get()->result_array();
-
         return $get_all_brands;
+    }
+
+    public function edit_brand($name, $slug, $desc, $img, $brand_id)
+    {
+        $this->db->set('brand_name', $name);
+        $this->db->set('brand_slug', $slug);
+        $this->db->set('brand_desc', $desc);
+        $this->db->set('brand_img', $img);
+        $this->db->where('brand_id', $brand_id);
+        $this->db->update('ml_brands');
+
+        $update = $this->db->affected_rows ();
+        return $update;
     }
 
     public function get_all_products()

@@ -16,7 +16,7 @@
 </div>
 -->
 <!-- Hero CTA -->
-<div class=" bg-white" style="margin-top:-30px;">
+<div class=" bg-white" style="margin-top:0px;">
     <div id="hero" class="container p-4 pb-1 pt-sm-5 mb-5">
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-6 text-center">
@@ -90,7 +90,7 @@
                 <?php foreach ($all_stores as $key => $store) { ?>
                     <div class="row mb-3">
                         <div class="col-sm-12 col-md-6 text-center">
-                            <img class="img-fluid mb-2" src="<?= $GLOBALS['domain_static'] . '/assets/' . $store['store_img']; ?>" style="max-height:300px" alt="<?= $store['store_name']; ?>">
+                            <img class="img-fluid mb-2" src="<?= $GLOBALS['domain_static'] . '/assets/' . $store['store_img']; ?>?text=<?= $store['store_default_text']; ?>" style="max-height:300px" alt="<?= $store['store_name']; ?>">
                         </div>
                         <div class="col-sm-12 col-md-6 my-3 my-sm-0">
                             <h3><?= $store['store_name']; ?></h3>
@@ -98,7 +98,7 @@
                                 <?= $store['store_addrs']; ?><br>
                             </p>
                             <div>
-                                <a target="_blank" class="btn btn-dark btn-lg" href="https://wa.me/<?= $store['store_wa']; ?>"><i class="fa-brands fa-whatsapp"></i> Whatsapp</a>
+                                <a target="_blank" class="btn btn-dark btn-lg" href="https://wa.me/<?= $store['store_wa']; ?>?text=<?= $store['store_default_text']; ?>"><i class="fa-brands fa-whatsapp"></i> Whatsapp</a>
                                 <a target="_blank" class="btn btn-dark btn-lg" href="<?= $store['store_gmap']; ?>"><i class="fa-regular fa-map"></i> Google Map</a>
                             </div>
                         </div>
@@ -130,7 +130,7 @@
                         <div class="col-sm-12 col-md-12 my-sm-0">
                             <div class="text-center">
                                 <h4><?= $store['store_name']; ?></h4>
-                                <a target="_blank" class="btn btn-dark" href="https://wa.me/<?= $store['store_wa']; ?>"><i class="fa-brands fa-whatsapp"></i> Whatsapp</a>
+                                <a target="_blank" class="btn btn-dark" href="https://wa.me/<?= $store['store_wa']; ?>?text=<?= $store['store_default_text']; ?>"><i class="fa-brands fa-whatsapp"></i> Whatsapp</a>
                                 <a target="_blank" class="btn btn-dark" href="<?= $store['store_gmap']; ?>"><i class="fa-regular fa-map"></i> Google Maps</a>
                             </div>
                         </div>

@@ -7,8 +7,8 @@ class Main extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		//$GLOBALS['domain_static'] = 'https://localhost/maisonutama';
-		$GLOBALS['domain_static'] = 'https://9v6e9irhcc.r.worldssl.net';
+		$GLOBALS['domain_static'] = 'https://localhost/maisonutama';
+		//$GLOBALS['domain_static'] = 'https://9v6e9irhcc.r.worldssl.net';
 		// Your own constructor code
 	}
 
@@ -58,6 +58,7 @@ class Main extends CI_Controller
 
 	public function brands()
 	{
+		
 		//Global Data To Display *Mandatory
 		$this->load->model('brand_model');
 		$this->load->model('store_model');

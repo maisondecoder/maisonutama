@@ -19,7 +19,24 @@
     <link rel="apple-touch-icon" href="<?= base_url('/assets/') . 'icon/maison-favicon-180x180.jpg'; ?>" />
     <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
 
-
+    
+    <!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '706886934863414');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=706886934863414&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 
     <!-- Google tag (gtag.js)-->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-TELBVRXJ1G"></script>
@@ -172,7 +189,7 @@
             <div>
                 <p>At Maison, we see furniture as a masterpiece. No detail is too small to overlook; a commitment to deliver a top-notch quality and exceptional service. With a legacy spanning over 30 years, Maison has partnered with world-class international brands.</p>
             </div>
-        </div>  
+        </div>
 
         <div style="margin-bottom:30px">
             <div class="container my-4">
@@ -193,13 +210,13 @@
                 </div>
             </div>
             <div class="container my-2">
-            <div class="divider text-center mx-4">
-                <h5 class="">Our Brands</h5>
+                <div class="divider text-center mx-4">
+                    <h5 class="">Our Brands</h5>
+                </div>
+                <div class="row">
+                    <div><img class="img-fluid" src="<?= base_url('/assets/landing/') . 'brands.webp'; ?>" alt=""></div>
+                </div>
             </div>
-            <div class="row">
-                <div><img class="img-fluid" src="<?= base_url('/assets/landing/') . 'brands.webp'; ?>" alt=""></div>
-            </div>
-        </div>
         </div>
     </div>
 
@@ -215,7 +232,8 @@
                     <p class="fs-6 ">Monday-Sunday<br>
                         10 AM - 8 PM<br>
                         <em>*Open everyday including public holiday</em>
-                    <br></p>
+                        <br>
+                    </p>
                     <p class="fs-6"><strong>Kemang Jakarta</strong><br>
                         Jl. Raya Kemang Selatan No.31<br>
                         Jakarta Selatan, 12730<br>
