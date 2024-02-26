@@ -32,7 +32,7 @@
                                     echo '<span class="badge text-bg-danger">OFF</span>';
                                 } ?></td>
                             <td class="text-end">
-                                <a href="<?= base_url('backend/brands/edit/').$brand['brand_id']; ?>" class="btn btn-outline-primary" title="Edit"><i class="fas fa-edit"></i></a> <a href="#preview" class="btn btn-outline-success" title="Preview"><i class="fa-solid fa-eye"></i></a>
+                                <a href="<?= base_url('backend/brands/edit/').$brand['brand_id']; ?>" class="btn btn-outline-primary" title="Edit"><i class="fas fa-edit"></i></a> <a target="_blank" href="<?= base_url().$brand['brand_slug'].'?via=preview'; ?>" class="btn btn-outline-success" title="Preview"><i class="fa-solid fa-eye"></i></a>
                             </td>
                         </tr>
                     <?php } ?>
