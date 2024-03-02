@@ -55,6 +55,32 @@ class Backend_model extends CI_Model
         return $soft_delete;
     }
 
+    public function count_product_in_brand($brand_id)
+    {
+        $this->db->select('brand_id, count(product_id) as "total_item"');
+        $this->db->from('ml_products');
+        $this->db->where('brand_id', $brand_id);
+        $count_product_in_brand = $this->db->get()->row_array();
+        return $count_product_in_brand;
+    }
+
+    public function count_room_in_brand($brand_id)
+    {
+        $this->db->select('brand_id, count(DISTINCT room_id) as "total_room"');
+        $this->db->from('ml_products');
+        $this->db->where('brand_id', $brand_id);
+        $count_room_in_brand = $this->db->get()->row_array();
+        return $count_room_in_brand;
+    }
+
+    public function count_cat_in_brand($brand_id)
+    {
+        $this->db->select('brand_id, count(DISTINCT cat_id) as "total_cat"');
+        $this->db->from('ml_products');
+        $this->db->where('brand_id', $brand_id);
+        $count_cat_in_brand = $this->db->get()->row_array();
+        return $count_cat_in_brand;
+    }
     //////////////////////// BRAND END ////////////////////////
 
     //////////////////////// ROOM START ////////////////////////

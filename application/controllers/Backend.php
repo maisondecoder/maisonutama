@@ -80,6 +80,25 @@ class Backend extends CI_Controller
             } elseif ($form == "list") {
                 //Menampilkan seluruh data brand
                 $data['brands'] = $this->backend_model->get_all_brands();
+
+                $data['total_products'] = array();
+                foreach ($data['brands'] as $key => $brand) {
+                    $items = $this->backend_model->count_product_in_brand($brand['brand_id']);
+                    array_push($data['total_products'], $items);
+                }
+
+                $data['total_rooms'] = array();
+                foreach ($data['brands'] as $key => $brand) {
+                    $items = $this->backend_model->count_room_in_brand($brand['brand_id']);
+                    array_push($data['total_rooms'], $items);
+                }
+
+                $data['total_cats'] = array();
+                foreach ($data['brands'] as $key => $brand) {
+                    $items = $this->backend_model->count_cat_in_brand($brand['brand_id']);
+                    array_push($data['total_cats'], $items);
+                }
+
                 $this->load->view('backend/header', $data);
                 $this->load->view('backend/brands-list');
                 $this->load->view('backend/footer');

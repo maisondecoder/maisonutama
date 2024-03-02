@@ -68,8 +68,6 @@
                                 <li><a class="dropdown-item" href="<?= base_url('backend/rooms/add'); ?>">Add New</a></li>
                             </ul>
                         </li>
-                        
-                        
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Master Category
@@ -87,6 +85,10 @@
                                 <li><a class="dropdown-item" href="<?= base_url('backend/stores/list'); ?>">Store List</a></li>
                                 <li><a class="dropdown-item" href="<?= base_url('backend/stores/add'); ?>">Add New</a></li>
                             </ul>
+                        </li>
+                        <hr>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="<?= base_url('backend/trash'); ?>">Trash Bin</a>
                         </li>
                 </div>
             </div>

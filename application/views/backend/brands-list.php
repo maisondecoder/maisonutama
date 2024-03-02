@@ -10,7 +10,9 @@
                         <th class="text-start" width="100" scope="col">Logo</th>
                         <th class="text-center" width="200" scope="col">Name</th>
                         <th class="text-center" width="200" scope="col">Slug</th>
-                        <th class="text-center" width="200" scope="col">Description</th>
+                        <th class="text-center" width="75" scope="col">Total Product</th>
+                        <th class="text-center" width="75" scope="col">Total Category</th>
+                        <th class="text-center" width="75" scope="col">Total Room</th>
                         <th class="text-center" width="100" scope="col">Status</th>
                         <th class="text-end" scope="col">Action</th>
                     </tr> 
@@ -25,7 +27,9 @@
                             </td>
                             <td><?= $brand['brand_name']; ?></td>
                             <td><?= $brand['brand_slug']; ?></td>
-                            <td><textarea cols="40" rows="5" readonly><?= $brand['brand_desc']; ?></textarea></td>
+                            <td class="text-center"><?= $total_products[$key]['total_item']; ?></td>
+                            <td class="text-center"><?= $total_cats[$key]['total_cat']; ?></td>
+                            <td class="text-center"><?= $total_rooms[$key]['total_room']; ?></td>
                             <td class="text-center"><?php if ($brand['brand_status']) {
                                     echo '<span class="badge text-bg-success">ON</span>';
                                 } else {
