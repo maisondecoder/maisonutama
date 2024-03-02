@@ -1,5 +1,5 @@
 <div class="container">
-    <h1 class="">Product List</h1>
+    <h1 class="mb-4">Product List</h1>
     <div class="card border p-2">
         <div class="table-responsive">
             <table id="list" class="table">
@@ -22,7 +22,7 @@
                             <td class="fw-bold"><?= $key+1; ?></td>
                             <td width="50" scope="row"><?= $product['product_id']; ?></td>
                             <td width="150">
-                                <figure><img src="<?= base_url() . '/assets/products/thumbnail/' . $product['product_thumbnail']; ?>" alt="<?= $product['product_name']; ?> Logo Image" width="100" style="background:#4C4C4C"></figure>
+                                <figure><img src="<?= base_url() . '/assets/products/thumbnail/' . $product['product_thumbnail']; ?>" alt="<?= $product['product_name']; ?> Thumbnail" width="100" style="background:#4C4C4C"></figure>
                             </td>
                             <td><?= $product['product_name']; ?></td>
                             <td><?= $product['brand_name']; ?></td>

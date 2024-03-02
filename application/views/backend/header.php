@@ -30,32 +30,10 @@
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="<?= base_url('backend/dashboard'); ?>">Dashboard</a>
                         </li>
-                        <!--
+                        <hr>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Master Data
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="<?= base_url('backend/brands'); ?>">Brands</a></li>
-                                <li><a class="dropdown-item" href="<?= base_url('backend/products'); ?>">Products</a></li>
-                                <li><a class="dropdown-item" href="<?= base_url('backend/rooms'); ?>">Rooms</a></li>
-                                <li><a class="dropdown-item" href="<?= base_url('backend/categories'); ?>">Categories</a></li>
-                                <li><a class="dropdown-item" href="<?= base_url('backend/stores'); ?>">Stores</a></li>
-                            </ul>
-                        </li>
-                        -->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Master Brand
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="<?= base_url('backend/brands'); ?>">Brand List</a></li>
-                                <li><a class="dropdown-item" href="#add">Add New</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Master Product
+                                Content Product
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="<?= base_url('backend/products'); ?>">Product List</a></li>
@@ -64,20 +42,41 @@
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Master Room
+                                Content Group
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="<?= base_url('backend/rooms'); ?>">Room List</a></li>
+                                <li><a class="dropdown-item" href="<?= base_url('backend/groups/list'); ?>">Group List</a></li>
                                 <li><a class="dropdown-item" href="#add">Add New</a></li>
                             </ul>
                         </li>
+                        <hr>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Master Brand
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="<?= base_url('backend/brands/list'); ?>">Brand List</a></li>
+                                <li><a class="dropdown-item" href="<?= base_url('backend/brands/add'); ?>">Add New</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Master Room
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="<?= base_url('backend/rooms/list'); ?>">Room List</a></li>
+                                <li><a class="dropdown-item" href="<?= base_url('backend/rooms/add'); ?>">Add New</a></li>
+                            </ul>
+                        </li>
+                        
+                        
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Master Category
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="<?= base_url('backend/categories'); ?>">Category List</a></li>
-                                <li><a class="dropdown-item" href="#add">Add New</a></li>
+                                <li><a class="dropdown-item" href="<?= base_url('backend/categories/list'); ?>">Category List</a></li>
+                                <li><a class="dropdown-item" href="<?= base_url('backend/categories/add'); ?>">Add New</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
@@ -85,8 +84,8 @@
                                 Master Store
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="<?= base_url('backend/stores'); ?>">Store List</a></li>
-                                <li><a class="dropdown-item" href="#add">Add New</a></li>
+                                <li><a class="dropdown-item" href="<?= base_url('backend/stores/list'); ?>">Store List</a></li>
+                                <li><a class="dropdown-item" href="<?= base_url('backend/stores/add'); ?>">Add New</a></li>
                             </ul>
                         </li>
                 </div>

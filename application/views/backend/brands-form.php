@@ -1,5 +1,5 @@
 <div class="container">
-    <h1 class=""><?= ucfirst($form); ?> Brand</h1>
+    <h1 class="mb-4"><?= ucfirst($form); ?> Brand</h1>
     <div class="card border p-4 mb-4">
         <?php echo validation_errors(); ?>
         <form action="<?= base_url('backend/brands/' . $form . '/') . $brand['brand_id']; ?>" method="POST">
@@ -16,9 +16,9 @@
                 <textarea class="form-control" onchange="fieldonchange();" id="BrandDescription" name="BrandDescription" rows="6"><?= $brand['brand_desc']; ?></textarea>
             </div>
             <div class="mb-3">
-                <label for="BrandImage" class="form-label fw-bold">Image</label>
+                <label for="BrandImage" class="form-label fw-bold">Logo</label>
                 <?php if ($brand['brand_img']) { ?><figure><img src="<?= base_url() . 'assets/brands/' . $brand['brand_img']; ?>" class="bg-dark img-fluid rounded" width="250"></figure><?php } ?>
-                <input type="text" onchange="fieldonchange();" class="form-control" id="BrandImage" name="BrandImage" placeholder="filename-image-brand-logo.webp" value="<?= $brand['brand_img']; ?>">
+                <input type="text" onchange="fieldonchange();" class="form-control" id="BrandImage" name="BrandImage" placeholder="filename-brand-logo.webp" value="<?= $brand['brand_img']; ?>">
             </div>
             <div class="mb-3">
                 <label for="BrandStatus" class="form-label fw-bold">Status</label>
@@ -31,7 +31,7 @@
                 <div class="row">
                     <div class="col">
                         <button id="submit" type="submit" class="btn btn-primary disabled">Submit</button>
-                        <a href="#" class="btn btn-outline-secondary">Cancel</a>
+                        <a href="javascript:history.back()" class="btn btn-outline-secondary">Cancel</a>
                     </div>
                     <div class="col text-end">
                         <?php if ($form == 'edit') { ?><a href="<?= base_url('backend/brands/trash/') . $brand['brand_id']; ?>" class="btn btn-outline-danger">Delete</a> <?php } ?>

@@ -1,5 +1,5 @@
 <div class="container">
-    <h1 class=""><?= ucfirst($form); ?> Room</h1>
+    <h1 class="mb-4"><?= ucfirst($form); ?> Room</h1>
     <div class="card border p-4 mb-4">
         <?php echo validation_errors(); ?>
         <form action="<?= base_url('backend/rooms/' . $form . '/') . $room['room_id']; ?>" method="POST">
@@ -12,9 +12,9 @@
                 <input type="text" onchange="fieldonchange();" class="form-control" id="RoomSlug" name="RoomSlug" placeholder="room-slug" value="<?= $room['room_slug']; ?>">
             </div>
             <div class="mb-3">
-                <label for="RoomImage" class="form-label fw-bold">Image</label>
+                <label for="RoomImage" class="form-label fw-bold">Thumbnail</label>
                 <?php if ($room['room_img']) { ?><figure><img src="<?= base_url() . 'assets/rooms/' . $room['room_img']; ?>" class="bg-dark img-fluid rounded" width="250"></figure><?php } ?>
-                <input type="text" onchange="fieldonchange();" class="form-control" id="RoomImage" name="RoomImage" placeholder="filename-image-room-logo.webp" value="<?= $room['room_img']; ?>">
+                <input type="text" onchange="fieldonchange();" class="form-control" id="RoomImage" name="RoomImage" placeholder="filename-thumbnail-room.webp" value="<?= $room['room_img']; ?>">
             </div>
             <div class="mb-3">
                 <label for="RoomStatus" class="form-label fw-bold">Status</label>
@@ -27,7 +27,7 @@
                 <div class="row">
                     <div class="col">
                         <button id="submit" type="submit" class="btn btn-primary disabled">Submit</button>
-                        <a href="#" class="btn btn-outline-secondary">Cancel</a>
+                        <a href="javascript:history.back()" class="btn btn-outline-secondary">Cancel</a>
                     </div>
                     <div class="col text-end">
                         <?php if ($form == 'edit') { ?><a href="<?= base_url('backend/rooms/trash/') . $room['room_id']; ?>" class="btn btn-outline-danger">Delete</a> <?php } ?>

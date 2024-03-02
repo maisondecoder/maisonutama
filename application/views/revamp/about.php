@@ -22,7 +22,7 @@
             <?php foreach ($all_stores as $key => $store) { ?>
                 <div class="row mb-3">
                     <div class="col-sm-12 col-md-6 text-center">
-                        <img class="img-fluid mb-2" src="<?= $GLOBALS['domain_static'] . '/assets/' . $store['store_img']; ?>?text=<?= $store['store_default_text']; ?>" style="max-height:300px" alt="<?= $store['store_name']; ?>">
+                        <img class="img-fluid mb-2" src="<?= $GLOBALS['domain_static'] . '/assets/stores/' . $store['store_img']; ?>?text=<?= $store['store_default_text']; ?>" style="max-height:300px" alt="<?= $store['store_name']; ?>">
                     </div>
                     <div class="col-sm-12 col-md-6 my-3 my-sm-0">
                         <h3><?= $store['store_name']; ?></h3>
@@ -50,7 +50,7 @@
                 <ul class="splide__list">
                     <?php foreach ($all_stores as $key => $store) { ?>
                         <li class="splide__slide p-2">
-                            <div class="rounded-lg rounded topacity" style="max-width:400px; background:#4C4C4C"><img class="img-fluid mb-2" src="<?= $GLOBALS['domain_static'] . '/assets/' . $store['store_img']; ?>" style="max-height:300px" alt="<?= $store['store_name']; ?>"></div>
+                            <div class="rounded-lg rounded topacity" style="max-width:400px; background:#4C4C4C"><img class="img-fluid mb-2" src="<?= $GLOBALS['domain_static'] . '/assets/stores/' . $store['store_img']; ?>" style="max-height:300px" alt="<?= $store['store_name']; ?>"></div>
                         </li>
                     <?php } ?>
                 </ul>
