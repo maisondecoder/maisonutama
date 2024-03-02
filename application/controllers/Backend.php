@@ -92,7 +92,7 @@ class Backend extends CI_Controller
                     if ($soft_delete) {
                         $this->session->set_flashdata('msg', 'Swal.fire("Item Deleted!");');
                         redirect('backend/brands/list/?msg=delete-success');
-                    }else{
+                    } else {
                         $this->session->set_flashdata('msg', 'Swal.fire("Delete Failed!");');
                         redirect('backend/brands/list/?msg=delete-failed');
                     }
@@ -113,14 +113,90 @@ class Backend extends CI_Controller
         $this->load->view('backend/footer');
     }
 
-    public function rooms()
+    public function rooms($form = null, $room_id = 0)
     {
-        $this->load->model('backend_model');
-        $data['rooms'] = $this->backend_model->get_all_rooms();
+        $whitelist_rooms = array("add", "edit", "list", "trash");
+        if (in_array($form, $whitelist_rooms)) {
+            $this->load->model('backend_model');
+            if ($form == "add" || $form == "edit") {
 
-        $this->load->view('backend/header', $data);
-        $this->load->view('backend/rooms-list');
-        $this->load->view('backend/footer');
+                if ($form == "add") {
+                    $data['form'] = 'add';
+                    //Pada Form Add, kolom isian dibuat kosong dulu
+                    $data['room']['room_id'] = "";
+                    $data['room']['room_name'] = "";
+                    $data['room']['room_slug'] = "";
+                    $data['room']['room_desc'] = "";
+                    $data['room']['room_img'] = "";
+                    $data['room']['room_status'] = 0;
+                } else {
+                    $data['form'] = 'edit';
+                    //Ngecek apakah ID Brand ada di DB
+                    $data['room'] = $this->backend_model->get_all_rooms($room_id)[0];
+                    if (!$data['room']) {
+                        redirect("backend/room/list");
+                    }
+                }
+
+                $this->load->library('form_validation');
+                $this->form_validation->set_rules('RoomName', 'Room Name', 'required');
+                $this->form_validation->set_rules('RoomSlug', 'Slug', 'required');
+                $this->form_validation->set_rules('RoomImage', 'Image', 'required');
+                $this->form_validation->set_rules('RoomStatus', 'Status', 'required');
+
+                if ($this->form_validation->run() == FALSE) {
+                    $this->load->view('backend/header', $data);
+                    $this->load->view('backend/rooms-form');
+                    $this->load->view('backend/footer');
+                } else {
+                    $name = $this->input->post('RoomName');
+                    $slug = $this->input->post('RoomSlug');
+                    $image = $this->input->post('RoomImage');
+                    $status = $this->input->post('RoomStatus');
+                    if ($form == "add") {
+                        $add = $this->backend_model->add_room($name, $slug, $image, $status);
+                        if ($add) {
+                            $this->session->set_flashdata('msg', 'Swal.fire("New Data Added!");');
+                            redirect('backend/rooms/list/?msg=add-success');
+                        } else {
+                            $this->session->set_flashdata('msg', 'Swal.fire("Add Data Failed!");');
+                            redirect('backend/rooms/list/?msg=add-failed');
+                        }
+                    } else {
+                        $update = $this->backend_model->edit_room($name, $slug, $image, $status, $room_id);
+                        if ($update) {
+                            $this->session->set_flashdata('msg', 'Swal.fire("Update Saved!");');
+                            redirect('backend/rooms/list/?msg=update-saved');
+                        } else {
+                            $this->session->set_flashdata('msg', 'Swal.fire("Update Failed!");');
+                            redirect('backend/rooms/edit/' . $room_id . '?msg=update-failed');
+                        }
+                    }
+                }
+            } elseif ($form == "list") {
+                //Menampilkan seluruh data brand
+                $data['rooms'] = $this->backend_model->get_all_rooms();
+                $this->load->view('backend/header', $data);
+                $this->load->view('backend/rooms-list');
+                $this->load->view('backend/footer');
+            } elseif ($form == "trash") {
+                $cek_id = $this->backend_model->get_all_rooms($room_id);
+                if (!$cek_id) {
+                    redirect("backend/rooms/list?msg=invalid-id");
+                } else {
+                    $soft_delete = $this->backend_model->soft_delete_brand($room_id);
+                    if ($soft_delete) {
+                        $this->session->set_flashdata('msg', 'Swal.fire("Item Deleted!");');
+                        redirect('backend/rooms/list/?msg=delete-success');
+                    } else {
+                        $this->session->set_flashdata('msg', 'Swal.fire("Delete Failed!");');
+                        redirect('backend/rooms/list/?msg=delete-failed');
+                    }
+                }
+            }
+        } else {
+            redirect("backend/rooms/list");
+        }
     }
 
     public function categories()

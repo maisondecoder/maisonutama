@@ -65,13 +65,29 @@ class Backend_model extends CI_Model
         return $get_all_products;
     }
 
-    public function get_all_rooms()
+    public function get_all_rooms($room_id = 0)
     {
         $this->db->select('*');
         $this->db->from('ml_rooms');
+        if ($room_id) {
+            $this->db->where('room_id', $room_id);
+        }
         $get_all_rooms = $this->db->get()->result_array();
 
         return $get_all_rooms;
+    }
+
+    public function edit_room($name, $slug, $img, $status, $room_id)
+    {
+        $this->db->set('room_name', $name);
+        $this->db->set('room_slug', $slug);
+        $this->db->set('room_img', $img);
+        $this->db->set('room_status', $status);
+        $this->db->where('room_id', $room_id);
+        $this->db->update('ml_rooms');
+
+        $update = $this->db->affected_rows();
+        return $update;
     }
 
     public function get_all_cats()

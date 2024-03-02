@@ -13,7 +13,7 @@
                         <th scope="col">Description</th>
                         <th scope="col">Status</th>
                         <th scope="col"></th>
-                    </tr>
+                    </tr> 
                 </thead>
                 <tbody>
                     <?php foreach ($brands as $key => $brand) { ?>

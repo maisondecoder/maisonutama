@@ -9,7 +9,7 @@
             </div>
             <div class="mb-3">
                 <label for="BrandSlug" class="form-label fw-bold">Slug</label>
-                <input type="text" onchange="fieldonchange();" class="form-control" id="BrandSlug" name="BrandSlug" placeholder="brand-name" value="<?= $brand['brand_slug']; ?>">
+                <input type="text" onchange="fieldonchange();" class="form-control" id="BrandSlug" name="BrandSlug" placeholder="brand-slug" value="<?= $brand['brand_slug']; ?>">
             </div>
             <div class="mb-3">
                 <label for="BrandDescription" class="form-label fw-bold">Description</label>

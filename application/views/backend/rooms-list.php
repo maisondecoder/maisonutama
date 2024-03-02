@@ -2,7 +2,7 @@
     <h1 class="">Room List</h1>
     <div class="card border p-2">
         <div class="table-responsive">
-            <table class="table">
+            <table id="list" class="table">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -30,7 +30,7 @@
                                     echo '<span class="badge text-bg-danger">OFF</span>';
                                 } ?></td>
                             <td class="text-end">
-                                <a href="#edit" class="btn btn-outline-primary" title="Edit"><i class="fas fa-edit"></i></a> <a href="<?= base_url('room/') . $room['room_slug'] . '?via=preview'; ?>" target="_blank" class="btn btn-outline-success" title="Preview"><i class="fa-solid fa-eye"></i></a>
+                                <a href="<?= base_url('backend/rooms/edit/').$room['room_id']; ?>" class="btn btn-outline-primary" title="Edit"><i class="fas fa-edit"></i></a> <a href="<?= base_url('room/') . $room['room_slug'] . '?via=preview'; ?>" target="_blank" class="btn btn-outline-success" title="Preview"><i class="fa-solid fa-eye"></i></a>
                             </td>
                         </tr>
                     <?php } ?>
