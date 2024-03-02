@@ -7,6 +7,7 @@ class Collection_model extends CI_Model
         $this->db->select('*');
         $this->db->from('ml_rooms');
         $this->db->where('room_status', 1);
+        $this->db->where('is_deleted', 0);
         $this->db->where_not_in('room_slug', $exclude);
         $get_all_rooms = $this->db->get()->result_array();
 
@@ -18,6 +19,7 @@ class Collection_model extends CI_Model
         $this->db->select('*');
         $this->db->from('ml_category');
         $this->db->where('cat_status', 1);
+        $this->db->where('is_deleted', 0);
         $this->db->where_not_in('cat_slug', $exclude);
         $get_all_cats = $this->db->get()->result_array();
 
@@ -29,6 +31,7 @@ class Collection_model extends CI_Model
         $this->db->select('*');
         $this->db->from('ml_rooms');
         $this->db->where('room_status', 1);
+        $this->db->where('is_deleted', 0);
         $this->db->where('room_slug', $room_slug);
         $get_spesific_room = $this->db->get()->row_array();
 
@@ -40,6 +43,7 @@ class Collection_model extends CI_Model
         $this->db->select('*');
         $this->db->from('ml_category');
         $this->db->where('cat_status', 1);
+        $this->db->where('is_deleted', 0);
         $this->db->where('cat_slug', $cat_slug);
         $get_spesific_cat = $this->db->get()->row_array();
 
@@ -60,6 +64,7 @@ class Collection_model extends CI_Model
         if ($cat_id) {
             $this->db->where('cat_id', $cat_id);
         }
+        $this->db->where('is_deleted', 0);
         $this->db->order_by('product_name', 'ASC');
         $this->db->limit(8, (8 * ($page - 1)));
         $get_products = $this->db->get()->result_array();
@@ -73,6 +78,7 @@ class Collection_model extends CI_Model
         $this->db->select('product_slug, product_name, product_thumbnail');
         $this->db->from('ml_products');
         $this->db->where('product_status', 1);
+        $this->db->where('is_deleted', 0);
         if ($brand_id) {
             $this->db->where('brand_id', $brand_id);
         }
@@ -101,6 +107,7 @@ class Collection_model extends CI_Model
         $this->db->select('product_id');
         $this->db->from('ml_products');
         $this->db->where('product_status', 1);
+        $this->db->where('is_deleted', 0);
         if ($brand_id) {
             $this->db->where('brand_id', $brand_id);
         }
@@ -125,6 +132,7 @@ class Collection_model extends CI_Model
         $this->db->join('ml_rooms', 'ml_rooms.room_id = ml_products.room_id');
         $this->db->join('ml_category', 'ml_category.cat_id = ml_products.cat_id');
         $this->db->where('product_status', 1);
+        $this->db->where('is_deleted', 0);
         $this->db->where('product_slug', $product_slug);
         $get_spesific_product = $this->db->get()->row_array();
 
@@ -140,6 +148,7 @@ class Collection_model extends CI_Model
         $this->db->join('ml_category', 'ml_category.cat_id = ml_products.cat_id');
         $this->db->group_by('ml_category.cat_name');
         $this->db->where('ml_products.brand_id', $brand_id);
+        $this->db->where('is_deleted', 0);
         $get_all_catalog = $this->db->get()->result_array();
 
         return $get_all_catalog;
@@ -150,6 +159,7 @@ class Collection_model extends CI_Model
         $this->db->select("*");
         $this->db->from('ml_group');
         $this->db->where('group_id', $group_id);
+        $this->db->where('is_deleted', 0);
         $group_catalog = $this->db->get()->row();
 
         return $group_catalog;
@@ -163,6 +173,7 @@ class Collection_model extends CI_Model
         $this->db->from('ml_products');
         $this->db->where_in('product_id ', $array_items);
         $this->db->where("product_status", 1);
+        $this->db->where('is_deleted', 0);
         $product_in_group_catalog = $this->db->get()->result_array();
 
         return $product_in_group_catalog;

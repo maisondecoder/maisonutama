@@ -192,6 +192,7 @@ class Backend_model extends CI_Model
             $this->db->where('store_id', $store_id);
         }
         $this->db->where('is_deleted', 0);
+        $this->db->order_by('store_id', 'desc');
         $get_all_stores = $this->db->get()->result_array();
 
         return $get_all_stores;
