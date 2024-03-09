@@ -272,6 +272,49 @@ class Backend_model extends CI_Model
 
     //////////////////////// STORE END ////////////////////////
 
+    //////////////////////// TRASH START ////////////////////////
+
+    public function get_trash($table, $label)
+    {
+        $this->db->select($label.'_id as ID, '.$label.'_name as Name');
+        $this->db->from($table);
+        $this->db->where('is_deleted', 1);
+        $this->db->order_by($label.'_id', 'desc');
+        $get_trash = $this->db->get()->result_array();
+
+        return $get_trash;
+    }
+
+    public function count_trash($table, $label){
+        $this->db->select('count('.$label.'_id) as qty');
+        $this->db->from($table);
+        $this->db->where('is_deleted', 1);
+        $count_trash = $this->db->get()->row_array();
+
+        return $count_trash;
+    }
+
+    public function restore_trash($id, $table, $label){
+        $this->db->set('is_deleted', 0);
+        $this->db->set($label.'_status', 0);
+        $this->db->where($label.'_id', $id);
+        $this->db->update($table);
+
+        $restore_trash = $this->db->affected_rows();
+        return $restore_trash;
+    }
+
+    public function delete_trash($id, $table, $label){
+        $this->db->where('is_deleted', 1);
+        $this->db->where($label.'_id', $id);
+        $this->db->delete($table);
+
+        $delete_trash = $this->db->affected_rows();
+        return $delete_trash;
+    }
+
+    //////////////////////// TRASH END ////////////////////////
+
     public function get_all_products()
     {
         $this->db->select('*');

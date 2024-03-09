@@ -11,16 +11,22 @@
                 <label for="RoomSlug" class="form-label fw-bold">Slug</label>
                 <input type="text" onchange="fieldonchange();" class="form-control" id="RoomSlug" name="RoomSlug" placeholder="room-slug" value="<?= $room['room_slug']; ?>">
             </div>
-            <div class="mb-3">
-                <label for="RoomImage" class="form-label fw-bold">Thumbnail</label>
-                <?php if ($room['room_img']) { ?><figure><img src="<?= base_url() . 'assets/rooms/' . $room['room_img']; ?>" class="bg-dark img-fluid rounded" width="250"></figure><?php } ?>
+            <label for="RoomImage" class="form-label fw-bold">Thumbnail</label>
+            <?php if ($room['room_img']) { ?><figure><img src="<?= base_url() . 'assets/rooms/' . $room['room_img']; ?>" class="bg-dark img-fluid rounded" width="250"></figure><?php } ?>
+            <div class="input-group mb-3">
+                <button id="upload" type="button" class="btn btn-outline-success"><i class="fa-solid fa-cloud-arrow-up"></i> Open Uploader</button>
+
                 <input type="text" onchange="fieldonchange();" class="form-control" id="RoomImage" name="RoomImage" placeholder="filename-thumbnail-room.webp" value="<?= $room['room_img']; ?>">
             </div>
             <div class="mb-3">
                 <label for="RoomStatus" class="form-label fw-bold">Status</label>
                 <select class="form-select" onchange="fieldonchange();" id="RoomStatus" name="RoomStatus">
-                    <option value="0" <?php if($room['room_status']==0){ echo 'selected';} ?>>OFF</option>
-                    <option value="1" <?php if($room['room_status']==1){ echo 'selected';} ?>>ON</option>
+                    <option value="0" <?php if ($room['room_status'] == 0) {
+                                            echo 'selected';
+                                        } ?>>OFF</option>
+                    <option value="1" <?php if ($room['room_status'] == 1) {
+                                            echo 'selected';
+                                        } ?>>ON</option>
                 </select>
             </div>
             <div class="mb-3">
@@ -54,5 +60,21 @@
                 $('#submit').addClass('disabled');
             }
         }
+    </script>
+
+    <script>
+        function foo(x) {
+            var filename = x.document.getElementById("filename").textContent;
+            console.log(filename);
+            $('#RoomImage').val(filename);
+            $('#RoomImage').trigger("change");
+        }
+
+        $('#upload').click(function() {
+            var popup = window.open('<?= base_url('backend/filemanager/stores/'); ?>', '_blank', 'width=500,height=200');
+            var getvalimage = setInterval(function() {
+                foo(popup);
+            }, 2000);
+        });
     </script>
 </div>

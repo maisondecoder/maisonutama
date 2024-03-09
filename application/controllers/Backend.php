@@ -418,6 +418,101 @@ class Backend extends CI_Controller
         $this->load->view('backend/footer');
     }
 
+    public function trash($table = null, $form = 'list', $id = null)
+    {
+        $whitelist_trash = array("list", "restore", "delete");
+        if (in_array($form, $whitelist_trash)) {
+
+            $this->load->model('backend_model');
+
+            if ($table == 'product') {
+                $db = "ml_products";
+                $label = "product";
+            } elseif ($table == 'group') {
+                $db = "ml_group";
+                $label = "group";
+            } elseif ($table == 'brand') {
+                $db = "ml_brands";
+                $label = "brand";
+            } elseif ($table == 'room') {
+                $db = "ml_rooms";
+                $label = "room";
+            } elseif ($table == 'category') {
+                $db = "ml_category";
+                $label = "cat";
+            } elseif ($table == 'store') {
+                $db = "ml_sto";
+                $label = "store";
+            } else {
+                redirect('backend/trash/product');
+            }
+
+            if ($form == "list") {
+                $data['table'] = $table;
+                $data['trash'] = $this->backend_model->get_trash($db, $label);
+                $data['ct_product'] = $this->backend_model->count_trash('ml_products', 'product');
+                $data['ct_group'] = $this->backend_model->count_trash('ml_group', 'group');
+                $data['ct_brand'] = $this->backend_model->count_trash('ml_brands', 'brand');
+                $data['ct_room'] = $this->backend_model->count_trash('ml_rooms', 'room');
+                $data['ct_category'] = $this->backend_model->count_trash('ml_category', 'cat');
+                $data['ct_store'] = $this->backend_model->count_trash('ml_sto', 'store');
+                $this->load->view('backend/header', $data);
+                $this->load->view('backend/trash-list');
+                $this->load->view('backend/footer');
+            } elseif ($form == "restore") {
+                if ($id) {
+                    $restore = $this->backend_model->restore_trash($id, $db, $label);
+                    if ($restore) {
+                        $this->session->set_flashdata('msg', 'Swal.fire("Restore Success!");');
+                        redirect('backend/trash/' . $table . '?msg=restore-success');
+                    } else {
+                        $this->session->set_flashdata('msg', 'Swal.fire("Restore Failed!");');
+                        redirect('backend/trash/' . $table . '?msg=restore-failed');
+                    }
+                } else {
+                    redirect('backend/trash/' . $table . '?msg=invalid-id');
+                }
+            } elseif ($form == "delete") {
+                if ($id) {
+                    $delete = $this->backend_model->delete_trash($id, $db, $label);
+                    if ($delete) {
+                        $this->session->set_flashdata('msg', 'Swal.fire("Delete Success!");');
+                        redirect('backend/trash/' . $table . '?msg=delete-success');
+                    } else {
+                        $this->session->set_flashdata('msg', 'Swal.fire("Delete Failed!");');
+                        redirect('backend/trash/' . $table . '?msg=delete-failed');
+                    }
+                } else {
+                    redirect('backend/trash/' . $table . '?msg=invalid-id');
+                }
+            }
+        } else {
+            redirect('backend/trash/' . $table);
+        }
+    }
+
+    public function filemanager($folder = null, $folder2 = null)
+    {
+        $config['upload_path']          = './assets/' . $folder . '/'.$folder2;
+        $config['allowed_types']        = 'jpg|png|webp';
+        $config['max_size']             = 1000;
+
+        $this->load->library('upload', $config);
+
+        if (!$this->upload->do_upload('userfile')) {
+            $data['folder'] = $folder;
+            $data['folder2'] = $folder2;
+            $data['error'] = array('error' => $this->upload->display_errors());
+
+            $this->load->view('filemanager/upload_form', $data);
+        } else {
+            $data = $this->upload->data();
+            echo '<span id="filename">'.$data['file_name'].'</span>';
+            echo '<script>setTimeout("window.close()", 1000);</script>';
+            echo '<script>clearInterval(getvalimage);</script>';
+        }
+    }
+
     public function testlanding()
     {
         $this->load->view('landing/klik_wa');
