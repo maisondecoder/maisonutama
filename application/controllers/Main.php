@@ -20,12 +20,9 @@ class Main extends CI_Controller
 		$this->load->model('collection_model');
 		$data['all_brands'] = $this->brand_model->get_all_brands();
 		$data['all_stores'] = $this->store_model->get_all_stores();
-
 		$bs_group = $this->collection_model->group_catalog(1);
-		$bs_group = json_decode(json_encode($bs_group), true);
-		$data['bs_products'] = $this->collection_model->product_in_group_catalog($bs_group['group_items']);
-		$group_items = explode(",",$bs_group['group_items']);
-		//print_r($group_items);
+		$data['bs_products'] = $this->collection_model->selected_group_items($bs_group['group_items']);
+		//print_r($bs_group['group_items']);
 		
 		//** End */
 
