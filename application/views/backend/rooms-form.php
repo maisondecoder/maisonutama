@@ -11,12 +11,13 @@
                 <label for="RoomSlug" class="form-label fw-bold">Slug</label>
                 <input type="text" onchange="fieldonchange();" class="form-control" id="RoomSlug" name="RoomSlug" placeholder="room-slug" value="<?= $room['room_slug']; ?>">
             </div>
-            <label for="RoomImage" class="form-label fw-bold">Thumbnail</label>
-            <?php if ($room['room_img']) { ?><figure><img src="<?= base_url() . 'assets/rooms/' . $room['room_img']; ?>" class="bg-dark img-fluid rounded" width="250"></figure><?php } ?>
-            <div class="input-group mb-3">
-                <button id="upload" type="button" class="btn btn-outline-success"><i class="fa-solid fa-cloud-arrow-up"></i> Open Uploader</button>
-
-                <input type="text" onchange="fieldonchange();" class="form-control" id="RoomImage" name="RoomImage" placeholder="filename-thumbnail-room.webp" value="<?= $room['room_img']; ?>">
+            <div class="mb-3">
+                <label for="RoomImage" class="form-label fw-bold">Image</label>
+                <?php if ($room['room_img']) { ?><figure><img id="preview-image" src="<?= base_url() . 'assets/rooms/' . $room['room_img']; ?>" class="bg-dark img-fluid rounded" width="250"></figure><?php } ?>
+                <div class="input-group">
+                    <button id="upload" type="button" class="btn btn-outline-success"><i class="fa-solid fa-cloud-arrow-up"></i> Open Uploader</button>
+                    <input type="text" onchange="fieldonchange();" class="form-control" id="RoomImage" name="RoomImage" placeholder="filename-thumbnail-room.webp" value="<?= $room['room_img']; ?>">
+                </div>
             </div>
             <div class="mb-3">
                 <label for="RoomStatus" class="form-label fw-bold">Status</label>
@@ -63,16 +64,21 @@
     </script>
 
     <script>
+        var popup;
+        var getvalimage;
+
         function foo(x) {
-            var filename = x.document.getElementById("filename").textContent;
+            var filename = x.document.getElementById("filename").innerHTML;
             console.log(filename);
             $('#RoomImage').val(filename);
             $('#RoomImage').trigger("change");
+            $('#preview-image').attr('src', '<?= base_url('assets/rooms/'); ?>'+filename);
+            clearInterval(getvalimage);
         }
 
         $('#upload').click(function() {
-            var popup = window.open('<?= base_url('backend/filemanager/stores/'); ?>', '_blank', 'width=500,height=200');
-            var getvalimage = setInterval(function() {
+            popup = window.open('<?= base_url('backend/filemanager/rooms/'); ?>', '_blank', 'width=500,height=180');
+            getvalimage = setInterval(function() {
                 foo(popup);
             }, 2000);
         });

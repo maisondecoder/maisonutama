@@ -1,6 +1,6 @@
 <div class="container">
     <h1 class="mb-4">Product List</h1>
-    <div class="card border p-2">
+    <div class="card border p-2 mb-4">
         <div class="table-responsive">
             <table id="list" class="table">
                 <thead>

@@ -13,14 +13,21 @@
             </div>
             <div class="mb-3">
                 <label for="CatImage" class="form-label fw-bold">Thumbnail</label>
-                <?php if ($cat['cat_img']) { ?><figure><img src="<?= base_url() . 'assets/categories/' . $cat['cat_img']; ?>" class="bg-dark img-fluid rounded" width="250"></figure><?php } ?>
-                <input type="text" onchange="fieldonchange();" class="form-control" id="CatImage" name="CatImage" placeholder="filename-thumbnail-category.webp" value="<?= $cat['cat_img']; ?>">
+                <?php if ($cat['cat_img']) { ?><figure><img id="preview-image" src="<?= base_url() . 'assets/categories/' . $cat['cat_img']; ?>" class="bg-dark img-fluid rounded" width="250"></figure><?php } ?>
+                <div class="input-group">
+                    <button id="upload" type="button" class="btn btn-outline-success"><i class="fa-solid fa-cloud-arrow-up"></i> Open Uploader</button>
+                    <input type="text" onchange="fieldonchange();" class="form-control" id="CatImage" name="CatImage" placeholder="filename-thumbnail-category.webp" value="<?= $cat['cat_img']; ?>">
+                </div>
             </div>
             <div class="mb-3">
                 <label for="CatStatus" class="form-label fw-bold">Status</label>
                 <select class="form-select" onchange="fieldonchange();" id="CatStatus" name="CatStatus">
-                    <option value="0" <?php if($cat['cat_status']==0){ echo 'selected';} ?>>OFF</option>
-                    <option value="1" <?php if($cat['cat_status']==1){ echo 'selected';} ?>>ON</option>
+                    <option value="0" <?php if ($cat['cat_status'] == 0) {
+                                            echo 'selected';
+                                        } ?>>OFF</option>
+                    <option value="1" <?php if ($cat['cat_status'] == 1) {
+                                            echo 'selected';
+                                        } ?>>ON</option>
                 </select>
             </div>
             <div class="mb-3">
@@ -54,5 +61,26 @@
                 $('#submit').addClass('disabled');
             }
         }
+    </script>
+    
+    <script>
+        var popup;
+        var getvalimage;
+
+        function foo(x) {
+            var filename = x.document.getElementById("filename").textContent;
+            console.log(filename);
+            $('#CatImage').val(filename);
+            $('#CatImage').trigger("change");
+            $('#preview-image').attr('src', '<?= base_url('assets/categories/'); ?>'+filename);
+            clearInterval(getvalimage);
+        }
+
+        $('#upload').click(function() {
+            popup = window.open('<?= base_url('backend/filemanager/categories/'); ?>', '_blank', 'width=500,height=180');
+            getvalimage = setInterval(function() {
+                foo(popup);
+            }, 2000);
+        });
     </script>
 </div>

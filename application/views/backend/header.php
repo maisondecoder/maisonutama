@@ -28,11 +28,11 @@
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="<?= base_url('backend/dashboard'); ?>">Dashboard</a>
+                            <a class="nav-link <?php if($current_nav =='dashboard'){ echo 'active'; } ?>" aria-current="page" href="<?= base_url('backend/dashboard'); ?>">Dashboard</a>
                         </li>
                         <hr>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle <?php if($current_nav =='product'){ echo 'active'; } ?>" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Content Product
                             </a>
                             <ul class="dropdown-menu">
@@ -41,17 +41,17 @@
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle <?php if($current_nav =='group'){ echo 'active'; } ?>" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Content Group
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="<?= base_url('backend/groups/list'); ?>">Group List</a></li>
-                                <li><a class="dropdown-item" href="#add">Add New</a></li>
+                                <li><a class="dropdown-item" href="<?= base_url('backend/groups/add'); ?>">Add New</a></li>
                             </ul>
                         </li>
                         <hr>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle <?php if($current_nav =='brand'){ echo 'active'; } ?>" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Master Brand
                             </a>
                             <ul class="dropdown-menu">
@@ -60,7 +60,7 @@
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle <?php if($current_nav =='room'){ echo 'active'; } ?>" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Master Room
                             </a>
                             <ul class="dropdown-menu">
@@ -69,7 +69,7 @@
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle <?php if($current_nav =='category'){ echo 'active'; } ?>" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Master Category
                             </a>
                             <ul class="dropdown-menu">
@@ -78,7 +78,7 @@
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle <?php if($current_nav =='store'){ echo 'active'; } ?>" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Master Store
                             </a>
                             <ul class="dropdown-menu">
@@ -88,7 +88,7 @@
                         </li>
                         <hr>
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="<?= base_url('backend/trash'); ?>">Trash Bin</a>
+                            <a class="nav-link <?php if($current_nav =='trash'){ echo 'active'; } ?>" aria-current="page" href="<?= base_url('backend/trash'); ?>">Trash Bin</a>
                         </li>
                 </div>
             </div>

@@ -160,7 +160,7 @@ class Collection_model extends CI_Model
         $this->db->from('ml_group');
         $this->db->where('group_id', $group_id);
         $this->db->where('is_deleted', 0);
-        $group_catalog = $this->db->get()->row();
+        $group_catalog = $this->db->get()->row_array();
 
         return $group_catalog;
     }
@@ -177,5 +177,19 @@ class Collection_model extends CI_Model
         $product_in_group_catalog = $this->db->get()->result_array();
 
         return $product_in_group_catalog;
+    }
+
+    public function selected_group_items($group_items){
+        $array_items = explode(",",$group_items);
+        $this->db->select('product_id, product_name, product_slug, product_thumbnail, brand_name');
+        $this->db->from('ml_products');
+        $this->db->join('ml_brands', 'ml_brands.brand_id = ml_products.brand_id');
+        $this->db->where_in('product_id', $array_items);
+        $this->db->where('product_status', 1);
+        $this->db->where('ml_products.is_deleted', 0);
+        $this->db->order_by('FIELD(product_id,'.$group_items.')');
+
+        $selected_group_items = $this->db->get()->result_array();
+        return $selected_group_items;
     }
 }

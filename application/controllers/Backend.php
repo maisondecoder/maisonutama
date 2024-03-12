@@ -10,13 +10,19 @@ class Backend extends CI_Controller
 
     public function dashboard()
     {
-        $this->load->view('backend/header');
+        //untuk tanda di menu navigasi aktif
+        $data['current_nav'] = 'dashboard';
+
+        $this->load->view('backend/header', $data);
         echo "<div class='container' style='margin-top:100px'><h1>Welcome to Admin Panel</h1></div>";
         $this->load->view('backend/footer');
     }
 
     public function brands($form = null, $brand_id = 0)
     {
+        //untuk tanda di menu navigasi aktif
+        $data['current_nav'] = 'brand';
+
         $whitelist_brands = array("add", "edit", "list", "trash");
         if (in_array($form, $whitelist_brands)) {
             $this->load->model('backend_model');
@@ -124,6 +130,9 @@ class Backend extends CI_Controller
 
     public function rooms($form = null, $room_id = 0)
     {
+        //untuk tanda di menu navigasi aktif
+        $data['current_nav'] = 'room';
+
         $whitelist_rooms = array("add", "edit", "list", "trash");
         if (in_array($form, $whitelist_rooms)) {
             $this->load->model('backend_model');
@@ -216,6 +225,9 @@ class Backend extends CI_Controller
 
     public function categories($form = null, $cat_id = 0)
     {
+        //untuk tanda di menu navigasi aktif
+        $data['current_nav'] = 'category';
+
         $whitelist_rooms = array("add", "edit", "list", "trash");
         if (in_array($form, $whitelist_rooms)) {
             $this->load->model('backend_model');
@@ -308,6 +320,9 @@ class Backend extends CI_Controller
 
     public function stores($form = null, $store_id = 0)
     {
+        //untuk tanda di menu navigasi aktif
+        $data['current_nav'] = 'store';
+
         $whitelist_rooms = array("add", "edit", "list", "trash");
         if (in_array($form, $whitelist_rooms)) {
             $this->load->model('backend_model');
@@ -325,8 +340,7 @@ class Backend extends CI_Controller
                     $data['store']['store_gmap'] = "";
                     $data['store']['store_img'] = "";
                     $data['store']['store_order'] = "";
-                    $data['store']['store_status'] = "";
-                    $data['store']['store_id'] = 0;
+                    $data['store']['store_status'] = 0;
                 } else {
                     $data['form'] = 'edit';
                     //Ngecek apakah ID Store ada di DB
@@ -408,8 +422,107 @@ class Backend extends CI_Controller
         }
     }
 
+    public function groups($form = null, $group_id = 0)
+    {
+        //untuk tanda di menu navigasi aktif
+        $data['current_nav'] = 'group';
+
+        $whitelist_groups = array("add", "edit", "list", "trash");
+        if (in_array($form, $whitelist_groups)) {
+            $this->load->model('backend_model');
+            if ($form == "add" || $form == "edit") {
+
+                if ($form == "add") {
+                    $data['form'] = 'add';
+                    $data['products'] = $this->backend_model->get_avail_products();
+                    //Pada Form Add, kolom isian dibuat kosong dulu
+                    $data['group']['group_id'] = "";
+                    $data['group']['group_name'] = "";
+                    $data['group']['group_items'] = "";
+                    $data['group']['group_status'] = 0;
+                } else {
+                    $data['form'] = 'edit';
+                    //Ngecek apakah ID Group ada di DB
+                    $data['group'] = $this->backend_model->get_all_groups($group_id)[0];
+                    $data['products'] = $this->backend_model->get_avail_products();
+                    $items = explode(",",$data['group']['group_items']);
+                    //print_r($items);
+                    $data['selected_items'] = $this->backend_model->selected_group_items($items,$data['group']['group_items']);
+                    //print_r($data['selected_items']);
+                    if (!$data['group']) {
+                        redirect("backend/groups/list");
+                    }
+                }
+
+                $this->load->library('form_validation');
+                $this->form_validation->set_rules('GroupName', 'Group Name', 'required');
+                $this->form_validation->set_rules('GroupItems[]', 'Items', 'required');
+                $this->form_validation->set_rules('GroupStatus', 'Status', 'required');
+
+                if ($this->form_validation->run() == FALSE) {
+                    $this->load->view('backend/header', $data);
+                    $this->load->view('backend/groups-form');
+                    $this->load->view('backend/footer');
+                } else {
+                    $name = $this->input->post('GroupName');
+                    $items = $this->input->post('GroupItems[]');
+                    $status = $this->input->post('GroupStatus');
+                    $items = implode(",",$items);
+                    //echo $group_item;
+                    //exit();
+                    if ($form == "add") {
+                        $add = $this->backend_model->add_group($name, $items, $status);
+                        if ($add) {
+                            $this->session->set_flashdata('msg', 'Swal.fire("New Data Added!");');
+                            redirect('backend/groups/list/?msg=add-success');
+                        } else {
+                            $this->session->set_flashdata('msg', 'Swal.fire("Add Data Failed!");');
+                            redirect('backend/groups/list/?msg=add-failed');
+                        }
+                    } else {
+                        $update = $this->backend_model->edit_group($name, $items, $status, $group_id);
+                        if ($update) {
+                            $this->session->set_flashdata('msg', 'Swal.fire("Update Saved!");');
+                            redirect('backend/groups/list/?msg=update-saved');
+                        } else {
+                            $this->session->set_flashdata('msg', 'Swal.fire("Update Failed!");');
+                            redirect('backend/groups/edit/' . $group_id . '?msg=update-failed');
+                        }
+                    }
+                }
+            } elseif ($form == "list") {
+                //Menampilkan seluruh data Store
+                $data['groups'] = $this->backend_model->get_all_groups();
+
+                $this->load->view('backend/header', $data);
+                $this->load->view('backend/groups-list');
+                $this->load->view('backend/footer');
+            } elseif ($form == "trash") {
+                $cek_id = $this->backend_model->get_all_groups($group_id);
+                if (!$cek_id) {
+                    redirect("backend/groups/list?msg=invalid-id");
+                } else {
+                    $soft_delete = $this->backend_model->soft_delete_group($group_id);
+                    if ($soft_delete) {
+                        $this->session->set_flashdata('msg', 'Swal.fire("Item Deleted!");');
+                        redirect('backend/groups/list/?msg=delete-success');
+                    } else {
+                        $this->session->set_flashdata('msg', 'Swal.fire("Delete Failed!");');
+                        redirect('backend/groups/list/?msg=delete-failed');
+                    }
+                }
+            }
+        } else {
+            redirect("backend/groups/list");
+        }
+    }
+
     public function products()
     {
+        //untuk tanda di menu navigasi aktif
+        $data['current_nav'] = 'product';
+
+
         $this->load->model('backend_model');
         $data['products'] = $this->backend_model->get_all_products();
 
@@ -420,6 +533,9 @@ class Backend extends CI_Controller
 
     public function trash($table = null, $form = 'list', $id = null)
     {
+        //untuk tanda di menu navigasi aktif
+        $data['current_nav'] = 'trash';
+
         $whitelist_trash = array("list", "restore", "delete");
         if (in_array($form, $whitelist_trash)) {
 
@@ -493,7 +609,7 @@ class Backend extends CI_Controller
 
     public function filemanager($folder = null, $folder2 = null)
     {
-        $config['upload_path']          = './assets/' . $folder . '/'.$folder2;
+        $config['upload_path']          = './assets/' . $folder . '/' . $folder2;
         $config['allowed_types']        = 'jpg|png|webp';
         $config['max_size']             = 1000;
 
@@ -507,9 +623,8 @@ class Backend extends CI_Controller
             $this->load->view('filemanager/upload_form', $data);
         } else {
             $data = $this->upload->data();
-            echo '<span id="filename">'.$data['file_name'].'</span>';
-            echo '<script>setTimeout("window.close()", 1000);</script>';
-            echo '<script>clearInterval(getvalimage);</script>';
+            echo '<div id="filename">' . $data['file_name'] . '</div>';
+            echo '<script>setTimeout("window.close()", 1000);</script><html>';
         }
     }
 

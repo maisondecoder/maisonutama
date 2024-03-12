@@ -28,9 +28,12 @@
                 <input type="text" onchange="fieldonchange();" class="form-control" id="StoreGmap" name="StoreGmap" placeholder="Store Google Map URL" value="<?= $store['store_gmap']; ?>">
             </div>
             <div class="mb-3">
-                <label for="StoreImage" class="form-label fw-bold">Thumbnail</label>
-                <?php if ($store['store_img']) { ?><figure><img src="<?= base_url() . 'assets/stores/' . $store['store_img']; ?>" class="bg-dark img-fluid rounded" width="250"></figure><?php } ?>
-                <input type="text" onchange="fieldonchange();" class="form-control" id="StoreImage" name="StoreImage" placeholder="filename-thumbnail-store.webp" value="<?= $store['store_img']; ?>">
+                <label for="StoreImage" class="form-label fw-bold">Image</label>
+                <?php if ($store['store_img']) { ?><figure><img id="preview-image" src="<?= base_url() . 'assets/stores/' . $store['store_img']; ?>" class="bg-dark img-fluid rounded" width="250"></figure><?php } ?>
+                <div class="input-group">
+                    <button id="upload" type="button" class="btn btn-outline-success"><i class="fa-solid fa-cloud-arrow-up"></i> Open Uploader</button>
+                    <input type="text" onchange="fieldonchange();" class="form-control" id="StoreImage" name="StoreImage" placeholder="filename-thumbnail-store.webp" value="<?= $store['store_img']; ?>">
+                </div>
             </div>
             <div class="mb-3">
                 <label for="StoreOrder" class="form-label fw-bold">Order</label>
@@ -39,8 +42,12 @@
             <div class="mb-3">
                 <label for="StoreStatus" class="form-label fw-bold">Status</label>
                 <select class="form-select" onchange="fieldonchange();" id="StoreStatus" name="StoreStatus">
-                    <option value="0" <?php if($store['store_status']==0){ echo 'selected';} ?>>OFF</option>
-                    <option value="1" <?php if($store['store_status']==1){ echo 'selected';} ?>>ON</option>
+                    <option value="0" <?php if ($store['store_status'] == 0) {
+                                            echo 'selected';
+                                        } ?>>OFF</option>
+                    <option value="1" <?php if ($store['store_status'] == 1) {
+                                            echo 'selected';
+                                        } ?>>ON</option>
                 </select>
             </div>
             <div class="mb-3">
@@ -74,5 +81,26 @@
                 $('#submit').addClass('disabled');
             }
         }
+    </script>
+    
+    <script>
+        var popup;
+        var getvalimage;
+
+        function foo(x) {
+            var filename = x.document.getElementById("filename").textContent;
+            console.log(filename);
+            $('#StoreImage').val(filename);
+            $('#StoreImage').trigger("change");
+            $('#preview-image').attr('src', '<?= base_url('assets/stores/'); ?>'+filename);
+            clearInterval(getvalimage);
+        }
+
+        $('#upload').click(function() {
+            popup = window.open('<?= base_url('backend/filemanager/stores/'); ?>', '_blank', 'width=500,height=180');
+            getvalimage = setInterval(function() {
+                foo(popup);
+            }, 2000);
+        });
     </script>
 </div>

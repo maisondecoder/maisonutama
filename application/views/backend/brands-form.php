@@ -16,15 +16,22 @@
                 <textarea class="form-control" onchange="fieldonchange();" id="BrandDescription" name="BrandDescription" rows="6"><?= $brand['brand_desc']; ?></textarea>
             </div>
             <div class="mb-3">
-                <label for="BrandImage" class="form-label fw-bold">Logo</label>
-                <?php if ($brand['brand_img']) { ?><figure><img src="<?= base_url() . 'assets/brands/' . $brand['brand_img']; ?>" class="bg-dark img-fluid rounded" width="250"></figure><?php } ?>
-                <input type="text" onchange="fieldonchange();" class="form-control" id="BrandImage" name="BrandImage" placeholder="filename-brand-logo.webp" value="<?= $brand['brand_img']; ?>">
+                <label for="BrandImage" class="form-label fw-bold">Image</label>
+                <?php if ($brand['brand_img']) { ?><figure><img id="preview-image" src="<?= base_url() . 'assets/brands/' . $brand['brand_img']; ?>" class="bg-dark img-fluid rounded" width="250"></figure><?php } ?>
+                <div class="input-group">
+                    <button id="upload" type="button" class="btn btn-outline-success"><i class="fa-solid fa-cloud-arrow-up"></i> Open Uploader</button>
+                    <input type="text" onchange="fieldonchange();" class="form-control" id="BrandImage" name="BrandImage" placeholder="filename-brand-logo.webp" value="<?= $brand['brand_img']; ?>">
+                </div>
             </div>
             <div class="mb-3">
                 <label for="BrandStatus" class="form-label fw-bold">Status</label>
                 <select class="form-select" onchange="fieldonchange();" id="BrandStatus" name="BrandStatus">
-                    <option value="0" <?php if($brand['brand_status']==0){ echo 'selected';} ?>>OFF</option>
-                    <option value="1" <?php if($brand['brand_status']==1){ echo 'selected';} ?>>ON</option>
+                    <option value="0" <?php if ($brand['brand_status'] == 0) {
+                                            echo 'selected';
+                                        } ?>>OFF</option>
+                    <option value="1" <?php if ($brand['brand_status'] == 1) {
+                                            echo 'selected';
+                                        } ?>>ON</option>
                 </select>
             </div>
             <div class="mb-3">
@@ -58,5 +65,26 @@
                 $('#submit').addClass('disabled');
             }
         }
+    </script>
+
+    <script>
+        var popup;
+        var getvalimage;
+
+        function foo(x) {
+            var filename = x.document.getElementById("filename").textContent;
+            console.log(filename);
+            $('#BrandImage').val(filename);
+            $('#BrandImage').trigger("change");
+            $('#preview-image').attr('src', '<?= base_url('assets/brands/'); ?>'+filename);
+            clearInterval(getvalimage);
+        }
+
+        $('#upload').click(function() {
+            popup = window.open('<?= base_url('backend/filemanager/brands/'); ?>', '_blank', 'width=500,height=180');
+            getvalimage = setInterval(function() {
+                foo(popup);
+            }, 2000);
+        });
     </script>
 </div>

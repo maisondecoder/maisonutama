@@ -1,7 +1,6 @@
 <div class="container">
     <h1 class="mb-4">Trash Bin</h1>
-
-    <div class="card border p-2">
+    <div class="card border p-2 mb-4">
         <ul class="nav nav-tabs">
             <li class="nav-item">
                 <a class="nav-link <?php if($table == 'product'){ echo 'active fw-bold'; } ?>" href="<?= base_url('backend/trash/product'); ?>">Product (<?= $ct_product['qty']; ?>)</a>
