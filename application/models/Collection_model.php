@@ -132,7 +132,7 @@ class Collection_model extends CI_Model
         $this->db->join('ml_rooms', 'ml_rooms.room_id = ml_products.room_id');
         $this->db->join('ml_category', 'ml_category.cat_id = ml_products.cat_id');
         $this->db->where('product_status', 1);
-        $this->db->where('is_deleted', 0);
+        $this->db->where('ml_products.is_deleted', 0);
         $this->db->where('product_slug', $product_slug);
         $get_spesific_product = $this->db->get()->row_array();
 
