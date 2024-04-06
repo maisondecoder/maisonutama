@@ -32,6 +32,7 @@
                     </p>
                 </div>
             </div>
+            <div class="text-center p-4">&copy;<?= date("Y"); ?>. PT Maison Cipta Kreasindo</div>
         </div>
     </footer>
     <!-- Footer -->

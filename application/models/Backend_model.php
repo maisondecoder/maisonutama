@@ -358,14 +358,15 @@ class Backend_model extends CI_Model
         return $update;
     }
 
-    public function selected_group_items($items,$string_items){
+    public function selected_group_items($items, $string_items)
+    {
         $this->db->select('product_id, product_name, product_slug, product_thumbnail, brand_name');
         $this->db->from('ml_products');
         $this->db->join('ml_brands', 'ml_brands.brand_id = ml_products.brand_id');
         $this->db->where_in('product_id', $items);
         $this->db->where('product_status', 1);
         $this->db->where('ml_products.is_deleted', 0);
-        $this->db->order_by('FIELD(product_id,'.$string_items.')');
+        $this->db->order_by('FIELD(product_id,' . $string_items . ')');
 
         $selected_group_items = $this->db->get()->result_array();
         return $selected_group_items;
@@ -382,13 +383,80 @@ class Backend_model extends CI_Model
     }
     //////////////////////// GROUP END ////////////////////////
 
-    public function get_all_products()
+    //////////////////////// LOGIN START ////////////////////////
+
+    public function check_email($email)
+    {
+        $webapp = $this->load->database('webapp', TRUE);
+        $webapp->select('count(admin_email) as Exist');
+        $webapp->from('ad_admin_data');
+        $webapp->where('admin_email', $email);
+        $check_email = $webapp->get()->row_array();
+
+        return $check_email;
+    }
+
+    public function check_pass($email)
+    {
+        $webapp = $this->load->database('webapp', TRUE);
+        $webapp->select('admin_pass as Pass');
+        $webapp->from('ad_admin_data');
+        $webapp->where('admin_email', $email);
+        $check_pass = $webapp->get()->row_array();
+
+        return $check_pass;
+    }
+    //////////////////////// LOGIN END ////////////////////////
+
+
+    public function add_product($name, $slug, $content, $brand, $room, $cat, $thumbnail, $status)
+    {
+        $data = array(
+            'product_name' => $name,
+            'product_slug' => $slug,
+            'product_content' => $content,
+            'brand_id' => $brand,
+            'room_id' => $room,
+            'cat_id' => $cat,
+            'product_thumbnail' => $thumbnail,
+            'product_status' => $status
+        );
+        $this->db->insert('ml_products', $data);
+        $add = $this->db->insert_id();
+        return $add;
+    }
+
+    public function edit_product($name, $slug, $content = 0, $brand, $room, $cat, $thumbnail, $status, $product_id)
+    {
+        $this->db->set('product_name', $name);
+        $this->db->set('product_slug', $slug);
+        if ($content) {
+            $this->db->set('product_content', $content);
+        }
+        $this->db->set('brand_id', $brand);
+        $this->db->set('room_id', $room);
+        $this->db->set('cat_id', $cat);
+        $this->db->set('product_thumbnail', $thumbnail);
+        $this->db->set('product_status', $status);
+        $this->db->where('product_id', $product_id);
+        $this->db->update('ml_products');
+
+        $update = $this->db->affected_rows();
+        return $update;
+    }
+
+    public function get_all_products($product_id = 0)
     {
         $this->db->select('*');
         $this->db->from('ml_products');
         $this->db->join('ml_brands', 'ml_brands.brand_id = ml_products.brand_id');
         $this->db->join('ml_rooms', 'ml_rooms.room_id = ml_products.room_id');
         $this->db->join('ml_category', 'ml_category.cat_id = ml_products.cat_id');
+        if ($product_id) {
+            $this->db->where('product_id', $product_id);
+        }
+        $this->db->where('ml_products.is_deleted', 0);
+        $this->db->order_by('product_id', 'desc');
         $get_all_products = $this->db->get()->result_array();
 
         return $get_all_products;
@@ -406,5 +474,15 @@ class Backend_model extends CI_Model
         $get_all_products = $this->db->get()->result_array();
 
         return $get_all_products;
+    }
+
+    public function soft_delete_product($product_id)
+    {
+        $this->db->set('is_deleted', 1);
+        $this->db->where('product_id', $product_id);
+        $this->db->update('ml_products');
+
+        $soft_delete = $this->db->affected_rows();
+        return $soft_delete;
     }
 }

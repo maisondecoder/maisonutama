@@ -36,8 +36,8 @@
                                 Content Product
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="<?= base_url('backend/products'); ?>">Product List</a></li>
-                                <li><a class="dropdown-item" href="#add">Add New</a></li>
+                                <li><a class="dropdown-item" href="<?= base_url('backend/products/list'); ?>">Product List</a></li>
+                                <li><a class="dropdown-item" href="<?= base_url('backend/products/add'); ?>">Add New</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
@@ -89,6 +89,10 @@
                         <hr>
                         <li class="nav-item">
                             <a class="nav-link <?php if($current_nav =='trash'){ echo 'active'; } ?>" aria-current="page" href="<?= base_url('backend/trash'); ?>">Trash Bin</a>
+                        </li>
+                        <hr>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="<?= base_url('backend/logout'); ?>">Logout</a>
                         </li>
                 </div>
             </div>

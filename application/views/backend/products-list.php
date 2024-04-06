@@ -34,7 +34,7 @@
                                     echo '<span class="badge text-bg-danger">OFF</span>';
                                 } ?></td>
                             <td class="text-end">
-                                <a href="#edit" class="btn btn-outline-primary" title="Edit"><i class="fas fa-edit"></i></a> <a href="<?= base_url('our-collections/') . $product['product_slug'] . '?via=preview'; ?>" target="_blank" class="btn btn-outline-success" title="Preview"><i class="fa-solid fa-eye"></i></a>
+                                <a href="<?= base_url('backend/products/edit/') . $product['product_id']; ?>" class="btn btn-outline-primary" title="Edit"><i class="fas fa-edit"></i></a> <a href="<?= base_url('our-collections/') . $product['product_slug'] . '?via=preview'; ?>" target="_blank" class="btn btn-outline-success" title="Preview"><i class="fa-solid fa-eye"></i></a>
                             </td>
                         </tr>
                     <?php } ?>

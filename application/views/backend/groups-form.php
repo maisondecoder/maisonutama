@@ -42,29 +42,33 @@
             </div>
         </form>
     </div>
-    <div class="card border p-4 mb-4">
-        <h3 class="mb-4">Display Sort</h3>
-        <form action="<?= base_url('backend/groups/' . $form . '/') . $group['group_id']; ?>" method="POST">
-            <div class="mb-3">
+    <?php if ($form == 'edit') { ?>
+        <div class="card border p-4 mb-4">
+            <h3 class="mb-4">Display Sort</h3>
+            <form action="<?= base_url('backend/groups/' . $form . '/') . $group['group_id']; ?>" method="POST">
+                <div class="mb-3">
 
-                <ul id="sortable" class="list-group">
-                    <?php foreach ($selected_items as $key => $selected) { ?>
-                        <li id="<?= $selected['product_id']; ?>" class="list-group-item ui-state-default"><?= $selected['product_name'] . ' - ' . $selected['brand_name']; ?></li>
-                    <?php } ?>
-                </ul>
+                    <ul id="sortable" class="list-group">
+                        <?php
+                        foreach ($selected_items as $key => $selected) { ?>
+                            <li id="<?= $selected['product_id']; ?>" class="list-group-item ui-state-default"><?= $selected['product_name'] . ' - ' . $selected['brand_name']; ?></li>
+                        <?php } ?>
+                    </ul>
 
-            </div>
-            <div class="mb-3">
-                <div class="row">
-                    <div class="col">
-                        <button id="submit" type="submit" class="btn btn-primary">Save Reorder</button>
+                </div>
+                <div class="mb-3">
+                    <div class="row">
+                        <div class="col">
+                            <button id="submit" type="submit" class="btn btn-primary">Save Reorder</button>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </form>
-    </div>
+            </form>
+        </div>
+    <?php } ?>
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
     <script src="https://www.jqueryscript.net/demo/MD5-Hash-String/jquery.md5.min.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <script>
@@ -84,7 +88,9 @@
         }
 
         $(document).ready(function() {
-            $('#GroupItems').select2();
+            $('#GroupItems').select2({
+                theme: 'bootstrap-5'
+            });
             $('#GroupItems').val([<?= $group['group_items']; ?>]);
             $('#GroupItems').trigger('change');
         });

@@ -4,12 +4,65 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Backend extends CI_Controller
 {
 
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
     public function login()
     {
+        if (is_logged_in()) {
+            redirect('backend/dashboard?msg=already-login');
+            exit;
+        }
+
+        $data['current_nav'] = 'login';
+
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('email', 'Email Address', 'required');
+        $this->form_validation->set_rules('password', 'Password', 'required');
+
+        if ($this->form_validation->run() == FALSE) {
+            $this->load->view('backend/login', $data);
+        } else {
+            $email = $this->input->post('email');
+            $password = $this->input->post('password');
+
+            $this->load->model('backend_model');
+            $check_email = $this->backend_model->check_email($email)['Exist'];
+            if ($check_email) {
+                $check_pass = $this->backend_model->check_pass($email)['Pass'];
+                //echo $check_pass;
+                $input_pass = password_hash($password, PASSWORD_DEFAULT);
+                if (password_verify($password, $check_pass)) {
+                    $this->session->set_userdata('ses_login', $check_email);
+                    redirect('backend/dashboard?msg=login-success');
+                } else {
+                    redirect('backend/dashboard?msg=login-failed');
+                }
+            } else {
+                echo 'email not found';
+            }
+        }
+    }
+
+    public function logout()
+    {
+        if ($this->session->userdata('ses_login')) {
+            session_destroy();
+            redirect('backend/login?msg=logout-success');
+        } else {
+            echo 'not login yet';
+            redirect('backend/login?msg=no-session-yet');
+        }
     }
 
     public function dashboard()
     {
+        if (!is_logged_in()) {
+            redirect('backend/login');
+            exit;
+        }
         //untuk tanda di menu navigasi aktif
         $data['current_nav'] = 'dashboard';
 
@@ -20,6 +73,11 @@ class Backend extends CI_Controller
 
     public function brands($form = null, $brand_id = 0)
     {
+        if (!is_logged_in()) {
+            redirect('backend/login');
+            exit;
+        }
+
         //untuk tanda di menu navigasi aktif
         $data['current_nav'] = 'brand';
 
@@ -130,6 +188,10 @@ class Backend extends CI_Controller
 
     public function rooms($form = null, $room_id = 0)
     {
+        if (!is_logged_in()) {
+            redirect('backend/login');
+            exit;
+        }
         //untuk tanda di menu navigasi aktif
         $data['current_nav'] = 'room';
 
@@ -225,6 +287,11 @@ class Backend extends CI_Controller
 
     public function categories($form = null, $cat_id = 0)
     {
+        if (!is_logged_in()) {
+            redirect('backend/login');
+            exit;
+        }
+
         //untuk tanda di menu navigasi aktif
         $data['current_nav'] = 'category';
 
@@ -320,6 +387,11 @@ class Backend extends CI_Controller
 
     public function stores($form = null, $store_id = 0)
     {
+        if (!is_logged_in()) {
+            redirect('backend/login');
+            exit;
+        }
+
         //untuk tanda di menu navigasi aktif
         $data['current_nav'] = 'store';
 
@@ -424,6 +496,11 @@ class Backend extends CI_Controller
 
     public function groups($form = null, $group_id = 0)
     {
+        if (!is_logged_in()) {
+            redirect('backend/login');
+            exit;
+        }
+
         //untuk tanda di menu navigasi aktif
         $data['current_nav'] = 'group';
 
@@ -445,9 +522,9 @@ class Backend extends CI_Controller
                     //Ngecek apakah ID Group ada di DB
                     $data['group'] = $this->backend_model->get_all_groups($group_id)[0];
                     $data['products'] = $this->backend_model->get_avail_products();
-                    $items = explode(",",$data['group']['group_items']);
+                    $items = explode(",", $data['group']['group_items']);
                     //print_r($items);
-                    $data['selected_items'] = $this->backend_model->selected_group_items($items,$data['group']['group_items']);
+                    $data['selected_items'] = $this->backend_model->selected_group_items($items, $data['group']['group_items']);
                     //print_r($data['selected_items']);
                     if (!$data['group']) {
                         redirect("backend/groups/list");
@@ -467,7 +544,7 @@ class Backend extends CI_Controller
                     $name = $this->input->post('GroupName');
                     $items = $this->input->post('GroupItems[]');
                     $status = $this->input->post('GroupStatus');
-                    $items = implode(",",$items);
+                    $items = implode(",", $items);
                     //echo $group_item;
                     //exit();
                     if ($form == "add") {
@@ -517,22 +594,134 @@ class Backend extends CI_Controller
         }
     }
 
-    public function products()
+    public function products($form = null, $product_id = 0)
     {
+        if (!is_logged_in()) {
+            redirect('backend/login');
+            exit;
+        }
+
         //untuk tanda di menu navigasi aktif
         $data['current_nav'] = 'product';
 
+        $whitelist_products = array("add", "edit", "list", "trash");
+        if (in_array($form, $whitelist_products)) {
+            $this->load->model('backend_model');
+            if ($form == "add" || $form == "edit") {
 
-        $this->load->model('backend_model');
-        $data['products'] = $this->backend_model->get_all_products();
+                if ($form == "add") {
+                    $data['form'] = 'add';
+                    $data['products'] = $this->backend_model->get_avail_products();
+                    $data['rooms'] = $this->backend_model->get_all_rooms();
+                    $data['cats'] = $this->backend_model->get_all_cats();
+                    $data['brands'] = $this->backend_model->get_all_brands();
+                    $data['contents'] = array("Section Title" => "Section Description");
+                    //Pada Form Add, kolom isian dibuat kosong dulu
+                    $data['products']['product_id'] = "";
+                    $data['products']['product_name'] = "";
+                    $data['products']['product_slug'] = "";
+                    $data['products']['brand_id'] = "";
+                    $data['products']['room_id'] = "";
+                    $data['products']['cat_id'] = "";
+                    $data['products']['product_thumbnail'] = "";
+                    $data['products']['product_status'] = "";
+                } else {
+                    $data['form'] = 'edit';
+                    //Ngecek apakah ID Product ada di DB
+                    $data['products'] = $this->backend_model->get_all_products($product_id)[0];
+                    $data['rooms'] = $this->backend_model->get_all_rooms();
+                    $data['cats'] = $this->backend_model->get_all_cats();
+                    $data['brands'] = $this->backend_model->get_all_brands();
+                    $data['contents'] = json_decode($data['products']['product_content'], true);
+                    //print_r($data['contents']);
+                    //echo count($data['contents']);
+                    //print_r($data['products']);
+                    if (!$data['products']) {
+                        redirect("backend/groups/list");
+                    }
+                }
 
-        $this->load->view('backend/header', $data);
-        $this->load->view('backend/products-list');
-        $this->load->view('backend/footer');
+                $this->load->library('form_validation');
+                $this->form_validation->set_rules('ProductName', 'Product Name', 'required');
+                $this->form_validation->set_rules('ProductSlug', 'Slug', 'required');
+                $this->form_validation->set_rules('Brand', 'Brand', 'required');
+                $this->form_validation->set_rules('Room', 'Room', 'required');
+                $this->form_validation->set_rules('Category', 'Category', 'required');
+                $this->form_validation->set_rules('ProductThumbnail', 'Brand', 'required');
+                $this->form_validation->set_rules('ProductStatus', 'Status', 'required');
+
+                if ($this->form_validation->run() == FALSE) {
+                    $this->load->view('backend/header', $data);
+                    $this->load->view('backend/products-form');
+                    $this->load->view('backend/footer');
+                } else {
+                    $name = $this->input->post('ProductName');
+                    $slug = $this->input->post('ProductSlug');
+                    $brand = $this->input->post('Brand');
+                    $room = $this->input->post('Room');
+                    $cat = $this->input->post('Category');
+                    $thumbnail = $this->input->post('ProductThumbnail');
+                    $status = $this->input->post('ProductStatus');
+
+                    $content_titles = $this->input->post('SectionTitle[]');
+                    $content_values = $this->input->post('SectionValue[]');
+                    $content = array_combine($content_titles, $content_values);
+                    $content = json_encode($content, true);
+
+                    if ($form == "add") {
+                        $add = $this->backend_model->add_product($name, $slug, $content, $brand, $room, $cat, $thumbnail, $status);
+                        if ($add) {
+                            $this->session->set_flashdata('msg', 'Swal.fire("New Data Added!");');
+                            redirect('backend/products/list/?msg=add-success');
+                        } else {
+                            $this->session->set_flashdata('msg', 'Swal.fire("Add Data Failed!");');
+                            redirect('backend/products/list/?msg=add-failed');
+                        }
+                    } else {
+                        $update = $this->backend_model->edit_product($name, $slug, $content, $brand, $room, $cat, $thumbnail, $status, $product_id);
+                        if ($update) {
+                            $this->session->set_flashdata('msg', 'Swal.fire("Update Saved!");');
+                            redirect('backend/products/list/?msg=update-saved');
+                        } else {
+                            $this->session->set_flashdata('msg', 'Swal.fire("Update Failed!");');
+                            redirect('backend/products/edit/' . $product_id . '?msg=update-failed');
+                        }
+                    }
+                }
+            } elseif ($form == "list") {
+                //Menampilkan seluruh data Product
+                $data['products'] = $this->backend_model->get_all_products();
+
+                $this->load->view('backend/header', $data);
+                $this->load->view('backend/products-list');
+                $this->load->view('backend/footer');
+            } elseif ($form == "trash") {
+                $cek_id = $this->backend_model->get_all_products($product_id);
+                if (!$cek_id) {
+                    redirect("backend/products/list?msg=invalid-id");
+                } else {
+                    $soft_delete = $this->backend_model->soft_delete_product($product_id);
+                    if ($soft_delete) {
+                        $this->session->set_flashdata('msg', 'Swal.fire("Item Deleted!");');
+                        redirect('backend/products/list/?msg=delete-success');
+                    } else {
+                        $this->session->set_flashdata('msg', 'Swal.fire("Delete Failed!");');
+                        redirect('backend/products/list/?msg=delete-failed');
+                    }
+                }
+            }
+        } else {
+            redirect("backend/products/list");
+        }
     }
 
     public function trash($table = null, $form = 'list', $id = null)
     {
+        if (!is_logged_in()) {
+            redirect('backend/login');
+            exit;
+        }
+
         //untuk tanda di menu navigasi aktif
         $data['current_nav'] = 'trash';
 
@@ -609,6 +798,11 @@ class Backend extends CI_Controller
 
     public function filemanager($folder = null, $folder2 = null)
     {
+        if (!is_logged_in()) {
+            redirect('backend/login');
+            exit;
+        }
+
         $config['upload_path']          = './assets/' . $folder . '/' . $folder2;
         $config['allowed_types']        = 'jpg|png|webp';
         $config['max_size']             = 1000;
@@ -626,10 +820,5 @@ class Backend extends CI_Controller
             echo '<div id="filename">' . $data['file_name'] . '</div>';
             echo '<script>setTimeout("window.close()", 1000);</script><html>';
         }
-    }
-
-    public function testlanding()
-    {
-        $this->load->view('landing/klik_wa');
     }
 }

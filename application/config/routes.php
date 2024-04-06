@@ -65,4 +65,4 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 /* Landing Page */
-$route['p/contact-us'] = 'backend/testlanding';
+$route['p/contact-us'] = 'main/testlanding';

@@ -97,7 +97,7 @@
         }
 
         $('#upload').click(function() {
-            popup = window.open('<?= base_url('backend/filemanager/stores/'); ?>', '_blank', 'width=500,height=180');
+            popup = window.open('<?= base_url('backend/filemanager/stores/'); ?>', '_blank', 'width=500,height=200');
             getvalimage = setInterval(function() {
                 foo(popup);
             }, 2000);
