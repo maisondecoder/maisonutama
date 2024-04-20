@@ -388,7 +388,7 @@ class Backend_model extends CI_Model
     public function check_email($email)
     {
         $webapp = $this->load->database('webapp', TRUE);
-        $webapp->select('count(admin_email) as Exist');
+        $webapp->select('count(admin_email) as Exist, admin_email');
         $webapp->from('ad_admin_data');
         $webapp->where('admin_email', $email);
         $check_email = $webapp->get()->row_array();
@@ -408,7 +408,7 @@ class Backend_model extends CI_Model
     }
     //////////////////////// LOGIN END ////////////////////////
 
-
+    //////////////////////// Product START ////////////////////////
     public function add_product($name, $slug, $content, $brand, $room, $cat, $thumbnail, $status)
     {
         $data = array(
@@ -484,5 +484,121 @@ class Backend_model extends CI_Model
 
         $soft_delete = $this->db->affected_rows();
         return $soft_delete;
+    }
+    //////////////////////// Product END ////////////////////////
+
+    //////////////////////// RESET START ////////////////////////
+
+    public function admin_reset_request($admin_email)
+    {
+        $this->load->helper('date');
+
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < 12; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+
+        $data = array(
+            'reset_token' => $randomString,
+            'date_created' => now(),
+            'date_expired' => now() + 300,
+            'admin_email' => $admin_email
+        );
+
+        $this->db->insert('ml_admin_reset', $data);
+
+        return $randomString;
+    }
+
+    //////////////////////// RESET END ////////////////////////
+
+    public function reset_request($email, $token_string)
+    {
+        $data = array(
+            'admin_email' => $email,
+            'reset_token' => $token_string,
+            'date_created' => now(),
+            'date_expired' => now() + 300
+        );
+
+        $this->db->insert('ml_admin_reset', $data);
+        $add = $this->db->insert_id();
+        return $add;
+    }
+
+    public function check_reset_token($token_string){
+        $this->db->select('*');
+        $this->db->from('ml_admin_reset');
+        $this->db->where('reset_token', $token_string);
+
+        $check = $this->db->get()->row_array();
+        return $check;
+    }
+
+    public function new_password($email, $password)
+    {
+        $webapp = $this->load->database('webapp', TRUE);
+
+        $new_hash = password_hash($password, PASSWORD_DEFAULT);
+        $webapp->set('admin_pass', $new_hash);
+        $webapp->where('admin_email', $email);
+        $webapp->update('ad_admin_data');
+
+        $soft_delete = $webapp->affected_rows();
+        return $soft_delete;
+    }
+
+    //Send Reset Request Email
+    public function send_email($email_tujuan, $judul, $body)
+    {
+        $this->load->helper('date');
+
+        $kode = rand(1111, 9999);
+        $email = $email_tujuan;
+        $judul = $judul;
+        $body = $body;
+        /*
+        $data = array(
+            'otp_email' => $email,
+            'otp_code' => $kode,
+            'otp_medium' => 'email',
+            'date_created' => now(),
+            'date_expired' => now()+300
+        );*/
+
+        //$this->db->insert('otp_request', $data);
+
+        $subject = $judul;
+        $sender = "auto-services";
+        $symbol_send = "@";
+        $domain_send = "maisonliving.id";
+        $sendergroup = $sender . $symbol_send . $domain_send;
+        $secret = 'zpcmcpgnxonutjfe';
+
+        $config = [
+            'protocol' => 'smtp',
+            'priority' => 2,
+            'smtp_host' => 'ssl://smtp.gmail.com',
+            'smtp_user' => $sendergroup,
+            'smtp_pass' => $secret,
+            'smtp_port' => 465,
+            'mailtype' => 'html',
+            'charset' => 'utf-8',
+            'newline' => "\r\n"
+        ];
+
+        $this->load->library('email', $config);
+        $this->email->initialize($config);
+
+        $this->email->from($sendergroup, 'Maison Living | Auto-Services');
+        $this->email->to($email);
+        $this->email->subject('' . $subject);
+        $this->email->message('' . $body);
+
+        $send = $this->email->send();
+
+        return $send;
     }
 }

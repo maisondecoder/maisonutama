@@ -71,38 +71,43 @@
             </div>
             <hr>
             <div class="mb-3">
-                <label for="SectionQTY" class="form-label fw-bold">Section Number</label>
-                <input type="number" class="form-control" id="SectionQTY" value="<?= count($contents); ?>" min="1" max="5">
+                <label for="SectionQTY" class="form-label fw-bold">Section Number</label><br>
+                <div id="decsec" class="btn btn-primary">-</div>
+                <div id="labelsection" class="btn"><?= count($contents); ?></div>
+                <div id="addsec" class="btn btn-primary">+</div>
+                <!--<input type="number" class="form-control" id="SectionQTY" value="<?= count($contents); ?>" min="1" max="5">-->
             </div>
             <div id="SectionContent" class="mb-3 card p-4">
-
-
                 <?php if ($contents) {
                     foreach ($contents as $key => $content) {
                         $index = array_search($key, array_keys($contents));
                 ?>
-                        <label for="ProductContent" class="form-label fw-bold">Product Content #<?= $index + 1; ?></label>
-                        <div id="content-box" class="container card p-4 mb-2 bg-light">
-                            <div class="mb-3">
-                                <label for="SectionTitle" class="form-label fw-bold">Content Title</label>
-                                <input type="text" onchange="fieldonchange();" class="form-control" id="SectionTitle<?= $index + 1; ?>" name="SectionTitle[]" placeholder="e.g. Description" value="<?= $key; ?>">
-                            </div>
-                            <div class="mb-3">
-                                <label for="Sectionvalue" class="form-label fw-bold">Content Value</label>
-                                <input type="text" onchange="fieldonchange();" class="form-control" id="Sectionvalue<?= $index + 1; ?>" name="SectionValue[]" placeholder="Type Description value here..." value="<?= $contents[$key]; ?>">
+                        <div id="section<?= $index + 1; ?>">
+                            <label for="ProductContent" class="form-label fw-bold">Product Content #<?= $index + 1; ?></label>
+                            <div id="content-box" class="container card p-4 mb-2 bg-light">
+                                <div class="mb-3">
+                                    <label for="SectionTitle" class="form-label fw-bold">Content Title</label>
+                                    <input type="text" onchange="fieldonchange();" class="form-control" id="SectionTitle<?= $index + 1; ?>" name="SectionTitle[]" placeholder="e.g. Description" value="<?= $key; ?>">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="Sectionvalue" class="form-label fw-bold">Content Value</label>
+                                    <input type="text" onchange="fieldonchange();" class="form-control" id="Sectionvalue<?= $index + 1; ?>" name="SectionValue[]" placeholder="Type Description value here..." value="<?= $contents[$key]; ?>">
+                                </div>
                             </div>
                         </div>
                     <?php }
                 } else { ?>
-                    <label for="ProductContent" class="form-label fw-bold">Product Content #1</label>
-                    <div id="content-box" class="container card p-4 mb-2 bg-light">
-                        <div class="mb-3">
-                            <label for="SectionTitle1" class="form-label fw-bold">Content Title</label>
-                            <input type="text" onchange="fieldonchange();" class="form-control " id="SectionTitle1" name="SectionTitle[]" placeholder="e.g. Description" value="">
-                        </div>
-                        <div class="mb-3">
-                            <label for="Sectionvalue1" class="form-label fw-bold">Content Value</label>
-                            <input type="text" onchange="fieldonchange();" class="form-control" id="Sectionvalue1" name="SectionValue[]" placeholder="Type Description value here..." value="">
+                    <div id="section1">
+                        <label for="ProductContent" class="form-label fw-bold">Product Content #1</label>
+                        <div id="content-box" class="container card p-4 mb-2 bg-light">
+                            <div class="mb-3">
+                                <label for="SectionTitle1" class="form-label fw-bold">Content Title</label>
+                                <input type="text" onchange="fieldonchange();" class="form-control " id="SectionTitle1" name="SectionTitle[]" placeholder="e.g. Description" value="">
+                            </div>
+                            <div class="mb-3">
+                                <label for="Sectionvalue1" class="form-label fw-bold">Content Value</label>
+                                <input type="text" onchange="fieldonchange();" class="form-control" id="Sectionvalue1" name="SectionValue[]" placeholder="Type Description value here..." value="">
+                            </div>
                         </div>
                     </div>
                 <?php } ?>
@@ -126,13 +131,13 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
     <script src="https://www.jqueryscript.net/demo/MD5-Hash-String/jquery.md5.min.js"></script>
     <script>
-        var mergelama = $('#ProductName').val() + "_" + $('#ProductSlug').val() + "_" + $('#Brand').val() + "_" + $('#Room').val() + "_" + $('#Category').val() + "_" + $('#ProductThumbnail').val() + "_" + $('#ProductStatus').val();
+        var mergelama = $('#ProductName').val() + "_" + $('#ProductSlug').val() + "_" + $('#Brand').val() + "_" + $('#Room').val() + "_" + $('#Category').val() + "_" + $('#ProductThumbnail').val() + "_" + $('#ProductStatus').val() + "_" + $("#SectionContent").children().toArray();
         const hashlama = $.MD5(mergelama);
         var mergebaru = mergelama;
         var hashbaru = hashlama;
 
         function fieldonchange() {
-            mergebaru = $('#ProductName').val() + "_" + $('#ProductSlug').val() + "_" + $('#Brand').val() + "_" + $('#Room').val() + "_" + $('#Category').val() + "_" + $('#ProductThumbnail').val() + "_" + $('#ProductStatus').val();
+            mergebaru = $('#ProductName').val() + "_" + $('#ProductSlug').val() + "_" + $('#Brand').val() + "_" + $('#Room').val() + "_" + $('#Category').val() + "_" + $('#ProductThumbnail').val() + "_" + $('#ProductStatus').val() + "_" + $("#SectionContent").children().toArray();
             hashbaru = $.MD5(mergebaru);
             if (hashlama != hashbaru) {
                 $('#submit').removeClass('disabled');
@@ -174,21 +179,37 @@
             }, 2000);
         });
 
-        $('#SectionQTY').change(function() {
+        $('#addsec').click(function() {
             //alert($(this).val());
-            $("#SectionContent").append(
-            "<label for='ProductContent' class='form-label fw-bold'>Product Content #XX</label>" +
-            "<div id='content-box' class='container card p-4 mb-2 bg-light'>" +
-            "<div class='mb-3'>" +
-            "<label for='SectionTitle' class='form-label fw-bold'>Content Title</label>" +
-            "<input type='text' onchange='fieldonchange();'' class='form-control' id='SectionTitleXX' name='SectionTitle[]' placeholder='e.g. Description' value=''>" +
-            "</div>" +
-            "<div class='mb-3'>" +
-            "<label for='Sectionvalue' class='form-label fw-bold'>Content Value</label>" +
-            "<input type='text' onchange='fieldonchange();' class='form-control' id='SectionvalueXX' name='SectionValue[]' placeholder='Type Description value here...' value=''>" +
-            "</div>" +
-            "</div>"
-            );
+            var qty = $("#SectionContent").children().length;
+            if (qty < 6) {
+                var next = qty + 1;
+                //removeChild();
+                $("#labelsection").text(next);
+                $("#SectionContent").append(
+                    "<div id='section" + next + "'>" +
+                    "<label for='ProductContent' class='form-label fw-bold'>Product Content #" + next + "</label>" +
+                    "<div id='content-box' class='container card p-4 mb-2 bg-light'>" +
+                    "<div class='mb-3'>" +
+                    "<label for='SectionTitle' class='form-label fw-bold'>Content Title</label>" +
+                    "<input type='text' onchange='fieldonchange();'' class='form-control' id='SectionTitleXX' name='SectionTitle[]' placeholder='e.g. Description' value=''>" +
+                    "</div>" +
+                    "<div class='mb-3'>" +
+                    "<label for='Sectionvalue' class='form-label fw-bold'>Content Value</label>" +
+                    "<input type='text' onchange='fieldonchange();' class='form-control' id='SectionvalueXX' name='SectionValue[]' placeholder='Type Description value here...' value=''>" +
+                    "</div>" +
+                    "</div>" +
+                    "</div>"
+                );
+            }
+        });
+
+        $("#decsec").click(function() {
+            var qty = $("#SectionContent").children().length;
+            if (qty > 1) {
+                $("#labelsection").text(qty-1);
+                $("#SectionContent").children().last().remove();
+            }
         });
     </script>
 </div>

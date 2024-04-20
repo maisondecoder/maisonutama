@@ -38,10 +38,77 @@ class Backend extends CI_Controller
                     $this->session->set_userdata('ses_login', $check_email);
                     redirect('backend/dashboard?msg=login-success');
                 } else {
-                    redirect('backend/dashboard?msg=login-failed');
+                    $this->session->set_flashdata('msg', 'Swal.fire("Email or Password is Invalid!");');
+                    redirect('backend/login?msg=login-failed');
                 }
             } else {
-                echo 'email not found';
+                $this->session->set_flashdata('msg', 'Swal.fire("Email or Password is Invalid!");');
+                redirect('backend/login?msg=login-failed');
+            }
+        }
+    }
+
+    public function reset_password($token_reset = null)
+    {
+        if (is_logged_in()) {
+            redirect('backend/dashboard?msg=already-login');
+            exit;
+        }
+
+        if ($token_reset) {
+            $this->load->model('backend_model');
+            $check = $this->backend_model->check_reset_token($token_reset);
+            if ($check) {
+                $data['current_nav'] = 'login';
+                $data['token'] = $token_reset;
+                $this->load->library('form_validation');
+                $this->form_validation->set_rules('password', 'Password', 'required');
+                $this->form_validation->set_rules('confirm', 'Confirm Password', 'required|matches[password]');
+
+                if ($this->form_validation->run() == FALSE) {
+                    $this->load->view('backend/new_password', $data);
+                } else {
+                    $email = $check['admin_email'];
+                    $password = $this->input->post('password');
+                    $reset_pass = $this->backend_model->new_password($email, $password);
+                    if ($reset_pass) {
+                        $this->session->set_flashdata('msg', 'Swal.fire("Password has been successfully changed, please login using your new password");');
+                        redirect('backend/login?msg=reset-success');
+                    } else {
+                        $this->session->set_flashdata('msg', 'Swal.fire("There was an error in resetting the password, please try again");');
+                        redirect('backend/login?msg=reset-failed');
+                    }
+                }
+            } else {
+                redirect('backend/login?msg=reset-token-invalid');
+            }
+        } else {
+
+            $data['current_nav'] = 'login';
+
+            $this->load->library('form_validation');
+            $this->form_validation->set_rules('email', 'Email Address', 'required');
+
+            if ($this->form_validation->run() == FALSE) {
+                $this->load->view('backend/request_reset_password', $data);
+            } else {
+                $email = $this->input->post('email');
+
+                $this->load->model('backend_model');
+                $email = $this->backend_model->check_email($email)['admin_email'];
+                if ($email) {
+                    $tujuan = $email;
+                    $string = $this->backend_model->admin_reset_request($email);
+                    $judul = "Password Reset Request [" . $string . "]";
+                    $body = "You have requested a password reset, click the following link to create a new password. <a href='" . base_url('backend/reset_password/') . $string . "'> Click Here to Reset</a>";
+                    $this->backend_model->send_email($tujuan, $judul, $body);
+
+                    $this->session->set_flashdata('msg', 'Swal.fire("We have sent a password reset link to your email, please check your email inbox");');
+                    redirect('backend/login?msg=request_sent');
+                } else {
+                    $this->session->set_flashdata('msg', 'Swal.fire("Email is Invalid!");');
+                    redirect('backend/reset_password?msg=email_invalid');
+                }
             }
         }
     }
