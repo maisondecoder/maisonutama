@@ -561,7 +561,7 @@ class Backend extends CI_Controller
         }
     }
 
-    public function groups($form = null, $group_id = 0)
+    public function groups($form = null, $group_id = 0, $reorder = 0)
     {
         if (!is_logged_in()) {
             redirect('backend/login');
@@ -624,14 +624,21 @@ class Backend extends CI_Controller
                             redirect('backend/groups/list/?msg=add-failed');
                         }
                     } else {
-                        $update = $this->backend_model->edit_group($name, $items, $status, $group_id);
-                        if ($update) {
-                            $this->session->set_flashdata('msg', 'Swal.fire("Update Saved!");');
-                            redirect('backend/groups/list/?msg=update-saved');
-                        } else {
-                            $this->session->set_flashdata('msg', 'Swal.fire("Update Failed!");');
-                            redirect('backend/groups/edit/' . $group_id . '?msg=update-failed');
+                        if(!$reorder){
+                            echo 'update';
+                            exit;
+                            $update = $this->backend_model->edit_group($name, $items, $status, $group_id);
+                            if ($update) {
+                                $this->session->set_flashdata('msg', 'Swal.fire("Update Saved!");');
+                                redirect('backend/groups/list/?msg=update-saved');
+                            } else {
+                                $this->session->set_flashdata('msg', 'Swal.fire("Update Failed!");');
+                                redirect('backend/groups/edit/' . $group_id . '?msg=update-failed');
+                            }
+                        }else{
+                            echo 'reorder';
                         }
+                        
                     }
                 }
             } elseif ($form == "list") {
