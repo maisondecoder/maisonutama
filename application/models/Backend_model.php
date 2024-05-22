@@ -383,6 +383,55 @@ class Backend_model extends CI_Model
     }
     //////////////////////// GROUP END ////////////////////////
 
+    //////////////////////// PROJECT START ////////////////////////
+
+    public function get_all_projects($project_id = 0)
+    {
+        $this->db->select('*');
+        $this->db->from('ml_project');
+        if ($project_id) {
+            $this->db->where('project_id', $project_id);
+        }
+        $this->db->where('is_deleted', 0);
+        $this->db->order_by('project_id', 'desc');
+        $get_all_projects = $this->db->get()->result_array();
+
+        return $get_all_projects;
+    }
+
+    public function edit_project($title, $images, $designer, $products, $status, $project_id)
+    {
+        $this->db->set('project_title', $title);
+        $this->db->set('project_img', $images);
+        $this->db->set('designer_id', $designer);
+        $this->db->set('product_id', $products);
+        $this->db->set('project_status', $status);
+        $this->db->where('project_id', $project_id);
+        $this->db->update('ml_project');
+
+        $update = $this->db->affected_rows();
+        return $update;
+    }
+
+    public function soft_delete_project($project_id)
+    {
+        $this->db->set('is_deleted', 1);
+        $this->db->where('project_id', $project_id);
+        $this->db->update('ml_project');
+
+        $soft_delete = $this->db->affected_rows();
+        return $soft_delete;
+    }
+
+    public function get_all_designer(){
+        $this->db->select('*');
+        $this->db->from('ml_designer_studio');
+        $get_all_designer = $this->db->get()->result_array();
+        return $get_all_designer;
+    }
+
+    //////////////////////// PROJECT END ////////////////////////
+
     //////////////////////// LOGIN START ////////////////////////
 
     public function check_email($email)

@@ -668,6 +668,110 @@ class Backend extends CI_Controller
         }
     }
 
+    public function projects($form = null, $project_id = 0, $reorder = 0)
+    {
+        if (!is_logged_in()) {
+            redirect('backend/login');
+            exit;
+        }
+
+        //untuk tanda di menu navigasi aktif
+        $data['current_nav'] = 'project';
+
+        $whitelist_projects = array("add", "edit", "list", "trash");
+        if (in_array($form, $whitelist_projects)) {
+            $this->load->model('backend_model');
+            if ($form == "add" || $form == "edit") {
+
+                if ($form == "add") {
+                    $data['form'] = 'add';
+                    $data['products'] = $this->backend_model->get_avail_products();
+                    //Pada Form Add, kolom isian dibuat kosong dulu
+                    $data['project']['project_id'] = "";
+                    $data['project']['project_title'] = "";
+                    $data['project']['project_img'] = "";
+                    $data['project']['designer_id'] = "";
+                    $data['project']['product_id'] = "";
+                    $data['project']['project_status'] = 1;
+                } else {
+                    $data['form'] = 'edit';
+                    //Ngecek apakah ID Group ada di DB
+                    $data['project'] = $this->backend_model->get_all_projects($project_id)[0];
+                    $data['products'] = $this->backend_model->get_avail_products();
+                    $items = explode(",", $data['project']['product_id']);
+                    //print_r($items);
+                    $data['selected_items'] = $this->backend_model->selected_group_items($items, $data['project']['product_id']);
+                    //print_r($data['selected_items']);
+                    if (!$data['project']) {
+                        redirect("backend/projects/list");
+                    }
+                }
+
+                $this->load->library('form_validation');
+                $this->form_validation->set_rules('ProjectTitle', 'Project Title', 'required');
+                $this->form_validation->set_rules('Products[]', 'Products', 'required');
+                $this->form_validation->set_rules('Status', 'Status', 'required');
+
+                if ($this->form_validation->run() == FALSE) {
+                    $this->load->view('backend/header', $data);
+                    $this->load->view('backend/projects-form');
+                    $this->load->view('backend/footer');
+                } else {
+                    $title = $this->input->post('ProjectTitle');
+                    $images = $this->input->post('ProjectImage');
+                    $designer = $this->input->post('Designers');
+                    $products = $this->input->post('Products[]');
+                    $status = $this->input->post('Status');
+                    $items = implode(",", $products);
+                    //echo $group_item;
+                    //exit();
+                    if ($form == "add") {
+                        $add = $this->backend_model->add_project($title, $images, $designer, $items, $status);
+                        if ($add) {
+                            $this->session->set_flashdata('msg', 'Swal.fire("New Data Added!");');
+                            redirect('backend/groups/list/?msg=add-success');
+                        } else {
+                            $this->session->set_flashdata('msg', 'Swal.fire("Add Data Failed!");');
+                            redirect('backend/groups/list/?msg=add-failed');
+                        }
+                    } else {
+                        $edit = $this->backend_model->edit_project($title, $images, $designer, $items, $status, $project_id);
+                        if ($edit) {
+                            $this->session->set_flashdata('msg', 'Swal.fire("Edit Data Saved");');
+                            redirect('backend/projects/list/?msg=edit-success');
+                        } else {
+                            $this->session->set_flashdata('msg', 'Swal.fire("Edit Data Failed!");');
+                            redirect('backend/projects/list/?msg=edit-failed');
+                        }
+                    }
+                }
+            } elseif ($form == "list") {
+                //Menampilkan seluruh data Store
+                $data['projects'] = $this->backend_model->get_all_projects();
+
+                $this->load->view('backend/header', $data);
+                $this->load->view('backend/projects-list');
+                $this->load->view('backend/footer');
+            } elseif ($form == "trash") {
+                $cek_id = $this->backend_model->get_all_projects($project_id);
+                if (!$cek_id) {
+                    redirect("backend/projects/list?msg=invalid-id");
+                } else {
+                    $soft_delete = $this->backend_model->soft_delete_project($project_id);
+                    if ($soft_delete) {
+                        $this->session->set_flashdata('msg', 'Swal.fire("Item Deleted!");');
+                        redirect('backend/projects/list/?msg=delete-success');
+                    } else {
+                        $this->session->set_flashdata('msg', 'Swal.fire("Delete Failed!");');
+                        redirect('backend/projects/list/?msg=delete-failed');
+                    }
+                }
+            }
+        } else {
+            redirect("backend/groups/list");
+        }
+    }
+
     public function products($form = null, $product_id = 0)
     {
         if (!is_logged_in()) {

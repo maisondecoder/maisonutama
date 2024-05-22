@@ -49,6 +49,15 @@
                                 <li><a class="dropdown-item" href="<?= base_url('backend/groups/add'); ?>">Add New</a></li>
                             </ul>
                         </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle <?php if($current_nav =='project'){ echo 'active'; } ?>" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Content Project
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="<?= base_url('backend/projects/list'); ?>">Project List</a></li>
+                                <li><a class="dropdown-item" href="<?= base_url('backend/projects/add'); ?>">Add New</a></li>
+                            </ul>
+                        </li>
                         <hr>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle <?php if($current_nav =='brand'){ echo 'active'; } ?>" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

@@ -7,8 +7,8 @@ class Main extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		//$GLOBALS['domain_static'] = 'https://localhost/maisonutama';
-		$GLOBALS['domain_static'] = 'https://9v6e9irhcc.r.worldssl.net';
+		$GLOBALS['domain_static'] = 'https://localhost/maisonutama';
+		//$GLOBALS['domain_static'] = 'https://9v6e9irhcc.r.worldssl.net';
 		// Your own constructor code
 	}
 
@@ -331,6 +331,33 @@ class Main extends CI_Controller
 		$data['all_catalog'] = $all_catalog;
 		//print_r($all_catalog);
 		$this->load->view('revamp/all_catalog', $data);
+	}
+
+	public function our_project($id)
+	{
+		//Global Data To Display *Mandatory
+		$this->load->model('brand_model');
+		$data['all_brands'] = $this->brand_model->get_all_brands();
+
+		$this->load->model('project_model');
+		$data['project'] = $this->project_model->get_spesific_project($id);
+
+		if (!$data['project']) {
+			redirect('/?error');
+		}
+
+		//Get semua product yg digunakan dalam project
+		$this->load->model('collection_model');
+		$data['products'] = $this->collection_model->selected_group_items($data['project']['product_id']);
+
+		//print_r($data['products']);	
+
+		$data['title_page'] = "Our Project";
+		$data['nav'] = "project";
+
+		$this->load->view('revamp/header', $data);
+		$this->load->view('revamp/project-detail');
+		$this->load->view('revamp/footer');
 	}
 
 	public function testlanding()
