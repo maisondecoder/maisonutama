@@ -1,39 +1,25 @@
 <!-- Project Detail -->
-<div id="brand-collections" class="container text-center py-4">
-    <h1><?= $project['project_title']; ?></h1>
+<div id="brand-collections" class="container text-center py-2">
+    <h1 class="fs-1"><?= $project['project_name']; ?></h1>
     <div class="mx-auto" style="max-width:800px">
+        <img id="img-show" class="img-fluid rounded" src="<?= $GLOBALS['domain_static'] . '/assets/projects/'.$images[0]; ?>" alt="">
         <section id="splide-gallery" class="splide" aria-label="Project Gallery">
             <div class="splide__track">
                 <ul class="splide__list">
-                    <li class="splide__slide p-2" data-splide-hash="slide01">
-                        <img class="img-fluid rounded" src="<?= $GLOBALS['domain_static'] . '/assets/projects/1.jpeg'; ?>">
+                    <?php foreach($images as $image){ ?>
+                    <li class="splide__slide p-2">
+                        <img class="img-fluid rounded thumbclick" src="<?= $GLOBALS['domain_static'] . '/assets/projects/'.$image; ?>" style="cursor:pointer;">
                     </li>
-                    <li class="splide__slide p-2" data-splide-hash="slide02">
-                        <img class="img-fluid rounded" src="<?= $GLOBALS['domain_static'] . '/assets/projects/2.jpeg'; ?>">
-                    </li>
-                    <li class="splide__slide p-2" data-splide-hash="slide03">
-                        <img class="img-fluid rounded" src="<?= $GLOBALS['domain_static'] . '/assets/projects/3.jpeg'; ?>">
-                    </li>
-                    <li class="splide__slide p-2" data-splide-hash="slide04">
-                        <img class="img-fluid rounded" src="<?= $GLOBALS['domain_static'] . '/assets/projects/4.jpeg'; ?>">
-                    </li>
+                    <?php } ?>
                 </ul>
-            </div>
-        </section>
-        <section>
-            <div>
-                <a href="#slide01"><img src="<?= $GLOBALS['domain_static'] . '/assets/projects/1.jpeg'; ?>" class="img-thumbnail" alt="..." style="max-height:64px"></a>
-                <a href="#slide02"><img src="<?= $GLOBALS['domain_static'] . '/assets/projects/2.jpeg'; ?>" class="img-thumbnail" alt="..." style="max-height:64px"></a>
-                <a href="#slide03"><img src="<?= $GLOBALS['domain_static'] . '/assets/projects/3.jpeg'; ?>" class="img-thumbnail" alt="..." style="max-height:64px"></a>
-                <a href="#slide04"><img src="<?= $GLOBALS['domain_static'] . '/assets/projects/4.jpeg'; ?>" class="img-thumbnail" alt="..." style="max-height:64px"></a>
             </div>
         </section>
     </div>
 </div>
 
 <!-- Designer in Project  -->
-<div class="container p-4">
-    <h2>Designer</h2>
+<div class="container py-2">
+    <h2 class="fs-2">Designer</h2>
     <section id="" class="" aria-label="Other Products">
         <div class="card mb-2" style="max-width:200px">
             <div class="row g-0">
@@ -50,7 +36,8 @@
 <!-- Designer in Project  -->
 
 <!-- Product in Project  -->
-<div class="container p-4">
+<?php if($products){ ?>
+<div class="container py-2">
     <h2>Product in This Project</h2>
     <section id="splide-related-product" class="splide" aria-label="Products in This Project">
         <div class="splide__track">
@@ -66,6 +53,7 @@
         </div>
     </section>
 </div>
+<?php } ?>
 <!-- Product in Project  -->
 
 <div class="fixed-bottom container p-4 bg-light bg-gradient mb-4 border border-dark shadow mx-auto text-center">
@@ -78,11 +66,23 @@
 <script>
     new Splide('#splide-gallery', {
         type: 'loop',
-        perPage: 1,
+        perPage: 6,
         perMove: 1,
         autoplay: true,
-        pagination: true,
-    }).mount(window.splide.Extensions);
+        pagination: false,
+        padding: '1rem',
+        breakpoints: {
+            400: {
+                perPage: 4,
+            },
+            800: {
+                perPage: 4,
+            },
+            1000: {
+                perPage: 5,
+            },
+        }
+    }).mount();
 
     new Splide('#splide-related-product', {
         perPage: 5,
@@ -101,4 +101,9 @@
             },
         }
     }).mount();
+
+    
+        $(".thumbclick").click(function(){
+            $("#img-show").attr('src', $(this).attr('src'));
+        });
 </script>

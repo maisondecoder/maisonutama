@@ -131,13 +131,13 @@
     <link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
     <script src="https://www.jqueryscript.net/demo/MD5-Hash-String/jquery.md5.min.js"></script>
     <script>
-        var mergelama = $('#ProductName').val() + "_" + $('#ProductSlug').val() + "_" + $('#Brand').val() + "_" + $('#Room').val() + "_" + $('#Category').val() + "_" + $('#ProductThumbnail').val() + "_" + $('#ProductStatus').val() + "_" + $("#SectionContent").children().toArray();
+        var mergelama = $('#ProductName').val() + "_" + $('#ProductSlug').val() + "_" + $('#Brand').val() + "_" + $('#Room').val() + "_" + $('#Category').val() + "_" + $('#ProductThumbnail').val() + "_" + $('#ProductStatus').val() + "_" + $("#SectionContent").children().toArray() + "_" + $('[name="SectionTitle[]"]').serialize() + "_" + $('[name="SectionValue[]"]').serialize();
         const hashlama = $.MD5(mergelama);
         var mergebaru = mergelama;
         var hashbaru = hashlama;
 
         function fieldonchange() {
-            mergebaru = $('#ProductName').val() + "_" + $('#ProductSlug').val() + "_" + $('#Brand').val() + "_" + $('#Room').val() + "_" + $('#Category').val() + "_" + $('#ProductThumbnail').val() + "_" + $('#ProductStatus').val() + "_" + $("#SectionContent").children().toArray();
+            mergebaru = $('#ProductName').val() + "_" + $('#ProductSlug').val() + "_" + $('#Brand').val() + "_" + $('#Room').val() + "_" + $('#Category').val() + "_" + $('#ProductThumbnail').val() + "_" + $('#ProductStatus').val() + "_" + $("#SectionContent").children().toArray() + "_" + $('[name="SectionTitle[]"]').serialize() + "_" + $('[name="SectionValue[]"]').serialize();
             hashbaru = $.MD5(mergebaru);
             if (hashlama != hashbaru) {
                 $('#submit').removeClass('disabled');
@@ -202,6 +202,11 @@
                     "</div>"
                 );
             }
+            fieldonchange();
+        });
+
+        $('input[name="SectionValue[]"]').change(function(){
+            fieldonchange();
         });
 
         $("#decsec").click(function() {
@@ -210,6 +215,7 @@
                 $("#labelsection").text(qty-1);
                 $("#SectionContent").children().last().remove();
             }
+            fieldonchange();
         });
     </script>
 </div>

@@ -5,7 +5,7 @@
         <form action="<?= base_url('backend/projects/' . $form . '/') . $project['project_id']; ?>" method="POST">
             <div class="mb-3">
                 <label for="ProjectName" class="form-label fw-bold">Project Title</label>
-                <input type="text" onchange="fieldonchange();" class="form-control" id="ProjectTitle" name="ProjectTitle" placeholder="Project Title" value="<?= $project['project_title']; ?>">
+                <input type="text" onchange="fieldonchange();" class="form-control" id="ProjectTitle" name="ProjectTitle" placeholder="Project Title" value="<?= $project['project_name']; ?>">
             </div>
             <div class="mb-3">
                 <label for="ProjectImage" class="form-label fw-bold">Project Images</label>
@@ -22,8 +22,8 @@
             <div class="mb-3">
                 <label for="GroupName" class="form-label fw-bold">Designer / Studio</label>
                 <select class="js-example-data-array-selected form-select" id="Designers" name="Designers[]" multiple="multiple" onchange="fieldonchange();">
-                    <?php foreach ($products as $key => $product) { ?>
-                        <option value="<?= $product['product_id']; ?>"><?= $product['brand_name'] . " - " . $product['product_name']; ?></option>
+                    <?php foreach ($all_designers as $key => $designer) { ?>
+                        <option value="<?= $designer['designer_id']; ?>"><?= $designer['designer_name']; ?></option>
                     <?php } ?>
                 </select>
             </div>
@@ -42,7 +42,7 @@
             <div class="mb-3">
                 <div class="row">
                     <div class="col">
-                        <button id="submit" type="submit" class="btn btn-primary">Submit</button>
+                        <button id="submit" type="submit" class="btn btn-primary disabled">Submit</button>
                         <a href="javascript:history.back()" class="btn btn-outline-secondary">Cancel</a>
                     </div>
                     <div class="col text-end">
@@ -59,18 +59,18 @@
     <script src="https://www.jqueryscript.net/demo/MD5-Hash-String/jquery.md5.min.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <script>
-        var mergelama = $('#ProjectName').val() + "_" + $('#ProjectStatus').val() + "_" + $('#GroupItems').val();
+        var mergelama = $('#ProjectTitle').val() + "_" + $('#ProjectImage').val() + "_" + $('#Products').val() + "_" + $('#Designers').val() + "_" + $('#Status').val();
         const hashlama = $.MD5(mergelama);
         var mergebaru = mergelama;
         var hashbaru = hashlama;
 
         function fieldonchange() {
-            mergebaru = $('#ProjectName').val() + "_" + $('#ProjectStatus').val() + "_" + $('#GroupItems').val();
+            mergebaru = $('#ProjectTitle').val() + "_" + $('#ProjectImage').val() + "_" + $('#Products').val() + "_" + $('#Designers').val() + "_" + $('#Status').val();
             hashbaru = $.MD5(mergebaru);
             if (hashlama != hashbaru) {
-                //$('#submit').removeClass('disabled');
+                $('#submit').removeClass('disabled');
             } else {
-                //$('#submit').addClass('disabled');
+                $('#submit').addClass('disabled');
             }
         }
 
@@ -86,17 +86,8 @@
             $('#Designers').select2({
                 theme: 'bootstrap-5'
             });
-            $('#Designers').val([<?= $project['product_id']; ?>]);
+            $('#Designers').val([<?= $project['designer_id']; ?>]);
             $('#Designers').trigger('change');
-        });
-
-        $(function() {
-            $("#sortable").sortable();
-        });
-
-        $("#sortable").on("sortupdate", function(event, ui) {
-            var sortedIDs = $("#sortable").sortable("toArray");
-            console.log(sortedIDs);
         });
     </script>
 </div>

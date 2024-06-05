@@ -6,6 +6,9 @@
                 <a class="nav-link <?php if($table == 'product'){ echo 'active fw-bold'; } ?>" href="<?= base_url('backend/trash/product'); ?>">Product (<?= $ct_product['qty']; ?>)</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link <?php if($table == 'project'){ echo 'active fw-bold'; } ?>" href="<?= base_url('backend/trash/project'); ?>">Project (<?= $ct_project['qty']; ?>)</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link <?php if($table == 'group'){ echo 'active fw-bold'; } ?>" href="<?= base_url('backend/trash/group'); ?>">Group (<?= $ct_group['qty']; ?>)</a>
             </li>
             <li class="nav-item">

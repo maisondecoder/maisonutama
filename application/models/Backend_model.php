@@ -399,9 +399,23 @@ class Backend_model extends CI_Model
         return $get_all_projects;
     }
 
-    public function edit_project($title, $images, $designer, $products, $status, $project_id)
+    public function add_project($title, $images, $designer=0, $products=0, $status)
     {
-        $this->db->set('project_title', $title);
+        $data = array(
+            'project_name' => $title,
+            'project_img' => $images,
+            'designer_id' => $designer,
+            'product_id' => $products,
+            'project_status' => $status,
+        );
+        $this->db->insert('ml_project', $data);
+        $add = $this->db->insert_id();
+        return $add;
+    }
+
+    public function edit_project($title, $images, $designer=0, $products=0, $status, $project_id)
+    {
+        $this->db->set('project_name', $title);
         $this->db->set('project_img', $images);
         $this->db->set('designer_id', $designer);
         $this->db->set('product_id', $products);

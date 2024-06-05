@@ -7,8 +7,8 @@ class Main extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		$GLOBALS['domain_static'] = 'https://localhost/maisonutama';
-		//$GLOBALS['domain_static'] = 'https://9v6e9irhcc.r.worldssl.net';
+		//$GLOBALS['domain_static'] = 'https://localhost/maisonutama';
+		$GLOBALS['domain_static'] = 'https://9v6e9irhcc.r.worldssl.net';
 		// Your own constructor code
 	}
 
@@ -342,14 +342,19 @@ class Main extends CI_Controller
 		$this->load->model('project_model');
 		$data['project'] = $this->project_model->get_spesific_project($id);
 
+		
 		if (!$data['project']) {
 			redirect('/?error');
 		}
 
+		//Get Semua Foto Gallery
+		$data['images'] = explode(";", $data['project']['project_img']);
+		//print_r($data['images']);
+
 		//Get semua product yg digunakan dalam project
 		$this->load->model('collection_model');
 		$data['products'] = $this->collection_model->selected_group_items($data['project']['product_id']);
-
+		
 		//print_r($data['products']);	
 
 		$data['title_page'] = "Our Project";

@@ -624,7 +624,7 @@ class Backend extends CI_Controller
                             redirect('backend/groups/list/?msg=add-failed');
                         }
                     } else {
-                        if(!$reorder){
+                        if (!$reorder) {
                             echo 'update';
                             exit;
                             $update = $this->backend_model->edit_group($name, $items, $status, $group_id);
@@ -635,10 +635,9 @@ class Backend extends CI_Controller
                                 $this->session->set_flashdata('msg', 'Swal.fire("Update Failed!");');
                                 redirect('backend/groups/edit/' . $group_id . '?msg=update-failed');
                             }
-                        }else{
+                        } else {
                             echo 'reorder';
                         }
-                        
                     }
                 }
             } elseif ($form == "list") {
@@ -686,17 +685,19 @@ class Backend extends CI_Controller
                 if ($form == "add") {
                     $data['form'] = 'add';
                     $data['products'] = $this->backend_model->get_avail_products();
+                    $data['all_designers'] = $this->backend_model->get_all_designer();
                     //Pada Form Add, kolom isian dibuat kosong dulu
                     $data['project']['project_id'] = "";
-                    $data['project']['project_title'] = "";
+                    $data['project']['project_name'] = "";
                     $data['project']['project_img'] = "";
                     $data['project']['designer_id'] = "";
-                    $data['project']['product_id'] = "";
+                    $data['project']['product_id'] = 0;
                     $data['project']['project_status'] = 1;
                 } else {
                     $data['form'] = 'edit';
                     //Ngecek apakah ID Group ada di DB
                     $data['project'] = $this->backend_model->get_all_projects($project_id)[0];
+                    $data['all_designers'] = $this->backend_model->get_all_designer();
                     $data['products'] = $this->backend_model->get_avail_products();
                     $items = explode(",", $data['project']['product_id']);
                     //print_r($items);
@@ -720,27 +721,39 @@ class Backend extends CI_Controller
                     $title = $this->input->post('ProjectTitle');
                     $images = $this->input->post('ProjectImage');
                     $designer = $this->input->post('Designers');
-                    $products = $this->input->post('Products[]');
+                    $products = $this->input->post('Products');
                     $status = $this->input->post('Status');
-                    $items = implode(",", $products);
+                    if ($designer) {
+                        $designer = implode(",", $designer);
+                    } else {
+                        $designer = 0;
+                    }
+
+                    if ($products > 1) {
+                        $items = implode(",", $products);
+                    } else {
+                        $items = 0;
+                    }
                     //echo $group_item;
                     //exit();
                     if ($form == "add") {
                         $add = $this->backend_model->add_project($title, $images, $designer, $items, $status);
                         if ($add) {
                             $this->session->set_flashdata('msg', 'Swal.fire("New Data Added!");');
-                            redirect('backend/groups/list/?msg=add-success');
+                            redirect('backend/projects/list/?msg=add-success');
                         } else {
                             $this->session->set_flashdata('msg', 'Swal.fire("Add Data Failed!");');
-                            redirect('backend/groups/list/?msg=add-failed');
+                            redirect('backend/projects/list/?msg=add-failed');
                         }
                     } else {
                         $edit = $this->backend_model->edit_project($title, $images, $designer, $items, $status, $project_id);
                         if ($edit) {
                             $this->session->set_flashdata('msg', 'Swal.fire("Edit Data Saved");');
+                            //print_r($edit);
                             redirect('backend/projects/list/?msg=edit-success');
                         } else {
                             $this->session->set_flashdata('msg', 'Swal.fire("Edit Data Failed!");');
+                            //print_r($edit);
                             redirect('backend/projects/list/?msg=edit-failed');
                         }
                     }
@@ -911,6 +924,9 @@ class Backend extends CI_Controller
             if ($table == 'product') {
                 $db = "ml_products";
                 $label = "product";
+            }elseif ($table == 'project') {
+                $db = "ml_project";
+                $label = "project";
             } elseif ($table == 'group') {
                 $db = "ml_group";
                 $label = "group";
@@ -934,6 +950,7 @@ class Backend extends CI_Controller
                 $data['table'] = $table;
                 $data['trash'] = $this->backend_model->get_trash($db, $label);
                 $data['ct_product'] = $this->backend_model->count_trash('ml_products', 'product');
+                $data['ct_project'] = $this->backend_model->count_trash('ml_project', 'project');
                 $data['ct_group'] = $this->backend_model->count_trash('ml_group', 'group');
                 $data['ct_brand'] = $this->backend_model->count_trash('ml_brands', 'brand');
                 $data['ct_room'] = $this->backend_model->count_trash('ml_rooms', 'room');
