@@ -13,6 +13,7 @@
                         <th scope="col">Category</th>
                         <th scope="col">Room</th>
                         <th scope="col">Status</th>
+                        <th scope="col">Discontinued</th>
                         <th scope="col"></th>
                     </tr>
                 </thead>
@@ -32,6 +33,11 @@
                                     echo '<span class="badge text-bg-success">ON</span>';
                                 } else {
                                     echo '<span class="badge text-bg-danger">OFF</span>';
+                                } ?></td>
+                                <td><?php if ($product['is_discontinued']) {
+                                    echo '<span class="badge text-bg-danger">Yes</span>';
+                                } else {
+                                    echo '<span class="badge text-bg-secondary">No</span>';
                                 } ?></td>
                             <td class="text-end">
                                 <a href="<?= base_url('backend/products/edit/') . $product['product_id']; ?>" class="btn btn-outline-primary" title="Edit"><i class="fas fa-edit"></i></a> <a href="<?= base_url('our-collections/') . $product['product_slug'] . '?via=preview'; ?>" target="_blank" class="btn btn-outline-success" title="Preview"><i class="fa-solid fa-eye"></i></a>

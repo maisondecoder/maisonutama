@@ -4,8 +4,13 @@
     <h1 class="fs-1 mb-2 fw-bold"><?= $products['product_name']; ?></h1>
     <h2 class="fs-6 text-secondary"><?= $products['brand_name'] . ' / ' . $products['cat_name']; ?></h2>
     <div class="row mt-4">
+        <?php if ($products['is_discontinued']) { ?>
+            <div class="alert alert-danger" role="alert">
+                This product has been discontinued
+            </div>
+        <?php } ?>
         <div class="col-12  col-sm-12 col-md-12 col-lg-6  mb-4">
-            <img class="img-fluid rounded" src="<?= $GLOBALS['domain_static'].'/assets/products/thumbnail/' . $products['product_thumbnail']; ?>" style="max-height:380px">
+            <img class="img-fluid rounded" src="<?= $GLOBALS['domain_static'] . '/assets/products/thumbnail/' . $products['product_thumbnail']; ?>" style="max-height:380px">
         </div>
         <div class="col-12 col-sm-12 col-md-12 col-lg-6 text-start">
             <div class="mb-3" id="brand-desc" style="max-height:310px; overflow-y:hidden">
@@ -33,9 +38,10 @@
                 <ul class="splide__list">
                     <?php foreach ($same_cat as $key => $same_cat) { ?>
                         <li class="splide__slide p-2"><a href="<?= base_url('our-collections/') . $same_cat['product_slug']; ?>">
-                        <img class="img-fluid mb-2 rounded border topacity" style="width:200px !important; height:250px !important; object-fit:cover !important;" src="<?= $GLOBALS['domain_static'].'/assets/products/thumbnail/' . $same_cat['product_thumbnail']; ?>" alt="<?= $same_cat['product_name'] ?>">
+                                <img class="img-fluid mb-2 rounded border topacity" style="width:200px !important; height:250px !important; object-fit:cover !important;" src="<?= $GLOBALS['domain_static'] . '/assets/products/thumbnail/' . $same_cat['product_thumbnail']; ?>" alt="<?= $same_cat['product_name'] ?>">
                             </a>
-                            <h4 class="text-secondary"><?= $same_cat['product_name']; ?></h4></li>
+                            <h4 class="text-secondary"><?= $same_cat['product_name']; ?></h4>
+                        </li>
                     <?php } ?>
                 </ul>
             </div>
@@ -53,9 +59,10 @@
                 <ul class="splide__list">
                     <?php foreach ($same_room as $key => $same_room) { ?>
                         <li class="splide__slide p-2"><a href="<?= base_url('our-collections/') . $same_room['product_slug']; ?>">
-                        <img class="img-fluid mb-2 rounded border topacity" style="width:200px !important; height:250px !important; object-fit:cover !important;" src="<?= $GLOBALS['domain_static'].'/assets/products/thumbnail/' . $same_room['product_thumbnail']; ?>" alt="<?= $same_room['product_name'] ?>">
+                                <img class="img-fluid mb-2 rounded border topacity" style="width:200px !important; height:250px !important; object-fit:cover !important;" src="<?= $GLOBALS['domain_static'] . '/assets/products/thumbnail/' . $same_room['product_thumbnail']; ?>" alt="<?= $same_room['product_name'] ?>">
                             </a>
-                            <h4 class="text-secondary"><?= $same_room['product_name']; ?></h4></li>
+                            <h4 class="text-secondary"><?= $same_room['product_name']; ?></h4>
+                        </li>
                     <?php } ?>
                 </ul>
             </div>
@@ -73,7 +80,7 @@
                 <ul class="splide__list">
                     <?php foreach ($all_rooms as $key => $room) { ?>
                         <li class="splide__slide p-2"><a href="<?= base_url('room/') . $room['room_slug']; ?>">
-                                <div class="rounded-lg rounded text-center text-light text-decoration-none position-relative topacity" style="height:200px; background:#4C4C4C; background-position:center center; background-image:url('<?= $GLOBALS['domain_static'].'/assets/rooms/'.$room['room_img']; ?>')">
+                                <div class="rounded-lg rounded text-center text-light text-decoration-none position-relative topacity" style="height:200px; background:#4C4C4C; background-position:center center; background-image:url('<?= $GLOBALS['domain_static'] . '/assets/rooms/' . $room['room_img']; ?>')">
                                     <h5 class="position-absolute top-50 start-50 translate-middle"><?= $room['room_name']; ?></h5>
                                 </div>
                             </a></li>
@@ -94,7 +101,7 @@
                 <ul class="splide__list">
                     <?php foreach ($all_cats as $key => $cat) { ?>
                         <li class="splide__slide p-2"><a href="<?= base_url('category/') . $cat['cat_slug']; ?>">
-                                <div class="rounded-lg rounded text-center text-light text-decoration-none position-relative topacity" style="height:200px; background:#4C4C4C;background-position:center center; background-image:url('<?= $GLOBALS['domain_static'].'/assets/categories/'.$cat['cat_img']; ?>')">
+                                <div class="rounded-lg rounded text-center text-light text-decoration-none position-relative topacity" style="height:200px; background:#4C4C4C;background-position:center center; background-image:url('<?= $GLOBALS['domain_static'] . '/assets/categories/' . $cat['cat_img']; ?>')">
                                     <h5 class="position-absolute top-50 start-50 translate-middle"><?= $cat['cat_name']; ?></h5>
                                 </div>
                             </a></li>
@@ -115,7 +122,7 @@
                 <ul class="splide__list">
                     <?php foreach ($all_brands as $key => $brand) { ?>
                         <li class="splide__slide p-2"><a href="<?= base_url() . $brand['brand_slug']; ?>">
-                                <div class="rounded-lg rounded topacity" style="max-width:500px; background:#4C4C4C"><img class="img-fluid" src="<?= $GLOBALS['domain_static'].'/assets/brands/' . $brand['brand_img']; ?>" alt="$brand['brand_name']"></div>
+                                <div class="rounded-lg rounded topacity" style="max-width:500px; background:#4C4C4C"><img class="img-fluid" src="<?= $GLOBALS['domain_static'] . '/assets/brands/' . $brand['brand_img']; ?>" alt="$brand['brand_name']"></div>
                             </a></li>
                     <?php } ?>
                 </ul>
@@ -129,46 +136,46 @@
 <link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
 <script>
     <?php if ($same_cat) { ?>
-    new Splide('#splide-related-category', {
-        type: 'loop',
-        perPage: 5,
-        perMove: 1,
-        padding: '2rem',
-        autoplay: true,
-        pagination: false,
-        breakpoints: {
-            400: {
-                perPage: 2,
-            },
-            600: {
-                perPage: 3,
-            },
-            900: {
-                perPage: 3,
-            },
-        }
-    }).mount();
+        new Splide('#splide-related-category', {
+            type: 'loop',
+            perPage: 5,
+            perMove: 1,
+            padding: '2rem',
+            autoplay: true,
+            pagination: false,
+            breakpoints: {
+                400: {
+                    perPage: 2,
+                },
+                600: {
+                    perPage: 3,
+                },
+                900: {
+                    perPage: 3,
+                },
+            }
+        }).mount();
     <?php } ?>
     <?php if ($same_room) { ?>
-    new Splide('#splide-related-room', {
-        type: 'loop',
-        perPage: 5,
-        perMove: 1,
-        padding: '2rem',
-        autoplay: true,
-        pagination: false,
-        breakpoints: {
-            400: {
-                perPage: 2,
-            },
-            600: {
-                perPage: 3,
-            },
-            900: {
-                perPage: 3,
-            },
-        }
-    }).mount();
+        new Splide('#splide-related-room', {
+            type: 'loop',
+            perPage: 5,
+            perMove: 1,
+            padding: '2rem',
+            autoplay: true,
+            pagination: false,
+            breakpoints: {
+                400: {
+                    perPage: 2,
+                },
+                600: {
+                    perPage: 3,
+                },
+                900: {
+                    perPage: 3,
+                },
+            }
+        }).mount();
     <?php } ?>
 
     new Splide('#splide-room', {

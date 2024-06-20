@@ -853,6 +853,7 @@ class Backend extends CI_Controller
                     $cat = $this->input->post('Category');
                     $thumbnail = $this->input->post('ProductThumbnail');
                     $status = $this->input->post('ProductStatus');
+                    $discontinue = $this->input->post('ProductDiscontinue');
 
                     $content_titles = $this->input->post('SectionTitle[]');
                     $content_values = $this->input->post('SectionValue[]');
@@ -869,7 +870,7 @@ class Backend extends CI_Controller
                             redirect('backend/products/list/?msg=add-failed');
                         }
                     } else {
-                        $update = $this->backend_model->edit_product($name, $slug, $content, $brand, $room, $cat, $thumbnail, $status, $product_id);
+                        $update = $this->backend_model->edit_product($name, $slug, $content, $brand, $room, $cat, $thumbnail, $status, $discontinue, $product_id);
                         if ($update) {
                             $this->session->set_flashdata('msg', 'Swal.fire("Update Saved!");');
                             redirect('backend/products/list/?msg=update-saved');

@@ -489,7 +489,7 @@ class Backend_model extends CI_Model
         return $add;
     }
 
-    public function edit_product($name, $slug, $content = 0, $brand, $room, $cat, $thumbnail, $status, $product_id)
+    public function edit_product($name, $slug, $content = 0, $brand, $room, $cat, $thumbnail, $status, $discontinue, $product_id)
     {
         $this->db->set('product_name', $name);
         $this->db->set('product_slug', $slug);
@@ -501,6 +501,7 @@ class Backend_model extends CI_Model
         $this->db->set('cat_id', $cat);
         $this->db->set('product_thumbnail', $thumbnail);
         $this->db->set('product_status', $status);
+        $this->db->set('is_discontinued', $discontinue);
         $this->db->where('product_id', $product_id);
         $this->db->update('ml_products');
 

@@ -55,6 +55,7 @@ $route['furniture-brand'] = 'main/brands';
 $route['about-us-maison-living'] = 'main/about_us';
 $route['collections'] = 'main/collections';
 $route['our-collections/(:any)'] = 'main/product_detail/$1';
+$route['our-projects/(:any)'] = 'main/our_project/$1';
 $route['room/(:any)'] = 'main/room/$1';
 $route['room/(:any)/(:num)'] = 'main/room/$1/$2';
 $route['category/(:any)'] = 'main/cat/$1';

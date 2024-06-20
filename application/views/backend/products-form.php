@@ -69,6 +69,17 @@
                                         } ?>>ON</option>
                 </select>
             </div>
+            <div class="mb-3">
+                <label for="ProductDiscontinue" class="form-label fw-bold">Is Discontinued?</label>
+                <select class="form-select" onchange="fieldonchange();" id="ProductDiscontinue" name="ProductDiscontinue">
+                    <option value="0" <?php if ($products['is_discontinued'] == 0) {
+                                            echo 'selected';
+                                        } ?>>No</option>
+                    <option value="1" <?php if ($products['is_discontinued'] == 1) {
+                                            echo 'selected';
+                                        } ?>>Yes</option>
+                </select>
+            </div>
             <hr>
             <div class="mb-3">
                 <label for="SectionQTY" class="form-label fw-bold">Section Number</label><br>
@@ -131,13 +142,13 @@
     <link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
     <script src="https://www.jqueryscript.net/demo/MD5-Hash-String/jquery.md5.min.js"></script>
     <script>
-        var mergelama = $('#ProductName').val() + "_" + $('#ProductSlug').val() + "_" + $('#Brand').val() + "_" + $('#Room').val() + "_" + $('#Category').val() + "_" + $('#ProductThumbnail').val() + "_" + $('#ProductStatus').val() + "_" + $("#SectionContent").children().toArray() + "_" + $('[name="SectionTitle[]"]').serialize() + "_" + $('[name="SectionValue[]"]').serialize();
+        var mergelama = $('#ProductName').val() + "_" + $('#ProductSlug').val() + "_" + $('#Brand').val() + "_" + $('#Room').val() + "_" + $('#Category').val() + "_" + $('#ProductThumbnail').val() + "_" + $('#ProductStatus').val() + "_" + $('#ProductDiscontinue').val() + "_" + $("#SectionContent").children().toArray() + "_" + $('[name="SectionTitle[]"]').serialize() + "_" + $('[name="SectionValue[]"]').serialize();
         const hashlama = $.MD5(mergelama);
         var mergebaru = mergelama;
         var hashbaru = hashlama;
 
         function fieldonchange() {
-            mergebaru = $('#ProductName').val() + "_" + $('#ProductSlug').val() + "_" + $('#Brand').val() + "_" + $('#Room').val() + "_" + $('#Category').val() + "_" + $('#ProductThumbnail').val() + "_" + $('#ProductStatus').val() + "_" + $("#SectionContent").children().toArray() + "_" + $('[name="SectionTitle[]"]').serialize() + "_" + $('[name="SectionValue[]"]').serialize();
+            mergebaru = $('#ProductName').val() + "_" + $('#ProductSlug').val() + "_" + $('#Brand').val() + "_" + $('#Room').val() + "_" + $('#Category').val() + "_" + $('#ProductThumbnail').val() + "_" + $('#ProductStatus').val() + "_" + $('#ProductDiscontinue').val() + "_" + $("#SectionContent").children().toArray() + "_" + $('[name="SectionTitle[]"]').serialize() + "_" + $('[name="SectionValue[]"]').serialize();
             hashbaru = $.MD5(mergebaru);
             if (hashlama != hashbaru) {
                 $('#submit').removeClass('disabled');

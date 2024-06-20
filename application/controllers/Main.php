@@ -166,9 +166,6 @@ class Main extends CI_Controller
 		$this->load->model('brand_model');
 		$this->load->model('collection_model');
 		
-		
-		//** End */
-
 
 		$product_data = $this->collection_model->get_spesific_product($product_slug);
 		$data['products'] = $product_data;
