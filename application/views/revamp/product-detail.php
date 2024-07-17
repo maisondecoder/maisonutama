@@ -3,17 +3,24 @@
 
     <h1 class="fs-1 mb-2 fw-bold"><?= $products['product_name']; ?></h1>
     <h2 class="fs-6 text-secondary"><?= $products['brand_name'] . ' / ' . $products['cat_name']; ?></h2>
-    <div class="row mt-4">
-        <?php if ($products['is_discontinued']) { ?>
-            <div class="alert alert-danger" role="alert">
-                This product has been discontinued
-            </div>
-        <?php } ?>
-        <div class="col-12  col-sm-12 col-md-12 col-lg-6  mb-4">
+    <div class="row mt-5">
+
+        <div class="col-12  col-sm-12 col-md-12 col-lg-6 mb-4">
             <img class="img-fluid rounded" src="<?= $GLOBALS['domain_static'] . '/assets/products/thumbnail/' . $products['product_thumbnail']; ?>" style="max-height:380px">
         </div>
         <div class="col-12 col-sm-12 col-md-12 col-lg-6 text-start">
             <div class="mb-3" id="brand-desc" style="max-height:310px; overflow-y:hidden">
+                <?php if ($products['is_discontinued']) { ?>
+                    <span class="badge text-bg-danger mb-4">Discontinued Product</span>
+                <?php } ?>
+                <?php if ($products['show_price']) { ?>
+                    <?php if ($setting_price_position=="top") { ?>
+                <div id="price-label-top" class="mb-4">
+                    <h3 class="fs-5 fw-bold">Price</h3>
+                    <p class="fs-3">IDR <?= number_format($products['product_price'],0,",","."); ?></p>
+                    <hr>
+                </div>
+                <?php }} ?>
                 <?php foreach ($product_content as $key => $content) { ?>
                     <div class="mb-4">
                         <h3 class="fs-5 fw-bold"><?= $key ?></h3>
@@ -21,9 +28,19 @@
                         <hr>
                     </div>
                 <?php } ?>
+                <?php if ($products['show_price']) { ?>
+                    <?php if ($setting_price_position=="bottom") { ?>
+                <div id="price-label-bottom" class="mb-4">
+                    <h3 class="fs-5 fw-bold">Price</h3>
+                    <p class="fs-3">IDR <?= number_format($products['product_price'],0,",","."); ?></p>
+                    <hr>
+                </div>
+                <?php }} ?>
             </div>
-            <div class="d-grid gap-2">
-                <div id="more-desc" class="btn btn-dark fs-5">Read Full Description</div>
+            <div class="text-start">
+                <div class="d-grid gap-2">
+                    <div id="more-desc" class="btn btn-dark fs-5 mb-4">Read Full Description</div>
+                </div>
             </div>
         </div>
     </div>
@@ -32,13 +49,13 @@
 <!-- Same Type  -->
 <?php if ($same_cat) { ?>
     <div class="container p-4">
-        <h2>Other <?= $products['cat_name']; ?> Products</h2>
+        <h2><?= $products['cat_name']; ?> Products</h2>
         <section id="splide-related-category" class="splide" aria-label="Other Products">
             <div class="splide__track">
                 <ul class="splide__list">
                     <?php foreach ($same_cat as $key => $same_cat) { ?>
                         <li class="splide__slide p-2"><a href="<?= base_url('our-collections/') . $same_cat['product_slug']; ?>">
-                                <img class="img-fluid mb-2 rounded border topacity" style="width:200px !important; height:250px !important; object-fit:cover !important;" src="<?= $GLOBALS['domain_static'] . '/assets/products/thumbnail/' . $same_cat['product_thumbnail']; ?>" alt="<?= $same_cat['product_name'] ?>">
+                                <img class="img-fluid mb-2 rounded border topacity" style="width:250px !important; height:250px !important; object-fit:cover !important;" src="<?= $GLOBALS['domain_static'] . '/assets/products/thumbnail/' . $same_cat['product_thumbnail']; ?>" alt="<?= $same_cat['product_name'] ?>">
                             </a>
                             <h4 class="text-secondary"><?= $same_cat['product_name']; ?></h4>
                         </li>
@@ -53,13 +70,13 @@
 <!-- Same Room  -->
 <?php if ($same_room) { ?>
     <div class="container p-4">
-        <h2>Other <?= $products['room_name']; ?> Products</h2>
+        <h2><?= $products['room_name']; ?> Products</h2>
         <section id="splide-related-room" class="splide" aria-label="Other Rooms Product">
             <div class="splide__track">
                 <ul class="splide__list">
                     <?php foreach ($same_room as $key => $same_room) { ?>
                         <li class="splide__slide p-2"><a href="<?= base_url('our-collections/') . $same_room['product_slug']; ?>">
-                                <img class="img-fluid mb-2 rounded border topacity" style="width:200px !important; height:250px !important; object-fit:cover !important;" src="<?= $GLOBALS['domain_static'] . '/assets/products/thumbnail/' . $same_room['product_thumbnail']; ?>" alt="<?= $same_room['product_name'] ?>">
+                                <img class="img-fluid mb-2 rounded border topacity" style="width:250px !important; height:250px !important; object-fit:cover !important;" src="<?= $GLOBALS['domain_static'] . '/assets/products/thumbnail/' . $same_room['product_thumbnail']; ?>" alt="<?= $same_room['product_name'] ?>">
                             </a>
                             <h4 class="text-secondary"><?= $same_room['product_name']; ?></h4>
                         </li>
@@ -145,7 +162,7 @@
             pagination: false,
             breakpoints: {
                 400: {
-                    perPage: 2,
+                    perPage: 1,
                 },
                 600: {
                     perPage: 3,
@@ -166,7 +183,7 @@
             pagination: false,
             breakpoints: {
                 400: {
-                    perPage: 2,
+                    perPage: 1,
                 },
                 600: {
                     perPage: 3,

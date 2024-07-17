@@ -7,9 +7,11 @@ class Main extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		//$GLOBALS['domain_static'] = 'https://localhost/maisonutama';
-		$GLOBALS['domain_static'] = 'https://9v6e9irhcc.r.worldssl.net';
-		// Your own constructor code
+		
+		$this->load->model('setting_model');
+		$cloudcone_url = $this->setting_model->get_setting_value("cloudcone_url");
+
+		$GLOBALS['domain_static'] = $cloudcone_url;
 	}
 
 	public function index()
@@ -165,8 +167,10 @@ class Main extends CI_Controller
 		//Global Data To Display *Mandatory
 		$this->load->model('brand_model');
 		$this->load->model('collection_model');
-		
+		$this->load->model('setting_model');
 
+		$data['setting_price_position'] = $this->setting_model->get_setting_value("price_position");
+		
 		$product_data = $this->collection_model->get_spesific_product($product_slug);
 		$data['products'] = $product_data;
 		$data['product_content'] = json_decode($product_data['product_content'], true);

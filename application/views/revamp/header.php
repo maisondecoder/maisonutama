@@ -79,12 +79,15 @@
         .topacity {
             opacity: 0.85;
             /* Aturan opacity awal */
+            transform: scale(1,1);
             transition: opacity 0.3s ease-in-out;
+            transition: transform 0.3s ease-in-out;
             /* Animasi transisi */
         }
 
         .topacity:hover {
             opacity: 1.0;
+            transform: scale(1.03,1.03);
         }
 
         .bg-searchbar {
@@ -191,4 +194,4 @@
             </div>
         </div>
     </nav>
-    <div style="margin-top:80px !important"></div>
+    <div style="margin-top:65px !important"></div>
