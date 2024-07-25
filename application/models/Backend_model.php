@@ -472,7 +472,7 @@ class Backend_model extends CI_Model
     //////////////////////// LOGIN END ////////////////////////
 
     //////////////////////// Product START ////////////////////////
-    public function add_product($name, $slug, $content, $brand, $room, $cat, $thumbnail, $status)
+    public function add_product($name, $slug, $content, $brand, $room, $cat, $thumbnail, $status, $price, $showprice)
     {
         $data = array(
             'product_name' => $name,
@@ -482,14 +482,16 @@ class Backend_model extends CI_Model
             'room_id' => $room,
             'cat_id' => $cat,
             'product_thumbnail' => $thumbnail,
-            'product_status' => $status
+            'product_status' => $status,
+            'product_price' => $price,
+            'show_price' => $showprice,
         );
         $this->db->insert('ml_products', $data);
         $add = $this->db->insert_id();
         return $add;
     }
 
-    public function edit_product($name, $slug, $content = 0, $brand, $room, $cat, $thumbnail, $status, $discontinue, $product_id)
+    public function edit_product($name, $slug, $content = 0, $brand, $room, $cat, $thumbnail, $status, $discontinue, $product_id, $price, $showprice)
     {
         $this->db->set('product_name', $name);
         $this->db->set('product_slug', $slug);
@@ -502,6 +504,8 @@ class Backend_model extends CI_Model
         $this->db->set('product_thumbnail', $thumbnail);
         $this->db->set('product_status', $status);
         $this->db->set('is_discontinued', $discontinue);
+        $this->db->set('product_price', $price);
+        $this->db->set('show_price', $showprice);
         $this->db->where('product_id', $product_id);
         $this->db->update('ml_products');
 

@@ -14,13 +14,14 @@
                         <th scope="col">Room</th>
                         <th scope="col">Status</th>
                         <th scope="col">Discontinued</th>
+                        <th scope="col">Price</th>
                         <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach ($products as $key => $product) { ?>
                         <tr>
-                            <td class="fw-bold"><?= $key+1; ?></td>
+                            <td class="fw-bold"><?= $key + 1; ?></td>
                             <td width="50" scope="row"><?= $product['product_id']; ?></td>
                             <td width="150">
                                 <figure><img src="<?= base_url() . '/assets/products/thumbnail/' . $product['product_thumbnail']; ?>" alt="<?= $product['product_name']; ?> Thumbnail" width="100" style="background:#4C4C4C"></figure>
@@ -34,11 +35,12 @@
                                 } else {
                                     echo '<span class="badge text-bg-danger">OFF</span>';
                                 } ?></td>
-                                <td><?php if ($product['is_discontinued']) {
+                            <td><?php if ($product['is_discontinued']) {
                                     echo '<span class="badge text-bg-danger">Yes</span>';
                                 } else {
                                     echo '<span class="badge text-bg-secondary">No</span>';
                                 } ?></td>
+                            <td><?php if($product['show_price']){ echo '<span class="badge text-bg-success">Show</span>'; }else{ echo '<span class="badge text-bg-danger">Off</span>'; } ?></td>
                             <td class="text-end">
                                 <a href="<?= base_url('backend/products/edit/') . $product['product_id']; ?>" class="btn btn-outline-primary" title="Edit"><i class="fas fa-edit"></i></a> <a href="<?= base_url('our-collections/') . $product['product_slug'] . '?via=preview'; ?>" target="_blank" class="btn btn-outline-success" title="Preview"><i class="fa-solid fa-eye"></i></a>
                             </td>

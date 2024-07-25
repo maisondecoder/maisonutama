@@ -80,6 +80,21 @@
                                         } ?>>Yes</option>
                 </select>
             </div>
+            <div class="mb-3">
+                <label for="ProductPrice" class="form-label fw-bold">Price</label>
+                <input type="number" onchange="fieldonchange();" class="form-control" id="ProductPrice" name="ProductPrice" placeholder="1000000" value="<?= $products['product_price']; ?>">
+            </div>
+            <div class="mb-3">
+                <label for="ProductShowPrice" class="form-label fw-bold">Show Price</label>
+                <select class="form-select" onchange="fieldonchange();" id="ProductShowPrice" name="ProductShowPrice">
+                    <option value="0" <?php if ($products['show_price'] == 0) {
+                                            echo 'selected';
+                                        } ?>>OFF</option>
+                    <option value="1" <?php if ($products['show_price'] == 1) {
+                                            echo 'selected';
+                                        } ?>>ON</option>
+                </select>
+            </div>
             <hr>
             <div class="mb-3">
                 <label for="SectionQTY" class="form-label fw-bold">Section Number</label><br>
@@ -142,13 +157,13 @@
     <link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
     <script src="https://www.jqueryscript.net/demo/MD5-Hash-String/jquery.md5.min.js"></script>
     <script>
-        var mergelama = $('#ProductName').val() + "_" + $('#ProductSlug').val() + "_" + $('#Brand').val() + "_" + $('#Room').val() + "_" + $('#Category').val() + "_" + $('#ProductThumbnail').val() + "_" + $('#ProductStatus').val() + "_" + $('#ProductDiscontinue').val() + "_" + $("#SectionContent").children().toArray() + "_" + $('[name="SectionTitle[]"]').serialize() + "_" + $('[name="SectionValue[]"]').serialize();
+        var mergelama = $('#ProductName').val() + "_" + $('#ProductSlug').val() + "_" + $('#Brand').val() + "_" + $('#Room').val() + "_" + $('#Category').val() + "_" + $('#ProductThumbnail').val() + "_" + $('#ProductStatus').val() + "_" + $('#ProductDiscontinue').val() + "_" + $("#SectionContent").children().toArray() + "_" + $('[name="SectionTitle[]"]').serialize() + "_" + $('[name="SectionValue[]"]').serialize() + "_" + $('#ProductPrice').val() + "_" + $('#ProductShowPrice').val();
         const hashlama = $.MD5(mergelama);
         var mergebaru = mergelama;
         var hashbaru = hashlama;
 
         function fieldonchange() {
-            mergebaru = $('#ProductName').val() + "_" + $('#ProductSlug').val() + "_" + $('#Brand').val() + "_" + $('#Room').val() + "_" + $('#Category').val() + "_" + $('#ProductThumbnail').val() + "_" + $('#ProductStatus').val() + "_" + $('#ProductDiscontinue').val() + "_" + $("#SectionContent").children().toArray() + "_" + $('[name="SectionTitle[]"]').serialize() + "_" + $('[name="SectionValue[]"]').serialize();
+            mergebaru = $('#ProductName').val() + "_" + $('#ProductSlug').val() + "_" + $('#Brand').val() + "_" + $('#Room').val() + "_" + $('#Category').val() + "_" + $('#ProductThumbnail').val() + "_" + $('#ProductStatus').val() + "_" + $('#ProductDiscontinue').val() + "_" + $("#SectionContent").children().toArray() + "_" + $('[name="SectionTitle[]"]').serialize() + "_" + $('[name="SectionValue[]"]').serialize() + "_" + $('#ProductPrice').val() + "_" + $('#ProductShowPrice').val();
             hashbaru = $.MD5(mergebaru);
             if (hashlama != hashbaru) {
                 $('#submit').removeClass('disabled');

@@ -854,6 +854,8 @@ class Backend extends CI_Controller
                     $thumbnail = $this->input->post('ProductThumbnail');
                     $status = $this->input->post('ProductStatus');
                     $discontinue = $this->input->post('ProductDiscontinue');
+                    $price = $this->input->post('ProductPrice');
+                    $showprice = $this->input->post('ProductShowPrice');
 
                     $content_titles = $this->input->post('SectionTitle[]');
                     $content_values = $this->input->post('SectionValue[]');
@@ -861,7 +863,7 @@ class Backend extends CI_Controller
                     $content = json_encode($content, true);
 
                     if ($form == "add") {
-                        $add = $this->backend_model->add_product($name, $slug, $content, $brand, $room, $cat, $thumbnail, $status);
+                        $add = $this->backend_model->add_product($name, $slug, $content, $brand, $room, $cat, $thumbnail, $status, $price, $showprice);
                         if ($add) {
                             $this->session->set_flashdata('msg', 'Swal.fire("New Data Added!");');
                             redirect('backend/products/list/?msg=add-success');
@@ -870,7 +872,7 @@ class Backend extends CI_Controller
                             redirect('backend/products/list/?msg=add-failed');
                         }
                     } else {
-                        $update = $this->backend_model->edit_product($name, $slug, $content, $brand, $room, $cat, $thumbnail, $status, $discontinue, $product_id);
+                        $update = $this->backend_model->edit_product($name, $slug, $content, $brand, $room, $cat, $thumbnail, $status, $discontinue, $product_id, $price, $showprice);
                         if ($update) {
                             $this->session->set_flashdata('msg', 'Swal.fire("Update Saved!");');
                             redirect('backend/products/list/?msg=update-saved');
