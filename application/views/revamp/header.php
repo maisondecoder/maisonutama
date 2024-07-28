@@ -22,7 +22,7 @@
 
     <!-- Google tag (gtag.js)-->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-TELBVRXJ1G"></script>
-
+    <script src="<?= $GLOBALS['domain_static'] . '/assets/js/jquery.visible.min.js';?>"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
 
@@ -79,7 +79,7 @@
         .topacity {
             opacity: 0.85;
             /* Aturan opacity awal */
-            transform: scale(1,1);
+            transform: scale(1, 1);
             transition: opacity 0.3s ease-in-out;
             transition: transform 0.3s ease-in-out;
             /* Animasi transisi */
@@ -87,7 +87,7 @@
 
         .topacity:hover {
             opacity: 1.0;
-            transform: scale(1.03,1.03);
+            transform: scale(1.03, 1.03);
         }
 
         .bg-searchbar {
@@ -127,6 +127,33 @@
 
             100% {
                 background: #fff;
+            }
+        }
+
+        .shaked {
+            animation: shake 2s;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes shake {
+            0% {
+                transform: translate(0px, 0px) rotate(0deg);
+            }
+
+            5% {
+                transform: translate(-1px, 0px) rotate(-1deg);
+            }
+
+            10% {
+                transform: translate(0px, -1px) rotate(1deg);
+            }
+
+            15% {
+                transform: translate(0px, 0px) rotate(0deg);
+            }
+
+            100% {
+                transform: translate(0px, 0px) rotate(0deg);
             }
         }
     </style>

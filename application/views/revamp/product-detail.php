@@ -9,18 +9,19 @@
             <img class="img-fluid rounded" src="<?= $GLOBALS['domain_static'] . '/assets/products/thumbnail/' . $products['product_thumbnail']; ?>" style="max-height:380px">
         </div>
         <div class="col-12 col-sm-12 col-md-12 col-lg-6 text-start">
-            <div class="mb-3" id="brand-desc" style="max-height:310px; overflow-y:hidden">
+            <div class="mb-3" id="brand-desc" style="max-height:310px; overflow-y:hidden; ">
                 <?php if ($products['is_discontinued']) { ?>
                     <span class="badge text-bg-danger mb-4">Discontinued Product</span>
                 <?php } ?>
                 <?php if ($products['show_price']) { ?>
-                    <?php if ($setting_price_position=="top") { ?>
-                <div id="price-label-top" class="mb-4">
-                    <h3 class="fs-5 fw-bold">Price</h3>
-                    <p class="fs-3">IDR <?= number_format($products['product_price'],0,",","."); ?></p>
-                    <hr>
-                </div>
-                <?php }} ?>
+                    <?php if ($setting_price_position == "top") { ?>
+                        <div id="price-label-top" class="mb-4">
+                            <h3 class="fs-5 fw-bold">Price</h3>
+                            <p class="fs-3">IDR <?= number_format($products['product_price'], 0, ",", "."); ?></p>
+                            <hr>
+                        </div>
+                <?php }
+                } ?>
                 <?php foreach ($product_content as $key => $content) { ?>
                     <div class="mb-4">
                         <h3 class="fs-5 fw-bold"><?= $key ?></h3>
@@ -29,17 +30,21 @@
                     </div>
                 <?php } ?>
                 <?php if ($products['show_price']) { ?>
-                    <?php if ($setting_price_position=="bottom") { ?>
-                <div id="price-label-bottom" class="mb-4">
-                    <h3 class="fs-5 fw-bold">Price</h3>
-                    <p class="fs-3">IDR <?= number_format($products['product_price'],0,",","."); ?></p>
-                    <hr>
-                </div>
-                <?php }} ?>
+                    <?php if ($setting_price_position == "bottom") { ?>
+                        <div id="price-label-bottom" class="mb-4">
+                            <h3 class="fs-5 fw-bold">Price</h3>
+                            <p class="fs-3">IDR <?= number_format($products['product_price'], 0, ",", "."); ?></p>
+                            <hr>
+                        </div>
+                <?php }
+                } ?>
             </div>
             <div class="text-start">
                 <div class="d-grid gap-2">
-                    <div id="more-desc" class="btn btn-dark fs-5 mb-4">Read Full Description</div>
+                    <div id="more-desc" class="btn btn-light fs-5 mb-3" style="box-shadow: 0px -45px 30px rgba(255, 255,255, 0.8);">Read More</div>
+                </div>
+                <div class="d-grid gap-2">
+                    <a href="https://wa.me/62817700025" target="_blank" id="btn-consultation" class="shaked btn btn-success fs-5 mb-4"><i class="fa-brands fa-whatsapp"></i> Product Consultation</a>
                 </div>
             </div>
         </div>
@@ -138,7 +143,8 @@
             <div class="splide__track">
                 <ul class="splide__list">
                     <?php foreach ($all_brands as $key => $brand) { ?>
-                        <li class="splide__slide p-2"><a href="<?= base_url() . $brand['brand_slug']; ?>">
+                        <li class="splide__slide p-2"><a href="
+                        <?= base_url() . $brand['brand_slug']; ?>">
                                 <div class="rounded-lg rounded topacity" style="max-width:500px; background:#4C4C4C"><img class="img-fluid" src="<?= $GLOBALS['domain_static'] . '/assets/brands/' . $brand['brand_img']; ?>" alt="$brand['brand_name']"></div>
                             </a></li>
                     <?php } ?>
@@ -149,6 +155,30 @@
 <?php } ?>
 <!-- Collections By Brands -->
 
+<div id="" class="fixed-bottom">
+    <div class="position-relative">
+        <div class="position-absolute bottom-0 end-0">
+            <a href="https://wa.me/62817700025" target="_blank" id="floating-bottom" class="shaked btn btn-success btn-lg border border-2 border-light fs-5 mb-4 me-4"><i class="fa-brands fa-whatsapp"></i> Product Consultation</a>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#btn-consultation").visible()) {
+            $("#floating-bottom").slideUp();
+        } else {
+            $("#floating-bottom").slideDown();
+        }
+        // We use the jQuery scroll event
+        $(window).on('resize scroll', function() {
+            if ($("#btn-consultation").visible()) {
+                $("#floating-bottom").slideUp();
+            } else {
+                $("#floating-bottom").slideDown();
+            }
+        });
+    });
+</script>
 <script src="https://fastly.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
 <link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
 <script>
