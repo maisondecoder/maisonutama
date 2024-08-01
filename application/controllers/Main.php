@@ -196,7 +196,7 @@ class Main extends CI_Controller
 		$data['all_rooms'] = $this->collection_model->get_all_rooms($product_data['room_slug']);
 		$data['all_cats'] = $this->collection_model->get_all_cats($product_data['cat_slug']);
 
-		$template = "Halo, Saya ingin info lebih lengkap mengenai produk ".$product_data['cat_name']." ".$product_data['product_name']." dari ".$product_data['brand_name'];
+		$template = "Halo, Saya ingin info lebih lengkap mengenai produk ".$product_data['product_name']." dari ".$product_data['brand_name'];
 		$data['template_wa'] = urlencode($template);
 
 		$this->load->view('revamp/header', $data);
