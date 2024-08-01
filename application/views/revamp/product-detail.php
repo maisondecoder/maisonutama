@@ -158,7 +158,7 @@
 <div id="" class="fixed-bottom">
     <div class="position-relative">
         <div class="position-absolute bottom-0 end-0">
-            <a href="https://api.whatsapp.com/send/?phone=62817700025&text=62817700025&text=<?= $template_wa; ?>&type=phone_number&app_absent=0" target="_blank" id="floating-bottom" class="shaked btn btn-success btn-lg border border-2 border-light fs-5 mb-4 me-4"><i class="fa-brands fa-whatsapp"></i> Product Consultation</a>
+            <a href="https://api.whatsapp.com/send/?phone=62817700025&text=<?= $template_wa; ?>&type=phone_number&app_absent=0" target="_blank" id="floating-bottom" class="shaked btn btn-success btn-lg border border-2 border-light fs-5 mb-4 me-4"><i class="fa-brands fa-whatsapp"></i> Product Consultation</a>
         </div>
     </div>
 </div>
