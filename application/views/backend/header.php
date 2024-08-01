@@ -99,6 +99,9 @@
                         <li class="nav-item">
                             <a class="nav-link <?php if($current_nav =='trash'){ echo 'active'; } ?>" aria-current="page" href="<?= base_url('backend/trash'); ?>">Trash Bin</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link <?php if($current_nav =='settings'){ echo 'active'; } ?>" aria-current="page" href="<?= base_url('backend/settings'); ?>">Settings</a>
+                        </li>
                         <hr>
                         <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="<?= base_url('backend/logout'); ?>">Logout</a>

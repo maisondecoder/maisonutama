@@ -472,7 +472,7 @@ class Backend_model extends CI_Model
     //////////////////////// LOGIN END ////////////////////////
 
     //////////////////////// Product START ////////////////////////
-    public function add_product($name, $slug, $content, $brand, $room, $cat, $thumbnail, $status, $price, $showprice)
+    public function add_product($name, $slug, $content, $brand, $room, $cat, $thumbnail, $status, $discontinue, $price, $showprice)
     {
         $data = array(
             'product_name' => $name,
@@ -483,6 +483,7 @@ class Backend_model extends CI_Model
             'cat_id' => $cat,
             'product_thumbnail' => $thumbnail,
             'product_status' => $status,
+            'is_discontinued' => $discontinue,
             'product_price' => $price,
             'show_price' => $showprice,
         );

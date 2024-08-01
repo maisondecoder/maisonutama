@@ -816,6 +816,9 @@ class Backend extends CI_Controller
                     $data['products']['cat_id'] = "";
                     $data['products']['product_thumbnail'] = "";
                     $data['products']['product_status'] = "";
+                    $data['products']['is_discontinued'] = "";
+                    $data['products']['product_price'] = "";
+                    $data['products']['show_price'] = "";
                 } else {
                     $data['form'] = 'edit';
                     //Ngecek apakah ID Product ada di DB
@@ -863,7 +866,7 @@ class Backend extends CI_Controller
                     $content = json_encode($content, true);
 
                     if ($form == "add") {
-                        $add = $this->backend_model->add_product($name, $slug, $content, $brand, $room, $cat, $thumbnail, $status, $price, $showprice);
+                        $add = $this->backend_model->add_product($name, $slug, $content, $brand, $room, $cat, $thumbnail, $status, $discontinue, $price, $showprice);
                         if ($add) {
                             $this->session->set_flashdata('msg', 'Swal.fire("New Data Added!");');
                             redirect('backend/products/list/?msg=add-success');
