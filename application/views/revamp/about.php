@@ -1,3 +1,5 @@
+<div style="margin-bottom:100px"></div>
+
 <!-- About Maison Living -->
 <div id="intro-about" class="container p-4 pb-1 mb-4">
     <h2 class="mb-4 fw-bold text-center">About Maison Living</h2>

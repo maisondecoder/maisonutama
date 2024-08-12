@@ -18,8 +18,8 @@
     <link rel="icon" href="<?= $GLOBALS['domain_static'] . '/assets/icon/maison-favicon-32x32.jpg'; ?>" sizes="32x32" />
     <link rel="icon" href="<?= $GLOBALS['domain_static'] . '/assets/icon/maison-favicon-192x192.jpg'; ?>" sizes="192x192" />
     <link rel="apple-touch-icon" href="<?= $GLOBALS['domain_static'] . '/assets/icon/maison-favicon-180x180.jpg'; ?>" />
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js" integrity="sha512-jGsMH83oKe9asCpkOVkBnUrDDTp8wl+adkB2D+//JtlxO4SrLoJdhbOysIFQJloQFD+C4Fl1rMsQZF76JjV0eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.3/jquery-ui.min.js" integrity="sha512-Ww1y9OuQ2kehgVWSD/3nhgfrb424O3802QYP/A5gPXoM4+rRjiKrjHdGxQKrMGQykmsJ/86oGdHszfcVgUr4hA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- Google tag (gtag.js)-->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-TELBVRXJ1G"></script>
     <script src="<?= $GLOBALS['domain_static'] . '/assets/js/jquery.visible.min.js';?>"></script>
@@ -61,14 +61,15 @@
 
         .nav-link {
             color: gray;
+            font-weight: 600;
         }
 
         .nav-link:hover {
-            color: black;
+            color: white;
         }
 
         .page-link {
-            color: gray;
+            color: lightgrey;
         }
 
         .active>.page-link,
@@ -186,16 +187,16 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="<?= base_url(); ?>">
+    <nav id="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container-fluid py-2">
+            <a class="navbar-brand ms-5" href="<?= base_url(); ?>">
                 <img src="<?= $GLOBALS['domain_static'] . '/assets/logo-maison-navbar-putih.webp'; ?>" alt="Maison Living" height="40">
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <button id="navToggler" class="navbar-toggler me-5" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarText">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <div class="collapse navbar-collapse mx-auto" id="navbarText">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-1 gap-lg-5 me-5">
                     <li class="nav-item">
                         <a class="nav-link <?php echo ($nav == 'home') ? 'active' : ''; ?>" aria-current="page" href="<?= base_url(); ?>">Homepage</a>
                     </li>
@@ -221,4 +222,3 @@
             </div>
         </div>
     </nav>
-    <div style="margin-top:65px !important"></div>

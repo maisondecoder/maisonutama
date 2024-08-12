@@ -1,3 +1,5 @@
+<div style="margin-bottom:100px"></div>
+
 <!-- Project Detail -->
 <div id="brand-collections" class="container text-center py-2">
     <h1 class="fs-1"><?= $project['project_name']; ?></h1>

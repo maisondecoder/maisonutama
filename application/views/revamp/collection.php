@@ -1,3 +1,4 @@
+<div style="margin-bottom:100px"></div>
 <!-- Collections By Room -->
 <?php if ($all_rooms) { ?>
     <div class="container p-4">
