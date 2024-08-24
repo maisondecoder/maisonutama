@@ -12,7 +12,7 @@
     <link href="https://fastly.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
     <link rel="icon" href="<?= $GLOBALS['domain_static'] . '/assets/icon/maison-favicon-32x32.jpg'; ?>" sizes="32x32" />
@@ -22,7 +22,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.3/jquery-ui.min.js" integrity="sha512-Ww1y9OuQ2kehgVWSD/3nhgfrb424O3802QYP/A5gPXoM4+rRjiKrjHdGxQKrMGQykmsJ/86oGdHszfcVgUr4hA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- Google tag (gtag.js)-->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-TELBVRXJ1G"></script>
-    <script src="<?= $GLOBALS['domain_static'] . '/assets/js/jquery.visible.min.js';?>"></script>
+    <script src="<?= $GLOBALS['domain_static'] . '/assets/js/jquery.visible.min.js'; ?>"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
 
@@ -41,12 +41,14 @@
         h4,
         h5,
         h6 {
-            font-family: 'Noto Serif', sans-serif;
+            font-family: "Playfair Display", serif;
+            font-optical-sizing: auto;
+            font-style: normal;
         }
 
         p {
             font-family: 'Karla', sans-serif;
-            font-size: 16pt;
+            font-size: 12pt;
         }
 
         ul.nav {

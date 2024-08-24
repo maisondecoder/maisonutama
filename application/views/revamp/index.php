@@ -28,7 +28,7 @@
         <div class="col-lg-8 mx-auto text-white text-start p-2 py-5 text-center">
             <div class="text-warning fw-bold">#LuxYourHome</div>
             <div class="mb-4">
-                <h1>We Make Your Home Feel Comfy</h1>
+                <h1 class="fs-3">We Make Your Home Feel Comfy</h1>
             </div>
             <div>
                 <p>Elevate Your Space with Timeless High-End Furniture and Expert Interior Design. Tailored for Your Unique Style and Comfort.</p>
