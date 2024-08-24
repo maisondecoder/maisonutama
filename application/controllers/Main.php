@@ -197,12 +197,12 @@ class Main extends CI_Controller
 		$data['all_cats'] = $this->collection_model->get_all_cats($product_data['cat_slug']);
 		if (isset($_GET['target'])) {
 			if ($_GET['target'] == 'designer') {
-				$template = "Halo Maison Living, saya ingin info lebih lengkap mengenai produk " . $product_data['product_name'] . " dari " . $product_data['brand_name'];
+				$template = "Halo Maison Living, saya mau bertanya tentang produk " . $product_data['product_name'] . " dari " . $product_data['brand_name'];
 			}else{
-				$template = "Halo, Saya ingin info lebih lengkap mengenai produk " . $product_data['product_name'] . " dari " . $product_data['brand_name'];
+				$template = "Halo Maison Living, Saya ingin info lebih lanjut mengenai produk " . $product_data['product_name'] . " dari " . $product_data['brand_name'];
 			} 
 		}else {
-			$template = "Halo, Saya ingin info lebih lengkap mengenai produk " . $product_data['product_name'] . " dari " . $product_data['brand_name'];
+			$template = "Halo Maison Living, Saya ingin info lebih lanjut mengenai produk " . $product_data['product_name'] . " dari " . $product_data['brand_name'];
 		}
 		$data['template_wa'] = urlencode($template);
 
