@@ -41,6 +41,7 @@
                 <?php }
                 } ?>
             </div>
+            <div id="btn-contain"></div>
             <div class="text-start">
                 <div id="more-btn" class="d-grid gap-2">
                     <div id="more-desc" class="btn btn-light fs-5 mb-3" style="box-shadow: 0px -45px 30px rgba(255, 255,255, 0.8);">Read More</div>
@@ -54,7 +55,7 @@
 </div>
 
 <!-- Same Type  -->
-<?php if (count($same_cat)>2) { ?>
+<?php if (count($same_cat) > 2) { ?>
     <div class="container p-4">
         <h2><?= $products['cat_name']; ?> Products</h2>
         <section id="splide-related-category" class="splide" aria-label="Other Products">
@@ -75,7 +76,7 @@
 <!-- Same Type -->
 
 <!-- Same Room  -->
-<?php if (count($same_room)>2) { ?>
+<?php if (count($same_room) > 2) { ?>
     <div class="container p-4">
         <h2><?= $products['room_name']; ?> Products</h2>
         <section id="splide-related-room" class="splide" aria-label="Other Rooms Product">
@@ -157,30 +158,36 @@
 <?php } ?>
 <!-- Collections By Brands -->
 
+<!--
 <div id="" class="fixed-bottom">
     <div class="position-relative">
         <div class="position-absolute bottom-0 end-0">
             <a href="https://api.whatsapp.com/send/?phone=62817700025&text=<?= $template_wa; ?>&type=phone_number&app_absent=0" target="_blank" id="floating-bottom" class="shaked btn btn-success btn-lg border border-2 border-light fs-5 mb-4 me-4"><i class="fa-brands fa-whatsapp"></i> Product Consultation</a>
         </div>
     </div>
-</div>
+</div>-->
 <script>
     $(document).ready(function() {
-        if($("#brand-desc").height()<310){
-            alert($("#brand-desc").height());
-            $("#more-desc").hide();
-        }
-        if ($("#btn-consultation").visible()) {
-            $("#floating-bottom").slideUp();
+        if ($("#btn-contain").visible()) {
+            $("#btn-consultation").removeClass('fixed-bottom me-3');
+            $("#btn-consultation").css('width', '100%');
+            $("#btn-consultation").removeAttr('justify-self');
         } else {
-            $("#floating-bottom").slideDown();
+            $("#btn-consultation").addClass('fixed-bottom btn-lg border-2 border-light me-3');
+            $("#btn-consultation").css('width', '300px');
+            $("#btn-consultation").css('justify-self', 'flex-end');
         }
+
         // We use the jQuery scroll event
         $(window).on('resize scroll', function() {
-            if ($("#btn-consultation").visible()) {
-                $("#floating-bottom").slideUp();
+            if ($("#btn-contain").visible()) {
+                $("#btn-consultation").removeClass('fixed-bottom me-3');
+                $("#btn-consultation").css('width', '100%');
+                $("#btn-consultation").removeAttr('justify-self');
             } else {
-                $("#floating-bottom").slideDown();
+                $("#btn-consultation").addClass('fixed-bottom btn-lg border-2 border-light me-3');
+                $("#btn-consultation").css('width', '300px');
+                $("#btn-consultation").css('justify-self', 'flex-end');
             }
         });
     });
@@ -188,7 +195,7 @@
 <script src="https://fastly.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
 <link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
 <script>
-    <?php if (count($same_cat)>2) { ?>
+    <?php if (count($same_cat) > 2) { ?>
         new Splide('#splide-related-category', {
             type: 'loop',
             perPage: 5,
@@ -209,7 +216,7 @@
             }
         }).mount();
     <?php } ?>
-    <?php if (count($same_room)>2) { ?>
+    <?php if (count($same_room) > 2) { ?>
         new Splide('#splide-related-room', {
             type: 'loop',
             perPage: 5,
