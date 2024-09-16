@@ -79,6 +79,8 @@
             background: black
         }
 
+        .btn{border-radius: 0px;}
+
         .topacity {
             opacity: 0.85;
             /* Aturan opacity awal */

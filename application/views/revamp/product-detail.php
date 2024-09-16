@@ -8,10 +8,10 @@
     <div class="row mt-5">
 
         <div class="col-12  col-sm-12 col-md-12 col-lg-6 mb-4">
-            <img class="img-fluid rounded" src="<?= $GLOBALS['domain_static'] . '/assets/products/thumbnail/' . $products['product_thumbnail']; ?>" style="max-height:380px">
+            <img class="img-fluid" src="<?= $GLOBALS['domain_static'] . '/assets/products/thumbnail/' . $products['product_thumbnail']; ?>" style="max-height:380px">
         </div>
         <div class="col-12 col-sm-12 col-md-12 col-lg-6 text-start">
-            <div class="mb-3" id="brand-desc" style="max-height:310px; overflow-y:hidden; ">
+            <div class="mb-3" id="brand-desc" style="max-height:240px; overflow-y:hidden; ">
                 <?php if ($products['is_discontinued']) { ?>
                     <span class="badge text-bg-danger mb-4">Discontinued Product</span>
                 <?php } ?>
@@ -54,7 +54,7 @@
     </div>
 </div>
 
-<!-- Same Type  -->
+<!-- Same Type
 <?php if (count($same_cat) > 2) { ?>
     <div class="container p-4">
         <h2><?= $products['cat_name']; ?> Products</h2>
@@ -63,7 +63,7 @@
                 <ul class="splide__list">
                     <?php foreach ($same_cat as $key => $same_cat) { ?>
                         <li class="splide__slide p-2"><a href="<?= base_url('our-collections/') . $same_cat['product_slug']; ?>">
-                                <img class="img-fluid mb-2 rounded border topacity" style="width:250px !important; height:250px !important; object-fit:cover !important;" src="<?= $GLOBALS['domain_static'] . '/assets/products/thumbnail/' . $same_cat['product_thumbnail']; ?>" alt="<?= $same_cat['product_name'] ?>">
+                                <img class="img-fluid mb-2 border topacity" style="width:250px !important; height:250px !important; object-fit:cover !important;" src="<?= $GLOBALS['domain_static'] . '/assets/products/thumbnail/' . $same_cat['product_thumbnail']; ?>" alt="<?= $same_cat['product_name'] ?>">
                             </a>
                             <h4 class="text-secondary"><?= $same_cat['product_name']; ?></h4>
                         </li>
@@ -73,9 +73,9 @@
         </section>
     </div>
 <?php } ?>
-<!-- Same Type -->
+Same Type -->
 
-<!-- Same Room  -->
+<!-- 
 <?php if (count($same_room) > 2) { ?>
     <div class="container p-4">
         <h2><?= $products['room_name']; ?> Products</h2>
@@ -84,7 +84,7 @@
                 <ul class="splide__list">
                     <?php foreach ($same_room as $key => $same_room) { ?>
                         <li class="splide__slide p-2"><a href="<?= base_url('our-collections/') . $same_room['product_slug']; ?>">
-                                <img class="img-fluid mb-2 rounded border topacity" style="width:250px !important; height:250px !important; object-fit:cover !important;" src="<?= $GLOBALS['domain_static'] . '/assets/products/thumbnail/' . $same_room['product_thumbnail']; ?>" alt="<?= $same_room['product_name'] ?>">
+                                <img class="img-fluid mb-2 border topacity" style="width:288px !important; height:250px !important; object-fit:cover !important;" src="<?= $GLOBALS['domain_static'] . '/assets/products/thumbnail/' . $same_room['product_thumbnail']; ?>" alt="<?= $same_room['product_name'] ?>">
                             </a>
                             <h4 class="text-secondary"><?= $same_room['product_name']; ?></h4>
                         </li>
@@ -94,7 +94,7 @@
         </section>
     </div>
 <?php } ?>
-<!-- Same Room -->
+ -->
 
 <!-- Room Type  -->
 <?php if ($all_rooms) { ?>
@@ -105,7 +105,7 @@
                 <ul class="splide__list">
                     <?php foreach ($all_rooms as $key => $room) { ?>
                         <li class="splide__slide p-2"><a href="<?= base_url('room/') . $room['room_slug']; ?>">
-                                <div class="rounded-lg rounded text-center text-light text-decoration-none position-relative topacity" style="height:200px; background:#4C4C4C; background-position:center center; background-image:url('<?= $GLOBALS['domain_static'] . '/assets/rooms/' . $room['room_img']; ?>')">
+                                <div class="text-center text-light text-decoration-none position-relative topacity" style="height:200px; background:#4C4C4C; background-position:center center; background-image:url('<?= $GLOBALS['domain_static'] . '/assets/rooms/' . $room['room_img']; ?>')">
                                     <h5 class="position-absolute top-50 start-50 translate-middle"><?= $room['room_name']; ?></h5>
                                 </div>
                             </a></li>
@@ -126,7 +126,7 @@
                 <ul class="splide__list">
                     <?php foreach ($all_cats as $key => $cat) { ?>
                         <li class="splide__slide p-2"><a href="<?= base_url('category/') . $cat['cat_slug']; ?>">
-                                <div class="rounded-lg rounded text-center text-light text-decoration-none position-relative topacity" style="height:200px; background:#4C4C4C;background-position:center center; background-image:url('<?= $GLOBALS['domain_static'] . '/assets/categories/' . $cat['cat_img']; ?>')">
+                                <div class="text-center text-light text-decoration-none position-relative topacity" style="height:200px; background:#4C4C4C;background-position:center center; background-image:url('<?= $GLOBALS['domain_static'] . '/assets/categories/' . $cat['cat_img']; ?>')">
                                     <h5 class="position-absolute top-50 start-50 translate-middle"><?= $cat['cat_name']; ?></h5>
                                 </div>
                             </a></li>
@@ -148,7 +148,7 @@
                     <?php foreach ($all_brands as $key => $brand) { ?>
                         <li class="splide__slide p-2"><a href="
                         <?= base_url() . $brand['brand_slug']; ?>">
-                                <div class="rounded-lg rounded topacity" style="max-width:500px; background:#4C4C4C"><img class="img-fluid" src="<?= $GLOBALS['domain_static'] . '/assets/brands/' . $brand['brand_img']; ?>" alt="$brand['brand_name']"></div>
+                                <div class="topacity d-flex flex-col justify-content-center" style="height:200px;background-blend-mode: darken; background:rgba(0, 0, 0, .3);background-size:cover; background-image:url('<?= $GLOBALS['domain_static'] . '/assets/brands/' . $brand['brand_bg']; ?>');"><img class="img-fluid align-self-center" width="300" src="<?= $GLOBALS['domain_static'] . '/assets/brands/' . $brand['brand_img']; ?>" alt="<?= $brand['brand_name']; ?>"><a href="<?= base_url('/') . $brand['brand_slug']; ?>" class="stretched-link"></a></div>
                             </a></li>
                     <?php } ?>
                 </ul>
@@ -195,6 +195,7 @@
 <script src="https://fastly.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
 <link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
 <script>
+    /*
     <?php if (count($same_cat) > 2) { ?>
         new Splide('#splide-related-category', {
             type: 'loop',
@@ -216,6 +217,7 @@
             }
         }).mount();
     <?php } ?>
+    
     <?php if (count($same_room) > 2) { ?>
         new Splide('#splide-related-room', {
             type: 'loop',
@@ -237,7 +239,7 @@
             }
         }).mount();
     <?php } ?>
-
+*/
     new Splide('#splide-room', {
         type: 'loop',
         perPage: 4,

@@ -95,7 +95,7 @@ class Collection_model extends CI_Model
             $this->db->where_not_in('cat_id', $exclude_type);
         }
         $this->db->order_by('product_name', 'ASC');
-        $this->db->limit(8, 0);
+        $this->db->limit(35, 0);
         $get_products = $this->db->get()->result_array();
 
 

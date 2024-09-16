@@ -4,7 +4,7 @@
 <div id="intro-about" class="container p-4 pb-1 mb-4">
     <h2 class="mb-4 fw-bold text-center">About Maison Living</h2>
     <hr>
-    <p class="fs-3">Our journey started in 1982 from a traditional furniture store Cipta Bangun Jaya (CBJ Furniture Group) serving locally made furniture. With passion, persistence and discerning vision, we continually evolve to a luxurious contemporary furniture store that serves international high-end furniture and lifestyle products.</p>
+    <p>Our journey started in 1982 from a traditional furniture store Cipta Bangun Jaya (CBJ Furniture Group) serving locally made furniture. With passion, persistence and discerning vision, we continually evolve to a luxurious contemporary furniture store that serves international high-end furniture and lifestyle products.</p>
 </div>
 
 <!-- Why Maison Living -->
@@ -32,8 +32,8 @@
                             <?= $store['store_addrs']; ?><br>
                         </p>
                         <div>
-                            <a target="_blank" class="btn btn-dark btn-lg" href="https://wa.me/<?= $store['store_wa']; ?>?text=<?= $store['store_default_text']; ?>"><i class="fa-brands fa-whatsapp"></i> Whatsapp</a>
-                            <a target="_blank" class="btn btn-dark btn-lg" href="<?= $store['store_gmap']; ?>"><i class="fa-regular fa-map"></i> Google Map</a>
+                            <a target="_blank" class="btn btn-dark" href="https://wa.me/<?= $store['store_wa']; ?>?text=<?= $store['store_default_text']; ?>"><i class="fa-brands fa-whatsapp"></i> Whatsapp</a>
+                            <a target="_blank" class="btn btn-dark" href="<?= $store['store_gmap']; ?>"><i class="fa-regular fa-map"></i> Google Map</a>
                         </div>
                     </div>
                 </div>
@@ -52,7 +52,7 @@
                 <ul class="splide__list">
                     <?php foreach ($all_stores as $key => $store) { ?>
                         <li class="splide__slide p-2">
-                            <div class="rounded-lg rounded topacity" style="max-width:400px; background:#4C4C4C"><img class="img-fluid mb-2" src="<?= $GLOBALS['domain_static'] . '/assets/stores/' . $store['store_img']; ?>" style="max-height:300px" alt="<?= $store['store_name']; ?>"></div>
+                            <div class="topacity" style="max-width:400px; background:#4C4C4C"><img class="img-fluid mb-2" src="<?= $GLOBALS['domain_static'] . '/assets/stores/' . $store['store_img']; ?>" style="max-height:300px" alt="<?= $store['store_name']; ?>"></div>
                         </li>
                     <?php } ?>
                 </ul>

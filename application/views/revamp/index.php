@@ -40,51 +40,6 @@
     </div>
 </div>
 
-<!-- Hero CTA 
-<div class=" bg-white" style="margin-top:0px;">
-    <div id="hero" class="container p-4 pb-1 pt-sm-5 mb-5">
-        <div class="row">
-            <div class="col-sm-12 col-md-12 col-lg-6 text-center">
-                <figure><img class="img-fluid rounded" src="<?= $GLOBALS['domain_static'] . '/assets/home-babakagu.webp'; ?>" style="max-height:400px" alt=""></figure>
-            </div>
-            <div class="col-sm-12 col-md-12 col-lg-6 my-2 my-md-5">
-                <div class="text-warning fw-bold">#LuxYourHome</div>
-                <div>
-                    <h1>We Make Your Home Feel Comfy</h1>
-                </div>
-                <div>
-                    <p>Elevate Your Space with Timeless High-End Furniture and Expert Interior Design. Tailored for Your Unique Style and Comfort.</p>
-                </div>
-                <div>
-                    <a class="btn btn-dark btn-lg" href="<?= base_url('collections?via=homepage-cta'); ?>">Explore Our Masterpieces</a>
-                </div>
-            </div>
-        </div>
-    </div>
-  Hero CTA -->
-
-
-<!-- Brand Partners
-<?php if ($all_brands) { ?>
-    <div class="bg-dark text-light">
-        <div class="container p-4 mt-4">
-            <h2><a href="<?= base_url('furniture-brand'); ?>" class="text-decoration-none text-reset">Our Brands <i class="fa-solid fa-arrow-right-long"></i></a></h2>
-            <section class="splide brands" aria-label="Our Brands">
-                <div class="splide__track">
-                    <ul class="splide__list">
-                        <?php foreach ($all_brands as $key => $brand) { ?>
-                            <li class="splide__slide p-2"><a href="<?= base_url() . $brand['brand_slug'] . '?via=homepage-our-brand'; ?>">
-                                    <div class="rounded-lg rounded topacity" style="max-width:500px; background:#4C4C4C"><img class="img-fluid" src="<?= $GLOBALS['domain_static'] . '/assets/brands/' . $brand['brand_img']; ?>" alt="$brand['brand_name']"></div>
-                                </a></li>
-                        <?php } ?>
-                    </ul>
-                </div>
-            </section>
-        </div>
-    </div>
-<?php } ?>
- -->
-
 <!-- Brand Partners -->
 <?php if ($all_brands) { ?>
     <div class="text-dark bg-white" style="background-color: #171717;">
@@ -112,7 +67,7 @@
                     <ul class="splide__list">
                         <?php foreach ($bs_products as $key => $bestseller) { ?>
                             <li class="splide__slide p-2"><a href="<?= base_url('our-collections/') . $bestseller['product_slug']; ?>">
-                                    <img class="img-fluid mb-2 border topacity" style="width:300px; height:250px !important; object-fit:cover !important;" src="<?= $GLOBALS['domain_static'] . '/assets/products/thumbnail/' . $bestseller['product_thumbnail']; ?>" alt="<?= $bestseller['product_name'] ?>">
+                                    <img class="img-fluid mb-2 border topacity" style="width:400px; height:250px !important; object-fit:cover !important;" src="<?= $GLOBALS['domain_static'] . '/assets/products/thumbnail/' . $bestseller['product_thumbnail']; ?>" alt="<?= $bestseller['product_name'] ?>">
                                 </a>
                                 <h4 class="text-secondary"><?= $bestseller['product_name']; ?></h4>
                             </li>
@@ -150,63 +105,6 @@
     </div>
 <?php } ?>
 <!-- Store -->
-
-<!-- 
-<?php if ($all_stores) { ?>
-    <div class="container my-4 p-4 d-none d-md-block">
-    <h2 class="my-5 fs-1 text-center">Our Stores</h2>
-        <div class="mt-5">
-            <?php foreach ($all_stores as $key => $store) { ?>
-                <div class="row mb-3">
-                    <div class="col-sm-12 col-md-6 text-center">
-                        <img class="img-fluid mb-2" src="<?= $GLOBALS['domain_static'] . '/assets/stores/' . $store['store_img']; ?>" style="max-height:300px" alt="<?= $store['store_name']; ?>">
-                    </div>
-                    <div class="col-sm-12 col-md-6 my-3 my-sm-0">
-                        <h3><?= $store['store_name']; ?></h3>
-                        <p>
-                            <?= $store['store_addrs']; ?><br>
-                        </p>
-                        <div>
-                            <a target="_blank" class="btn btn-dark btn-lg" href="https://wa.me/<?= $store['store_wa']; ?>?text=<?= $store['store_default_text']; ?>"><i class="fa-brands fa-whatsapp"></i> Whatsapp</a>
-                            <a target="_blank" class="btn btn-dark btn-lg" href="<?= $store['store_gmap']; ?>"><i class="fa-regular fa-map"></i> Google Map</a>
-                        </div>
-                    </div>
-                </div>
-            <?php } ?>
-        </div>
-    </div>
-<?php } ?>
-
-<?php if ($all_stores) { ?>
-    <div class="container my-4 p-4 d-block d-md-none">
-        <h2 class="text-center mb-4">Our Stores</h2>
-        <section class="slide-store splide" aria-label="Our Stores">
-            <div class="splide__track">
-                <ul class="splide__list">
-                    <?php foreach ($all_stores as $key => $store) { ?>
-                        <li class="splide__slide p-2">
-                            <div class="rounded-lg rounded topacity" style="max-width:400px; background:#4C4C4C"><img class="img-fluid mb-2" src="<?= $GLOBALS['domain_static'] . '/assets/stores/' . $store['store_img']; ?>" style="max-height:300px" alt="<?= $store['store_name']; ?>"></div>
-                        </li>
-                    <?php } ?>
-                </ul>
-            </div>
-        </section>
-        <div class="mt-3">
-            <?php foreach ($all_stores as $key => $store) { ?>
-                <div class="row mb-3">
-                    <div class="col-sm-12 col-md-12 my-sm-0">
-                        <div class="text-center">
-                            <h4><?= $store['store_name']; ?></h4>
-                            <a target="_blank" class="btn btn-dark" href="https://wa.me/<?= $store['store_wa']; ?>?text=<?= $store['store_default_text']; ?>"><i class="fa-brands fa-whatsapp"></i> Whatsapp</a>
-                            <a target="_blank" class="btn btn-dark" href="<?= $store['store_gmap']; ?>"><i class="fa-regular fa-map"></i> Google Maps</a>
-                        </div>
-                    </div>
-                </div>
-            <?php } ?>
-        </div>
-    </div>
-<?php } ?>
--->
 </div>
 
 <script src="https://fastly.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
@@ -258,26 +156,23 @@
 <script>
     new Splide('.bestseller', {
         type: 'loop',
-        perPage: 4,
+        perPage: 3,
         perMove: 1,
-        padding: '3rem',
+        padding: '1rem',
         autoplay: true,
         pagination: false,
         breakpoints: {
-            360: {
-                perPage: 1,
-            },
             400: {
                 perPage: 1,
             },
             640: {
-                perPage: 2,
+                perPage: 1,
             },
             800: {
-                perPage: 2,
+                perPage: 1,
             },
             1024: {
-                perPage: 3,
+                perPage: 2,
             },
         }
     }).mount();
