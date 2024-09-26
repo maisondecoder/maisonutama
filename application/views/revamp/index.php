@@ -26,11 +26,11 @@
     <img src="<?= $GLOBALS['domain_static'] . '/assets/bg-papadatos.webp'; ?>" alt="" style="position:relative;width:100%;object-fit:cover !important;opacity:0.6">
     <div class="align-self-center" style="position:absolute; z-index:9;">
         <div class="col-lg-8 mx-auto text-white text-start p-2 py-5 text-center">
-            <div class="text-warning fw-bold">#LuxYourHome</div>
-            <div class="mb-4">
+            <div class="text-warning fw-bold mb-5">#LuxYourHome</div>
+            <div class="mb-5">
                 <h1 class="fs-3">We Make Your Home Feel Comfy</h1>
             </div>
-            <div>
+            <div class="mb-5">
                 <p>Elevate Your Space with Timeless High-End Furniture and Expert Interior Design. Tailored for Your Unique Style and Comfort.</p>
             </div>
             <div>
@@ -82,7 +82,7 @@
 
 <!-- Store -->
 <?php if ($all_stores) { ?>
-    <div class="text-light" style="width:100%; min-height:600px; max-height:50vw;background-blend-mode: darken; background:rgba(0, 0, 0, .5);background-size:cover; background-position:center bottom; background-image:url('<?= $GLOBALS['domain_static'] . '/assets/brands/store-bg.webp'; ?>');">
+    <div class="text-light" style="width:100%; min-height:600px; max-height:50vw;background-blend-mode: darken; background:rgba(0, 0, 0, .5);background-size:cover; background-position:center bottom; background-image:url('<?= $GLOBALS['domain_static'] . '/assets/brands/aromas-bg-new.webp'; ?>');">
         <div class="container p-4">
             <h2 class="my-5 fs-1 text-center text-md-start">Our Stores</h2>
             <div class="row d-flex flex-row justify-content-center">
