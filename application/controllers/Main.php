@@ -12,6 +12,7 @@ class Main extends CI_Controller
 		$cloudcone_url = $this->setting_model->get_setting_value("cloudcone_url");
 
 		$GLOBALS['domain_static'] = $cloudcone_url;
+		
 	}
 
 	public function index()
@@ -20,10 +21,17 @@ class Main extends CI_Controller
 		$this->load->model('brand_model');
 		$this->load->model('store_model');
 		$this->load->model('collection_model');
+		$all_cats = $this->collection_model->get_all_cats();
+		$data['all_cats'] = $all_cats;
 		$data['all_brands'] = $this->brand_model->get_all_brands();
 		$data['all_stores'] = $this->store_model->get_all_stores();
 		$bs_group = $this->collection_model->group_catalog(1);
+
+		
+		
+
 		$data['bs_products'] = $this->collection_model->selected_group_items($bs_group['group_items']);
+		
 		//print_r($bs_group['group_items']);
 
 		//** End */
@@ -66,6 +74,10 @@ class Main extends CI_Controller
 		$data['all_stores'] = $this->store_model->get_all_stores();
 		//** End */
 
+		$this->load->model('collection_model');
+		$all_cats = $this->collection_model->get_all_cats();
+		$data['all_cats'] = $all_cats;
+
 		$data['title_page'] = "Maison Living Brand Partners";
 		$data['nav'] = "brand";
 
@@ -100,7 +112,9 @@ class Main extends CI_Controller
 		$data['page'] = $page;
 		$this->load->model('collection_model');
 		$products = $this->collection_model->get_products($brand_data['brand_id'], 0, 0, $page);
-
+		
+		$all_cats = $this->collection_model->get_all_cats();
+		$data['all_cats'] = $all_cats;
 
 		if (isset($_GET['category'])) {
 			if (in_array($_GET['category'], $whitelist_category)) {
@@ -323,6 +337,10 @@ class Main extends CI_Controller
 		$data['all_brands'] = $this->brand_model->get_all_brands();
 		$data['all_stores'] = $this->store_model->get_all_stores();
 		//** End */
+
+		$this->load->model('collection_model');
+		$all_cats = $this->collection_model->get_all_cats();
+		$data['all_cats'] = $all_cats;
 
 		$data['title_page'] = "About Maison Living";
 		$data['nav'] = "about";

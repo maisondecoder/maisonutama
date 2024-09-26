@@ -227,7 +227,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse mx-auto" id="navbarText">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-1 gap-lg-5 me-5">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-1 gap-lg-5 me-5 navbar-nav-scroll">
                     <li class="nav-item">
                         <a class="nav-link <?php echo ($nav == 'home') ? 'active' : ''; ?>" aria-current="page" href="<?= base_url(); ?>">Homepage</a>
                     </li>
@@ -243,9 +243,22 @@
                             </ul>
                         </li>
                     <?php } ?>
+                    <?php if ($all_cats) { ?>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle <?php echo ($nav == 'collection') ? 'active' : ''; ?>" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Categories
+                            </a>
+                            <ul class="dropdown-menu">
+                                <?php foreach ($all_cats as $key => $cat) { ?>
+                                    <li><a class="dropdown-item" href="<?= base_url("category/") . $cat['cat_slug']; ?>"><?= $cat['cat_name']; ?></a></li>
+                                <?php } ?>
+                            </ul>
+                        </li>
+                    <?php } ?>
+                    <!--
                     <li class="nav-item">
                         <a class="nav-link <?php echo ($nav == 'collection') ? 'active' : ''; ?>" href="<?= base_url('collections'); ?>">Our Collections</a>
-                    </li>
+                    </li>-->
                     <li class="nav-item">
                         <a class="nav-link <?php echo ($nav == 'about') ? 'active' : ''; ?>" href="<?= base_url('about-us-maison-living'); ?>">About Us</a>
                     </li>
