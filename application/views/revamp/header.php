@@ -23,6 +23,7 @@
     <!-- Google tag (gtag.js)-->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-TELBVRXJ1G"></script>
     <script src="<?= $GLOBALS['domain_static'] . '/assets/js/jquery.visible.min.js'; ?>"></script>
+    <link rel="stylesheet" href="<?= $GLOBALS['domain_static'] . '/assets/loading.css'; ?>">
     <script>
         window.dataLayer = window.dataLayer || [];
 
@@ -79,7 +80,9 @@
             background: black
         }
 
-        .btn{border-radius: 0px;}
+        .btn {
+            border-radius: 0px;
+        }
 
         .topacity {
             opacity: 0.85;
@@ -140,6 +143,11 @@
             animation-iteration-count: infinite;
         }
 
+        #loadoverlay-icon{
+            animation: blink 1s;
+            animation-iteration-count: infinite;
+        }
+
         @keyframes shake {
             0% {
                 transform: translate(0px, 0px) rotate(0deg);
@@ -159,6 +167,19 @@
 
             100% {
                 transform: translate(0px, 0px) rotate(0deg);
+            }
+        }
+
+        @keyframes blink {
+            0%{
+                opacity: 1;
+            }
+
+            50%{
+                opacity: 0.3;
+            }
+            100%{
+                opacity: 1;
             }
         }
     </style>
@@ -215,9 +236,14 @@
     <noscript><img height="1" width="1" style="display:none"
             src="https://www.facebook.com/tr?id=497224866247689&ev=PageView&noscript=1" /></noscript>
     <!-- End Meta Pixel Code -->
+
 </head>
 
+
 <body>
+    <div id="loadoverlay" class="d-flex justify-content-center" style="height:100%;width:100%;background:rgba(255,255,255,0.8);position:fixed;z-index:999999999!important;top:0;">
+        <img id="loadoverlay-icon" class="align-self-center" width="80px" height="80px" src="https://localhost/maisonutama/assets/icon/icon-loading.webp" alt="">
+    </div>
     <nav id="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container-fluid py-2">
             <a class="navbar-brand ms-5" href="<?= base_url(); ?>">

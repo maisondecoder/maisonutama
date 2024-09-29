@@ -3,7 +3,7 @@
         <div class="container p-4">
             <div class="row">
                 <div class="col-sm-12 col-md-6">
-                    <img class="mb-4" src="<?= $GLOBALS['domain_static'].'/assets/logo-maison-navbar-putih.webp' ?>" alt="Maison Living" height="40">
+                    <img class="mb-4" src="<?= $GLOBALS['domain_static'] . '/assets/logo-maison-navbar-putih.webp' ?>" alt="Maison Living" height="40">
                 </div>
                 <div class="col-sm-12 col-md-3">
                     <h4>Our Stores</h4>
@@ -36,11 +36,22 @@
         </div>
     </footer>
     <!-- Footer -->
-    
+
     <script src="https://fastly.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/07c871975a.js" crossorigin="anonymous"></script>
     <script src="https://fastly.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
-    
+    <script>
+        $(document).ready(function() {
+            setTimeout(
+                function() {
+                    $("#loadoverlay").fadeOut();
+                }, 800);
+            setTimeout(
+                function() {
+                    $("#loadoverlay").removeClass('d-flex');
+                }, 1200);
+        });
+    </script>
     </body>
 
     </html>

@@ -134,24 +134,6 @@
 
     });
 </script>
-<script>
-    new Splide('.brands', {
-        type: 'loop',
-        perPage: 3,
-        perMove: 1,
-        padding: '2rem',
-        autoplay: true,
-        pagination: false,
-        breakpoints: {
-            480: {
-                perPage: 1,
-            },
-            1024: {
-                perPage: 2,
-            },
-        }
-    }).mount();
-</script>
 
 <script>
     new Splide('.bestseller', {
@@ -175,17 +157,6 @@
                 perPage: 2,
             },
         }
-    }).mount();
-</script>
-
-<script>
-    new Splide('.slide-store', {
-        type: 'loop',
-        perPage: 1,
-        perMove: 1,
-        padding: '2rem',
-        autoplay: true,
-        pagination: true
     }).mount();
 </script>
 
