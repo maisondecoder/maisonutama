@@ -8,7 +8,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?= $title_page; ?></title>
     <meta name="robots" content="index, follow">
-
     <link href="https://fastly.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -242,7 +241,7 @@
 
 <body>
     <div id="loadoverlay" class="d-flex justify-content-center" style="height:100%;width:100%;background:rgba(255,255,255,0.8);position:fixed;z-index:999999999!important;top:0;">
-        <img id="loadoverlay-icon" class="align-self-center" width="80px" height="80px" src="<?= $GLOBALS['domain_static'] . '/assets/icon/icon-loading.webp';?>" alt="">
+        <img id="loadoverlay-icon" class="align-self-center" width="140px" height="140px" src="<?= $GLOBALS['domain_static'] . '/assets/icon/icon-loading-trans.webp';?>" alt="">
     </div>
     <nav id="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container-fluid py-2">
