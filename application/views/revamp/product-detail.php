@@ -16,12 +16,12 @@
                         if ($products['folder_gallery']) {
                             foreach ($images as $image) {
                         ?>
-                                <li class="splide__slide"><img class="img-fluid" src="<?= $GLOBALS['domain_static'] . '/assets/gallery/' . $products['folder_gallery'] . '/' . basename($image); ?>"></li>
+                                <li class="splide__slide"><img class="img-fluid border" src="<?= $GLOBALS['domain_static'] . '/assets/gallery/' . $products['folder_gallery'] . '/' . basename($image); ?>"></li>
 
                             <?php
                             }
                         } else { ?>
-                            <li class="splide__slide"><img class="img-fluid" src="<?= $GLOBALS['domain_static'] . '/assets/products/thumbnail/' . $products['product_thumbnail']; ?>" style="max-height:380px"></li>
+                            <li class="splide__slide"><img class="img-fluid border" src="<?= $GLOBALS['domain_static'] . '/assets/products/thumbnail/' . $products['product_thumbnail']; ?>" style="max-height:380px"></li>
                         <?php
                         }
                         ?>
@@ -78,20 +78,20 @@
 <!-- Product Type -->
 <?php if ($all_cats) { ?>
     <div class="container p-4">
-        <h4>See Other Categories</h3>
-            <section id="splide-category" class="splide" aria-label="Category Collection">
-                <div class="splide__track">
-                    <ul class="splide__list">
-                        <?php foreach ($all_cats as $key => $cat) { ?>
-                            <li class="splide__slide p-2"><a href="<?= base_url('category/') . $cat['cat_slug']; ?>">
-                                    <div class="text-center text-light text-decoration-none position-relative topacity" style="height:200px; background:#4C4C4C;background-position:center center; background-image:url('<?= $GLOBALS['domain_static'] . '/assets/categories/' . $cat['cat_img']; ?>')">
-                                        <h5 class="position-absolute top-50 start-50 translate-middle"><?= $cat['cat_name']; ?></h5>
-                                    </div>
-                                </a></li>
-                        <?php } ?>
-                    </ul>
-                </div>
-            </section>
+        <h4>See Other Categories</h4>
+        <section id="splide-category" class="splide" aria-label="Category Collection" style="height:200px">
+            <div class="splide__track">
+                <ul class="splide__list">
+                    <?php foreach ($all_cats as $key => $cat) { ?>
+                        <li class="splide__slide p-2"><a href="<?= base_url('category/') . $cat['cat_slug']; ?>">
+                                <div class="text-center text-light text-decoration-none position-relative topacity" style="height:200px; background:#4C4C4C;background-position:center center; background-image:url('<?= $GLOBALS['domain_static'] . '/assets/categories/' . $cat['cat_img']; ?>')">
+                                    <h5 class="position-absolute top-50 start-50 translate-middle"><?= $cat['cat_name']; ?></h5>
+                                </div>
+                            </a></li>
+                    <?php } ?>
+                </ul>
+            </div>
+        </section>
     </div>
 <?php } ?>
 <!-- Product Type -->
@@ -149,7 +149,7 @@
         perPage: 1,
         perMove: 1,
         autoplay: true,
-        pagination: true,
+        pagination: true
     }).mount();
 </script>
 
