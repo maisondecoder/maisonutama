@@ -8,7 +8,28 @@
     <div class="row mt-5">
 
         <div class="col-12  col-sm-12 col-md-12 col-lg-6 mb-4">
-            <img class="img-fluid" src="<?= $GLOBALS['domain_static'] . '/assets/products/thumbnail/' . $products['product_thumbnail']; ?>" style="max-height:380px">
+
+            <section id="gallery" class="splide" aria-label="Splide Basic HTML Example">
+                <div class="splide__track">
+                    <ul class="splide__list">
+                        <?php
+                        if ($products['folder_gallery']) {
+                            foreach ($images as $image) {
+                        ?>
+                                <li class="splide__slide"><img class="img-fluid" src="<?= $GLOBALS['domain_static'] . '/assets/gallery/' . $products['folder_gallery'] . '/' . basename($image); ?>"></li>
+
+                            <?php
+                            }
+                        } else { ?>
+                            <li class="splide__slide"><img class="img-fluid" src="<?= $GLOBALS['domain_static'] . '/assets/products/thumbnail/' . $products['product_thumbnail']; ?>" style="max-height:380px"></li>
+                        <?php
+                        }
+                        ?>
+                    </ul>
+                </div>
+            </section>
+
+
         </div>
         <div class="col-12 col-sm-12 col-md-12 col-lg-6 text-start">
             <div class="mb-3" id="brand-desc" style="max-height:240px; overflow-y:hidden; ">
@@ -58,19 +79,19 @@
 <?php if ($all_cats) { ?>
     <div class="container p-4">
         <h4>See Other Categories</h3>
-        <section id="splide-category" class="splide" aria-label="Category Collection">
-            <div class="splide__track">
-                <ul class="splide__list">
-                    <?php foreach ($all_cats as $key => $cat) { ?>
-                        <li class="splide__slide p-2"><a href="<?= base_url('category/') . $cat['cat_slug']; ?>">
-                                <div class="text-center text-light text-decoration-none position-relative topacity" style="height:200px; background:#4C4C4C;background-position:center center; background-image:url('<?= $GLOBALS['domain_static'] . '/assets/categories/' . $cat['cat_img']; ?>')">
-                                    <h5 class="position-absolute top-50 start-50 translate-middle"><?= $cat['cat_name']; ?></h5>
-                                </div>
-                            </a></li>
-                    <?php } ?>
-                </ul>
-            </div>
-        </section>
+            <section id="splide-category" class="splide" aria-label="Category Collection">
+                <div class="splide__track">
+                    <ul class="splide__list">
+                        <?php foreach ($all_cats as $key => $cat) { ?>
+                            <li class="splide__slide p-2"><a href="<?= base_url('category/') . $cat['cat_slug']; ?>">
+                                    <div class="text-center text-light text-decoration-none position-relative topacity" style="height:200px; background:#4C4C4C;background-position:center center; background-image:url('<?= $GLOBALS['domain_static'] . '/assets/categories/' . $cat['cat_img']; ?>')">
+                                        <h5 class="position-absolute top-50 start-50 translate-middle"><?= $cat['cat_name']; ?></h5>
+                                    </div>
+                                </a></li>
+                        <?php } ?>
+                    </ul>
+                </div>
+            </section>
     </div>
 <?php } ?>
 <!-- Product Type -->
@@ -105,7 +126,6 @@
 <script src="https://fastly.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
 <link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
 <script>
-
     new Splide('#splide-category', {
         type: 'loop',
         perPage: 4,
@@ -121,6 +141,15 @@
                 perPage: 2,
             },
         }
+    }).mount();
+</script>
+
+<script>
+    new Splide('#gallery', {
+        perPage: 1,
+        perMove: 1,
+        autoplay: true,
+        pagination: true,
     }).mount();
 </script>
 

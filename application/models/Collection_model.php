@@ -8,7 +8,7 @@ class Collection_model extends CI_Model
         $this->db->from('ml_rooms');
         $this->db->where('room_status', 1);
         $this->db->where('is_deleted', 0);
-        $this->db->where_not_in('room_slug', $exclude);
+        //$this->db->where_not_in('room_slug', $exclude);
         $get_all_rooms = $this->db->get()->result_array();
 
         return $get_all_rooms;
@@ -20,7 +20,7 @@ class Collection_model extends CI_Model
         $this->db->from('ml_category');
         $this->db->where('cat_status', 1);
         $this->db->where('is_deleted', 0);
-        $this->db->where_not_in('cat_slug', $exclude);
+        //$this->db->where_not_in('cat_slug', $exclude);
         $get_all_cats = $this->db->get()->result_array();
 
         return $get_all_cats;
@@ -32,7 +32,7 @@ class Collection_model extends CI_Model
         $this->db->from('ml_rooms');
         $this->db->where('room_status', 1);
         $this->db->where('is_deleted', 0);
-        $this->db->where('room_slug', $room_slug);
+        //$this->db->where('room_slug', $room_slug);
         $get_spesific_room = $this->db->get()->row_array();
 
         return $get_spesific_room;

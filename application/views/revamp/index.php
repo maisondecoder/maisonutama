@@ -34,7 +34,7 @@
                 <p>Elevate Your Space with Timeless High-End Furniture and Expert Interior Design. Tailored for Your Unique Style and Comfort.</p>
             </div>
             <div>
-                <a class="btn btn-outline-light btn-lg" href="<?= base_url('collections?via=homepage-cta'); ?>">Explore Our Masterpieces</a>
+                <a class="btn btn-outline-light btn-lg" href="#brands">Explore Our Masterpieces</a>
             </div>
         </div>
     </div>
@@ -42,7 +42,7 @@
 
 <!-- Brand Partners -->
 <?php if ($all_brands) { ?>
-    <div class="text-dark bg-white" style="background-color: #171717;">
+    <div id="brands" class="text-dark bg-white" style="background-color: #171717;">
         <div class="container p-4 text-center">
             <h2 class="my-5 fs-1">Discover Our Brands</h2>
             <div class="row d-flex flex-row justify-content-center">

@@ -220,6 +220,11 @@ class Main extends CI_Controller
 		}
 		$data['template_wa'] = urlencode($template);
 
+		$folder = FCPATH.'assets\gallery\\'.$product_data['folder_gallery'].'\\';
+		//echo $folder;
+		$data['images'] = glob($folder . '*.{jpg,jpeg,png,gif}', GLOB_BRACE);
+		
+
 		$this->load->view('revamp/header', $data);
 		$this->load->view('revamp/product-detail');
 		$this->load->view('revamp/footer');
