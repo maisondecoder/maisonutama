@@ -1005,7 +1005,7 @@ class Backend extends CI_Controller
         }
 
         $config['upload_path']          = './assets/' . $folder . '/' . $folder2;
-        $config['allowed_types']        = 'jpg|png|webp';
+        $config['allowed_types']        = 'jpg|png|webp|jpeg';
         $config['max_size']             = 1000;
 
         $this->load->library('upload', $config);
