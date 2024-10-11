@@ -142,7 +142,7 @@
             animation-iteration-count: infinite;
         }
 
-        #loadoverlay-icon{
+        #loadoverlay-icon {
             animation: blink 1s;
             animation-iteration-count: infinite;
         }
@@ -170,14 +170,15 @@
         }
 
         @keyframes blink {
-            0%{
+            0% {
                 opacity: 1;
             }
 
-            50%{
+            50% {
                 opacity: 0.3;
             }
-            100%{
+
+            100% {
                 opacity: 1;
             }
         }
@@ -235,13 +236,38 @@
     <noscript><img height="1" width="1" style="display:none"
             src="https://www.facebook.com/tr?id=497224866247689&ev=PageView&noscript=1" /></noscript>
     <!-- End Meta Pixel Code -->
-
+    <!-- Meta Pixel Code -->
+    <script>
+        ! function(f, b, e, v, n, t, s) {
+            if (f.fbq) return;
+            n = f.fbq = function() {
+                n.callMethod ?
+                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n;
+            n.push = n;
+            n.loaded = !0;
+            n.version = '2.0';
+            n.queue = [];
+            t = b.createElement(e);
+            t.async = !0;
+            t.src = v;
+            s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window, document, 'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '874217241092160');
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+            src="https://www.facebook.com/tr?id=874217241092160&ev=PageView&noscript=1" /></noscript>
+    <!-- End Meta Pixel Code -->
 </head>
 
 
 <body>
     <div id="loadoverlay" class="d-flex justify-content-center" style="height:100%;width:100%;background:rgba(255,255,255,0.8);position:fixed;z-index:999999999!important;top:0;">
-        <img id="loadoverlay-icon" class="align-self-center" width="140px" height="140px" src="<?= $GLOBALS['domain_static'] . '/assets/icon/icon-loading-trans.webp';?>" alt="">
+        <img id="loadoverlay-icon" class="align-self-center" width="140px" height="140px" src="<?= $GLOBALS['domain_static'] . '/assets/icon/icon-loading-trans.webp'; ?>" alt="">
     </div>
     <nav id="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container-fluid py-2">
