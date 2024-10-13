@@ -13,24 +13,25 @@
                         <div class="col-sm-6 col-md-6 mb-4">
                             <h5>Kemang Jakarta</h5>
                             <p>
-                                Jl. Raya Kemang Selatan No.31 
+                                Jl. Raya Kemang Selatan No.31
                                 Jakarta Selatan, 12730<br>
                             </p>
                             <div>
+                                <a href="https://goo.gl/maps/YogV1V2a7HVtrFC97" target="_blank" class="text-reset">Open Google Maps <i class="fa-solid fa-arrow-up-right-from-square"></i></a><br>
                                 WA : 0813-8818-0020<br>
-                                Phone : 021-2272-0220<br>
-                                <a href="https://goo.gl/maps/YogV1V2a7HVtrFC97" target="_blank" class="text-reset">Open Google Maps <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                                Phone : 021-2272-0220
                             </div>
                         </div>
                         <div class="col-sm-6 col-md-6 mb-4">
                             <h5>BSD Alam Sutera</h5>
                             <p>
-                                Jl. Raya Serpong Km 8 No. 7 
+                                Jl. Raya Serpong Km 8 No. 7
                                 Tangerang Selatan, 15326<br>
+                            </p>
                             <div>
+                                <a href="https://goo.gl/maps/6ZeBuiVJioZoCq7r5" target="_blank" class="text-reset">Open Google Maps <i class="fa-solid fa-arrow-up-right-from-square"></i></a><br>
                                 WA : 0819-3000-2525<br>
-                                Phone : 021-5569-5924<br>
-                                <a href="https://goo.gl/maps/6ZeBuiVJioZoCq7r5" target="_blank" class="text-reset">Open Google Maps <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                                Phone : 021-5569-5924
                             </div>
                         </div>
                     </div>
