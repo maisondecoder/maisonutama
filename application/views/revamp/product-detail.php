@@ -48,9 +48,9 @@
                 <?php if ($variation) { ?>
                     <div class="mb-4">
                         <h3 class="fs-5 fw-bold">Select Color</h3>
-                        <a href="<?= base_url('our-collections/') . $products['product_slug']; ?>" type="button" class="btn btn-outline-dark <?php if(!$selected){ echo 'active'; } ?>">Default</a>
+                        <a href="<?= base_url('our-collections/') . $products['product_slug']; ?>" type="button" class="btn mb-1 btn-outline-dark <?php if(!$selected){ echo 'active'; } ?>">Default</a>
                         <?php foreach ($variation as $key => $var) { ?>
-                            <a href="<?= base_url('our-collections/') . $products['product_slug'] . '/' . $var['pv_slug']; ?> " type="button" class="btn btn-outline-dark <?php if($selected == $var['pv_slug']){ echo 'active'; } ?>"><?= $var['pv_label']; ?></a>
+                            <a href="<?= base_url('our-collections/') . $products['product_slug'] . '/' . $var['pv_slug']; ?> " type="button" class="btn mb-1 btn-outline-dark <?php if($selected == $var['pv_slug']){ echo 'active'; } ?>"><?= $var['pv_label']; ?></a>
                         <?php } ?>
                         <hr>
                     </div>
