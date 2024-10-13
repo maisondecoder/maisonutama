@@ -2,8 +2,27 @@
     <footer class="bg-dark text-light">
         <div class="container p-4">
             <div class="row">
-                <div class="col-sm-12 col-md-7">
-                    <img class="mb-4" src="<?= $GLOBALS['domain_static'] . '/assets/logo-maison-navbar-putih.webp' ?>" alt="Maison Living" height="40">
+                <div class="col-sm-12 col-md-7 mb-4">
+                    <div>
+                        <img class="mb-4" src="<?= $GLOBALS['domain_static'] . '/assets/logo-maison-navbar-putih.webp' ?>" alt="Maison Living" height="40">
+                        <div class="row mb-2">
+                            <h4>Follow Us</h4>
+                        </div>
+                        <div>
+                            <span class="position-relative me-2">
+                                <img src="<?= $GLOBALS['domain_static'] . '/assets/icon/icons8-facebook-96-2.png' ?>" alt="Facebook Maison Living" height="48">
+                                <a href="https://web.facebook.com/maisonliving.id" class="stretched-link" target="_blank" rel="nofollow"></a>
+                            </span>
+                            <span class="position-relative me-2">
+                                <img src="<?= $GLOBALS['domain_static'] . '/assets/icon/icons8-instagram-96.png' ?>" alt="Instagram Maison Living" height="48">
+                                <a href="https://www.instagram.com/maisonliving.id" class="stretched-link" target="_blank" rel="nofollow"></a>
+                            </span>
+                            <span class="position-relative">
+                                <img src="<?= $GLOBALS['domain_static'] . '/assets/icon/icons8-tiktok-96.png' ?>" alt="Tiktok Maison Living" height="48">
+                                <a href="https://www.tiktok.com/@maisonliving.id" class="stretched-link" target="_blank" rel="nofollow"></a>
+                            </span>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-sm-12 col-md-5">
                     <div class="row mb-4">
