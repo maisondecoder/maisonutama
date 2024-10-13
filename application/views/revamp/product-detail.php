@@ -52,6 +52,7 @@
                         <?php foreach ($variation as $key => $var) { ?>
                             <a href="<?= base_url('our-collections/') . $products['product_slug'] . '/' . $var['pv_slug']; ?> " type="button" class="btn btn-outline-dark <?php if($selected == $var['pv_slug']){ echo 'active'; } ?>"><?= $var['pv_label']; ?></a>
                         <?php } ?>
+                        <hr>
                     </div>
                 <?php } ?>
                 <?php foreach ($product_content as $key => $content) { ?>
