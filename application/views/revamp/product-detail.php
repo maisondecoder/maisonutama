@@ -13,10 +13,10 @@
                 <div class="splide__track">
                     <ul class="splide__list">
                         <?php
-                        if ($products['folder_gallery']) {
+                        if ($gallery) {
                             foreach ($images as $image) {
                         ?>
-                                <li class="splide__slide"><img class="img-fluid border" src="<?= $GLOBALS['domain_static'] . '/assets/gallery/' . $products['folder_gallery'] . '/' . basename($image); ?>"></li>
+                                <li class="splide__slide"><img class="img-fluid border" src="<?= $GLOBALS['domain_static'] . '/assets/gallery/' . $gallery . '/' . basename($image); ?>"></li>
 
                             <?php
                             }
@@ -45,6 +45,15 @@
                         </div>
                 <?php }
                 } ?>
+                <?php if ($variation) { ?>
+                    <div class="mb-4">
+                        <h3 class="fs-5 fw-bold">Select Color</h3>
+                        <a href="<?= base_url('our-collections/') . $products['product_slug']; ?>" type="button" class="btn btn-outline-dark <?php if(!$selected){ echo 'active'; } ?>">Default</a>
+                        <?php foreach ($variation as $key => $var) { ?>
+                            <a href="<?= base_url('our-collections/') . $products['product_slug'] . '/' . $var['pv_slug']; ?> " type="button" class="btn btn-outline-dark <?php if($selected == $var['pv_slug']){ echo 'active'; } ?>"><?= $var['pv_label']; ?></a>
+                        <?php } ?>
+                    </div>
+                <?php } ?>
                 <?php foreach ($product_content as $key => $content) { ?>
                     <div class="mb-4">
                         <h3 class="fs-5 fw-bold"><?= $key ?></h3>

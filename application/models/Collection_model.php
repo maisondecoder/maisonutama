@@ -192,4 +192,23 @@ class Collection_model extends CI_Model
         $selected_group_items = $this->db->get()->result_array();
         return $selected_group_items;
     }
+
+    public function get_list_variation($product_id){
+        $this->db->from('ml_product_variation');
+        $this->db->where('pv_status', 1);
+        $this->db->where('product_id', $product_id);
+
+        $list_variation = $this->db->get()->result_array();
+        return $list_variation;
+    }
+
+    public function get_variation($product_id,$variation){
+        $this->db->from('ml_product_variation');
+        $this->db->where('pv_status', 1);
+        $this->db->where('pv_slug', $variation);
+        $this->db->where('product_id', $product_id);
+
+        $variation = $this->db->get()->row_array();
+        return $variation;
+    }
 }

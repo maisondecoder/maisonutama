@@ -12,7 +12,6 @@ class Main extends CI_Controller
 		$cloudcone_url = $this->setting_model->get_setting_value("cloudcone_url");
 
 		$GLOBALS['domain_static'] = $cloudcone_url;
-		
 	}
 
 	public function index()
@@ -27,11 +26,11 @@ class Main extends CI_Controller
 		$data['all_stores'] = $this->store_model->get_all_stores();
 		$bs_group = $this->collection_model->group_catalog(1);
 
-		
-		
+
+
 
 		$data['bs_products'] = $this->collection_model->selected_group_items($bs_group['group_items']);
-		
+
 		//print_r($bs_group['group_items']);
 
 		//** End */
@@ -112,7 +111,7 @@ class Main extends CI_Controller
 		$data['page'] = $page;
 		$this->load->model('collection_model');
 		$products = $this->collection_model->get_products($brand_data['brand_id'], 0, 0, $page);
-		
+
 		$all_cats = $this->collection_model->get_all_cats();
 		$data['all_cats'] = $all_cats;
 
@@ -176,7 +175,7 @@ class Main extends CI_Controller
 		$this->load->view('revamp/footer');
 	}
 
-	public function product_detail($product_slug)
+	public function product_detail($product_slug, $variation = null)
 	{
 		//Global Data To Display *Mandatory
 		$this->load->model('brand_model');
@@ -212,18 +211,37 @@ class Main extends CI_Controller
 		if (isset($_GET['target'])) {
 			if ($_GET['target'] == 'designer') {
 				$template = "Halo Maison Living, saya mau bertanya tentang produk " . $product_data['product_name'] . " dari " . $product_data['brand_name'];
-			}else{
+			} else {
 				$template = "Halo Maison Living, Saya ingin info lebih lanjut mengenai produk " . $product_data['product_name'] . " dari " . $product_data['brand_name'];
-			} 
-		}else {
+			}
+		} else {
 			$template = "Halo Maison Living, Saya ingin info lebih lanjut mengenai produk " . $product_data['product_name'] . " dari " . $product_data['brand_name'];
 		}
 		$data['template_wa'] = urlencode($template);
 
-		$folder = FCPATH.'assets/gallery/'.$product_data['folder_gallery'].'/';
-		echo $folder;
-		$data['images'] = glob($folder . '*.{jpg,jpeg,png,gif}', GLOB_BRACE);
+		$get_list_variation =  $this->collection_model->get_list_variation($product_data['product_id']);
+
+		if ($variation) {
+			$get_variation =  $this->collection_model->get_variation($product_data['product_id'], $variation);
+			if ($get_variation) {
+				//default gallery dari varian
+				$product_gallery = $get_variation['pv_gallery'];
+			}else{
+				//jika variasi tidak ada di database, maka redirect
+				redirect(base_url('our-collections/') . $product_data['product_slug']);
+			}
+		} else {
+			//default gallery dari product utama
+			$product_gallery = $product_data['folder_gallery'];
+		}
 		
+		$data['gallery'] = $product_gallery;
+		$data['selected'] = $variation;
+		$data['variation'] = $get_list_variation;
+		//print_r($get_list_variation);
+		$folder = FCPATH . 'assets/gallery/' . $product_gallery . '/';
+		$data['images'] = glob($folder . '*.{jpg,jpeg,png,gif}', GLOB_BRACE);
+
 
 		$this->load->view('revamp/header', $data);
 		$this->load->view('revamp/product-detail');
