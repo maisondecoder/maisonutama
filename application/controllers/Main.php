@@ -130,7 +130,7 @@ class Main extends CI_Controller
 		}
 
 		//Pagination
-		$tampil_per_page = 8;
+		$tampil_per_page = 12;
 		$jumlah_halaman = ceil($jumlah_total_produk / $tampil_per_page);
 		if (!$jumlah_total_produk) {
 			$jumlah_halaman = 1;
