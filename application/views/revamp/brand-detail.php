@@ -25,7 +25,7 @@
                 <li class="nav-item" style="display: inline-block;float:none;">
                     <a class="nav-link <?php if ($_GET['category'] && $_GET['category'] == $brand_cat['cat_slug']) {
                                             echo 'active';
-                                        } ?>" href="<?= base_url($brand_data['brand_slug']).'?category='.$brand_cat['cat_slug']; ?>#cat-tab"><?= $brand_cat['cat_name'] ?></a>
+                                        } ?>" href="<?= base_url($brand_data['brand_slug']) . '?category=' . $brand_cat['cat_slug']; ?>#cat-tab"><?= $brand_cat['cat_name'] ?></a>
                 </li>
             <?php } ?>
         </ul>
@@ -35,8 +35,8 @@
         <?php if ($products) {
             foreach ($products as $key => $product) { ?>
                 <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
-                    <a class="text-decoration-none " href="<?= base_url("our-collections/") . $product['product_slug'].'?via=brand-details'; ?>">
-                        <img class="img-fluid mb-2 border topacity" style="width:400px !important; height:200px !important; object-fit:cover !important;" src="<?= $GLOBALS['domain_static'].'/assets/products/thumbnail/' . $product['product_thumbnail']; ?>" alt="">
+                    <a class="text-decoration-none " href="<?= base_url("our-collections/") . $product['product_slug'] . '?via=brand-details'; ?>">
+                        <img class="img-fluid mb-2 border topacity" style="width:400px !important; height:200px !important; object-fit:cover !important;" src="<?= $GLOBALS['domain_static'] . '/assets/products/thumbnail/' . $product['product_thumbnail']; ?>" alt="">
                         <h4 class="text-secondary"><?= $product['product_name']; ?></h4>
                     </a>
                 </div>
@@ -45,30 +45,49 @@
             <div class="text-center bg-secondary p-3"> <span class="text-white">Oops! No collection item to display</span></div>
         <?php } ?>
 
-        <?php 
-        if($jumlah_total_produk){ 
-            $xx=0;
-            $max=4;
+        <?php
+        if ($jumlah_total_produk) {
+            $xx = 0;
+            $max = 4;
         ?>
-        <nav class="" aria-label="Page navigation">
-            <ul class="pagination pagination-md justify-content-center">
-                <?php if($page>2){ ?>
-                <li class="page-item"><a class="page-link" href="<?= base_url($brand_data['brand_slug']).'/'.($page-1); if (isset($_GET['category'])) { echo '?category='.$_GET['category']; } ?>#cat-tab"><span aria-hidden="true">&laquo;</span></a></li>
-                <?php } ?>
-                <?php while($xx < $jumlah_halaman){
-                    $numpage = $xx+1; 
-                    if($numpage > ($page-2) && $numpage < ($page+3)){?>
-                <li class="page-item <?php if($page && $numpage == $page){ echo ' active'; } ?>"><a class="page-link" href="<?= base_url($brand_data['brand_slug']).'/'.$numpage; if (isset($_GET['category'])) { echo '?category='.$_GET['category']; } ?>#cat-tab"><?= $numpage; ?></a></li>
-                <?php } $xx++; } ?>
-                <?php if($page<($jumlah_halaman-2)){ ?>
-                <li class="page-item"><a class="page-link" href="<?= base_url($brand_data['brand_slug']).'/'.($page+1); if (isset($_GET['category'])) { echo '?category='.$_GET['category']; } ?>#cat-tab"><span aria-hidden="true">&raquo;</span></a></li>
-                <?php } ?>
-            </ul>
-            <div class="text-center fs-6">Page <?= $page; ?> of <?= $jumlah_halaman; ?></div>
-        </nav>
+            <nav class="" aria-label="Page navigation">
+                <ul class="pagination pagination-md justify-content-center">
+                    <?php if ($page > 2) { ?>
+                        <li class="page-item"><a class="page-link" href="<?= base_url($brand_data['brand_slug']) . '/' . ($page - 1);
+                                                                            if (isset($_GET['category'])) {
+                                                                                echo '?category=' . $_GET['category'];
+                                                                            } ?>#cat-tab"><span aria-hidden="true">&laquo;</span></a></li>
+                    <?php } ?>
+                    <?php while ($xx < $jumlah_halaman) {
+                        $numpage = $xx + 1;
+                        if ($numpage > ($page - 2) && $numpage < ($page + 3)) { ?>
+                            <li class="page-item <?php if ($page && $numpage == $page) {
+                                                        echo ' active';
+                                                    } ?>"><a class="page-link" href="<?= base_url($brand_data['brand_slug']) . '/' . $numpage;
+                                                                                        if (isset($_GET['category'])) {
+                                                                                            echo '?category=' . $_GET['category'];
+                                                                                        } ?>#cat-tab"><?= $numpage; ?></a></li>
+                    <?php }
+                        $xx++;
+                    } ?>
+                    <?php if ($page < ($jumlah_halaman - 2)) { ?>
+                        <li class="page-item"><a class="page-link" href="<?= base_url($brand_data['brand_slug']) . '/' . ($page + 1);
+                                                                            if (isset($_GET['category'])) {
+                                                                                echo '?category=' . $_GET['category'];
+                                                                            } ?>#cat-tab"><span aria-hidden="true">&raquo;</span></a></li>
+                    <?php } ?>
+                </ul>
+                <div class="text-center fs-6">Page <?= $page; ?> of <?= $jumlah_halaman; ?></div>
+            </nav>
         <?php } ?>
     </div>
     <hr>
+    <h2>Catalogs</h2>
+    <div class="row">
+        <?php foreach ($catalogs as $catalog) { ?>
+            <div class="col-12 col-md-4 mb-3 "> <a class="p-3 border card text-decoration-none" href="<?= base_url('assets/catalogs/').$brand_data['brand_slug'].'/'.basename($catalog); ?>" target="_blank"><i class="fa-solid fa-file-pdf"></i> <?= basename($catalog); ?></a></div>
+        <?php } ?>
+    </div>
 </div>
 
 <!-- Scroll Navbar -->

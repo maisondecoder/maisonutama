@@ -141,6 +141,10 @@ class Main extends CI_Controller
 		if ($page > $jumlah_halaman) {
 			redirect($brand_slug);
 		}
+
+		$folder_catalog = FCPATH . 'assets/catalogs/' . $brand_data['brand_slug'] . '/';
+		$data['catalogs'] = glob($folder_catalog . '*.{pdf}', GLOB_BRACE);
+
 		$data['jumlah_total_produk'] = $jumlah_total_produk;
 		$data['products'] = $products;
 		$data['brand_data'] = $brand_data;
