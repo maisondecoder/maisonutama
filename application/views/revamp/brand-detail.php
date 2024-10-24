@@ -85,7 +85,7 @@
     <h2>Catalogs</h2>
     <div class="mt-3 row">
         <?php foreach ($catalogs as $catalog) { ?>
-            <div class="col-12 col-md-4 mb-3 "> <a class="p-3 border card text-decoration-none" href="<?= base_url('assets/catalogs/').$brand_data['brand_slug'].'/'.basename($catalog); ?>" target="_blank"><i class="fa-solid fa-file-pdf"></i> <?= basename($catalog); ?></a></div>
+            <div class="col-12 col-md-4 mb-3 "> <a class="p-3 border card text-decoration-none" href="<?= $GLOBALS['domain_static'] . '/assets/catalogs/' .$brand_data['brand_slug'].'/'.basename($catalog); ?>" target="_blank"><i class="fa-solid fa-file-pdf"></i> <?= basename($catalog); ?></a></div>
         <?php } ?>
     </div>
 </div>
