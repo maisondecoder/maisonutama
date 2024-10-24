@@ -82,7 +82,7 @@
 
 <!-- Store -->
 <?php if ($all_stores) { ?>
-    <div class="text-light" style="width:100%; min-height:600px; max-height:50vw;background-blend-mode: darken; background:rgba(0, 0, 0, .5);background-size:cover; background-position:center bottom; background-image:url('<?= $GLOBALS['domain_static'] . '/assets/home-store-cover.jpg'; ?>');">
+    <div class="text-light" style="width:100%; min-height:600px; max-height:50vw;background-blend-mode: darken; background:rgba(0, 0, 0, .7);background-size:cover; background-position:center bottom; background-image:url('<?= $GLOBALS['domain_static'] . '/assets/home-store-cover.jpg'; ?>');">
         <div class="container p-4">
             <h2 class="my-5 fs-1 text-center text-md-start">Our Stores</h2>
             <div class="row d-flex flex-row justify-content-center">
