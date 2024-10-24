@@ -66,7 +66,7 @@ class Collection_model extends CI_Model
         }
         $this->db->where('is_deleted', 0);
         $this->db->order_by('product_name', 'ASC');
-        $this->db->limit(8, (8 * ($page - 1)));
+        $this->db->limit(12, (12 * ($page - 1)));
         $get_products = $this->db->get()->result_array();
 
 
