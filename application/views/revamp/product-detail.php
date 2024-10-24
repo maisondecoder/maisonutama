@@ -14,14 +14,14 @@
                     <ul class="splide__list">
                         <?php
                         if ($gallery) {
-                            foreach ($images as $key=>$image) {
+                            foreach ($images as $image) {
                         ?>
-                                <li class="splide__slide"><a href="<?= $GLOBALS['domain_static'] . '/assets/gallery/' . $gallery . '/' . basename($image); ?>" data-lightbox="products"><img class="img-fluid border" src="<?= $GLOBALS['domain_static'] . '/assets/gallery/' . $gallery . '/' . basename($image); ?>"  style="max-height:380px"></a></li>
+                                <li class="splide__slide"><img class="img-fluid border" src="<?= $GLOBALS['domain_static'] . '/assets/gallery/' . $gallery . '/' . basename($image); ?>"></li>
 
                             <?php
                             }
                         } else { ?>
-                            <li class="splide__slide"><a href="<?= $GLOBALS['domain_static'] . '/assets/products/thumbnail/' . $products['product_thumbnail']; ?>" data-lightbox="products"><img class="img-fluid border" src="<?= $GLOBALS['domain_static'] . '/assets/products/thumbnail/' . $products['product_thumbnail']; ?>" style="max-height:380px"></a></li>
+                            <li class="splide__slide"><img class="img-fluid border" src="<?= $GLOBALS['domain_static'] . '/assets/products/thumbnail/' . $products['product_thumbnail']; ?>" style="max-height:380px"></li>
                         <?php
                         }
                         ?>
@@ -78,10 +78,7 @@
                     <div id="more-desc" class="btn btn-light fs-5 mb-3" style="box-shadow: 0px -45px 30px rgba(255, 255,255, 0.8);">Read More</div>
                 </div>
                 <div class="d-grid gap-2">
-                    <a href="https://api.whatsapp.com/send/?phone=62817700025&text=<?= $template_wa; ?>&type=phone_number&app_absent=0" target="_blank" id="btn-consultation" class="shaked btn btn-success fs-5 mb-2"><i class="fa-brands fa-whatsapp"></i> Product Consultation</a>
-                    <?php if($products['product_specs']){ ?>
-                    <a href="<?= $specs;?>" target="_blank" class="btn btn-dark fs-5 mb-4">Product Specifications</a>
-                    <?php } ?>
+                    <a href="https://api.whatsapp.com/send/?phone=62817700025&text=<?= $template_wa; ?>&type=phone_number&app_absent=0" target="_blank" id="btn-consultation" class="shaked btn btn-success fs-5 mb-4"><i class="fa-brands fa-whatsapp"></i> Product Consultation</a>
                 </div>
             </div>
         </div>
@@ -109,19 +106,7 @@
 <?php } ?>
 <!-- Product Type -->
 
-<link href="<?= $GLOBALS['domain_static'] . '/assets/plugins/lightbox2-2.11.5/dist/css/'; ?>lightbox.css" rel="stylesheet" />
-<script src="<?= $GLOBALS['domain_static'] . '/assets/plugins/lightbox2-2.11.5/dist/js/'; ?>lightbox.js"></script>
 
-<script>
-    lightbox.option({
-      'resizeDuration': 200,
-      'wrapAround': true,
-      'disableScrolling':true,
-      'alwaysShowNavOnTouchDevices':true,
-      'maxWidth':2000,
-      'maxHeight':2000
-    })
-</script>
 <script>
     $(document).ready(function() {
         if ($("#btn-contain").visible()) {
@@ -178,13 +163,6 @@
     }).mount();
 </script>
 
-
-<script>
-    $('#more-desc').click(function() {
-        $('#brand-desc').css('max-height', '100%');
-        this.remove();
-    });
-</script>
 
 <script>
     $('#more-desc').click(function() {

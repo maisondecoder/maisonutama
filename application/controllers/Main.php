@@ -234,9 +234,6 @@ class Main extends CI_Controller
 			//default gallery dari product utama
 			$product_gallery = $product_data['folder_gallery'];
 		}
-
-		$folder_specs = base_url('assets').$product_data['product_specs'];
-		$data['specs'] = $folder_specs;
 		
 		$data['gallery'] = $product_gallery;
 		$data['selected'] = $variation;
