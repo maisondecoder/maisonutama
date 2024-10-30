@@ -245,7 +245,7 @@ class Main extends CI_Controller
 		$data['variation'] = $get_list_variation;
 		//print_r($get_list_variation);
 		$folder = FCPATH . 'assets/gallery/' . $product_gallery . '/';
-		$data['images'] = glob($folder . '*.{jpg,jpeg,png,gif}', GLOB_BRACE);
+		$data['images'] = glob($folder . '*.{jpg,jpeg,png,gif,webp}', GLOB_BRACE);
 
 
 		$this->load->view('revamp/header', $data);
