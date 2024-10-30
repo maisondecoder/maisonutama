@@ -1,29 +1,5 @@
-<!-- Search
-<div class="py-2 bg-dark" style="margin-top:-15px">
-    <div class="d-none d-md-block" style="margin-top:5rem"></div>
-    <div class="px-3 mb-3 mt-2">
-        <a href="<?= base_url('main/search'); ?>" class="text-decoration-none">
-            <input type="text" class="form-control form-control-lg fs-2 " id="searchbar" aria-describedby="searchBar" placeholder="" style="max-width:800px; margin:auto">
-        </a>
-    </div>
-
-    <div class="container text-center mb-5">
-        <img class="img-fluid" src="<?= $GLOBALS['domain_static'] . '/assets/logo-brands-homepage-putih.png'; ?>" width="600px" alt="Brand Partner Logo">
-
-    </div>
-
-    <div class="d-none d-md-block" style="margin-bottom:5rem"></div>
-</div>
--->
-
-<!--
-    <video autoplay muted loop id="myVideo">
-        <source src="https://www.w3schools.com/howto/rain.mp4" type="video/mp4" >
-    </video>
--->
-
 <div class="text-center d-flex justify-content-center" style="min-height:600px;height:60vw;overflow:hidden; background:black">
-    <img src="<?= $GLOBALS['domain_static'] . '/assets/bg-papadatos.webp'; ?>" alt="" style="position:relative;width:100%;object-fit:cover !important;opacity:0.6">
+    <img id="homecover" src="<?= $GLOBALS['domain_static'] . '/assets/home_cover/homepage_header_1a.webp'; ?>" alt="" style="position:relative;width:100%;object-fit:cover !important;opacity:0.6">
     <div class="align-self-center" style="position:absolute; z-index:9;">
         <div class="col-lg-8 mx-auto text-white text-start p-2 py-5 text-center">
             <div class="text-warning fw-bold mb-5">#LuxYourHome</div>
@@ -48,7 +24,7 @@
             <div class="row d-flex flex-row justify-content-center">
                 <?php foreach ($all_brands as $key => $brand) { ?>
                     <div class="d-flex flex-col col-12 col-md-6 p-4">
-                        <div class="topacity d-flex flex-col justify-content-center" style="width:100%; height:350px;background-blend-mode: darken; background:rgba(0, 0, 0, .3);background-size:cover; background-image:url('<?= $GLOBALS['domain_static'] . '/assets/brands/' . $brand['brand_bg']; ?>');"><img class="img-fluid align-self-center" width="300" src="<?= $GLOBALS['domain_static'] . '/assets/brands/' . $brand['brand_img']; ?>" alt="<?= $brand['brand_name']; ?>"><a href="<?= base_url('/').$brand['brand_slug']; ?>" class="stretched-link"></a></div>
+                        <div class="topacity d-flex flex-col justify-content-center" style="width:100%; height:350px;background-blend-mode: darken; background:rgba(0, 0, 0, .3);background-size:cover; background-image:url('<?= $GLOBALS['domain_static'] . '/assets/brands/' . $brand['brand_bg']; ?>');"><img class="img-fluid align-self-center" width="300" src="<?= $GLOBALS['domain_static'] . '/assets/brands/' . $brand['brand_img']; ?>" alt="<?= $brand['brand_name']; ?>"><a href="<?= base_url('/') . $brand['brand_slug']; ?>" class="stretched-link"></a></div>
                     </div>
                 <?php } ?>
             </div>
@@ -86,20 +62,20 @@
         <div class="container p-4">
             <h2 class="my-5 fs-1 text-center text-md-start">Our Stores</h2>
             <div class="row d-flex flex-row justify-content-center">
-            <?php foreach ($all_stores as $key => $store) { ?>
-                <div class="row mb-5">
-                    <div class="col-sm-12 col-md-6 my-3 my-sm-0">
-                        <h3><?= $store['store_name']; ?></h3>
-                        <p class="fs-6">
-                            <?= $store['store_addrs']; ?><br>
-                        </p>
-                        <div>
-                            <a target="_blank" class="btn btn-outline-light" href="https://wa.me/<?= $store['store_wa']; ?>?text=<?= $store['store_default_text']; ?>"><i class="fa-brands fa-whatsapp"></i> Whatsapp</a>
-                            <a target="_blank" class="btn btn-outline-light" href="<?= $store['store_gmap']; ?>"><i class="fa-regular fa-map"></i> Google Map</a>
+                <?php foreach ($all_stores as $key => $store) { ?>
+                    <div class="row mb-5">
+                        <div class="col-sm-12 col-md-6 my-3 my-sm-0">
+                            <h3><?= $store['store_name']; ?></h3>
+                            <p class="fs-6">
+                                <?= $store['store_addrs']; ?><br>
+                            </p>
+                            <div>
+                                <a target="_blank" class="btn btn-outline-light" href="https://wa.me/<?= $store['store_wa']; ?>?text=<?= $store['store_default_text']; ?>"><i class="fa-brands fa-whatsapp"></i> Whatsapp</a>
+                                <a target="_blank" class="btn btn-outline-light" href="<?= $store['store_gmap']; ?>"><i class="fa-regular fa-map"></i> Google Map</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-            <?php } ?>
+                <?php } ?>
             </div>
         </div>
     </div>
@@ -109,6 +85,27 @@
 
 <script src="https://fastly.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
 <link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
+
+<!-- Change Homepage Cover -->
+<script>
+    var ci = 1;
+    var cover_images = <?= json_encode($foto_homecovers); ?>;
+    var ci_length = cover_images.length-1;
+
+    console.log(ci_length);
+
+    function homeCoverTransition() {
+        $("#homecover").fadeOut(500, function() {
+            if (ci > ci_length) {
+                ci = 0;
+            }
+            console.log(ci);
+            $(this).attr("src", '<?= base_url('assets/home_cover/'); ?>'+cover_images[ci]).fadeIn(500);
+            ci++;
+        });
+    }
+    setInterval(homeCoverTransition, 5000);
+</script>
 
 <!-- Scroll Navbar -->
 <script>

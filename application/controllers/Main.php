@@ -25,15 +25,12 @@ class Main extends CI_Controller
 		$data['all_brands'] = $this->brand_model->get_all_brands();
 		$data['all_stores'] = $this->store_model->get_all_stores();
 		$bs_group = $this->collection_model->group_catalog(1);
-
-
-
-
 		$data['bs_products'] = $this->collection_model->selected_group_items($bs_group['group_items']);
-
-		//print_r($bs_group['group_items']);
-
 		//** End */
+
+		//Folder Home Cover
+		$folder_homecover = FCPATH . 'assets/home_cover/';
+		$data['foto_homecovers'] = array_map('basename', glob($folder_homecover . '*.{webp}', GLOB_BRACE));
 
 		$data['title_page'] = "Welcome to Maison Living";
 		$data['nav'] = "home";
@@ -142,6 +139,7 @@ class Main extends CI_Controller
 			redirect($brand_slug);
 		}
 
+		//Folder Catalogs
 		$folder_catalog = FCPATH . 'assets/catalogs/' . $brand_data['brand_slug'] . '/';
 		$data['catalogs'] = glob($folder_catalog . '*.{pdf}', GLOB_BRACE);
 
