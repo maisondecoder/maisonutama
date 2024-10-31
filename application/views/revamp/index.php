@@ -85,6 +85,9 @@
 
 <script src="https://fastly.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
 <link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
+<?php foreach($foto_homecovers as $homecover){ ?>
+    <link class="preload" rel="preload" href="<?= $GLOBALS['domain_static'] . '/assets/home_cover/'.$homecover; ?>" as="image">
+<?php } ?>
 
 <!-- Change Homepage Cover -->
 <script>
