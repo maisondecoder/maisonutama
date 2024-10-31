@@ -237,7 +237,7 @@ class Main extends CI_Controller
 			$product_gallery = $product_data['folder_gallery'];
 		}
 
-		$folder_specs = base_url('assets').$product_data['product_specs'];
+		$folder_specs = $GLOBALS['domain_static'].'/assets'.$product_data['product_specs'];
 		$data['specs'] = $folder_specs;
 		
 		$data['gallery'] = $product_gallery;
