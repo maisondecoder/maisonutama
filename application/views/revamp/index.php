@@ -95,12 +95,12 @@
     console.log(ci_length);
 
     function homeCoverTransition() {
-        $("#homecover").fadeOut(500, function() {
+        $("#homecover").fadeOut(1000, function() {
             if (ci > ci_length) {
                 ci = 0;
             }
             console.log(ci);
-            $(this).attr("src", '<?= base_url('assets/home_cover/'); ?>'+cover_images[ci]).fadeIn(500);
+            $(this).attr("src", '<?= $GLOBALS['domain_static'] . '/assets/home_cover/'; ?>'+cover_images[ci]).fadeIn(1000);
             ci++;
         });
     }
