@@ -43,7 +43,7 @@
                     <ul class="splide__list">
                         <?php foreach ($bs_products as $key => $bestseller) { ?>
                             <li class="splide__slide p-2"><a href="<?= base_url('our-collections/') . $bestseller['product_slug']; ?>">
-                                    <img class="img-fluid mb-2 border topacity" style="width:400px; height:250px !important; object-fit:cover !important;" src="<?= $GLOBALS['domain_static'] . '/assets/products/thumbnail/' . $bestseller['product_thumbnail']; ?>" alt="<?= $bestseller['product_name'] ?>">
+                                    <img class="img-fluid mb-2 border topacity" style="width:300px; height:200px !important; object-fit:cover !important;" src="<?= $GLOBALS['domain_static'] . '/assets/products/thumbnail/' . $bestseller['product_thumbnail']; ?>" alt="<?= $bestseller['product_name'] ?>"  width="300" height="200">
                                 </a>
                                 <h4 class="text-secondary"><?= $bestseller['product_name']; ?></h4>
                             </li>
@@ -138,7 +138,7 @@
 <script>
     new Splide('.bestseller', {
         type: 'loop',
-        perPage: 3,
+        perPage: 4,
         perMove: 1,
         padding: '1rem',
         autoplay: true,
@@ -151,10 +151,10 @@
                 perPage: 1,
             },
             800: {
-                perPage: 1,
+                perPage: 2,
             },
             1024: {
-                perPage: 2,
+                perPage: 3,
             },
         }
     }).mount();
