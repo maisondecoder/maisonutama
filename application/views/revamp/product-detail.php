@@ -55,7 +55,7 @@
                 } ?>
                 <?php if ($variation) { ?>
                     <div class="mb-4">
-                        <h3 class="fs-5 fw-bold">Select Color</h3>
+                        <h3 class="fs-5 fw-bold">Options</h3>
                         <a href="<?= base_url('our-collections/') . $products['product_slug']; ?>" type="button" class="btn mb-1 btn-outline-dark <?php if (!$selected) {
                                                                                                                                                         echo 'active';
                                                                                                                                                     } ?>">Default</a>
@@ -143,24 +143,28 @@
 <script>
     $(document).ready(function() {
         if ($("#btn-contain").visible()) {
-            $("#btn-consultation").removeClass('fixed-bottom me-3');
+            $("#btn-consultation").removeClass('fixed-bottom me-3 mb-3');
             $("#btn-consultation").css('width', '100%');
+            $("#btn-consultation").css('box-shadow', 'none');
             $("#btn-consultation").removeAttr('justify-self');
         } else {
-            $("#btn-consultation").addClass('fixed-bottom btn-lg border-2 border-light me-3');
-            $("#btn-consultation").css('width', '300px');
+            $("#btn-consultation").addClass('fixed-bottom btn-lg border-2 border-light me-3 mb-4');
+            $("#btn-consultation").css('width', '260px');
+            $("#btn-consultation").css('box-shadow', '8px 20px 25px -1px rgba(0,0,0,0.71)');
             $("#btn-consultation").css('justify-self', 'flex-end');
         }
 
         // We use the jQuery scroll event
         $(window).on('resize scroll', function() {
             if ($("#btn-contain").visible()) {
-                $("#btn-consultation").removeClass('fixed-bottom me-3');
+                $("#btn-consultation").removeClass('fixed-bottom me-3 mb-3');
                 $("#btn-consultation").css('width', '100%');
+                $("#btn-consultation").css('box-shadow', 'none');
                 $("#btn-consultation").removeAttr('justify-self');
             } else {
-                $("#btn-consultation").addClass('fixed-bottom btn-lg border-2 border-light me-3');
-                $("#btn-consultation").css('width', '300px');
+                $("#btn-consultation").addClass('fixed-bottom btn-lg border-2 border-light me-3 mb-4');
+                $("#btn-consultation").css('width', '260px');
+                $("#btn-consultation").css('box-shadow', '8px 20px 25px -1px rgba(0,0,0,0.71)');
                 $("#btn-consultation").css('justify-self', 'flex-end');
             }
         });
