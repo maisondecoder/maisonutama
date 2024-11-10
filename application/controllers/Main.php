@@ -286,7 +286,7 @@ class Main extends CI_Controller
 
 		////Pagination START////
 		$jumlah_total_produk = $this->collection_model->get_count_products(0, $room_data['room_id']);
-		$tampil_per_page = 8;
+		$tampil_per_page = 12;
 		$jumlah_halaman = ceil($jumlah_total_produk / $tampil_per_page);
 		if (!$jumlah_total_produk) {
 			$jumlah_halaman = 1;
@@ -336,7 +336,7 @@ class Main extends CI_Controller
 
 		////Pagination START////
 		$jumlah_total_produk = $this->collection_model->get_count_products(0, 0, $category_data['cat_id']);
-		$tampil_per_page = 8;
+		$tampil_per_page = 12;
 		$jumlah_halaman = ceil($jumlah_total_produk / $tampil_per_page);
 		if (!$jumlah_total_produk) {
 			$jumlah_halaman = 1;
