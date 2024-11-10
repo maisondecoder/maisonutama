@@ -1,5 +1,5 @@
 <div style="margin-bottom:100px"></div>
-<div class="col-12 text-center mb-2"><img class="img-fluid" src="<?= base_url('assets/about2.webp'); ?>" alt="" style="filter: grayscale(100%);"></div>
+<div class="col-12 text-center mb-2"><img class="img-fluid" src="<?= $GLOBALS['domain_static'] . '/assets/about2.webp'; ?>" alt="" style="filter: grayscale(100%);"></div>
 
 <!-- About Maison Living -->
 <div id="intro-about" class="container p-4 pb-1 mb-2">
@@ -42,13 +42,13 @@
     </div>
     <div class="row">
         <div class="col-4">
-            <img class="img-fluid" src="<?= base_url('assets/about6.webp'); ?>" alt="">
+            <img class="img-fluid" src="<?= $GLOBALS['domain_static'] . '/assets/about6.webp'; ?>" alt="">
         </div>
         <div class="col-4">
-            <img class="img-fluid" src="<?= base_url('assets/about4.webp'); ?>" alt="">
+            <img class="img-fluid" src="<?= $GLOBALS['domain_static'] . '/assets/about4.webp'; ?>" alt="">
         </div>
         <div class="col-4">
-            <img class="img-fluid" src="<?= base_url('assets/about7.webp'); ?>" alt="">
+            <img class="img-fluid" src="<?= $GLOBALS['domain_static'] . '/assets/about7.webp'; ?>" alt="">
         </div>
     </div>
 </div>
