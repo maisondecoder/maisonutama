@@ -43,7 +43,7 @@
                     <ul class="splide__list">
                         <?php foreach ($bs_products as $key => $bestseller) { ?>
                             <li class="splide__slide p-2"><a href="<?= base_url('our-collections/') . $bestseller['product_slug']; ?>">
-                                    <img class="img-fluid mb-2 border topacity" style="width:300px; height:200px !important; object-fit:cover !important;" src="<?= $GLOBALS['domain_static'] . '/assets/products/thumbnail/' . $bestseller['product_thumbnail']; ?>" alt="<?= $bestseller['product_name'] ?>"  width="300" height="200">
+                                    <img class="img-fluid mb-2 border topacity" style="width:300px; height:200px !important; object-fit:cover !important;" src="<?= $GLOBALS['domain_static'] . '/assets/products/thumbnail/' . $bestseller['product_thumbnail']; ?>" alt="<?= $bestseller['product_name'] ?>" width="300" height="200">
                                 </a>
                                 <h4 class="text-secondary"><?= $bestseller['product_name']; ?></h4>
                             </li>
@@ -81,29 +81,60 @@
     </div>
 <?php } ?>
 <!-- Store -->
+
+<?php if($popup){ ?>
+<!-- Pop Up Banner -->
+<!-- Button trigger modal -->
+<button type="button" class="trig btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="display:none;"></button>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content bg-transparent border-0">
+            <div class="modal-header p-0 border-0">
+                <button type="button" class="btn-close text-white" data-bs-dismiss="modal" aria-label="Close" style="z-index:9"><i class="fa-regular fa-circle-xmark fs-2"></i></button>
+            </div>
+            <div class="modal-body p-0">
+                <a class="stretched-link" href="<?= $popup['popup_destination']; ?>"></a>
+                <img class="img-fluid" src="<?= $popup['popup_img']; ?>" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Pop Up Banner -->
+ <?php } ?>
+
 </div>
 
 <script src="https://fastly.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
 <link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
-<?php foreach($foto_homecovers as $homecover){ ?>
-    <link class="preload" rel="preload" href="<?= $GLOBALS['domain_static'] . '/assets/home_cover/'.$homecover; ?>" as="image">
+<?php foreach ($foto_homecovers as $homecover) { ?>
+    <link class="preload" rel="preload" href="<?= $GLOBALS['domain_static'] . '/assets/home_cover/' . $homecover; ?>" as="image">
 <?php } ?>
+
+<!-- Show Popup Banner After Page Loaded -->
+<?php if($popup){ ?>
+<script>
+    $(document).ready(function() {
+        //jQuery.noConflict();
+        $('.trig').delay(5000).click();
+    });
+</script>
+<?php } ?>
+<!-- -->
 
 <!-- Change Homepage Cover -->
 <script>
     var ci = 1;
     var cover_images = <?= json_encode($foto_homecovers); ?>;
-    var ci_length = cover_images.length-1;
-
-    console.log(ci_length);
+    var ci_length = cover_images.length - 1;
 
     function homeCoverTransition() {
         $("#homecover").fadeOut(1000, function() {
             if (ci > ci_length) {
                 ci = 0;
             }
-            console.log(ci);
-            $(this).attr("src", '<?= $GLOBALS['domain_static'] . '/assets/home_cover/'; ?>'+cover_images[ci]).fadeIn(1000);
+            $(this).attr("src", '<?= $GLOBALS['domain_static'] . '/assets/home_cover/'; ?>' + cover_images[ci]).fadeIn(1000);
             ci++;
         });
     }
@@ -159,21 +190,3 @@
         }
     }).mount();
 </script>
-
-<!--
-<script>
-    var i = 0;
-    var txt = "🔎 Type here to search...";
-    var speed = 40;
-
-    function typeWriter() {
-        if (i < txt.length) {
-            document.getElementById("searchbar").placeholder += txt.charAt(i);
-            i++;
-            setTimeout(typeWriter, speed);
-        }
-    }
-
-    typeWriter();
-</script>
--->

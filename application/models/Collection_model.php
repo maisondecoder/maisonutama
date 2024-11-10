@@ -211,4 +211,14 @@ class Collection_model extends CI_Model
         $variation = $this->db->get()->row_array();
         return $variation;
     }
+
+    //POPUP BANNER
+    public function get_active_popup(){
+        $this->db->from('ml_popup');
+        $this->db->where('popup_start <=', time());
+        $this->db->where('popup_end >=', time());
+        $this->db->where('popup_status', 1);
+        $active_popup = $this->db->get()->row_array();
+        return $active_popup;
+    }
 }

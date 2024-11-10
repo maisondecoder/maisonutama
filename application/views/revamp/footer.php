@@ -59,7 +59,7 @@
                     </div>
                 </div>
             </div>
-            <div class="text-center p-4">&copy;<?= date("Y"); ?>. PT Maison Cipta Kreasindo</div>
+            <div class="text-center p-4" style="margin-bottom:60px">&copy;<?= date("Y"); ?>. PT Maison Cipta Kreasindo</div>
         </div>
 
         </div>

@@ -32,6 +32,11 @@ class Main extends CI_Controller
 		$folder_homecover = FCPATH . 'assets/home_cover/';
 		$data['foto_homecovers'] = array_map('basename', glob($folder_homecover . '*.{webp}', GLOB_BRACE));
 
+		//Get Popup Banner
+		$data['popup'] = $this->collection_model->get_active_popup();
+
+		//print_r($data['popup']);
+
 		$data['title_page'] = "Welcome to Maison Living";
 		$data['nav'] = "home";
 
@@ -189,6 +194,7 @@ class Main extends CI_Controller
 		$product_data = $this->collection_model->get_spesific_product($product_slug);
 		$data['products'] = $product_data;
 		$data['product_content'] = json_decode($product_data['product_content'], true);
+		$data['contentlength'] = strlen($product_data['product_content']);
 
 		$other_product_same_room = $this->collection_model->get_products(0, $product_data['room_id']);
 		$data['same_room'] = $other_product_same_room;

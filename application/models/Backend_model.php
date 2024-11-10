@@ -670,4 +670,6 @@ class Backend_model extends CI_Model
 
         return $send;
     }
+
+    //POPUP BANNER
 }

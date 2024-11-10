@@ -7,16 +7,20 @@
     <h2 class="fs-6 text-secondary"><?= $products['brand_name'] . ' / ' . $products['cat_name']; ?></h2>
     <div class="row mt-5">
 
-        <div class="col-12  col-sm-12 col-md-12 col-lg-6 mb-4">
+        <div class="col-12  col-sm-12 col-md-12 <?php if ($contentlength>0) {
+                                                    echo "col-lg-6";
+                                                } else {
+                                                    echo "col-lg-12";
+                                                } ?> mb-4">
 
             <section id="gallery" class="splide" aria-label="Splide Basic HTML Example">
                 <div class="splide__track">
                     <ul class="splide__list">
                         <?php
                         if ($gallery) {
-                            foreach ($images as $key=>$image) {
+                            foreach ($images as $key => $image) {
                         ?>
-                                <li class="splide__slide"><a href="<?= $GLOBALS['domain_static'] . '/assets/gallery/' . $gallery . '/' . basename($image); ?>" data-lightbox="products"><img class="img-fluid border" src="<?= $GLOBALS['domain_static'] . '/assets/gallery/' . $gallery . '/' . basename($image); ?>"  style="max-height:380px"></a></li>
+                                <li class="splide__slide"><a href="<?= $GLOBALS['domain_static'] . '/assets/gallery/' . $gallery . '/' . basename($image); ?>" data-lightbox="products"><img class="img-fluid border" src="<?= $GLOBALS['domain_static'] . '/assets/gallery/' . $gallery . '/' . basename($image); ?>" style="max-height:380px"></a></li>
 
                             <?php
                             }
@@ -31,7 +35,11 @@
 
 
         </div>
-        <div class="col-12 col-sm-12 col-md-12 col-lg-6 text-start">
+        <div class="col-12 col-sm-12 col-md-12 <?php if ($contentlength>0) {
+                                                    echo "col-lg-6";
+                                                } else {
+                                                    echo "col-lg-12";
+                                                } ?> text-start">
             <div class="mb-3" id="brand-desc" style="max-height:240px; overflow-y:hidden; ">
                 <?php if ($products['is_discontinued']) { ?>
                     <span class="badge text-bg-danger mb-4">Discontinued Product</span>
@@ -48,20 +56,27 @@
                 <?php if ($variation) { ?>
                     <div class="mb-4">
                         <h3 class="fs-5 fw-bold">Select Color</h3>
-                        <a href="<?= base_url('our-collections/') . $products['product_slug']; ?>" type="button" class="btn mb-1 btn-outline-dark <?php if(!$selected){ echo 'active'; } ?>">Default</a>
+                        <a href="<?= base_url('our-collections/') . $products['product_slug']; ?>" type="button" class="btn mb-1 btn-outline-dark <?php if (!$selected) {
+                                                                                                                                                        echo 'active';
+                                                                                                                                                    } ?>">Default</a>
                         <?php foreach ($variation as $key => $var) { ?>
-                            <a href="<?= base_url('our-collections/') . $products['product_slug'] . '/' . $var['pv_slug']; ?> " type="button" class="btn mb-1 btn-outline-dark <?php if($selected == $var['pv_slug']){ echo 'active'; } ?>"><?= $var['pv_label']; ?></a>
+                            <a href="<?= base_url('our-collections/') . $products['product_slug'] . '/' . $var['pv_slug']; ?> " type="button" class="btn mb-1 btn-outline-dark <?php if ($selected == $var['pv_slug']) {
+                                                                                                                                                                                    echo 'active';
+                                                                                                                                                                                } ?>"><?= $var['pv_label']; ?></a>
                         <?php } ?>
                         <hr>
                     </div>
                 <?php } ?>
-                <?php foreach ($product_content as $key => $content) { ?>
-                    <div class="mb-4">
-                        <h3 class="fs-5 fw-bold"><?= $key ?></h3>
-                        <p><?= $content ?></p>
-                        <hr>
-                    </div>
-                <?php } ?>
+                <?php
+                if ($contentlength>0) {
+                    foreach ($product_content as $key => $content) { ?>
+                        <div class="mb-4">
+                            <h3 class="fs-5 fw-bold"><?= $key ?></h3>
+                            <p><?= $content ?></p>
+                            <hr>
+                        </div>
+                <?php }
+                } ?>
                 <?php if ($products['show_price']) { ?>
                     <?php if ($setting_price_position == "bottom") { ?>
                         <div id="price-label-bottom" class="mb-4">
@@ -74,13 +89,16 @@
             </div>
             <div id="btn-contain"></div>
             <div class="text-start">
-                <div id="more-btn" class="d-grid gap-2">
-                    <div id="more-desc" class="btn btn-light fs-5 mb-3" style="box-shadow: 0px -45px 30px rgba(255, 255,255, 0.8);">Read More</div>
-                </div>
+                <?php
+                if ($contentlength>0) { ?>
+                    <div id="more-btn" class="d-grid gap-2">
+                        <div id="more-desc" class="btn btn-light fs-5 mb-3" style="box-shadow: 0px -45px 30px rgba(255, 255,255, 0.8);">Read More</div>
+                    </div>
+                <?php } ?>
                 <div class="d-grid gap-2">
                     <a href="https://api.whatsapp.com/send/?phone=62817700025&text=<?= $template_wa; ?>&type=phone_number&app_absent=0" target="_blank" id="btn-consultation" class="shaked btn btn-success fs-5 mb-2"><i class="fa-brands fa-whatsapp"></i> Product Consultation</a>
-                    <?php if($products['product_specs']){ ?>
-                    <a href="<?= $specs;?>" target="_blank" class="btn btn-dark fs-5 mb-4">Product Specifications</a>
+                    <?php if ($products['product_specs']) { ?>
+                        <a href="<?= $specs; ?>" target="_blank" class="btn btn-dark fs-5 mb-4">Product Specifications</a>
                     <?php } ?>
                 </div>
             </div>
@@ -114,12 +132,12 @@
 
 <script>
     lightbox.option({
-      'resizeDuration': 200,
-      'wrapAround': true,
-      'disableScrolling':true,
-      'alwaysShowNavOnTouchDevices':true,
-      'maxWidth':2000,
-      'maxHeight':2000
+        'resizeDuration': 200,
+        'wrapAround': true,
+        'disableScrolling': true,
+        'alwaysShowNavOnTouchDevices': true,
+        'maxWidth': 2000,
+        'maxHeight': 2000
     })
 </script>
 <script>
@@ -168,15 +186,26 @@
         }
     }).mount();
 </script>
+<?php if ($contentlength>0) {  ?>
+    <script>
+        new Splide('#gallery', {
+            perPage: 1,
+            perMove: 1,
+            autoplay: true,
+            pagination: true
+        }).mount();
+    </script>
+<?php } else { ?>
+    <script>
+        new Splide('#gallery', {
+            perPage: 1,
+            perMove: 1,
+            autoplay: true,
+            pagination: true,
+        }).mount();
+    </script>
+<?php } ?>
 
-<script>
-    new Splide('#gallery', {
-        perPage: 1,
-        perMove: 1,
-        autoplay: true,
-        pagination: true
-    }).mount();
-</script>
 
 
 <script>
