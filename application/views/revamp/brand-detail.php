@@ -81,14 +81,20 @@
             </nav>
         <?php } ?>
     </div>
-    <?php if($catalogs){ ?>
-    <hr>
-    <h2>Catalogs</h2>
-    <div class="mt-3 row">
-        <?php foreach ($catalogs as $catalog) { ?>
-            <div class="col-12 col-md-4 mb-3 "> <a class="p-3 border card text-decoration-none" href="<?= $GLOBALS['domain_static'] . '/assets/catalogs/' . $brand_data['brand_slug'] . '/' . basename($catalog); ?>" target="_blank"><i class="fa-solid fa-file-pdf"></i> <?= basename($catalog); ?></a></div>
-        <?php } ?>
-    </div>
+    <?php if ($catalogs) { ?>
+        <hr>
+        <h2>Catalogs</h2>
+        <div class="mt-3 row">
+            <?php foreach ($catalogs as $catalog) { ?>
+                <div class="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2 mb-3 d-flex position-relative">
+                    <div>
+                        <img class="img-fluid border mb-2" src="<?= $GLOBALS['domain_static'] . '/assets/catalogs/covers/' . $catalog['catalog_cover']; ?>" alt="">
+                        <h4><?= $catalog['catalog_name']; ?></h4>
+                        <a class="stretched-link" target="_blank" href="<?= $GLOBALS['domain_static'] . '/assets/catalogs/pdfs/' . $catalog['catalog_files']; ?>"></a>
+                    </div>
+                </div>
+            <?php } ?>
+        </div>
     <?php } ?>
 </div>
 

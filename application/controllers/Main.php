@@ -98,6 +98,8 @@ class Main extends CI_Controller
 		$whitelist_catid = array();
 		$brand_data = $this->brand_model->get_spesific_brand($brand_slug);
 		$data['all_brand_cats'] = $this->brand_model->get_avail_brand_category($brand_data['brand_id']);
+		$catalogs = $this->brand_model->get_catalogs($brand_data['brand_id']);
+		$data['catalogs'] = $catalogs;
 
 		foreach ($data['all_brand_cats'] as $key => $cat) {
 			array_push($whitelist_category, $cat['cat_slug']);
@@ -145,8 +147,8 @@ class Main extends CI_Controller
 		}
 
 		//Folder Catalogs
-		$folder_catalog = FCPATH . 'assets/catalogs/' . $brand_data['brand_slug'] . '/';
-		$data['catalogs'] = glob($folder_catalog . '*.{pdf}', GLOB_BRACE);
+		//$folder_catalog = FCPATH . 'assets/catalogs/' . $brand_data['brand_slug'] . '/';
+		//$data['catalogs'] = glob($folder_catalog . '*.{pdf}', GLOB_BRACE);
 
 		$data['jumlah_total_produk'] = $jumlah_total_produk;
 		$data['products'] = $products;

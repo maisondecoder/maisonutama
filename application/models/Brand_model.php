@@ -34,4 +34,14 @@ class Brand_model extends CI_Model
 
         return $get_avail_brand_category;
     }
+
+    public function get_catalogs($brand_id){
+        $this->db->select('*');
+        $this->db->from('ml_catalogs');
+        $this->db->where('catalog_status', 1);
+        $this->db->where('brand_id', $brand_id);
+        $get_catalogs = $this->db->get()->result_array();
+
+        return $get_catalogs;
+    }
 }
