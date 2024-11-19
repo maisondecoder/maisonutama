@@ -62,4 +62,9 @@ class Landing extends CI_Controller
 		$this->load->view('landing/blackfriday2024');
 		$this->load->view('revamp/footer');
     }
+
+	public function landingpakarjasa()
+    {
+		$this->load->view('landing/landing_pakarjasa');
+	}
 }

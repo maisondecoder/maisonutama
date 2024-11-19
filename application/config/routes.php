@@ -68,4 +68,5 @@ $route['translate_uri_dashes'] = FALSE;
 
 /* Landing Page */
 $route['p/contact-us'] = 'main/testlanding';
+$route['p/contact-us-pkj'] = 'landing/landingpakarjasa';
 $route['p/black-friday-2024'] = 'landing/blackfriday2024';
