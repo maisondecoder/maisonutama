@@ -7,7 +7,7 @@
     <h2 class="fs-6 text-secondary"><?= $products['brand_name'] . ' / ' . $products['cat_name']; ?></h2>
     <div class="row mt-5">
 
-        <div class="col-12  col-sm-12 col-md-12 <?php if ($contentlength>0) {
+        <div class="col-12  col-sm-12 col-md-12 <?php if ($contentlength > 0) {
                                                     echo "col-lg-6";
                                                 } else {
                                                     echo "col-lg-12";
@@ -35,7 +35,7 @@
 
 
         </div>
-        <div class="col-12 col-sm-12 col-md-12 <?php if ($contentlength>0) {
+        <div class="col-12 col-sm-12 col-md-12 <?php if ($contentlength > 0) {
                                                     echo "col-lg-6";
                                                 } else {
                                                     echo "col-lg-12";
@@ -68,7 +68,7 @@
                     </div>
                 <?php } ?>
                 <?php
-                if ($contentlength>0) {
+                if ($contentlength > 0) {
                     foreach ($product_content as $key => $content) { ?>
                         <div class="mb-4">
                             <h3 class="fs-5 fw-bold"><?= $key ?></h3>
@@ -90,13 +90,13 @@
             <div id="btn-contain"></div>
             <div class="text-start">
                 <?php
-                if ($contentlength>0) { ?>
+                if ($contentlength > 0) { ?>
                     <div id="more-btn" class="d-grid gap-2">
                         <div id="more-desc" class="btn btn-light fs-5 mb-3" style="box-shadow: 0px -45px 30px rgba(255, 255,255, 0.8);">Read More</div>
                     </div>
                 <?php } ?>
                 <div class="d-grid gap-2">
-                    <a href="https://api.whatsapp.com/send/?phone=62817700025&text=<?= $template_wa; ?>&type=phone_number&app_absent=0" target="_blank" id="btn-consultation" class="shaked btn btn-success fs-5 mb-2"><i class="fa-brands fa-whatsapp"></i> Product Consultation</a>
+                    <a href="https://api.whatsapp.com/send/?phone=<?= $wa_product_consult; ?>&text=<?= $template_wa; ?>&type=phone_number&app_absent=0" target="_blank" id="btn-consultation" class="shaked btn btn-success fs-5 mb-2"><i class="fa-brands fa-whatsapp"></i> Product Consultation</a>
                     <?php if ($products['product_specs']) { ?>
                         <a href="<?= $specs; ?>" target="_blank" class="btn btn-dark fs-5 mb-4">Product Specifications</a>
                     <?php } ?>
@@ -190,7 +190,7 @@
         }
     }).mount();
 </script>
-<?php if ($contentlength>0) {  ?>
+<?php if ($contentlength > 0) {  ?>
     <script>
         new Splide('#gallery', {
             perPage: 1,

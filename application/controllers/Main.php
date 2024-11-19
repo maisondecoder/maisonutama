@@ -255,6 +255,22 @@ class Main extends CI_Controller
 		$folder = FCPATH . 'assets/gallery/' . $product_gallery . '/';
 		$data['images'] = glob($folder . '*.{jpg,jpeg,png,gif,webp}', GLOB_BRACE);
 
+		//Nomor Whatsapp MARKETER
+		if(isset($_GET['code'])){
+			if($_GET['code']=='pkj'){
+				//PAKARJASA
+				$data['wa_product_consult'] = "6285931023339";
+				//echo "marketer = pakarjasa";
+			}else{
+				//HIPROS
+				$data['wa_product_consult'] = "62817700025";
+				//echo "marketer = hipros";
+			}
+		}else{
+			//HIPROS
+			$data['wa_product_consult'] = "62817700025";
+			//echo "marketer = hipros";
+		}
 
 		$this->load->view('revamp/header', $data);
 		$this->load->view('revamp/product-detail');
