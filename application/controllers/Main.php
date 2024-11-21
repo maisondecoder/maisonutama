@@ -12,6 +12,15 @@ class Main extends CI_Controller
 		$cloudcone_url = $this->setting_model->get_setting_value("cloudcone_url");
 
 		$GLOBALS['domain_static'] = $cloudcone_url;
+		
+		//Detek Kode Unik Marketer
+		if(isset($_GET['code']) || isset($_SESSION['code'])){
+			if(isset($_GET['code']) && $_GET['code']=='pkj'){
+				$this->session->set_userdata('code', 'pkj');
+			}else{
+				//$this->session->set_userdata('code', '');
+			}
+		}
 	}
 
 	public function index()
@@ -256,16 +265,10 @@ class Main extends CI_Controller
 		$data['images'] = glob($folder . '*.{jpg,jpeg,png,gif,webp}', GLOB_BRACE);
 
 		//Nomor Whatsapp MARKETER
-		if(isset($_GET['code'])){
-			if($_GET['code']=='pkj'){
-				//PAKARJASA
-				$data['wa_product_consult'] = "6285931023339";
-				//echo "marketer = pakarjasa";
-			}else{
-				//HIPROS
-				$data['wa_product_consult'] = "62817700025";
-				//echo "marketer = hipros";
-			}
+		if($this->session->userdata('code')=='pkj'){
+			//PAKARJASA
+			$data['wa_product_consult'] = "6285931023339";
+			//echo "marketer = pakarjasa";
 		}else{
 			//HIPROS
 			$data['wa_product_consult'] = "62817700025";

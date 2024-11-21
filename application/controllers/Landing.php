@@ -12,6 +12,15 @@ class Landing extends CI_Controller
         $cloudcone_url = $this->setting_model->get_setting_value("cloudcone_url");
 
         $GLOBALS['domain_static'] = $cloudcone_url;
+
+		//Detek Kode Unik Marketer
+		if(isset($_GET['code']) || isset($_SESSION['code'])){
+			if(isset($_GET['code']) && $_GET['code']=='pkj'){
+				$this->session->set_userdata('code', 'pkj');
+			}else{
+				//$this->session->set_userdata('code', '');
+			}
+		}
     }
 
     public function blackfriday2024($brand_slug='papadatos', $page = 1)
