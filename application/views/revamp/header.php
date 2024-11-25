@@ -185,8 +185,8 @@
     </style>
 
     <?php
-    if (isset($_GET['code'])) {
-        if ($_GET['code'] == 'pkj') {
+    if ($this->session->has_userdata('code')) {
+        if ($this->session->userdata('code')=='pkj') {
     ?>
             <!-- Meta Pixel Code -->
             <script>
