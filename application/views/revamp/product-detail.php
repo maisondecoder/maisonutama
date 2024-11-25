@@ -96,7 +96,7 @@
                     </div>
                 <?php } ?>
                 <div class="d-grid gap-2">
-                    <a href="https://api.whatsapp.com/send/?phone=<?= $wa_product_consult; ?>&text=<?= $template_wa; ?>&type=phone_number&app_absent=0" target="_blank" id="btn-consultation" class="shaked btn btn-success fs-5 mb-2"><i class="fa-brands fa-whatsapp"></i> Product Consultation</a>
+                    <a href="https://api.whatsapp.com/send/?phone=<?= $wa_product_consult; ?>&text=<?= $template_wa; ?>&type=phone_number&app_absent=0" target="_blank" id="btn-consultation" class="shaked btn btn-success fs-5 mb-2" onclick="ConsultClick()"><i class="fa-brands fa-whatsapp"></i> Product Consultation</a>
                     <?php if ($products['product_specs']) { ?>
                         <a href="<?= $specs; ?>" target="_blank" class="btn btn-dark fs-5 mb-4">Product Specifications</a>
                     <?php } ?>
@@ -172,6 +172,12 @@
 </script>
 <script src="https://fastly.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
 <link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
+
+<script>
+function ConsultClick() {
+    fbq('track', 'Lead');
+};
+</script>
 <script>
     new Splide('#splide-category', {
         type: 'loop',

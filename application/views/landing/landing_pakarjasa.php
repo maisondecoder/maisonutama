@@ -122,31 +122,30 @@
 
     <!-- Meta Pixel Code -->
     <script>
-                ! function(f, b, e, v, n, t, s) {
-                    if (f.fbq) return;
-                    n = f.fbq = function() {
-                        n.callMethod ?
-                            n.callMethod.apply(n, arguments) : n.queue.push(arguments)
-                    };
-                    if (!f._fbq) f._fbq = n;
-                    n.push = n;
-                    n.loaded = !0;
-                    n.version = '2.0';
-                    n.queue = [];
-                    t = b.createElement(e);
-                    t.async = !0;
-                    t.src = v;
-                    s = b.getElementsByTagName(e)[0];
-                    s.parentNode.insertBefore(t, s)
-                }(window, document, 'script',
-                    'https://connect.facebook.net/en_US/fbevents.js');
-                fbq('init', '3518214025150823');
-                fbq('track', 'PageView');
-                fbq('track', 'Lead');
-            </script>
-            <noscript><img height="1" width="1" style="display:none"
-                    src="https://www.facebook.com/tr?id=3518214025150823&ev=PageView&noscript=1" /></noscript>
-            <!-- End Meta Pixel Code -->
+        ! function(f, b, e, v, n, t, s) {
+            if (f.fbq) return;
+            n = f.fbq = function() {
+                n.callMethod ?
+                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n;
+            n.push = n;
+            n.loaded = !0;
+            n.version = '2.0';
+            n.queue = [];
+            t = b.createElement(e);
+            t.async = !0;
+            t.src = v;
+            s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window, document, 'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '3518214025150823');
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+            src="https://www.facebook.com/tr?id=3518214025150823&ev=PageView&noscript=1" /></noscript>
+    <!-- End Meta Pixel Code -->
 </head>
 
 <body>
@@ -221,7 +220,7 @@
                     <div class="col border rounded m-1 p-3 bg-light">
                         <div class="fs-6 fw-bold">Maison Living</div>
                         <div class="fs-6 text-secondary">Customer Service</div>
-                        <a target="_blank" class="btn btn-success mt-2" href="https://wa.me/6285931023339"><i class="fa-brands fa-whatsapp"></i> Whatsapp Us</a>
+                        <a target="_blank" class="btn btn-success mt-2" href="https://wa.me/6285931023339"  onclick="ConsultClick()"><i class="fa-brands fa-whatsapp"></i> Whatsapp Us</a>
                     </div>
                 </div>
             </div>
@@ -263,7 +262,11 @@
         </div>
     </footer>
     <!-- Footer -->
-
+    <script>
+        function ConsultClick() {
+            fbq('track', 'Lead');
+        };
+    </script>
     <script src="https://fastly.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/07c871975a.js" crossorigin="anonymous"></script>
     <script src="https://fastly.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
