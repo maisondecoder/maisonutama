@@ -19,8 +19,13 @@
     <link rel="apple-touch-icon" href="<?= $GLOBALS['domain_static'] . '/assets/icon/maison-favicon-180x180.jpg'; ?>" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js" integrity="sha512-jGsMH83oKe9asCpkOVkBnUrDDTp8wl+adkB2D+//JtlxO4SrLoJdhbOysIFQJloQFD+C4Fl1rMsQZF76JjV0eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.3/jquery-ui.min.js" integrity="sha512-Ww1y9OuQ2kehgVWSD/3nhgfrb424O3802QYP/A5gPXoM4+rRjiKrjHdGxQKrMGQykmsJ/86oGdHszfcVgUr4hA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <!-- Google tag (gtag.js)-->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TELBVRXJ1G"></script>
+    <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KXHBRSV9');</script>
+<!-- End Google Tag Manager -->
     <script src="<?= $GLOBALS['domain_static'] . '/assets/js/jquery.visible.min.js'; ?>"></script>
     <link rel="stylesheet" href="<?= $GLOBALS['domain_static'] . '/assets/loading.css'; ?>">
     <script>
@@ -304,6 +309,10 @@
 
 
 <body>
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KXHBRSV9"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
     <div id="loadoverlay" class="d-flex justify-content-center" style="height:100%;width:100%;background:rgba(255,255,255,0.8);position:fixed;z-index:999999999!important;top:0;">
         <img id="loadoverlay-icon" class="align-self-center" width="140px" height="140px" src="<?= $GLOBALS['domain_static'] . '/assets/icon/icon-loading-trans.webp'; ?>" alt="">
     </div>
