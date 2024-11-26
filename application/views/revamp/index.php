@@ -95,7 +95,7 @@
                 <button type="button" class="btn-close text-white" data-bs-dismiss="modal" aria-label="Close" style="z-index:9"><i class="fa-regular fa-circle-xmark fs-2"></i></button>
             </div>
             <div class="modal-body p-0">
-                <a class="stretched-link" href="<?= $popup['popup_destination']; ?>"></a>
+                <a class="stretched-link popupbanner" href="<?= $popup['popup_destination']; ?>"></a>
                 <img class="img-fluid" src="<?= $popup['popup_img']; ?>" alt="">
             </div>
         </div>
