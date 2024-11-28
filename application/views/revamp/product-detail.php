@@ -114,8 +114,8 @@
             <div class="splide__track">
                 <ul class="splide__list">
                     <?php foreach ($all_cats as $key => $cat) { ?>
-                        <li class="splide__slide p-2"><a href="<?= base_url('category/') . $cat['cat_slug']; ?>">
-                                <div class="text-center text-light text-decoration-none position-relative topacity" style="height:200px; background:#4C4C4C;background-position:center center; background-image:url('<?= $GLOBALS['domain_static'] . '/assets/categories/' . $cat['cat_img']; ?>')">
+                        <li class="splide__slide p-2"><a href="<?= base_url('category/') . $cat['cat_slug']; ?>" class="">
+                                <div class="text-center text-light text-decoration-none position-relative topacity explore-category-from-product-detail" style="height:200px; background:#4C4C4C;background-position:center center; background-image:url('<?= $GLOBALS['domain_static'] . '/assets/categories/' . $cat['cat_img']; ?>')">
                                     <h5 class="position-absolute top-50 start-50 translate-middle"><?= $cat['cat_name']; ?></h5>
                                 </div>
                             </a></li>
