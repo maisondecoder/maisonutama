@@ -45,7 +45,8 @@
                             <?php foreach ($e_pname as $key => $product) { ?>
                                 <tr>
                                     <th scope="row"><?= $key + 1; ?></th>
-                                    <td><img src="<?= $GLOBALS['domain_static'] . '/assets/products/thumbnail/' . $e_pthumb[$key]; ?>" width="100px" height="100px" alt=""></td>
+                                    <td width="300"><img class="img-fluid mb-2 border topacity" style="width:300px !important; height:200px !important; object-fit:cover !important;" src="<?= $GLOBALS['domain_static'] . '/assets/products/thumbnail/' . $e_pthumb[$key];; ?>" alt="" width="300" height="200"></td>
+                                    
                                     <td><?= $e_pname[$key] ?></td>
                                     <td><?= $e_pcat[$key] ?></td>
                                     <td><?= $e_proom[$key] ?></td>
