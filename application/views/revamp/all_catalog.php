@@ -58,7 +58,7 @@
                                             echo '<span class="fw-bold text-danger">OFF</span>';
                                         } ?></td>
                                     <td width="100"><?php if ($e_pdiscont[$key]) {
-                                            echo '<span class="fw-bold text-danger">No</span>';
+                                            echo '<span class="fw-bold text-danger">Discontinued</span>';
                                         } else {
                                             echo '<span class="fw-bold text-success">Yes</span>';
                                         } ?></td>
