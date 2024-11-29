@@ -148,7 +148,7 @@ class Collection_model extends CI_Model
         $this->db->join('ml_category', 'ml_category.cat_id = ml_products.cat_id');
         $this->db->group_by('ml_category.cat_name');
         $this->db->where('ml_products.brand_id', $brand_id);
-        $this->db->where('is_deleted', 0);
+        $this->db->where('ml_products.is_deleted', 0);
         $get_all_catalog = $this->db->get()->result_array();
 
         return $get_all_catalog;
