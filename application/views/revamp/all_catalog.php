@@ -23,6 +23,7 @@
                 $e_pslug = explode(',', $catalog['Slug']);
                 $e_pbrand = explode(',', $catalog['Brand']);
                 $e_pstatus = explode(',', $catalog['Status']);
+                $e_pdiscont = explode(',', $catalog['Discontinue']);
                 $jmlh = count($e_pname);
                 $total = $total + $jmlh;
         ?>
@@ -38,24 +39,30 @@
                                 <th scope="col">Category</th>
                                 <th scope="col">Room</th>
                                 <th scope="col">Status</th>
+                                <th scope="col">Avail</th>
                                 <th scope="col">Product Page</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php foreach ($e_pname as $key => $product) { ?>
                                 <tr>
-                                    <th scope="row"><?= $key + 1; ?></th>
-                                    <td width="300"><img class="img-fluid mb-2 border topacity" style="width:300px !important; height:200px !important; object-fit:cover !important;" src="<?= $GLOBALS['domain_static'] . '/assets/products/thumbnail/' . $e_pthumb[$key];; ?>" alt="" width="300" height="200"></td>
-                                    
+                                    <th width="70" scope="row"><?= $key + 1; ?></th>
+                                    <td width="350" style="with:300px !important"><img class="img-fluid mb-2 border topacity" style="width:300px !important; height:200px !important; object-fit:cover !important;" src="<?= $GLOBALS['domain_static'] . '/assets/products/thumbnail/' . $e_pthumb[$key];; ?>" alt="" width="300" height="200"></td>
+
                                     <td><?= $e_pname[$key] ?></td>
-                                    <td><?= $e_pcat[$key] ?></td>
-                                    <td><?= $e_proom[$key] ?></td>
-                                    <td><?php if ($e_pstatus[$key]) {
+                                    <td width="150"><?= $e_pcat[$key] ?></td>
+                                    <td width="100"><?= $e_proom[$key] ?></td>
+                                    <td width="100"><?php if ($e_pstatus[$key]) {
                                             echo '<span class="fw-bold text-success">ON</span>';
                                         } else {
                                             echo '<span class="fw-bold text-danger">OFF</span>';
                                         } ?></td>
-                                    <td><a target="_blank" href="<?= base_url('our-collections/') . $e_pslug[$key]; ?>">Link to Product</a></td>
+                                    <td width="100"><?php if ($e_pdiscont[$key]) {
+                                            echo '<span class="fw-bold text-danger">No</span>';
+                                        } else {
+                                            echo '<span class="fw-bold text-success">Yes</span>';
+                                        } ?></td>
+                                    <td width="120"><a target="_blank" href="<?= base_url('our-collections/') . $e_pslug[$key]; ?>">See Product</a></td>
                                 </tr>
                             <?php } ?>
                         </tbody>
