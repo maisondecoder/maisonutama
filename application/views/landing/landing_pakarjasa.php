@@ -205,22 +205,10 @@
                     <h5 class="">Contact Us</h5>
                 </div>
                 <div class="row text-center">
-                    <!--
-                    <div class="col border rounded m-1 p-3 bg-light">
-                        <div class="fs-6 fw-bold">Kemang<br>Jakarta Selatan</div>
-                        <div class="fs-6 text-secondary">Branch</div>
-                        <a target="_blank" class="btn btn-success mt-2" href="https://wa.me/6281388180020?text=Halo%20Maison%20Living%20Kemang%2C%20Saya%20ingin%20bertanya%20tentang%20produk..."><i class="fa-brands fa-whatsapp"></i> Whatsapp</a>
-                    </div>
-                    <div class="col border rounded m-1 p-3 bg-light">
-                        <div class="fs-6 fw-bold">BSD<br>Alam Sutera</div>
-                        <div class="fs-6 text-secondary">Branch</div>
-                        <a target="_blank" class="btn btn-success mt-2" href="https://wa.me/6281930002525?text=Halo%20Maison%20Living%20BSD%20Alam%20Sutera%2C%20Saya%20ingin%20bertanya%20tentang%20produk..."><i class="fa-brands fa-whatsapp"></i> Whatsapp</a>
-                    </div>
-    -->
                     <div class="col border rounded m-1 p-3 bg-light">
                         <div class="fs-6 fw-bold">Maison Living</div>
                         <div class="fs-6 text-secondary">Customer Service</div>
-                        <a target="_blank" class="btn btn-success mt-2" href="https://wa.me/6285931023339"  onclick="ConsultClick()"><i class="fa-brands fa-whatsapp"></i> Whatsapp Us</a>
+                        <a target="_blank" class="btn btn-success mt-2" href="https://api.whatsapp.com/send/?phone=6285931023339&text=Halo%2C+saya+tertarik+dengan+produk+Maison+Living&type=phone_number&app_absent=0"  onclick="ConsultClick()"><i class="fa-brands fa-whatsapp"></i> Whatsapp Us</a>
                     </div>
                 </div>
             </div>

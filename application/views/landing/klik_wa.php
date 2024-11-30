@@ -246,7 +246,7 @@
                     <div class="col border rounded m-1 p-3 bg-light">
                         <div class="fs-6 fw-bold">Maison Living</div>
                         <div class="fs-6 text-secondary">Customer Service</div>
-                        <a target="_blank" class="btn btn-success mt-2" href="https://wa.me/62817700025"><i class="fa-brands fa-whatsapp"></i> Whatsapp Us</a>
+                        <a target="_blank" class="btn btn-success mt-2" href="https://api.whatsapp.com/send/?phone=62817700025&text=Halo%2C+saya+tertarik+dengan+produk+Maison+Living&type=phone_number&app_absent=0"><i class="fa-brands fa-whatsapp"></i> Whatsapp Us</a>
                     </div>
                 </div>
             </div>
