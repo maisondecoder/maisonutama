@@ -89,14 +89,14 @@
 
 <!-- Modal -->
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content bg-transparent border-0">
             <div class="modal-header p-0 border-0">
                 <button type="button" class="btn-close text-white" data-bs-dismiss="modal" aria-label="Close" style="z-index:9"><i class="fa-regular fa-circle-xmark fs-2"></i></button>
             </div>
             <div class="modal-body p-0">
                 <a class="stretched-link popupbanner" href="<?= $popup['popup_destination']; ?>"></a>
-                <img class="img-fluid" src="<?= $popup['popup_img']; ?>" alt="">
+                <img class="img-fluid" src="<?= $popup['popup_img']; ?>" alt="" height="300">
             </div>
         </div>
     </div>
