@@ -21,6 +21,8 @@ class Landing extends CI_Controller
 				//$this->session->set_userdata('code', '');
 			}
 		}
+
+		
     }
 
     public function blackfriday2024($brand_slug='papadatos', $page = 1)
@@ -110,11 +112,18 @@ class Landing extends CI_Controller
         $bs_group = $this->collection_model->group_catalog(3);
 		$data['promo_products'] = $this->collection_model->selected_group_items($bs_group['group_items']);
 
+		if($this->session->has_userdata('code')){
+			$data['code'] = '&code=pkj';
+		}else{
+			$data['code'] = '';
+		}
+		
 		$brand_title = "Christmas Sale - Maison Living";
 
 		$data['title_page'] = $brand_title;
 		$data['nav'] = "";
 
+		
 
 		$this->load->view('revamp/header', $data);
 		$this->load->view('landing/christmas2024');
