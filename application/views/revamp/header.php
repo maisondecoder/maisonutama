@@ -14,20 +14,31 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
-    <link rel="stylesheet" href="<?= $GLOBALS['domain_static'] . '/assets/ribbon.css';?>">
+    <link rel="stylesheet" href="<?= $GLOBALS['domain_static'] . '/assets/ribbon.css'; ?>">
     <link rel="icon" href="<?= $GLOBALS['domain_static'] . '/assets/icon/maison-favicon-32x32.jpg'; ?>" sizes="32x32" />
     <link rel="icon" href="<?= $GLOBALS['domain_static'] . '/assets/icon/maison-favicon-192x192.jpg'; ?>" sizes="192x192" />
     <link rel="apple-touch-icon" href="<?= $GLOBALS['domain_static'] . '/assets/icon/maison-favicon-180x180.jpg'; ?>" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js" integrity="sha512-jGsMH83oKe9asCpkOVkBnUrDDTp8wl+adkB2D+//JtlxO4SrLoJdhbOysIFQJloQFD+C4Fl1rMsQZF76JjV0eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.3/jquery-ui.min.js" integrity="sha512-Ww1y9OuQ2kehgVWSD/3nhgfrb424O3802QYP/A5gPXoM4+rRjiKrjHdGxQKrMGQykmsJ/86oGdHszfcVgUr4hA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="<?= $GLOBALS['domain_static'] . '/assets/js/snow.js';?>"></script>
+    <script src="<?= $GLOBALS['domain_static'] . '/assets/js/snow.js'; ?>"></script>
     <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-KXHBRSV9');</script>
-<!-- End Google Tag Manager -->
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-KXHBRSV9');
+    </script>
+    <!-- End Google Tag Manager -->
     <script src="<?= $GLOBALS['domain_static'] . '/assets/js/jquery.visible.min.js'; ?>"></script>
     <link rel="stylesheet" href="<?= $GLOBALS['domain_static'] . '/assets/loading.css'; ?>">
     <script>
@@ -193,7 +204,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
     <?php
     if ($this->session->has_userdata('code')) {
-        if ($this->session->userdata('code')=='pkj') {
+        if ($this->session->userdata('code') == 'pkj') {
     ?>
             <!-- Meta Pixel Code -->
             <script>
@@ -221,6 +232,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <noscript><img height="1" width="1" style="display:none"
                     src="https://www.facebook.com/tr?id=3518214025150823&ev=PageView&noscript=1" /></noscript>
             <!-- End Meta Pixel Code -->
+
+            <script type="text/javascript" src="https://gass.maisonliving.id/js/pklzoakjbv1733317963816.js"></script>
+            <script>
+                gass.run({
+                    subdomain: 'gass.maisonliving.id',
+                    pkey: '8C24EFB7E436B199E0A319FA9941EEAB',
+                    interval: 2,
+                    connector: ["2CE5B915F633F2E930AD78558E0EBF2E"],
+                    cta_hidden: 1
+                }, function(data) {});
+            </script>
         <?php
         }
     } else {
@@ -308,18 +330,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
     ?>
 
-<script type="text/javascript" src="https://gass.maisonliving.id/js/pklzoakjbv1733317963816.js"></script>
-<script>
-  gass.run({subdomain:'gass.maisonliving.id', pkey:'8C24EFB7E436B199E0A319FA9941EEAB', interval:2, connector:["2CE5B915F633F2E930AD78558E0EBF2E"], cta_hidden:1}, function(data){});
-</script>
+
 </head>
 
 
 <body>
     <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KXHBRSV9"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KXHBRSV9"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <div id="loadoverlay" class="d-flex justify-content-center" style="height:100%;width:100%;background:rgba(255,255,255,0.8);position:fixed;z-index:999999999!important;top:0;">
         <img id="loadoverlay-icon" class="align-self-center" width="140px" height="140px" src="<?= $GLOBALS['domain_static'] . '/assets/icon/icon-loading-trans.webp'; ?>" alt="">
     </div>
