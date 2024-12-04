@@ -49,6 +49,12 @@ class Main extends CI_Controller
 		$data['title_page'] = "Welcome to Maison Living";
 		$data['nav'] = "home";
 
+		if($this->session->has_userdata('code')){
+			$data['code'] = '?code=pkj';
+		}else{
+			$data['code'] = '';
+		}
+		
 		$this->load->view('revamp/header', $data);
 		$this->load->view('revamp/index');
 		$this->load->view('revamp/footer');
@@ -169,6 +175,11 @@ class Main extends CI_Controller
 		$data['title_page'] = $brand_title;
 		$data['nav'] = "brand";
 
+		if($this->session->has_userdata('code')){
+			$data['code'] = '?code=pkj';
+		}else{
+			$data['code'] = '';
+		}
 
 		$this->load->view('revamp/header', $data);
 		$this->load->view('revamp/brand-detail');
@@ -236,7 +247,7 @@ class Main extends CI_Controller
 		} else {
 			$template = "Halo, saya tertarik dengan " . $product_data['product_name'] . " dari " . $product_data['brand_name'];
 		}
-		$data['template_wa'] = urlencode($template);
+		$template_wa_full = urlencode($template);
 
 		$get_list_variation =  $this->collection_model->get_list_variation($product_data['product_id']);
 
@@ -267,11 +278,15 @@ class Main extends CI_Controller
 		//Nomor Whatsapp MARKETER
 		if($this->session->userdata('code')=='pkj'){
 			//PAKARJASA
-			$data['wa_product_consult'] = "6285931023339";
+			$api_url = "https://gass.maisonliving.id/cta?p=8C24EFB7E436B199E0A319FA9941EEAB&divisi=lead&msg=ID+%5B_gid_%5D%25break%25(Mohon+jangan+dihapus+ID+Pelanggan+di+atas)%25break%25%25break%25";
+			//$no_wa = "6285931023339";
+			$data['cta_link'] = $api_url.$template_wa_full;
 			//echo "marketer = pakarjasa";
 		}else{
 			//HIPROS
-			$data['wa_product_consult'] = "62817700025";
+			$api_url = "https://api.whatsapp.com/send/?phone=";
+			$no_wa = "62817700025";
+			$data['cta_link'] = $api_url.$no_wa."&text=".$template_wa_full."&type=phone_number&app_absent=0";
 			//echo "marketer = hipros";
 		}
 
@@ -324,6 +339,11 @@ class Main extends CI_Controller
 
 		$this->load->model('collection_model');
 
+		if($this->session->has_userdata('code')){
+			$data['code'] = '?code=pkj';
+		}else{
+			$data['code'] = '';
+		}
 
 		$this->load->view('revamp/header', $data);
 		$this->load->view('revamp/collection-room');
@@ -378,6 +398,12 @@ class Main extends CI_Controller
 		$this->load->model('collection_model');
 		//$products = $this->collection_model->get_products(0, 0, $category_data['cat_id']);
 		$data['products'] = $products;
+
+		if($this->session->has_userdata('code')){
+			$data['code'] = '?code=pkj';
+		}else{
+			$data['code'] = '';
+		}
 
 		$this->load->view('revamp/header', $data);
 		$this->load->view('revamp/collection-category');

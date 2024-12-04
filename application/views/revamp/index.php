@@ -42,7 +42,7 @@
                 <div class="splide__track">
                     <ul class="splide__list">
                         <?php foreach ($bs_products as $key => $bestseller) { ?>
-                            <li class="splide__slide p-2"><a href="<?= base_url('our-collections/') . $bestseller['product_slug']; ?>">
+                            <li class="splide__slide p-2"><a href="<?= base_url('our-collections/') . $bestseller['product_slug'].$code; ?>">
                                     <img class="img-fluid mb-2 border topacity" style="width:300px; height:200px !important; object-fit:cover !important;" src="<?= $GLOBALS['domain_static'] . '/assets/products/thumbnail/' . $bestseller['product_thumbnail']; ?>" alt="<?= $bestseller['product_name'] ?>" width="300" height="200">
                                 </a>
                                 <h4 class="text-secondary"><?= $bestseller['product_name']; ?></h4>

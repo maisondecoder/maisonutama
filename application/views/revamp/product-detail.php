@@ -96,7 +96,7 @@
                     </div>
                 <?php } ?>
                 <div class="d-grid gap-2">
-                    <a href="https://api.whatsapp.com/send/?phone=<?= $wa_product_consult; ?>&text=<?= $template_wa; ?>&type=phone_number&app_absent=0" target="_blank" id="btn-consultation" class="shaked btn btn-success fs-5 mb-2 whatsapp-click" onclick="ConsultClick()"><i class="fa-brands fa-whatsapp"></i> Product Consultation</a>
+                    <a href="<?= $cta_link; ?>" target="_blank" id="btn-consultation" class="shaked btn btn-success fs-5 mb-2 whatsapp-click" onclick="ConsultClick()"><i class="fa-brands fa-whatsapp"></i> Product Consultation</a>
                     <?php if ($products['product_specs']) { ?>
                         <a href="<?= $specs; ?>" target="_blank" class="btn btn-dark fs-5 mb-4">Product Specifications</a>
                     <?php } ?>

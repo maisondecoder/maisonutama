@@ -35,7 +35,7 @@
         <?php if ($products) {
             foreach ($products as $key => $product) { ?>
                 <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 mb-4">
-                    <a class="text-decoration-none " href="<?= base_url("our-collections/") . $product['product_slug'] . '?via=brand-details'; ?>">
+                    <a class="text-decoration-none " href="<?= base_url("our-collections/") . $product['product_slug'].$code; ?>">
                         <img class="img-fluid mb-2 border topacity" style="width:300px !important; height:200px !important; object-fit:cover !important;" src="<?= $GLOBALS['domain_static'] . '/assets/products/thumbnail/' . $product['product_thumbnail']; ?>" alt="" width="300" height="200">
                         <h4 class="text-secondary"><?= $product['product_name']; ?></h4>
                     </a>
