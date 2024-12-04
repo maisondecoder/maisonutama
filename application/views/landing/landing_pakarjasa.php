@@ -146,6 +146,11 @@
     <noscript><img height="1" width="1" style="display:none"
             src="https://www.facebook.com/tr?id=3518214025150823&ev=PageView&noscript=1" /></noscript>
     <!-- End Meta Pixel Code -->
+
+    <script type="text/javascript" src="https://gass.maisonliving.id/js/pklzoakjbv1733317963816.js"></script>
+<script>
+  gass.run({subdomain:'gass.maisonliving.id', pkey:'8C24EFB7E436B199E0A319FA9941EEAB', interval:2, connector:["2CE5B915F633F2E930AD78558E0EBF2E"], cta_hidden:1}, function(data){});
+</script>
 </head>
 
 <body>

@@ -307,6 +307,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <?php
     }
     ?>
+
+<script type="text/javascript" src="https://gass.maisonliving.id/js/pklzoakjbv1733317963816.js"></script>
+<script>
+  gass.run({subdomain:'gass.maisonliving.id', pkey:'8C24EFB7E436B199E0A319FA9941EEAB', interval:2, connector:["2CE5B915F633F2E930AD78558E0EBF2E"], cta_hidden:1}, function(data){});
+</script>
 </head>
 
 
