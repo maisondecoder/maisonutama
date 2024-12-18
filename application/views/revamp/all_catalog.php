@@ -60,7 +60,7 @@
                                     <td width="100"><?php if ($e_pdiscont[$key]) {
                                             echo '<span class="fw-bold text-danger">Discontinued</span>';
                                         } else {
-                                            echo '<span class="fw-bold text-success">Yes</span>';
+                                            echo '<span class="fw-bold text-success">Available</span>';
                                         } ?></td>
                                     <td width="120"><a target="_blank" href="<?= base_url('our-collections/') . $e_pslug[$key]; ?>">See Product</a></td>
                                 </tr>
