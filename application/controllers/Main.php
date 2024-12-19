@@ -450,6 +450,10 @@ class Main extends CI_Controller
 		$this->load->model('brand_model');
 		$data['all_brands'] = $this->brand_model->get_all_brands();
 
+		$this->load->model('collection_model');
+		$all_cats = $this->collection_model->get_all_cats();
+		$data['all_cats'] = $all_cats;
+
 		$this->load->model('project_model');
 		$data['project'] = $this->project_model->get_spesific_project($id);
 
@@ -472,7 +476,7 @@ class Main extends CI_Controller
 		$data['nav'] = "project";
 
 		$this->load->view('revamp/header', $data);
-		$this->load->view('revamp/project-detail');
+		$this->load->view('revamp/project-detail-new');
 		$this->load->view('revamp/footer');
 	}
 
