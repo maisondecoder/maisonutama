@@ -262,7 +262,7 @@
     </footer>
     <!-- Footer -->
     <script src="https://fastly.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/07c871975a.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/a34900726b.js" crossorigin="anonymous"></script>
     <script src="https://fastly.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
 
 </body>
