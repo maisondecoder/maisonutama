@@ -141,7 +141,7 @@ class Collection_model extends CI_Model
 
     public function get_all_catalog($brand_id)
     {
-        $this->db->select("GROUP_CONCAT(product_id ORDER BY product_name ASC) AS 'PID', GROUP_CONCAT(product_name ORDER BY product_name ASC) AS 'Name', GROUP_CONCAT(product_slug ORDER BY product_name ASC) AS 'Slug', GROUP_CONCAT(product_thumbnail ORDER BY product_name ASC) AS 'Thumbnail', GROUP_CONCAT(ml_category.cat_name ORDER BY product_name ASC) AS 'Category', GROUP_CONCAT(ml_brands.brand_name ORDER BY product_name ASC) AS 'Brand', GROUP_CONCAT(ml_rooms.room_name ORDER BY product_name ASC) AS 'Room', GROUP_CONCAT(product_status ORDER BY product_name ASC) AS 'Status', GROUP_CONCAT(is_discontinued ORDER BY product_name ASC) AS 'Discontinue'");
+        $this->db->select("GROUP_CONCAT(product_id ORDER BY product_name ASC) AS 'PID', GROUP_CONCAT(product_name ORDER BY product_name ASC) AS 'Name', GROUP_CONCAT(product_slug ORDER BY product_name ASC) AS 'Slug', GROUP_CONCAT(product_thumbnail ORDER BY product_name ASC) AS 'Thumbnail', GROUP_CONCAT(ml_category.cat_name ORDER BY product_name ASC) AS 'Category', GROUP_CONCAT(ml_brands.brand_name ORDER BY product_name ASC) AS 'Brand', GROUP_CONCAT(ml_rooms.room_name ORDER BY product_name ASC) AS 'Room', GROUP_CONCAT(product_status ORDER BY product_name ASC) AS 'Status', GROUP_CONCAT(is_discontinued ORDER BY product_name ASC) AS 'Discontinue', GROUP_CONCAT(folder_gallery ORDER BY product_name ASC) AS 'Gallery', GROUP_CONCAT(product_specs ORDER BY product_name ASC) AS 'Tech Sheet'");
         $this->db->from('ml_products');
         $this->db->join('ml_brands', 'ml_brands.brand_id = ml_products.brand_id');
         $this->db->join('ml_rooms', 'ml_rooms.room_id = ml_products.room_id');

@@ -24,6 +24,8 @@
                 $e_pbrand = explode(',', $catalog['Brand']);
                 $e_pstatus = explode(',', $catalog['Status']);
                 $e_pdiscont = explode(',', $catalog['Discontinue']);
+                $e_pgallery = explode(',', $catalog['Gallery']);
+                $e_pspec = explode(',', $catalog['Tech Sheet']);
                 $jmlh = count($e_pname);
                 $total = $total + $jmlh;
         ?>
@@ -40,6 +42,8 @@
                                 <th scope="col">Room</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Avail</th>
+                                <th scope="col">Gallery</th>
+                                <th scope="col">Spec</th>
                                 <th scope="col">Product Page</th>
                             </tr>
                         </thead>
@@ -53,15 +57,17 @@
                                     <td width="150"><?= $e_pcat[$key] ?></td>
                                     <td width="100"><?= $e_proom[$key] ?></td>
                                     <td width="100"><?php if ($e_pstatus[$key]) {
-                                            echo '<span class="fw-bold text-success">ON</span>';
-                                        } else {
-                                            echo '<span class="fw-bold text-danger">OFF</span>';
-                                        } ?></td>
+                                                        echo '<span class="fw-bold text-success">ON</span>';
+                                                    } else {
+                                                        echo '<span class="fw-bold text-danger">OFF</span>';
+                                                    } ?></td>
                                     <td width="100"><?php if ($e_pdiscont[$key]) {
-                                            echo '<span class="fw-bold text-danger">Discontinued</span>';
-                                        } else {
-                                            echo '<span class="fw-bold text-success">Available</span>';
-                                        } ?></td>
+                                                        echo '<span class="fw-bold text-danger">Discontinued</span>';
+                                                    } else {
+                                                        echo '<span class="fw-bold text-success">Available</span>';
+                                                    } ?></td>
+                                    <td width="100"><?= $e_pgallery[$key] ?></td>
+                                    <td width="100"><?= $e_pspec[$key] ?></td>
                                     <td width="120"><a target="_blank" href="<?= base_url('our-collections/') . $e_pslug[$key]; ?>">See Product</a></td>
                                 </tr>
                             <?php } ?>
