@@ -21,7 +21,7 @@
     <p>At Maison, we don't just see furniture as a product; it's a masterpiece. No detail is too small to overlook. We uphold an unwavering commitment in delivering top-notch quality and exceptional service, and meeting your home interior needs and style. Our team of specialists are dedicated to help turn your dream home into a reality.</p>
 </div>
 
-<div id="vision-mission" class="container p-4 pb-1 mb-2">
+<div id="vision-mission" class="container p-4 pb-1 mb-4">
     <div class="row mb-2">
         <!-- Our Vision -->
         <div class="col-12 col-sm-6">
@@ -53,6 +53,74 @@
     </div>
 </div>
 
+<!-- Past Client Project -->
+<div id="intro-why" class="container p-4 pb-1 mb-2">
+    <h2 class="mb-4 fw-bold text-center">Our Client Projects</h2>
+    <hr>
+    <div class="masonry">
+        <div class="brick">
+            <a href="<?= $project; ?>auxano-interior/1.webp" data-lightbox="clients" data-title="Auxano Interior">
+                <img src="<?= $project; ?>auxano-interior/1.webp" alt="Auxano Interior 1" title="Auxano Interior">
+            </a>
+        </div>
+        <div class="brick">
+            <a href="<?= $project; ?>auxano-interior/2.webp" data-lightbox="clients" data-title="Auxano Interior">
+                <img src="<?= $project; ?>auxano-interior/2.webp" alt="Auxano Interior 2" title="Auxano Interior">
+            </a>
+        </div>
+        <div class="brick">
+            <a href="<?= $project; ?>clarissa-tanuwijaya/1.webp" data-lightbox="clients" data-title="Clarissa Tanuwijaya">
+                <img src="<?= $project; ?>clarissa-tanuwijaya/1.webp" alt="Clarissa Tanuwijaya 1" title="Clarissa Tanuwijaya">
+            </a>
+        </div>
+        <div class="brick">
+            <a href="<?= $project; ?>clarissa-tanuwijaya/2.webp" data-lightbox="clients" data-title="Clarissa Tanuwijaya">
+                <img src="<?= $project; ?>clarissa-tanuwijaya/2.webp" alt="Clarissa Tanuwijaya 2" title="Clarissa Tanuwijaya">
+            </a>
+        </div>
+        <div class="brick">
+            <a href="<?= $project; ?>maze-build/1.webp" data-lightbox="clients" data-title="Maze Build">
+                <img src="<?= $project; ?>maze-build/1.webp" alt="Maze Build 1" title="Maze Build">
+            </a>
+        </div>
+        <div class="brick">
+            <a href="<?= $project; ?>/mirae-design/1.webp" data-lightbox="clients" data-title="Mirae Design">
+                <img src="<?= $project; ?>/mirae-design/1.webp" alt="Mirae Design 1" title="Mirae Design">
+            </a>
+        </div>
+        <div class="brick">
+            <a href="<?= $project; ?>/mirae-design/2.webp" data-lightbox="clients" data-title="Mirae Design">
+                <img src="<?= $project; ?>/mirae-design/2.webp" alt="Mirae Design 2" title="Mirae Design">
+            </a>
+        </div>
+        <div class="brick">
+            <a href="<?= $project; ?>/seriouz-studio/1.webp" data-lightbox="clients" data-title="Seriouz Studio">
+                <img src="<?= $project; ?>/seriouz-studio/1.webp" alt="Seriouz Studio 1" title="Seriouz Studio">
+            </a>
+        </div>
+        <div class="brick">
+            <a href="<?= $project; ?>/sve-interior/1.webp" data-lightbox="clients" data-title="SVE Interior">
+                <img src="<?= $project; ?>/sve-interior/1.webp" alt="SVE Interior 1" title="SVE Interior">
+            </a>
+        </div>
+        <div class="brick">
+            <a href="<?= $project; ?>/sve-interior/3.webp" data-lightbox="clients" data-title="SVE Interior">
+                <img src="<?= $project; ?>/sve-interior/3.webp" alt="SVE Interior 2" title="SVE Interior">
+            </a>
+        </div>
+        <div class="brick">
+            <a href="<?= $project; ?>/the-ateliers-designer/4.webp" data-lightbox="clients" data-title="The Ateliers Designer">
+                <img src="<?= $project; ?>/the-ateliers-designer/4.webp" alt="The Ateliers Designer 1" title="The Ateliers Designer">
+            </a>
+        </div>
+        <div class="brick">
+            <a href="<?= $project; ?>/the-ateliers-designer/5.webp" data-lightbox="clients" data-title="The Ateliers Designer">
+                <img src="<?= $project; ?>/the-ateliers-designer/5.webp" alt="The Ateliers Designer 2" title="The Ateliers Designer">
+            </a>
+        </div>
+    </div>
+</div>
+
 <!-- Store -->
 <?php if ($all_stores) { ?>
     <div class="text-light mt-5" style="width:100%; min-height:600px; max-height:50vw;background-blend-mode: darken; background:rgba(0, 0, 0, .7);background-size:cover; background-position:center bottom; background-image:url('<?= $GLOBALS['domain_static'] . '/assets/home-store-cover.jpg'; ?>');">
@@ -78,3 +146,20 @@
     </div>
 <?php } ?>
 <!-- Store -->
+
+<link rel="stylesheet" href="<?= base_url('assets/masonry-responsive/labs'); ?>.css">
+<link rel="stylesheet" href="<?= base_url('assets/masonry-responsive/masonry'); ?>.css">
+
+<link href="<?= $GLOBALS['domain_static'] . '/assets/plugins/lightbox2-2.11.5/dist/css/'; ?>lightbox.css" rel="stylesheet" />
+<script src="<?= $GLOBALS['domain_static'] . '/assets/plugins/lightbox2-2.11.5/dist/js/'; ?>lightbox.js"></script>
+
+<script>
+    lightbox.option({
+        'resizeDuration': 200,
+        'wrapAround': true,
+        'disableScrolling': true,
+        'alwaysShowNavOnTouchDevices': true,
+        'maxWidth': 2000,
+        'maxHeight': 2000
+    })
+</script>
