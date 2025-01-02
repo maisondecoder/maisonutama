@@ -426,8 +426,6 @@ class Main extends CI_Controller
 		$data['title_page'] = "About Maison Living";
 		$data['nav'] = "about";
 
-		$data['project'] = base_url('assets/project-client/');
-
 		$this->load->view('revamp/header', $data);
 		$this->load->view('revamp/about');
 		$this->load->view('revamp/footer');

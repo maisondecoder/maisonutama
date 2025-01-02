@@ -59,63 +59,63 @@
     <hr>
     <div class="masonry">
         <div class="brick">
-            <a href="<?= $project; ?>auxano-interior/1.webp" data-lightbox="clients" data-title="Auxano Interior">
-                <img src="<?= $project; ?>auxano-interior/1.webp" alt="Auxano Interior 1" title="Auxano Interior">
+            <a href="<?= $GLOBALS['domain_static'] . '/assets/project-client/';?>auxano-interior/1.webp" data-lightbox="clients" data-title="Auxano Interior">
+                <img src="<?= $GLOBALS['domain_static'] . '/assets/project-client/';?>auxano-interior/1.webp" alt="Auxano Interior 1" title="Auxano Interior">
             </a>
         </div>
         <div class="brick">
-            <a href="<?= $project; ?>auxano-interior/2.webp" data-lightbox="clients" data-title="Auxano Interior">
-                <img src="<?= $project; ?>auxano-interior/2.webp" alt="Auxano Interior 2" title="Auxano Interior">
+            <a href="<?= $GLOBALS['domain_static'] . '/assets/project-client/';?>auxano-interior/2.webp" data-lightbox="clients" data-title="Auxano Interior">
+                <img src="<?= $GLOBALS['domain_static'] . '/assets/project-client/';?>auxano-interior/2.webp" alt="Auxano Interior 2" title="Auxano Interior">
             </a>
         </div>
         <div class="brick">
-            <a href="<?= $project; ?>clarissa-tanuwijaya/1.webp" data-lightbox="clients" data-title="Clarissa Tanuwijaya">
-                <img src="<?= $project; ?>clarissa-tanuwijaya/1.webp" alt="Clarissa Tanuwijaya 1" title="Clarissa Tanuwijaya">
+            <a href="<?= $GLOBALS['domain_static'] . '/assets/project-client/';?>clarissa-tanuwijaya/1.webp" data-lightbox="clients" data-title="Clarissa Tanuwijaya">
+                <img src="<?= $GLOBALS['domain_static'] . '/assets/project-client/';?>clarissa-tanuwijaya/1.webp" alt="Clarissa Tanuwijaya 1" title="Clarissa Tanuwijaya">
             </a>
         </div>
         <div class="brick">
-            <a href="<?= $project; ?>clarissa-tanuwijaya/2.webp" data-lightbox="clients" data-title="Clarissa Tanuwijaya">
-                <img src="<?= $project; ?>clarissa-tanuwijaya/2.webp" alt="Clarissa Tanuwijaya 2" title="Clarissa Tanuwijaya">
+            <a href="<?= $GLOBALS['domain_static'] . '/assets/project-client/';?>clarissa-tanuwijaya/2.webp" data-lightbox="clients" data-title="Clarissa Tanuwijaya">
+                <img src="<?= $GLOBALS['domain_static'] . '/assets/project-client/';?>clarissa-tanuwijaya/2.webp" alt="Clarissa Tanuwijaya 2" title="Clarissa Tanuwijaya">
             </a>
         </div>
         <div class="brick">
-            <a href="<?= $project; ?>maze-build/1.webp" data-lightbox="clients" data-title="Maze Build">
-                <img src="<?= $project; ?>maze-build/1.webp" alt="Maze Build 1" title="Maze Build">
+            <a href="<?= $GLOBALS['domain_static'] . '/assets/project-client/';?>maze-build/1.webp" data-lightbox="clients" data-title="Maze Build">
+                <img src="<?= $GLOBALS['domain_static'] . '/assets/project-client/';?>maze-build/1.webp" alt="Maze Build 1" title="Maze Build">
             </a>
         </div>
         <div class="brick">
-            <a href="<?= $project; ?>/mirae-design/1.webp" data-lightbox="clients" data-title="Mirae Design">
-                <img src="<?= $project; ?>/mirae-design/1.webp" alt="Mirae Design 1" title="Mirae Design">
+            <a href="<?= $GLOBALS['domain_static'] . '/assets/project-client/';?>/mirae-design/1.webp" data-lightbox="clients" data-title="Mirae Design">
+                <img src="<?= $GLOBALS['domain_static'] . '/assets/project-client/';?>/mirae-design/1.webp" alt="Mirae Design 1" title="Mirae Design">
             </a>
         </div>
         <div class="brick">
-            <a href="<?= $project; ?>/mirae-design/2.webp" data-lightbox="clients" data-title="Mirae Design">
-                <img src="<?= $project; ?>/mirae-design/2.webp" alt="Mirae Design 2" title="Mirae Design">
+            <a href="<?= $GLOBALS['domain_static'] . '/assets/project-client/';?>/mirae-design/2.webp" data-lightbox="clients" data-title="Mirae Design">
+                <img src="<?= $GLOBALS['domain_static'] . '/assets/project-client/';?>/mirae-design/2.webp" alt="Mirae Design 2" title="Mirae Design">
             </a>
         </div>
         <div class="brick">
-            <a href="<?= $project; ?>/seriouz-studio/1.webp" data-lightbox="clients" data-title="Seriouz Studio">
-                <img src="<?= $project; ?>/seriouz-studio/1.webp" alt="Seriouz Studio 1" title="Seriouz Studio">
+            <a href="<?= $GLOBALS['domain_static'] . '/assets/project-client/';?>/seriouz-studio/1.webp" data-lightbox="clients" data-title="Seriouz Studio">
+                <img src="<?= $GLOBALS['domain_static'] . '/assets/project-client/';?>/seriouz-studio/1.webp" alt="Seriouz Studio 1" title="Seriouz Studio">
             </a>
         </div>
         <div class="brick">
-            <a href="<?= $project; ?>/sve-interior/1.webp" data-lightbox="clients" data-title="SVE Interior">
-                <img src="<?= $project; ?>/sve-interior/1.webp" alt="SVE Interior 1" title="SVE Interior">
+            <a href="<?= $GLOBALS['domain_static'] . '/assets/project-client/';?>/sve-interior/1.webp" data-lightbox="clients" data-title="SVE Interior">
+                <img src="<?= $GLOBALS['domain_static'] . '/assets/project-client/';?>/sve-interior/1.webp" alt="SVE Interior 1" title="SVE Interior">
             </a>
         </div>
         <div class="brick">
-            <a href="<?= $project; ?>/sve-interior/3.webp" data-lightbox="clients" data-title="SVE Interior">
-                <img src="<?= $project; ?>/sve-interior/3.webp" alt="SVE Interior 2" title="SVE Interior">
+            <a href="<?= $GLOBALS['domain_static'] . '/assets/project-client/';?>/sve-interior/3.webp" data-lightbox="clients" data-title="SVE Interior">
+                <img src="<?= $GLOBALS['domain_static'] . '/assets/project-client/';?>/sve-interior/3.webp" alt="SVE Interior 2" title="SVE Interior">
             </a>
         </div>
         <div class="brick">
-            <a href="<?= $project; ?>/the-ateliers-designer/4.webp" data-lightbox="clients" data-title="The Ateliers Designer">
-                <img src="<?= $project; ?>/the-ateliers-designer/4.webp" alt="The Ateliers Designer 1" title="The Ateliers Designer">
+            <a href="<?= $GLOBALS['domain_static'] . '/assets/project-client/';?>/the-ateliers-designer/4.webp" data-lightbox="clients" data-title="The Ateliers Designer">
+                <img src="<?= $GLOBALS['domain_static'] . '/assets/project-client/';?>/the-ateliers-designer/4.webp" alt="The Ateliers Designer 1" title="The Ateliers Designer">
             </a>
         </div>
         <div class="brick">
-            <a href="<?= $project; ?>/the-ateliers-designer/5.webp" data-lightbox="clients" data-title="The Ateliers Designer">
-                <img src="<?= $project; ?>/the-ateliers-designer/5.webp" alt="The Ateliers Designer 2" title="The Ateliers Designer">
+            <a href="<?= $GLOBALS['domain_static'] . '/assets/project-client/';?>/the-ateliers-designer/5.webp" data-lightbox="clients" data-title="The Ateliers Designer">
+                <img src="<?= $GLOBALS['domain_static'] . '/assets/project-client/';?>/the-ateliers-designer/5.webp" alt="The Ateliers Designer 2" title="The Ateliers Designer">
             </a>
         </div>
     </div>
