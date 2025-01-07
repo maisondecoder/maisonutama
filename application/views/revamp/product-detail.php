@@ -47,7 +47,7 @@
                 <?php if ($products['show_price']) { ?>
                     <?php if ($setting_price_position == "top") { ?>
                         <div id="price-label-top" class="mb-4">
-                            <h3 class="fs-5 fw-bold">Starts From</h3>
+                            <h3 class="fs-5 fw-bold">Starting From</h3>
                             <p class="fs-2 text-primary fw-bold">IDR <?= number_format($products['product_price'], 0, ",", "."); ?></p>
                             <hr>
                         </div>
