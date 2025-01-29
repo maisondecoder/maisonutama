@@ -16,6 +16,11 @@
             <section id="gallery" class="splide" aria-label="Splide Basic HTML Example">
                 <div class="splide__track">
                     <ul class="splide__list">
+                        <?php if($products['product_video']){ ?>
+                        <li class="splide__slide"><div id="videoplay" class="container border d-flex justify-content-center" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="background-blend-mode: darken; background-blend-mode: darken; background:rgba(0, 0, 0, .7);background-size:cover; background-position:center bottom; background-image:url('<?= $GLOBALS['domain_static'] . '/assets/products/thumbnail/'.$products['product_thumbnail']; ?>');height:380px;cursor:pointer;">
+                            <div class=" align-self-center text-white mt-4"><i class="fa-regular fa-circle-play" style="font-size:72px"></i><br><p class="fs-5 mt-1">Play Video</p></div>
+                        </div></li>
+                        <?php } ?>
                         <?php
                         if ($gallery) {
                             foreach ($images as $key => $image) {
@@ -127,8 +132,94 @@
 <?php } ?>
 <!-- Product Type -->
 
+<?php if($products['product_video']){ ?>
+<!-- Modal Video Player -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content bg-transparent border-0 mx-auto" style="max-width:400px">
+            <div class="modal-header p-0 border-0">
+                <button id="close-shorts" type="button" class="btn-close text-white" data-bs-dismiss="modal" aria-label="Close" style="z-index:9"><i class="fa-regular fa-circle-xmark fs-2"></i></button>
+            </div>
+            <div id="ref-framesize" class="modal-body p-0" style="max-width:400px;max-height:720px">
+                <!--
+                <iframe id="shorts-frame"
+                    width="480"
+                    height="720"
+                    src="https://www.youtube.com/embed/hvcQ31J5qkg"
+                    data-src="https://www.youtube.com/embed/hvcQ31J5qkg"
+                    title="Preview Video"
+                    allow="encrypted-media;autoplay" allowfullscreen>
+                </iframe>-->
+
+                <video
+                    id="shorts-frame"
+                    class="video-js"
+                    controls
+                    preload="auto"
+                    width="400"
+                    height="700"
+                    data-setup="{}">
+                    <source src="<?= $GLOBALS['domain_static'] . '/assets/videos/'.$products['product_video']; ?>" type="video/mp4" />
+                    <p class="vjs-no-js">
+                        To view this video please enable JavaScript, and consider upgrading to a
+                        web browser that
+                        <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+                    </p>
+                </video>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal Video Player -->
+<?php } ?>
+
 <link href="<?= $GLOBALS['domain_static'] . '/assets/plugins/lightbox2-2.11.5/dist/css/'; ?>lightbox.css" rel="stylesheet" />
 <script src="<?= $GLOBALS['domain_static'] . '/assets/plugins/lightbox2-2.11.5/dist/js/'; ?>lightbox.js"></script>
+
+<?php if($products['product_video']){ ?>
+<!-- Video.js -->
+<link href="https://vjs.zencdn.net/8.16.1/video-js.css" rel="stylesheet" />
+<script src="https://vjs.zencdn.net/8.16.1/video.min.js"></script>
+<script>
+    var myPlayer = videojs('#shorts-frame');
+    myPlayer.ready(function() {
+        
+    });
+    // --------- Fitur Video Play START --------- //
+    function ResizeShorts() {
+        //kalo pake youtube
+        //$('#shorts-frame')[0].src = $('#shorts-frame').data('src');
+
+        var width = $('#ref-framesize').width();
+        var NewHeight = (1920 / 1080) * width;
+
+        $("#shorts-frame").width(width);
+        $("#shorts-frame").height(NewHeight);
+
+        //kalo pake youtube
+        //$('#shorts-frame')[0].src += "?autoplay=1";
+    }
+
+    //Tombol Close Video
+    $('#close-shorts').click(function() {
+        //kalo pake youtube
+        //$('#shorts-frame')[0].src = $('#shorts-frame').data('src');
+
+        //kalo pake player sendiri
+        myPlayer.pause();
+    });
+
+    //Triger Play Video dari Foto Pertama
+    $('#videoplay').click(function() {
+        setTimeout(ResizeShorts, 350);
+
+        //kalo pake player sendiri
+        myPlayer.currentTime(0);
+        myPlayer.play();
+    });
+    // --------- Fitur Video Play END --------- //
+</script>
+<?php } ?>
 
 <script>
     lightbox.option({
@@ -141,6 +232,7 @@
     })
 </script>
 <script>
+    
     $(document).ready(function() {
         if ($("#btn-contain").visible()) {
             $("#btn-consultation").removeClass('fixed-bottom me-3 mb-3');
@@ -196,7 +288,7 @@
         new Splide('#gallery', {
             perPage: 1,
             perMove: 1,
-            autoplay: true,
+            autoplay: false,
             pagination: true
         }).mount();
     </script>
