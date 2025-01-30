@@ -212,7 +212,7 @@ class Main extends CI_Controller
 		$this->load->model('setting_model');
 
 		$data['setting_price_position'] = $this->setting_model->get_setting_value("price_position");
-
+		$data['setting_video_product_source'] = $this->setting_model->get_setting_value("video_product_source");
 		$product_data = $this->collection_model->get_spesific_product($product_slug);
 		$data['products'] = $product_data;
 		$data['product_content'] = json_decode($product_data['product_content'], true);
