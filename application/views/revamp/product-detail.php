@@ -105,7 +105,7 @@
                     </div>
                 <?php } ?>
                 <div class="d-grid gap-2">
-                    <a href="<?= $cta_link; ?>" target="_blank" id="btn-consultation" class="shaked btn btn-success fs-5 mb-2 whatsapp-click"><i class="fa-brands fa-whatsapp"></i> Product Consultation</a>
+                    <a href="<?= $cta_link; ?>" target="_blank" id="btn-consultation" class="shaked btn btn-success fs-5 mb-2 whatsapp-click" onclick="fbq('track', 'Lead');"><i class="fa-brands fa-whatsapp"></i> Product Consultation</a>
                     <?php if ($products['product_specs']) { ?>
                         <a href="<?= $specs; ?>" target="_blank" class="btn btn-dark fs-5 mb-4">Product Specifications</a>
                     <?php } ?>
