@@ -12,12 +12,12 @@ class Main extends CI_Controller
 		$cloudcone_url = $this->setting_model->get_setting_value("cloudcone_url");
 
 		$GLOBALS['domain_static'] = $cloudcone_url;
-		
+
 		//Detek Kode Unik Marketer
-		if(isset($_GET['code']) || isset($_SESSION['code'])){
-			if(isset($_GET['code']) && $_GET['code']=='pkj'){
+		if (isset($_GET['code']) || isset($_SESSION['code'])) {
+			if (isset($_GET['code']) && $_GET['code'] == 'pkj') {
 				$this->session->set_userdata('code', 'pkj');
-			}else{
+			} else {
 				//$this->session->set_userdata('code', '');
 			}
 		}
@@ -49,12 +49,12 @@ class Main extends CI_Controller
 		$data['title_page'] = "Welcome to Maison Living";
 		$data['nav'] = "home";
 
-		if($this->session->has_userdata('code')){
+		if ($this->session->has_userdata('code')) {
 			$data['code'] = '?code=pkj';
-		}else{
+		} else {
 			$data['code'] = '';
 		}
-		
+
 		$this->load->view('revamp/header', $data);
 		$this->load->view('revamp/index');
 		$this->load->view('revamp/footer');
@@ -175,9 +175,9 @@ class Main extends CI_Controller
 		$data['title_page'] = $brand_title;
 		$data['nav'] = "brand";
 
-		if($this->session->has_userdata('code')){
+		if ($this->session->has_userdata('code')) {
 			$data['code'] = '?code=pkj';
-		}else{
+		} else {
 			$data['code'] = '';
 		}
 
@@ -256,7 +256,7 @@ class Main extends CI_Controller
 			if ($get_variation) {
 				//default gallery dari varian
 				$product_gallery = $get_variation['pv_gallery'];
-			}else{
+			} else {
 				//jika variasi tidak ada di database, maka redirect
 				redirect(base_url('our-collections/') . $product_data['product_slug']);
 			}
@@ -265,9 +265,9 @@ class Main extends CI_Controller
 			$product_gallery = $product_data['folder_gallery'];
 		}
 
-		$folder_specs = $GLOBALS['domain_static'].'/assets'.$product_data['product_specs'];
+		$folder_specs = $GLOBALS['domain_static'] . '/assets' . $product_data['product_specs'];
 		$data['specs'] = $folder_specs;
-		
+
 		$data['gallery'] = $product_gallery;
 		$data['selected'] = $variation;
 		$data['variation'] = $get_list_variation;
@@ -276,22 +276,14 @@ class Main extends CI_Controller
 		$data['images'] = glob($folder . '*.{jpg,jpeg,png,gif,webp}', GLOB_BRACE);
 
 		//Nomor Whatsapp MARKETER
-		if($this->session->userdata('code')=='pkj'){
-			//PAKARJASA
-			// $api_url = "https://gass.maisonliving.id/cta?p=8C24EFB7E436B199E0A319FA9941EEAB&divisi=lead&msg=ID+%5B_gid_%5D%25break%25(Mohon+jangan+dihapus+ID+Pelanggan+di+atas)%25break%25%25break%25";
-			//$data['cta_link'] = $api_url.$template_wa_full;
-			$api_url = "https://api.whatsapp.com/send/?phone=";
-			$no_wa = "6285931023339";
-			$data['cta_link'] = $api_url.$no_wa."&text=".$template_wa_full."&type=phone_number&app_absent=0";
-			
-			//echo "marketer = pakarjasa";
-		}else{
-			//HIPROS
-			$api_url = "https://api.whatsapp.com/send/?phone=";
-			$no_wa = "62817700025";
-			$data['cta_link'] = $api_url.$no_wa."&text=".$template_wa_full."&type=phone_number&app_absent=0";
-			//echo "marketer = hipros";
-		}
+
+		//PAKARJASA
+		// $api_url = "https://gass.maisonliving.id/cta?p=8C24EFB7E436B199E0A319FA9941EEAB&divisi=lead&msg=ID+%5B_gid_%5D%25break%25(Mohon+jangan+dihapus+ID+Pelanggan+di+atas)%25break%25%25break%25";
+		//$data['cta_link'] = $api_url.$template_wa_full;
+		$api_url = "https://api.whatsapp.com/send/?phone=";
+		$no_wa = "6285931023339";
+		$data['cta_link'] = $api_url . $no_wa . "&text=" . $template_wa_full . "&type=phone_number&app_absent=0";
+		//echo "marketer = pakarjasa";
 
 		$this->load->view('revamp/header', $data);
 		$this->load->view('revamp/product-detail');
@@ -342,9 +334,9 @@ class Main extends CI_Controller
 
 		$this->load->model('collection_model');
 
-		if($this->session->has_userdata('code')){
+		if ($this->session->has_userdata('code')) {
 			$data['code'] = '?code=pkj';
-		}else{
+		} else {
 			$data['code'] = '';
 		}
 
@@ -402,9 +394,9 @@ class Main extends CI_Controller
 		//$products = $this->collection_model->get_products(0, 0, $category_data['cat_id']);
 		$data['products'] = $products;
 
-		if($this->session->has_userdata('code')){
+		if ($this->session->has_userdata('code')) {
 			$data['code'] = '?code=pkj';
-		}else{
+		} else {
 			$data['code'] = '';
 		}
 
