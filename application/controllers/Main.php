@@ -278,9 +278,12 @@ class Main extends CI_Controller
 		//Nomor Whatsapp MARKETER
 		if($this->session->userdata('code')=='pkj'){
 			//PAKARJASA
-			$api_url = "https://gass.maisonliving.id/cta?p=8C24EFB7E436B199E0A319FA9941EEAB&divisi=lead&msg=ID+%5B_gid_%5D%25break%25(Mohon+jangan+dihapus+ID+Pelanggan+di+atas)%25break%25%25break%25";
-			//$no_wa = "6285931023339";
-			$data['cta_link'] = $api_url.$template_wa_full;
+			// $api_url = "https://gass.maisonliving.id/cta?p=8C24EFB7E436B199E0A319FA9941EEAB&divisi=lead&msg=ID+%5B_gid_%5D%25break%25(Mohon+jangan+dihapus+ID+Pelanggan+di+atas)%25break%25%25break%25";
+			//$data['cta_link'] = $api_url.$template_wa_full;
+			$api_url = "https://api.whatsapp.com/send/?phone=";
+			$no_wa = "6285931023339";
+			$data['cta_link'] = $api_url.$no_wa."&text=".$template_wa_full."&type=phone_number&app_absent=0";
+			
 			//echo "marketer = pakarjasa";
 		}else{
 			//HIPROS
