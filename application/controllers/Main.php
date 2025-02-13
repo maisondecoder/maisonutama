@@ -493,7 +493,7 @@ class Main extends CI_Controller
 		$data['products'] = $product_data;
 		//print_r($data['products']);
 		$data['title_page'] = 'Showcase Video - Maison Living';
-		$data['nav'] = "collection";
+		$data['nav'] = "home";
 
 		$data['all_brands'] = $this->brand_model->get_all_brands();
 		$data['all_rooms'] = $this->collection_model->get_all_rooms();
