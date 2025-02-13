@@ -2,7 +2,7 @@
 
 <!-- Brand Collections -->
 <div id="brand-collections" class="container p-4 text-center">
-    <section id="player" class="splide mx-auto" aria-label="Splide Basic HTML Example">
+    <section id="player" class="splide mx-auto mb-4" aria-label="Splide Basic HTML Example">
         <div class="splide__track ">
             <ul class="splide__list">
                 <?php foreach ($products as $key => $product) { ?>
@@ -163,21 +163,23 @@
 <?php if ($products > 0) {  ?>
     <script>
         new Splide('#player', {
+            type:'loop',
             perPage: 1,
             perMove: 1,
             autoplay: false,
             pagination: false,
-            width:'960px'
+            width:'910px'
         }).mount();
     </script>
 <?php } else { ?>
     <script>
         new Splide('#player', {
+            type:'loop',
             perPage: 1,
             perMove: 1,
             autoplay: false,
             pagination: false,
-            width:'960px'
+            width:'910px'
         }).mount();
     </script>
 <?php } ?>
