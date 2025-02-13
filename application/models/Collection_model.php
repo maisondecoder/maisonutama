@@ -73,6 +73,20 @@ class Collection_model extends CI_Model
         return $get_products;
     }
 
+    public function get_products_with_video()
+    {
+        $this->db->select('*');
+        $this->db->from('ml_products');
+        $this->db->where('is_deleted', 0);
+        $this->db->where('product_status ', 1);
+        $this->db->where('product_video !=', '');
+        $this->db->where('product_yt_video !=', '');
+        $this->db->order_by('product_name', 'ASC');
+        $get_products = $this->db->get()->result_array();
+
+        return $get_products;
+    }
+
     public function get_related_products($brand_id = 0, $room_id = 0, $cat_id = 0, $exclude_product = 0, $exclude_type = 0)
     {
         $this->db->select('product_slug, product_name, product_thumbnail');

@@ -479,4 +479,29 @@ class Main extends CI_Controller
 	{
 		$this->load->view('landing/klik_wa');
 	}
+
+	public function showcase(){
+
+		//Global Data To Display *Mandatory
+		$this->load->model('brand_model');
+		$this->load->model('collection_model');
+		$this->load->model('setting_model');
+
+		$data['setting_price_position'] = $this->setting_model->get_setting_value("price_position");
+		$data['setting_video_product_source'] = $this->setting_model->get_setting_value("video_product_source");
+		$product_data = $this->collection_model->get_products_with_video();
+		$data['products'] = $product_data;
+		print_r($data['products']);
+		$data['title_page'] = 'Showcase Video - Maison Living';
+		$data['nav'] = "collection";
+
+		$data['all_brands'] = $this->brand_model->get_all_brands();
+		$data['all_rooms'] = $this->collection_model->get_all_rooms();
+		$data['all_cats'] = $this->collection_model->get_all_cats();
+
+
+		$this->load->view('revamp/header', $data);
+		$this->load->view('revamp/showcase-video');
+		$this->load->view('revamp/footer');
+	}
 }
