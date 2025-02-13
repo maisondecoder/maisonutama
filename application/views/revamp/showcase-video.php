@@ -1,20 +1,19 @@
 <div style="margin-bottom:100px"></div>
 
 <!-- Brand Collections -->
-<div id="brand-collections" class="container p-2 text-center">
-    <section id="player" class="splide" aria-label="Splide Basic HTML Example">
-        <div class="splide__track">
+<div id="brand-collections" class="container p-4 text-center">
+    <section id="player" class="splide mx-auto" aria-label="Splide Basic HTML Example">
+        <div class="splide__track ">
             <ul class="splide__list">
                 <?php foreach ($products as $key => $product) { ?>
-
                     <li class="splide__slide">
-                        <div class="row border mx-auto" style="max-width:800px;">
+                        <div class="row border mx-auto rounded bg-white" style="max-width:800px;">
                             <div class="col border-end p-2" style="">
                                 <div id="ref-framesize" class="modal-body p-0" style="max-width:960px;max-height:1440px">
                                     <?php if ($setting_video_product_source == 'youtube') { ?>
-                                        <iframe id="shorts-frame"
+                                        <iframe id="shorts-frame" class="rounded"
                                             width="480"
-                                            height="720"
+                                            height="640"
                                             src="https://www.youtube.com/embed/<?= $product['product_yt_video']; ?>"
                                             data-src="https://www.youtube.com/embed/<?= $product['product_yt_video']; ?>"
                                             title="Preview Video"
@@ -23,11 +22,11 @@
                                     <?php } else if ($setting_video_product_source == 'cdn') { ?>
                                         <video
                                             id="shorts-frame"
-                                            class="video-js"
+                                            class="video-js rounded"
                                             controls
                                             preload="auto"
-                                            width="960"
-                                            height="1440"
+                                            width="480"
+                                            height="640"
                                             data-setup="{}">
                                             <source src="<?= $GLOBALS['domain_static'] . '/assets/videos/' . $product['product_video']; ?>" type="video/mp4" />
                                             <p class="vjs-no-js">
@@ -43,7 +42,7 @@
                                 <h4 class="mt-2 mb-4">In this video:</h4>
                                 <div class="">
                                     <a class="text-decoration-none " href="<?= base_url("our-collections/") . $product['product_slug']; ?>">
-                                        <img class="img-fluid mb-2 border topacity" style="width:300px !important; height:200px !important; object-fit:cover !important;" src="<?= $GLOBALS['domain_static'] . '/assets/products/thumbnail/' . $product['product_thumbnail']; ?>" alt="" width="300" height="200">
+                                        <img class="img-fluid mb-2 border topacity shadow-sm" style="width:300px !important; height:200px !important; object-fit:cover !important;" src="<?= $GLOBALS['domain_static'] . '/assets/products/thumbnail/' . $product['product_thumbnail']; ?>" alt="" width="300" height="200">
                                         <h4 class="text-secondary fs-5"><?= $product['brand_name']; ?> <?= $product['product_name']; ?></h4>
                                     </a>
                                 </div>
@@ -57,48 +56,6 @@
     </section>
 </div>
 
-<?php if ($products) { ?>
-    <!-- Modal Video Player -->
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
-            <div class="modal-content bg-transparent border-0 mx-auto" style="max-width:400px">
-                <div class="modal-header p-0 border-0">
-                    <button id="close-shorts" type="button" class="btn-close text-white" data-bs-dismiss="modal" aria-label="Close" style="z-index:9"><i class="fa-regular fa-circle-xmark fs-2"></i></button>
-                </div>
-                <div id="ref-framesize" class="modal-body p-0" style="max-width:960px;max-height:1440px">
-                    <?php if ($setting_video_product_source == 'youtube') { ?>
-                        <iframe id="shorts-frame"
-                            width="960"
-                            height="1440"
-                            src="https://www.youtube.com/embed/<?= $products['product_yt_video']; ?>"
-                            data-src="https://www.youtube.com/embed/<?= $products['product_yt_video']; ?>"
-                            title="Preview Video"
-                            allow="encrypted-media;autoplay" allowfullscreen>
-                        </iframe>
-                    <?php } else if ($setting_video_product_source == 'cdn') { ?>
-                        <video
-                            id="shorts-frame"
-                            class="video-js"
-                            controls
-                            preload="auto"
-                            width="960"
-                            height="1440"
-                            data-setup="{}">
-                            <source src="<?= $GLOBALS['domain_static'] . '/assets/videos/' . $products['product_video']; ?>" type="video/mp4" />
-                            <p class="vjs-no-js">
-                                To view this video please enable JavaScript, and consider upgrading to a
-                                web browser that
-                                <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
-                            </p>
-                        </video>
-                    <?php } ?>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Modal Video Player -->
-<?php } ?>
-
 <link href="<?= $GLOBALS['domain_static'] . '/assets/plugins/lightbox2-2.11.5/dist/css/'; ?>lightbox.css" rel="stylesheet" />
 <script src="<?= $GLOBALS['domain_static'] . '/assets/plugins/lightbox2-2.11.5/dist/js/'; ?>lightbox.js"></script>
 
@@ -109,6 +66,8 @@
         <script src="https://vjs.zencdn.net/8.16.1/video.min.js"></script>
     <?php } ?>
     <script>
+        $('body').css('background-color','#18191e');
+
         <?php if ($setting_video_product_source == 'cdn') { ?>
             var myPlayer = videojs('#shorts-frame');
             myPlayer.ready(function() {
@@ -207,7 +166,8 @@
             perPage: 1,
             perMove: 1,
             autoplay: false,
-            pagination: false
+            pagination: false,
+            width:'960px'
         }).mount();
     </script>
 <?php } else { ?>
@@ -217,6 +177,7 @@
             perMove: 1,
             autoplay: false,
             pagination: false,
+            width:'960px'
         }).mount();
     </script>
 <?php } ?>
