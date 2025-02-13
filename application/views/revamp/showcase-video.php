@@ -1,16 +1,14 @@
 <div style="margin-bottom:100px"></div>
 
 <!-- Brand Collections -->
-<div id="brand-collections" class="container p-4 text-center">
-
-    <h1 class="fs-1 mb-2 fw-bold">For You</h1>
+<div id="brand-collections" class="container p-2 text-center">
     <section id="player" class="splide" aria-label="Splide Basic HTML Example">
         <div class="splide__track">
             <ul class="splide__list">
                 <?php foreach ($products as $key => $product) { ?>
 
                     <li class="splide__slide">
-                        <div class="row mt-5 border mx-auto" style="max-width:800px;">
+                        <div class="row border mx-auto" style="max-width:800px;">
                             <div class="col border-end p-2" style="">
                                 <div id="ref-framesize" class="modal-body p-0" style="max-width:960px;max-height:1440px">
                                     <?php if ($setting_video_product_source == 'youtube') { ?>
@@ -41,8 +39,14 @@
                                     <?php } ?>
                                 </div>
                             </div>
-                            <div class="col">
-
+                            <div class="col text-start">
+                                <h4 class="mt-2 mb-4">In this video:</h4>
+                                <div class="">
+                                    <a class="text-decoration-none " href="<?= base_url("our-collections/") . $product['product_slug']; ?>">
+                                        <img class="img-fluid mb-2 border topacity" style="width:300px !important; height:200px !important; object-fit:cover !important;" src="<?= $GLOBALS['domain_static'] . '/assets/products/thumbnail/' . $product['product_thumbnail']; ?>" alt="" width="300" height="200">
+                                        <h4 class="text-secondary fs-5"><?= $product['brand_name']; ?> <?= $product['product_name']; ?></h4>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </li>

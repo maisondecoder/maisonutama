@@ -77,7 +77,8 @@ class Collection_model extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('ml_products');
-        $this->db->where('is_deleted', 0);
+        $this->db->join('ml_brands', 'ml_brands.brand_id = ml_products.brand_id');
+        $this->db->where('ml_products.is_deleted', 0);
         $this->db->where('product_status ', 1);
         $this->db->where('product_video !=', '');
         $this->db->where('product_yt_video !=', '');
