@@ -18,7 +18,7 @@
                     <ul class="splide__list">
                         <?php if ($products['product_video']) { ?>
                             <li class="splide__slide">
-                                <div id="videoplay" class="container border d-flex justify-content-center" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="background-blend-mode: darken; background-blend-mode: darken; background:rgba(0, 0, 0, .7);background-size:cover; background-position:center bottom; background-image:url('<?= $GLOBALS['domain_static'] . '/assets/products/thumbnail/' . $products['product_thumbnail']; ?>');height:380px;cursor:pointer;">
+                                <div id="videoplay" class="container border d-flex justify-content-center" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="background-blend-mode: darken; background-blend-mode: darken; background:rgba(0, 0, 0, .7);background-size:cover; background-position:center center; background-image:url('<?= $GLOBALS['domain_static'] . '/assets/products/thumbnail/' . $products['product_thumbnail']; ?>');height:380px;cursor:pointer;">
                                     <div class=" align-self-center text-white mt-4"><i class="fa-regular fa-circle-play" style="font-size:72px"></i><br>
                                         <p class="fs-5 mt-1">Play Video</p>
                                     </div>
