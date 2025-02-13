@@ -491,7 +491,7 @@ class Main extends CI_Controller
 		$data['setting_video_product_source'] = $this->setting_model->get_setting_value("video_product_source");
 		$product_data = $this->collection_model->get_products_with_video();
 		$data['products'] = $product_data;
-		print_r($data['products']);
+		//print_r($data['products']);
 		$data['title_page'] = 'Showcase Video - Maison Living';
 		$data['nav'] = "collection";
 

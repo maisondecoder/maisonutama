@@ -203,7 +203,7 @@
             perPage: 1,
             perMove: 1,
             autoplay: false,
-            pagination: true
+            pagination: false
         }).mount();
     </script>
 <?php } else { ?>
@@ -211,8 +211,8 @@
         new Splide('#player', {
             perPage: 1,
             perMove: 1,
-            autoplay: true,
-            pagination: true,
+            autoplay: false,
+            pagination: false,
         }).mount();
     </script>
 <?php } ?>
