@@ -4,10 +4,11 @@
 <div id="brand-collections" class="container p-4 text-center">
 
     <h1 class="fs-1 mb-2 fw-bold">For You</h1>
-    <?php foreach ($products as $key => $product) { ?>
-        <section id="player" class="splide" aria-label="Splide Basic HTML Example">
-            <div class="splide__track">
-                <ul class="splide__list">
+    <section id="player" class="splide" aria-label="Splide Basic HTML Example">
+        <div class="splide__track">
+            <ul class="splide__list">
+                <?php foreach ($products as $key => $product) { ?>
+
                     <li class="splide__slide">
                         <div class="row mt-5 border mx-auto" style="max-width:800px;">
                             <div class="col border-end p-2" style="">
@@ -45,10 +46,11 @@
                             </div>
                         </div>
                     </li>
-                </ul>
-            </div>
-        </section>
-    <?php } ?>
+
+                <?php } ?>
+            </ul>
+        </div>
+    </section>
 </div>
 
 <?php if ($products) { ?>
